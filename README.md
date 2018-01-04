@@ -1,1 +1,3 @@
-"# My project's README" 
+# Zynthinator
+
+[Test out Zynthinator](http://fredrikhjarner.se "Test out Zynthinator")
