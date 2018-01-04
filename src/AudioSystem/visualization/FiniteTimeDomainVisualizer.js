@@ -1,4 +1,7 @@
 import * as R from 'ramda';
+import {
+  mathHelpers,
+} from '../../helpers';
 
 /**
  * Vizualizer class
@@ -25,16 +28,11 @@ export class FiniteTimeDomainVisualizer {
       alert('Error');
     }
     this.canvasCtx = this.canvas.getContext('2d');
-
-    if (this.maxValue - this.minValue === 0) {
-      this.scale = 10 ** 15;
-    } else {
-      this.scale = 2 / (this.maxValue - this.minValue);
-    }
-
-    this.verticalAdjustment =
-      -1 - this.minValue;
   }
+
+  toRightRange =
+    value =>
+      mathHelpers.convertRange(value, [this.minValue, this.maxValue], [-1, 1])
 
   /**
    * The y-value is adjusted according to the
@@ -93,12 +91,12 @@ export class FiniteTimeDomainVisualizer {
       let x = 0;
       for (; x < this.canvas.width; x++) {
         const indexInArray = Math.round(indexesPerPixel * x);
-        const v = (float32Array[indexInArray] * this.scale) + this.verticalAdjustment;
+        const v = this.toRightRange(float32Array[indexInArray]);
         const y = this.relativeToAbsolute(v);
         this.drawGreenPixel(x, y);
       }
       const indexInArray = Math.round(indexesPerPixel * x);
-      const v = float32Array[indexInArray];
+      const v = this.toRightRange(float32Array[indexInArray]);
       const y = this.relativeToAbsolute(v);
       this.drawGreenPixel(x, y);
 

@@ -60,6 +60,18 @@ class MathHelpers {
       // convert scale back to zero to maxValue
       return this.changeScale(1, maxValue - minValue, exp) + minValue;
     }
+
+  /**
+   * convertRange( 328.17, [ 300.77, 559.22 ], [ 1, 10 ] );
+   * >>> 1.9541497388276272
+   */
+  convertRange =
+    (value, r1, r2) => {
+      if (r1[1] - r1[0] === 0) {
+        return 10 ** 15;
+      }
+      return ((value - r1[0]) * (r2[1] - r2[0]) / (r1[1] - r1[0])) + r2[0];
+    }
 }
 
 export const mathHelpers = new MathHelpers();

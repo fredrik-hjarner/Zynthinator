@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import * as R from 'ramda';
 import { CreateConnectionDumb } from './CreateConnectionDumb';
 import {
   createConnectionAction,
@@ -11,7 +12,7 @@ export class CreateConnectionControlled extends React.Component {
     super(props);
     this.state = {
       name: '',
-      parentNodeId: undefined,
+      parentNodeIds: [],
       childNodeId: undefined,
       childNodeInput: undefined,
       childNodeInputs: [],
@@ -24,10 +25,14 @@ export class CreateConnectionControlled extends React.Component {
         createConnectionAction({
           ...(_.omit(this.state, 'childNodeInputs')),
         }),
+    /**
+     * Receives many ids as an array via 'value'.
+     */
     onParentNodeIdChange:
       (e, { value }) => {
-        const parentNodeId = parseInt(value);
-        this.setState({ parentNodeId });
+        const parentNodeIds =
+          R.map(x => parseInt(x, 10), value);
+        this.setState({ parentNodeIds });
       },
     onChildNodeIdChange:
       (e, { value }) => {

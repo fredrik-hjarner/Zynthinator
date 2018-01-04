@@ -1,4 +1,4 @@
-// import _ from 'lodash';
+import _ from 'lodash';
 import * as R from 'ramda';
 import { stateQueries } from '../../StateQueries';
 
@@ -14,7 +14,7 @@ export const createConnectionReducer =
      *    * that this exact connection doesn't already exist.
      */
     const {
-      parentNodeId,
+      parentNodeIds,
       childNodeId,
       childNodeInput,
     } = action;
@@ -23,26 +23,37 @@ export const createConnectionReducer =
       nodes,
     } = state.nodeManagement;
 
-    if (stateQueries.doesNodeWithIdExist({ nodes, nodeId: parentNodeId }) &&
+    /*
+    if (stateQueries.doesNodeWithIdExist({ nodes, nodeId: parentNodeIds }) &&
         stateQueries.doesNodeWithIdExist({ nodes, nodeId: childNodeId }) &&
         stateQueries.doesNodeHaveInputWithName({ nodes, nodeId: childNodeId, inputName: childNodeInput })
     ) {
-      // create the connection.
-      const connectionId = state.nodeManagement.highestConnectionIdYet + 1;
+    */
+    if (stateQueries.doesNodeWithIdExist({ nodes, nodeId: childNodeId }) &&
+        stateQueries.doesNodeHaveInputWithName({ nodes, nodeId: childNodeId, inputName: childNodeInput })
+    ) {
+      // create the connections.
+      let connectionId = state.nodeManagement.highestConnectionIdYet;
 
-      const connection = {
-        id: connectionId,
-        parentNodeId,
-        childNodeId,
-        childNodeInput,
-      };
+      const connectionsValues =
+        R.map(parentNodeId => (
+          {
+            id: ++connectionId,
+            parentNodeId,
+            childNodeId,
+            childNodeInput,
+          }
+        ))(parentNodeIds);
+
+      const connections =
+        _.keyBy(connectionsValues, R.prop('id'));
 
       return R.evolve({
         nodeManagement: {
           highestConnectionIdYet:
             () => connectionId,
           connections:
-            R.assoc(`${connectionId}`, connection),
+            R.merge(R.__, connections),
         },
       }, state);
     }
