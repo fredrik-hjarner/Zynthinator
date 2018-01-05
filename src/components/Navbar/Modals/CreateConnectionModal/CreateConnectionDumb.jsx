@@ -9,14 +9,10 @@ import {
 
 export const CreateConnectionDumb =
   (props) => {
-    const firstInputString = 'parentId';
-    const thirdInputString = 'childId';
-    const fourthInputString = 'childInput';
-
     const formFields = (
       <div>
         <Form.Field>
-          <label>{firstInputString}</label>
+          <label>parents</label>
           <Dropdown
             onChange={props.onParentNodeIdChange}
             options={props.nodesThatHaveOutputs}
@@ -24,18 +20,15 @@ export const CreateConnectionDumb =
             selection
           />
         </Form.Field>
-        <Form.Select
-          label={thirdInputString}
-          onChange={props.onChildNodeIdChange}
-          options={props.nodesThatHaveInputs}
-          placeholder={thirdInputString}
-        />
-        <Form.Select
-          label={fourthInputString}
-          onChange={props.onChildNodeInputChange}
-          options={props.childNodeInputs}
-          placeholder={fourthInputString}
-        />
+        <Form.Field>
+          <label>children</label>
+          <Dropdown
+            onChange={props.onChildNodeIdChange}
+            options={props.nodesThatHaveInputs}
+            multiple
+            selection
+          />
+        </Form.Field>
       </div>);
 
     return (

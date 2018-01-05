@@ -1,10 +1,10 @@
 import React from 'react';
-import _ from 'lodash';
-import * as R from 'ramda';
+// import _ from 'lodash';
+// import * as R from 'ramda';
 import { CreateConnectionDumb } from './CreateConnectionDumb';
 import {
   createConnectionAction,
-  stateQueries,
+  // stateQueries,
 } from '../commonImports';
 
 export class CreateConnectionControlled extends React.Component {
@@ -13,45 +13,37 @@ export class CreateConnectionControlled extends React.Component {
     this.state = {
       name: '',
       parentNodeIds: [],
-      childNodeId: undefined,
-      childNodeInput: undefined,
-      childNodeInputs: [],
+      /**
+       * [
+       *   { nodeId, param },
+       *   { nodeId, param },
+       * ]
+       */
+      childNodes: [],
     };
   }
 
   handlers = {
     onConfirm:
       () =>
-        createConnectionAction({
-          ...(_.omit(this.state, 'childNodeInputs')),
-        }),
+        createConnectionAction(this.state),
     /**
      * Receives many ids as an array via 'value'.
      */
     onParentNodeIdChange:
       (e, { value }) => {
-        const parentNodeIds =
-          R.map(x => parseInt(x, 10), value);
-        this.setState({ parentNodeIds });
+        this.setState({ parentNodeIds: value });
       },
+    /**
+     * Receives value =
+     * [
+     *   { nodeId, param },
+     *   { nodeId, param },
+     * ]
+     */
     onChildNodeIdChange:
       (e, { value }) => {
-        const childNodeId = parseInt(value);
-        this.setState({ childNodeId });
-        // populate <select> with the inputs of this node
-        const {
-          nodes,
-        } = this.props;
-        const node =
-          nodes[value];
-        const inputs =
-          stateQueries.getConnectableInputsOfNode(node);
-        this.setState({ childNodeInputs: inputs.map(input => ({ text: input, value: input })) });
-      },
-    onChildNodeInputChange:
-      (e, { value }) => {
-        this.setState({ childNodeInput: value });
-        // this.state.childNodeInput = value;
+        this.setState({ childNodes: value });
       },
     onNameChange:
       value =>
