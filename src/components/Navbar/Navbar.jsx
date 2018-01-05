@@ -79,6 +79,11 @@ export const Navbar = () => { // eslint-disable-line
               Create ADSR
             </Dropdown.Item>
             <Dropdown.Item
+              onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'ChangeRange' })}
+            >
+              Create ChangeRange
+            </Dropdown.Item>
+            <Dropdown.Item
               onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'TimeDomainAnalyser' })}
             >
               Create time domain analyser

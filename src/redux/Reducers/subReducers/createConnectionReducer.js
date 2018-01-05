@@ -4,7 +4,6 @@ import * as R from 'ramda';
 
 export const createConnectionReducer =
   (state, action) => {
-    debugger;
     /**
      * Confirm that the connection is possible/valid.
      *  - That means that:
