@@ -13,6 +13,8 @@ export const deleteNodeReducer =
             R.propEq('parentNodeId', nodeId),
             R.propEq('childNodeId', nodeId),
           )),
+        knobs: R.reject(R.propEq('connectedToWhichNode', nodeId)),
+        triggers: R.reject(R.propEq('connectedToWhichNode', nodeId)),
       },
       /**
        * todo, this is crap. should probably not looks for deleted
