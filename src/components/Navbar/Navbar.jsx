@@ -8,6 +8,7 @@ import {
   DownloadHistoryFileRedux,
 } from './DownloadHistoryFileRedux';
 import * as Actions from '../../redux';
+import * as Examples from '../../Examples';
 
 export const Navbar = () => { // eslint-disable-line
   return (
@@ -167,13 +168,13 @@ export const Navbar = () => { // eslint-disable-line
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Dropdown item text="Examples" disabled>
+        <Dropdown item text="Examples">
           <Dropdown.Menu>
-            <Dropdown.Item disabled>Undo an action</Dropdown.Item>
-            <Dropdown.Item disabled>Redo an action</Dropdown.Item>
-            <Dropdown.Divider />
-            <DownloadHistoryFileRedux />
-            <ReplayAHistoryFile />
+            <Dropdown.Item
+              onClick={Examples.amplitudeModulatedSine}
+            >
+              1. Amplitude-modulated sine
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown item text="History">
