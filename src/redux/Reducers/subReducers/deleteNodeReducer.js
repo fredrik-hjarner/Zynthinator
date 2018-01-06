@@ -2,26 +2,49 @@ import * as R from 'ramda';
 
 export const deleteNodeReducer =
   (state, action) => {
-    const { nodeId } = action;
+    const {
+      // nodeId,
+      nodes,
+    } = action;
+
+    const nodesAsInts =
+      R.map(
+        R.curry(parseInt)(R.__, 10),
+        nodes,
+      );
+
+    const propInArray = // todo move this into ramdaHelpers
+      (prop, array) => 
+        R.propSatisfies(
+          R.contains(R.__, array),
+          prop,
+        );
+
+    const propInNodes =
+      prop =>
+        propInArray(prop, nodesAsInts);
 
     return R.evolve({
       nodeManagement: {
         nodes:
-          R.dissoc(`${nodeId}`),
+          R.reject(propInNodes('id')),
         connections:
           R.reject(R.either(
-            R.propEq('parentNodeId', nodeId),
-            R.propEq('childNodeId', nodeId),
+            propInNodes('parentNodeId'),
+            propInNodes('childNodeId'),
           )),
-        knobs: R.reject(R.propEq('connectedToWhichNode', nodeId)),
-        triggers: R.reject(R.propEq('connectedToWhichNode', nodeId)),
+        knobs:
+          R.reject(propInNodes('connectedToWhichNode')),
+        triggers:
+          R.reject(propInNodes('connectedToWhichNode')),
       },
       /**
        * todo, this is crap. should probably not looks for deleted
        * Analysers when deleting every node type.
        */
       ui: {
-        components: R.reject(R.propEq('nodeId', nodeId)),
+        components:
+          R.reject(propInNodes('nodeId')),
       },
     }, state);
   };

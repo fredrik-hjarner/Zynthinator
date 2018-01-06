@@ -24,7 +24,7 @@ export const Navbar = () => { // eslint-disable-line
             >
               New
             </Dropdown.Item>
-            <Dropdown.Item>Load previous</Dropdown.Item>
+            <Dropdown.Item disabled>Load previous</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown item text="Nodes">
@@ -104,7 +104,7 @@ export const Navbar = () => { // eslint-disable-line
             <Dropdown.Item
               onClick={() => Actions.openModalAction('DeleteNodeModal')}
             >
-              Delete node
+              Delete nodes
             </Dropdown.Item>
             <Dropdown.Item disabled>
               Delete all nodes
@@ -125,7 +125,7 @@ export const Navbar = () => { // eslint-disable-line
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Dropdown item text="Groups">
+        <Dropdown item text="Groups" disabled>
           <Dropdown.Menu>
             <Dropdown.Item
               onClick={() => Actions.openModalAction('CreateGroupModal')}
