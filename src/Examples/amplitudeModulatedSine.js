@@ -169,11 +169,6 @@ history =
     function: 'linear',
   },
   {
-    type: 'MOVE_KNOB',
-    id: 2,
-    value: 1,
-  },
-  {
     type: 'OPEN_MODAL',
     modal: 'CreateKnobModal',
   },
@@ -188,11 +183,6 @@ history =
     minValue: 0,
     maxValue: 1,
     function: 'linear',
-  },
-  {
-    type: 'MOVE_KNOB',
-    id: 3,
-    value: 0,
   },
   {
     type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
@@ -229,11 +219,6 @@ history =
     function: 'linear',
   },
   {
-    type: 'MOVE_KNOB',
-    id: 4,
-    value: 0,
-  },
-  {
     type: 'OPEN_MODAL',
     modal: 'EditNodeModal',
   },
@@ -262,18 +247,112 @@ history =
     type: 'CLOSE_MODAL',
   },
   {
+    type: 'OPEN_MODAL',
+    modal: 'CreateNodeModal',
+    props: {
+      nodeType: 'TimeDomainAnalyser',
+    },
+  },
+  {
+    type: 'CLOSE_MODAL',
+  },
+  {
+    type: 'CREATE_NODE',
+    name: 'TDA2',
+    nodeType: 'TimeDomainAnalyser',
+  },
+  {
+    type: 'OPEN_MODAL',
+    modal: 'CreateConnectionModal',
+  },
+  {
+    type: 'CLOSE_MODAL',
+  },
+  {
+    type: 'CREATE_CONNECTION',
+    name: '',
+    parentNodeIds: [
+      3,
+    ],
+    childNodes: [
+      {
+        nodeId: 5,
+        input: 'input',
+      },
+    ],
+  },
+  {
+    type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
+    id: 2,
+    param: 'bitsToRecord',
+    value: '5',
+  },
+  {
+    type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
+    id: 2,
+    param: 'canvasWidth',
+    value: '100',
+  },
+  {
+    type: 'OPEN_MODAL',
+    modal: 'EditNodeModal',
+  },
+  {
+    type: 'CLOSE_MODAL',
+  },
+  {
+    type: 'OPEN_MODAL',
+    modal: 'EditNodeModal',
+  },
+  {
+    type: 'CLOSE_MODAL',
+  },
+  {
+    type: 'OPEN_MODAL',
+    modal: 'CreateNodeModal',
+    props: {
+      nodeType: 'Oscillator',
+      node: {
+        id: 3,
+        name: 'amplitudeModulatingSine',
+        frequency: 0.4096,
+        detune: 0,
+        oscillatorType: 'sine',
+        minValue: 0,
+        maxValue: 0,
+        gain: 1,
+        nodeType: 'Oscillator',
+      },
+    },
+  },
+  {
+    type: 'CLOSE_MODAL',
+  },
+  {
+    type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
+    id: 2,
+    param: 'maxValue',
+    value: '2',
+  },
+  {
+    type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
+    id: 2,
+    param: 'minValue',
+    value: '-2',
+  },
+  {
     type: 'MOVE_KNOB',
     id: 4,
-    value: 2.3305,
+    value: 0.6356,
+  },
+  {
+    type: 'MOVE_KNOB',
+    id: 2,
+    value: 1,
   },
   {
     type: 'MOVE_KNOB',
     id: 3,
     value: 0,
-  },
-  {
-    type: 'MOVE_KNOB',
-    id: 4,
-    value: 0.9746,
   },
 ];

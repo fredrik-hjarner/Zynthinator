@@ -1,5 +1,5 @@
+import _ from 'lodash';
 import { audioContext } from './audioContext';
-// import { DcSignal } from './DcSignal';
 import {
   AudioNode,
 } from './BaseClasses';
@@ -8,7 +8,7 @@ export class Oscillator extends AudioNode {
   constructor({ node }) {
     super();
     this.id = node.id;
-    this.node = node;
+    this.node = _.cloneDeep(node); // todo hmm.
     const options = {
       frequency: node.frequency,
       type: node.oscillatorType,
@@ -16,23 +16,13 @@ export class Oscillator extends AudioNode {
     this.oscillatorNode =
       new OscillatorNode(audioContext, options);
 
-    const gain =
-      (node.maxValue - node.minValue) / 2;
     this.gainNode =
-      new GainNode(audioContext, {
-        gain,
-      });
-
-    const dcValue =
-        ((node.maxValue + node.minValue) / 2) / gain;
+      new GainNode(audioContext);
 
     this.dcBiasNode =
-      new ConstantSourceNode(audioContext, {
-        offset:
-          dcValue,
-      });
+      new ConstantSourceNode(audioContext);
 
-    this.dcBiasNode.connect(this.gainNode);
+    // this.dcBiasNode.connect(this.gainNode);
 
     /* this.secondsToDelay =
       (node.frequency === 0 ?
@@ -71,7 +61,11 @@ export class Oscillator extends AudioNode {
     this.gainNode2 =
       new GainNode(audioContext);
 
+    this.dcBiasNode.connect(this.gainNode2);
+
     this.gainNode.connect(this.gainNode2);
+
+    this._updateScaleAndOffset();
 
     this.dcBiasNode.start();
     this.oscillatorNode.start();
@@ -91,6 +85,24 @@ export class Oscillator extends AudioNode {
   get output() {
     return this.gainNode2;
   }
+  _updateScaleAndOffset =
+    () => {
+      const gain =
+        (this.node.maxValue - this.node.minValue) / 2;
+
+      if (this.node.maxValue === this.node.minValue) {
+        this.gainNode.gain.value = 0;
+        this.dcBiasNode.offset.value = this.node.minValue;
+        return;
+      }
+
+      this.gainNode.gain.value = gain;
+  
+      const dcValue =
+        ((this.node.maxValue + this.node.minValue) / 2);
+
+      this.dcBiasNode.offset.value = dcValue;
+    }
   get minValue() {
     // return an object that has a 'value' field
     // That can be set
@@ -99,14 +111,8 @@ export class Oscillator extends AudioNode {
         this,
       set value(minValue) {
         const { _this } = this;
-        const gain =
-          (_this.node.maxValue - minValue) / 2;
-        _this.gainNode.gain.value = gain;
-    
-        const dcValue =
-          ((_this.node.maxValue + minValue) / 2) / gain;
-
-        _this.dcBiasNode.offset.value = dcValue;
+        _this.node.minValue = minValue;
+        _this._updateScaleAndOffset();
       },
     };
   }
@@ -118,14 +124,8 @@ export class Oscillator extends AudioNode {
         this,
       set value(maxValue) {
         const { _this } = this;
-        const gain =
-          (maxValue - _this.node.minValue) / 2;
-        _this.gainNode.gain.value = gain;
-    
-        const dcValue =
-          ((maxValue + _this.node.minValue) / 2) / gain;
-
-        _this.dcBiasNode.offset.value = dcValue;
+        _this.node.maxValue = maxValue;
+        _this._updateScaleAndOffset();
       },
     };
   }
