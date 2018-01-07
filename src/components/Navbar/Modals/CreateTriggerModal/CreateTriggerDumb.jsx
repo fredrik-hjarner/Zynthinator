@@ -1,27 +1,25 @@
 import React from 'react';
-import { Form } from 'semantic-ui-react';
+import {
+  Form,
+  Dropdown,
+} from 'semantic-ui-react';
 import {
   CommonModal,
 } from '../commonImports';
 
 export const CreateTriggerDumb =
   (props) => {
-    const thirdInputString = 'Node to control';
-    const fourthInputString = 'Parameter to control';
-
     const formFields = (
       <div>
-        <Form.Select
-          label={thirdInputString}
-          onChange={props.onChildNodeIdChange}
-          options={props.nodesThatHaveInputsInReadableFormat}
-        />
-        <Form.Select
-          name="connectedToWhichParam"
-          label={fourthInputString}
-          onChange={props.onFormStringChange}
-          options={props.childNodeInputs}
-        />
+        <Form.Field>
+          <label>Node and parameter to trigger</label>
+          <Dropdown
+            onChange={props.onChildNodeIdChange}
+            options={props.nodesThatHaveInputs}
+            multiple
+            selection
+          />
+        </Form.Field>
       </div>);
 
     return (

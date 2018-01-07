@@ -15,37 +15,11 @@ export const createConnectionReducer =
      */
     const {
       parentNodeIds,
-      /**
-       *  [
-       *    { nodeId :int, input :str },
-       *  ]
-       */
       childNodes,
     } = action;
 
-    /* const {
-      nodes,
-    } = state.nodeManagement; */
-
-    /*
-    if (stateQueries.doesNodeWithIdExist({ nodes, nodeId: parentNodeIds }) &&
-        stateQueries.doesNodeWithIdExist({ nodes, nodeId: childNodeId }) &&
-        stateQueries.doesNodeHaveInputWithName({ nodes, nodeId: childNodeId, inputName: childNodeInput })
-    ) {
-    */
-
     // create the connections.
     let connectionId = state.nodeManagement.highestConnectionIdYet;
-
-    /* const connectionsValues =
-      R.map(parentNodeId => (
-        {
-          id: ++connectionId,
-          parentNodeId,
-          childNodeId,
-          childNodeInput,
-        }
-      ))(parentNodeIds); */
 
     const connectionsValues = [];
     childNodes.forEach((childNode) => {
@@ -71,8 +45,4 @@ export const createConnectionReducer =
           R.merge(R.__, connections),
       },
     }, state);
-
-    // alert('Error!');
-    // debugger;
-    // return state;
   };

@@ -1,24 +1,31 @@
 import * as R from 'ramda';
+import _ from 'lodash';
 
 export const createTriggerReducer =
   (state, action) => {
+    debugger;
     const {
-      type,
-      ...params
+      connectedToWhichNodes,
     } = action;
-    const triggerId =
-      state.nodeManagement.highestTriggerIdYet + 1;
+    
+    let triggerId = state.nodeManagement.highestTriggerIdYet;
 
-    const trigger = {
-      id:
-        triggerId,
-      ...params,
-    };
+    const triggerValues = [];
+    connectedToWhichNodes.forEach((node) => {
+      triggerValues.push({
+        id: ++triggerId,
+        connectedToWhichNode: node.nodeId,
+        connectedToWhichParam: node.input,
+      });
+    });
+
+    const triggers =
+      _.keyBy(triggerValues, R.prop('id'));
 
     return R.evolve({
       nodeManagement: {
         highestTriggerIdYet: () => triggerId,
-        triggers: R.assoc(`${triggerId}`, trigger),
+        triggers: R.merge(R.__, triggers),
       },
     }, state);
   };

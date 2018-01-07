@@ -34,7 +34,7 @@ export class DeleteNodeControlled extends React.Component {
             value: id,
           }))
           .filter(option => option.value != 1); // eslint-disable-line
-      // todo hack above! Speakers have id == 1.
+      // hack above! Speakers have id == 1.
 
       return (
         <DeleteNodeDumb
