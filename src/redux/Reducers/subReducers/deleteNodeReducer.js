@@ -1,4 +1,7 @@
 import * as R from 'ramda';
+import {
+  ramdaHelpers as RH,
+} from '../../../helpers';
 
 export const deleteNodeReducer =
   (state, action) => {
@@ -13,16 +16,9 @@ export const deleteNodeReducer =
         nodes,
       );
 
-    const propInArray = // todo move this into ramdaHelpers
-      (prop, array) => 
-        R.propSatisfies(
-          R.contains(R.__, array),
-          prop,
-        );
-
     const propInNodes =
       prop =>
-        propInArray(prop, nodesAsInts);
+        RH.propInArray(prop, nodesAsInts);
 
     return R.evolve({
       nodeManagement: {
@@ -48,13 +44,3 @@ export const deleteNodeReducer =
       },
     }, state);
   };
-
-/* export const deleteNodeReducer2 =
-  // action =>
-  R.compose(
-    R.evole,
-    R.assocPath(['nodeManagement', 'nodes'], R.__, {}),
-    R.dissoc,
-    R.toString,
-    R.prop('nodeId'),
-  ); */

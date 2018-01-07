@@ -1,11 +1,18 @@
 import * as Ra from 'ramda';
 import { audioContext } from './audioContext';
 import {
-  mathHelpers, // eslint-disable-line
+  mathHelpers,
 } from '../../helpers/';
 import {
   AudioNode,
 } from './BaseClasses';
+
+/**
+ * Just a local helper function.
+ */
+const linToExp =
+  value =>
+    mathHelpers.linearToExponential(0, 1, value);
 
 export class ADSR extends AudioNode {
   constructor({ node }) {
@@ -29,15 +36,15 @@ export class ADSR extends AudioNode {
 
     for (let i = 0; i < samplesOfA; i++) {
       channelData[i] =
-        mathHelpers.linearToExponential(i / samplesOfA);
+        linToExp(i / samplesOfA);
     }
     for (let i = 0; i < samplesOfD; i++) {
       channelData[i + samplesOfA] =
-        mathHelpers.linearToExponential(S + ((1 - S) * (samplesOfD - i) / samplesOfD));
+        linToExp(S + ((1 - S) * (samplesOfD - i) / samplesOfD));
     }
     for (let i = 0; i < samplesOfR; i++) {
       channelData[i + samplesOfA + samplesOfD] =
-        mathHelpers.linearToExponential(S * (samplesOfR - i) / samplesOfR);
+        linToExp(S * (samplesOfR - i) / samplesOfR);
     }
 
     /**

@@ -32,7 +32,7 @@ export class FiniteTimeDomainVisualizer {
 
   toRightRange =
     value =>
-      mathHelpers.convertRange(value, [this.minValue, this.maxValue], [-1, 1])
+      mathHelpers.convertRange([this.minValue, this.maxValue], [-1, 1], value)
 
   /**
    * The y-value is adjusted according to the
