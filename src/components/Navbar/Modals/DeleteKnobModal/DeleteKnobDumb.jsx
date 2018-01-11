@@ -1,23 +1,22 @@
 import React from 'react';
-import { Form } from 'semantic-ui-react';
+import {
+  Form,
+  Dropdown,
+} from 'semantic-ui-react';
 import { BestModal } from '../commonImports';
 
 export const DeleteKnobDumb = (props) => {
-  const firstInputString = 'knobId';
-
   const form = (
     <Form inverted>
-      <Form.Select
-        label={firstInputString}
-        onChange={
-          (e, { value }) => {
-            props.onKnobIdChange(value);
-          }
-        }
-        options={props.options}
-        placeholder={firstInputString}
-        value={props.knobId}
-      />
+      <Form.Field>
+        <label>knobs</label>
+        <Dropdown
+          onChange={props.onKnobIdChange}
+          options={props.options}
+          multiple
+          selection
+        />
+      </Form.Field>
     </Form>);
 
   return (

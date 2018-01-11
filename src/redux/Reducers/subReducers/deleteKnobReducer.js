@@ -1,16 +1,11 @@
 import * as R from 'ramda';
+import {
+  ramdaHelpers as RH,
+} from '../../../helpers';
 
 export const deleteKnobReducer =
-  (state, action) =>
-    R.dissocPath(['nodeManagement', 'knobs', `${action.id}`], state);
-
-export const deleteKnobReducer2 =
-  R.flip(R.uncurryN(
-    2,
-    R.compose(
-      R.dissocPath,
-      R.append(R.__, ['nodeManagement', 'knobs']),
-      R.toString,
-      R.prop('id'),
-    ),
-  ));
+  (state, { payload: { ids } }) =>
+    RH.evolvePaths(
+      { 'nodeManagement.knobs': R.reject(RH.propInArray('id', ids)) },
+      state,
+    );

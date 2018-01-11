@@ -1,27 +1,26 @@
 import React from 'react';
+import * as R from 'ramda';
 import { DeleteKnobDumb } from './DeleteKnobDumb';
 import {
   deleteKnobAction,
-  // stateQueries,
 } from '../commonImports';
 
 export class DeleteKnobControlled extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      knobId: 1,
+      knobIds: [],
     };
   }
 
   handlers = {
     onConfirm:
       () =>
-        deleteKnobAction(this.state.knobId),
+        deleteKnobAction(this.state.knobIds),
     onKnobIdChange:
-      knobId =>
-        this.setState({
-          knobId: parseInt(knobId),
-        }),
+      (e, { value }) => {
+        this.setState({ knobIds: R.map(parseInt, value) });
+      },
   }
 
   render =
@@ -39,7 +38,6 @@ export class DeleteKnobControlled extends React.Component {
 
       return (
         <DeleteKnobDumb
-          knobId={this.state.knobId.toString()}
           {...this.handlers}
           options={options}
         />

@@ -4,9 +4,11 @@ import {
 } from './commonImports';
 
 export const deleteKnobAction =
-  (id) => {
+  (ids) => {
     store.dispatch({
       type: actionTypes.DELETE_KNOB,
-      id,
+      payload: {
+        ids,
+      },
     });
   };
