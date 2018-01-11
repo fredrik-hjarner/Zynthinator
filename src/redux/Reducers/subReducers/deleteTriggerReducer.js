@@ -1,14 +1,17 @@
 import * as R from 'ramda';
+import {
+  ramdaHelpers as RH,
+} from '../../../helpers';
 
 export const deleteTriggerReducer =
-  (state, action) =>
+  (state, { payload: { ids } }) =>
     R.evolve(
       {
         nodeManagement: {
           triggers:
-            R.omit(R.toString(action.id)),
+            R.reject(RH.propInArray('id', ids)),
           triggeredTriggers:
-            R.without([action.id]),
+            R.reject(R.contains(R.__, ids)),
         },
       },
       state,

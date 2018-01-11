@@ -8,19 +8,20 @@ export class DeleteNodeControlled extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // nodeId: 1,
       nodes: [],
     };
   }
 
-  onConfirm =
-    () =>
-      deleteNodeAction(this.state.nodes);
-
-  handleNodeIdChange =
-    (e, { value }) => {
-      this.setState({ nodes: value });
-    }
+  handlers = {
+    onConfirm:
+      () =>
+        deleteNodeAction(this.state.nodes),
+    onNodeIdChange:
+      (e, { value }) => {
+        this.setState({ nodes: value });
+      },
+  }
+  
 
   render =
     () => {
@@ -38,8 +39,7 @@ export class DeleteNodeControlled extends React.Component {
 
       return (
         <DeleteNodeDumb
-          onNodeIdChange={this.handleNodeIdChange}
-          onConfirm={this.onConfirm}
+          {...this.handlers}
           options={options}
         />
       );

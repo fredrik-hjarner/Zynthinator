@@ -9,9 +9,6 @@ import * as Reducers from './subReducers';
 import {
   stateQueries,
 } from '../StateQueries';
-/* import {
-  reduxHistory,
-} from '../ReduxHistory'; */
 
 /**
  * string -> string

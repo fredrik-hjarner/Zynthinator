@@ -6,10 +6,12 @@ import {
 export const deleteNodeReducer =
   (state, action) => {
     const {
-      // nodeId,
       nodes,
     } = action;
 
+    /**
+     * 
+     */
     const nodesAsInts =
       R.map(
         R.curry(parseInt)(R.__, 10),

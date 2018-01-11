@@ -3,7 +3,6 @@ import _ from 'lodash';
 
 export const createTriggerReducer =
   (state, action) => {
-    debugger;
     const {
       connectedToWhichNodes,
     } = action;
