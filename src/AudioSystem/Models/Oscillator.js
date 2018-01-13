@@ -22,35 +22,6 @@ export class Oscillator extends AudioNode {
     this.dcBiasNode =
       new ConstantSourceNode(audioContext);
 
-    // this.dcBiasNode.connect(this.gainNode);
-
-    /* this.secondsToDelay =
-      (node.frequency === 0 ?
-        0 :
-        node.phase / node.frequency);
-    const delayNodeOptions = {
-      delayTime:
-        this.secondsToDelay,
-      maxDelayTime:
-        3,
-    };
-    this.delayNode =
-      new DelayNode(audioContext, delayNodeOptions); */
-
-    /* const gainBeforeDelay =
-      (node.frequency === 0 ?
-        0 :
-        1 / node.frequency);
-    this.gainBeforeDelayNode =
-      new GainNode(audioContext, {
-        gain:
-          gainBeforeDelay,
-      }); */
-
-    // this.gainBeforeDelayNode.connect(this.delayNode.delayTime);
-
-    // this.gainNode.connect(this.delayNode);
-
     this.oscillatorNode.connect(this.gainNode);
 
     /**
@@ -79,9 +50,6 @@ export class Oscillator extends AudioNode {
   get gain() {
     return this.gainNode2.gain;
   }
-  /* get phase() {
-    return this.gainBeforeDelayNode; // this might be contra-intuitive but the gainNode is needed.
-  } */
   get output() {
     return this.gainNode2;
   }
@@ -141,9 +109,6 @@ export class Oscillator extends AudioNode {
         this.gainNode2.gain.value = 1;
       }
     }
-  /* get input() {
-    return this.oscillatorNode;
-  } */
   destruct =
     () => {
       this.oscillatorNode.disconnect();
@@ -155,11 +120,5 @@ export class Oscillator extends AudioNode {
       // this.dcBiasNode.destruct();
       this.dcBiasNode.disconnect();
       this.dcBiasNode = null;
-
-      /* this.delayNode.disconnect();
-      this.delayNode = null;
-
-      this.gainBeforeDelayNode.disconnect();
-      this.gainBeforeDelayNode = null; */
     }
 }

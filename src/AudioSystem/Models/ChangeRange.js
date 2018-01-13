@@ -6,7 +6,7 @@ import {
 export class ChangeRange extends AudioNode {
   constructor({ node }) {
     super();
-    this.id = node.id;
+
     const {
       lowestInput,
       highestInput,

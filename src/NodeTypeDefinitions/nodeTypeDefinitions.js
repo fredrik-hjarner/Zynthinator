@@ -264,6 +264,18 @@ export const nodeTypeDefinitions = {
         type: 'integer',
         defaultValue: 4,
       },
+      minValue: {
+        type: 'float',
+        defaultValue: -1,
+      },
+      maxValue: {
+        type: 'float',
+        defaultValue: 1,
+      },
+      gain: {
+        type: 'float',
+        defaultValue: 1,
+      },
     },
     connectableInputs: [],
     knobableInputs: ['levels', 'frequency'],

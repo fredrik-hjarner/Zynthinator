@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 // import PropTypes from 'prop-types';
 import { Menu, Dropdown } from 'semantic-ui-react';
 import {
@@ -9,6 +10,15 @@ import {
 } from './DownloadHistoryFileRedux';
 import * as Actions from '../../redux';
 import * as Examples from '../../Examples';
+
+const createNodeDropdownItem =
+  (nodeType, asReadable) => (
+    <Dropdown.Item
+      onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType })}
+    >
+      Create {asReadable || _.lowerCase(nodeType)}
+    </Dropdown.Item>
+  );
 
 export const Navbar = () => { // eslint-disable-line
   return (
@@ -29,71 +39,19 @@ export const Navbar = () => { // eslint-disable-line
         </Dropdown>
         <Dropdown item text="Nodes">
           <Dropdown.Menu>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'Oscillator' })}
-            >
-              Create oscillator
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'Gain' })}
-            >
-              Create gain
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'LowPassFilter' })}
-            >
-              Create low-pass filter
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'HighPassFilter' })}
-            >
-              Create high-pass filter
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'BandPassFilter' })}
-            >
-              Create band-pass filter
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'Noise' })}
-            >
-              Create noise
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'DcSignal' })}
-            >
-              Create DC signal
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'Delay' })}
-            >
-              Create Delay
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'LowResolutionSine' })}
-            >
-              Create low-resolution sine
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'ADSR' })}
-            >
-              Create ADSR
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'ChangeRange' })}
-            >
-              Create ChangeRange
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'TimeDomainAnalyser' })}
-            >
-              Create time domain analyser
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'FrequencyDomainAnalyser' })}
-            >
-              Create frequency domain analyser
-            </Dropdown.Item>
+            {createNodeDropdownItem('Oscillator')}
+            {createNodeDropdownItem('Gain')}
+            {createNodeDropdownItem('LowPassFilter', 'low-pass filter')}
+            {createNodeDropdownItem('HighPassFilter', 'high-pass filter')}
+            {createNodeDropdownItem('BandPassFilter', 'band-pass filter')}
+            {createNodeDropdownItem('Noise')}
+            {createNodeDropdownItem('DcSignal', 'DC signal')}
+            {createNodeDropdownItem('Delay')}
+            {createNodeDropdownItem('LowResolutionSine', 'low-resolution filter')}
+            {createNodeDropdownItem('ADSR', 'ADSR')}
+            {createNodeDropdownItem('ChangeRange', 'ChangeRange')}
+            {createNodeDropdownItem('TimeDomainAnalyser')}
+            {createNodeDropdownItem('FrequencyDomainAnalyser')}
             <Dropdown.Divider />
             <Dropdown.Item
               onClick={() => Actions.openModalAction('EditNodeModal')}
