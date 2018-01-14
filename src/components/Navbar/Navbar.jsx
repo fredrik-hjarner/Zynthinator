@@ -47,7 +47,7 @@ export const Navbar = () => { // eslint-disable-line
             {createNodeDropdownItem('Noise')}
             {createNodeDropdownItem('DcSignal', 'DC signal')}
             {createNodeDropdownItem('Delay')}
-            {createNodeDropdownItem('LowResolutionSine', 'low-resolution filter')}
+            {createNodeDropdownItem('LowResolutionSine', 'low-resolution sine')}
             {createNodeDropdownItem('ADSR', 'ADSR')}
             {createNodeDropdownItem('ChangeRange', 'ChangeRange')}
             {createNodeDropdownItem('TimeDomainAnalyser')}
@@ -80,6 +80,16 @@ export const Navbar = () => { // eslint-disable-line
               onClick={() => Actions.openModalAction('DeleteConnectionModal')}
             >
               Delete connection
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => Actions.openModalAction('InjectNodeModal')}
+            >
+              Inject node
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => Actions.openModalAction('EjectNodeModal')}
+            >
+              Eject node
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
