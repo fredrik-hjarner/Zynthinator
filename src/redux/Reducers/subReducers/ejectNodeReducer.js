@@ -6,7 +6,7 @@ import { deleteConnectionReducer } from './deleteConnectionReducer';
 import { createConnectionReducer } from './createConnectionReducer';
 
 export const ejectNodeReducer =
-  (state, action) => { // eslint-disable-line
+  (state, action) => {
     /**
      * TODO. Temporarily simply replace the node with a
      * UnityGain node.

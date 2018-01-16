@@ -14,7 +14,7 @@ export function Home() {
       <SimpleWindowRedux title="List of connections">
         <C.ConnectionsDrawerContainer />
       </SimpleWindowRedux>
-      <C.ListOfGroupsRedux />
+      { /* <C.ListOfGroupsRedux /> */ }
       <C.TimeDomainVisualizersRedux />
       <C.FrequencyDomainVisualizersRedux />
       <C.ModalWindow />
