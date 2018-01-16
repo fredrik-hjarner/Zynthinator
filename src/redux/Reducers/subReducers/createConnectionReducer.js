@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import * as R from 'ramda';
-// import { stateQueries } from '../../StateQueries';
 
 export const createConnectionReducer =
   (state, action) => {
