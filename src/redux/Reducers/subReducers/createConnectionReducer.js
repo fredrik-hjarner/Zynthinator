@@ -2,7 +2,7 @@ import _ from 'lodash';
 import * as R from 'ramda';
 
 export const createConnectionReducer =
-  (state, action) => {
+  (state, { parentNodeIds, childNodes }) => {
     /**
      * Confirm that the connection is possible/valid.
      *  - That means that:
@@ -12,10 +12,23 @@ export const createConnectionReducer =
      *    * child input node is valid
      *    * that this exact connection doesn't already exist.
      */
-    const {
-      parentNodeIds,
-      childNodes,
-    } = action;
+
+    /**
+     * Check types. todo better to do with Flow or TypeScript.
+     */
+    if (
+      !parentNodeIds ||
+      !childNodes ||
+      R.any(R.isNil, parentNodeIds) ||
+      R.any(R.isNil, childNodes) ||
+      R.any(
+        R.compose(R.isNil, R.prop('nodeId')),
+        childNodes
+      )
+    ) {
+      debugger;
+      alert('Error!');
+    }
 
     // create the connections.
     let connectionId = state.nodeManagement.highestConnectionIdYet;

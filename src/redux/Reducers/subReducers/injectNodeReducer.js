@@ -34,7 +34,7 @@ export const injectNodeReducer =
     state = createConnectionReducer(state, {    // eslint-disable-line
       parentNodeIds: [nodeId],
       childNodes: [{
-        childNodeId,
+        nodeId: childNodeId,
         input: 'input',
       }],
     });
