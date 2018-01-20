@@ -14,7 +14,7 @@ const mapStateToProps =
       nodes,
     } = state.nodeManagement;
     const nodesThatHaveInputs =
-      memoizedStateQueries.getNodesThatHaveTriggerableInputs(state);
+      memoizedStateQueries.getNodesForCreateTriggerModal(state);
     return {
       nodes,
       nodesThatHaveInputs,

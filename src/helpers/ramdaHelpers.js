@@ -30,7 +30,7 @@ class RamdaHelpers {
           R.zipObj(keysArray, args),
     )
   
-  objCopyProp = 
+  objCopyProp = // todo. what is this?
     (from, to) => // eslint-disable-line
       R.chain(
         R.assoc('knob'),
@@ -59,9 +59,8 @@ class RamdaHelpers {
     }
 
   /**
-   * Returns a function that:
-   * 
-   * Takes a function that returns an array as input.
+   * Returns a function from another
+   * function that returns an array.
    * Memoizes.
    * If an array is value equal to memoized array
    * returns the memoized array
@@ -83,6 +82,46 @@ class RamdaHelpers {
         return array;
       };
     }
+
+  /**
+   * Checks if the value of a prop
+   * (of an object) in the array.
+   */
+  propInArray =
+    (prop, array) => 
+      R.propSatisfies(
+        R.contains(R.__, array),
+        prop,
+      )
+
+  /**
+   * a helper function to RH.evolvePaths.
+   */
+  _constructEvolveObject =
+    R.compose(
+      R.reduce(
+        (accum, [key, value]) =>
+          R.assocPath(R.split('.', key), value, accum),
+        {},
+      ),        
+      R.toPairs,
+    )
+
+  /*
+    evolvePaths(
+      {
+        'a.b.c': R.reject(R.equals(4)),
+        'a.b.d': R.append(13),
+      },
+      state,
+    );
+  */
+  evolvePaths =
+    (obj, state) =>
+      R.evolve(
+        this._constructEvolveObject(obj),
+        state,
+      )
 }
 
 export const ramdaHelpers = new RamdaHelpers();

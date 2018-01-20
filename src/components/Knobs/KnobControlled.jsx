@@ -28,7 +28,7 @@ export class KnobControlled extends React.Component {
           case 'exponential':
             // convert value to exponential range.
             displayValue =
-              mathHelpers.linearToExponentialAnyScale(
+              mathHelpers.linearToExponential(
                 this.props.knob.minValue,
                 this.props.knob.maxValue,
                 value,
@@ -36,7 +36,11 @@ export class KnobControlled extends React.Component {
             break;
           case 'logarithmic':
             // convert value to exponential range.
-            displayValue = mathHelpers.linearToLogarithmic(value);
+            displayValue = mathHelpers.linearToLogarithmic(
+              this.props.knob.minValue,
+              this.props.knob.maxValue,
+              value,
+            );
             break;
           default:
             alert('Error');

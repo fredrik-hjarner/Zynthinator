@@ -1,16 +1,21 @@
+import _ from 'lodash';
 import { audioContext } from './audioContext';
 import {
   AudioNode,
 } from './BaseClasses';
+import { ChangeRange } from './ChangeRange';
 
 export class LowResolutionSine extends AudioNode {
   constructor({ node }) {
     super();
     // debugger;
     this.id = node.id;
+    this.node = _.cloneDeep(node); // todo hmm.
     const {
       frequency,
       levels,
+      minValue,
+      maxValue,
     } = node;
     const steps = levels - 1;
     // const frequency = 440;
@@ -41,16 +46,22 @@ export class LowResolutionSine extends AudioNode {
     this.webAudioNode.buffer = this.buffer;
 
     this.webAudioNode.start();
+
+    this.changeRangeModel =
+      new ChangeRange({
+        node: {
+          lowestInput: -1,
+          highestInput: 1,
+          lowestOutput: minValue,
+          highestOutput: maxValue,
+        },
+      });
+
+    this.webAudioNode.connect(this.changeRangeModel.input);
   }
   get output() {
-    return this.webAudioNode;
+    return this.changeRangeModel.output;
   }
-  /* get frequency() {
-
-  } */
-  /* get input() {
-    return this.webAudioNode;
-  } */
   destruct =
     () => {
       this.webAudioNode.disconnect();

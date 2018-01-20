@@ -12,3 +12,4 @@ export * from './BandPassFilter';
 export * from './HighPassFilter';
 export * from './LowResolutionSine';
 export * from './ADSR';
+export * from './ChangeRange';

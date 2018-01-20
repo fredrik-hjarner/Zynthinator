@@ -1,4 +1,5 @@
 import React from 'react';
+import * as R from 'ramda';
 import { DeleteTriggerDumb } from './DeleteTriggerDumb';
 import {
   deleteTriggerAction,
@@ -9,19 +10,18 @@ export class DeleteTriggerControlled extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      triggerId: 1,
+      triggerIds: [],
     };
   }
 
   handlers = {
     onConfirm:
       () =>
-        deleteTriggerAction(this.state.triggerId),
+        deleteTriggerAction(this.state.triggerIds),
     onTriggerIdChange:
-      triggerId =>
-        this.setState({
-          triggerId: parseInt(triggerId),
-        }),
+      (e, { value }) => {
+        this.setState({ triggerIds: R.map(parseInt, value) });
+      },
   }
 
   render =
@@ -39,7 +39,6 @@ export class DeleteTriggerControlled extends React.Component {
 
       return (
         <DeleteTriggerDumb
-          triggerId={this.state.triggerId.toString()}
           {...this.handlers}
           options={options}
         />
