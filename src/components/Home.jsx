@@ -8,6 +8,7 @@ export function Home() {
       <C.AllTriggers />
       <C.Nodes />
       <C.Connections />
+      <C.NodeTree />
       { /* <C.ListOfGroups /> */ }
       <C.TimeDomainVisualizers />
       <C.FrequencyDomainVisualizers />

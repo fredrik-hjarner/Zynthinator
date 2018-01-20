@@ -8,3 +8,4 @@ export * from './Knobs';
 export * from './Connections';
 export * from './Nodes';
 export * from './Triggers';
+export * from './NodeTree';

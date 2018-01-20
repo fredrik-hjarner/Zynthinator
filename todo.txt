@@ -177,3 +177,6 @@
 
 * Home is a really bad name for the route.
 
+* draw NodeTree in a separate SimpleWindow!!
+
+* ESLint should force me to make PropTypes!
