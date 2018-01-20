@@ -1,6 +1,9 @@
 import _ from 'lodash';
 import React from 'react';
 import { SimpleWindowRedux } from '../../components/SimpleWindow';
+import {
+  stateQueries,
+} from '../../redux';
 
 export const NodeTree =
   (props) => {
@@ -22,14 +25,27 @@ export const NodeTree =
           }
         </div>));
 
-    const randomElements =
+    // ----------------------------------
+    //
+    // ----------------------------------
+
+    const nodesInReadableFormat =
       props.alignedChains
-        .map(chain => (
-          <div>
-            {
-              chain.map(id => _.padStart(id, 10)).join('\u2192')
+        .map(chain =>
+          chain.map((nodeId) => {
+            if (!nodeId) {
+              return '';
             }
-          </div>));
+            const node = props.nodes[nodeId];
+            // set a fix string length.
+            // min === max.
+            return `${stateQueries.getNodeInReadableFormat(node)}`;
+          }));
+
+    const randomElements =
+      nodesInReadableFormat.map(arr => (
+        <div>{arr.join('\u2192')}</div>
+      ));
 
     return (
       <SimpleWindowRedux title="Node tree">

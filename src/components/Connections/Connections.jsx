@@ -14,7 +14,7 @@ export const Connections =
     const elements =
       connectionsInReadableFormat
         .map(obj => ( // todo. this is bacause stateQueries.connectionsInReadableFormat sucks.
-          <p>{`id${obj.value}: ${obj.text}`}</p>
+          <p>{`${obj.text}`}</p>
         ));
 
     return (

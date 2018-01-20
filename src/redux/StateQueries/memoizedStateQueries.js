@@ -85,6 +85,32 @@ class MemoizedStateQueries {
     )
 
   /**
+   * Created 2017-01-20
+   * byId
+   */
+  _getConnectionInReadableFormat =
+    createSelector(
+      [stateQueries.getAllNodes, stateQueries.getAllConnections],
+      (nodes, connections) => (connectionId) => {
+        const conn = connections[connectionId];
+        const parentNodeAsString =
+          stateQueries.getNodeByIdInReadableFormat(nodes, conn.parentNodeId);
+        const childNodeAsString =
+          stateQueries.getNodeByIdInReadableFormat(nodes, conn.childNodeId);
+        const childNodeInputAsString =
+          (conn.childNodeInput === 'input') ? '' : `.${conn.childNodeInput}`;
+        return `${parentNodeAsString} ${'\u2192'} ${childNodeAsString}${childNodeInputAsString}`;
+      },
+    )
+
+  /**
+   * Todo. This is absolutely not memoized correctly :/
+   */
+  getConnectionInReadableFormat =
+    (state, connectionId) =>
+      this._getConnectionInReadableFormat(state)(connectionId)
+
+  /**
    * Creates format used by "Disconnect Nodes".
    *  [
    *    { text: 'Oscillator => Gain', value: '1'},

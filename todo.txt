@@ -180,3 +180,17 @@
 * draw NodeTree in a separate SimpleWindow!!
 
 * ESLint should force me to make PropTypes!
+
+* getConnectionInReadableFormat is right generates "semantic options"
+    which is not ideal, and not as reusble.
+
+* // wtf is this function?!
+  getNodeByIdInReadableFormat =
+    R.compose(
+      this.getNodeInReadableFormat,
+      R.flip(R.prop)
+    )
+
+* getNodeInReadableFormat
+    should always include an id, because FUUUCK if it does not.
+    That is... always prefixed with "idX: "

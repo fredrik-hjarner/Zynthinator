@@ -115,23 +115,29 @@ class StateQueries {
         debugger;
       }
       if (node.name !== '' && node.name !== undefined && node.name !== null) {
-        return node.name;
+        return `id${node.id}: ${node.name}`;
       }
       if (node.nodeType === 'Oscillator') {
-        return `id${node.id}_${node.oscillatorType}_${node.frequency}Hz`;
+        return `id${node.id}: ${node.oscillatorType}_${node.frequency}Hz`;
       } else if (node.nodeType === 'Gain') {
-        return `id${node.id}_${node.nodeType}_${node.gain}`;
+        return `id${node.id}: ${node.nodeType}_${node.gain}`;
       }
-      return `id${node.id}_${node.nodeType}`;
+      return `id${node.id}: ${node.nodeType}`;
     }
 
   /**
    * nodeId not node!
+   * 
+   * todo. wtf is this function?!
+   * 
    * @param nodes
    * @param nodeId
    */
   getNodeByIdInReadableFormat =
-    R.compose(this.getNodeInReadableFormat, R.flip(R.prop))
+    R.compose(
+      this.getNodeInReadableFormat,
+      R.flip(R.prop)
+    )
 
   doesNodeWithIdExist =
     ({

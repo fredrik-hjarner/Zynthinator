@@ -23,7 +23,7 @@ const Nodes =
       ungroupedNodes.map((node) => {
         const p = (
           <div className="nodes-node">
-            {`id${node.id}: ${stateQueries.getNodeInReadableFormat(node)}`}
+            {`${stateQueries.getNodeInReadableFormat(node)}`}
           </div>
         );
 

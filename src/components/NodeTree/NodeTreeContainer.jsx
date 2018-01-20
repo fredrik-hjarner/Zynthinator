@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { NodeTree } from './NodeTree';
 import {
   memoizedStateQueries,
-  // stateQueries,
+  stateQueries,
   renderNodeTree,
 } from '../../redux';
 
@@ -10,8 +10,8 @@ const mapStateToProps =
   state => ({
     // connections:
     //   state.nodeManagement.connections,
-    // nodes:
-    //   stateQueries.getAllNodes(state),
+    nodes:
+       stateQueries.getAllNodes(state),
     connectionsInReadableFormat:
       memoizedStateQueries.getConnectionsInReadableFormat(state),
     allChains:
