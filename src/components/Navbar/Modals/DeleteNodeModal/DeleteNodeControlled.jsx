@@ -8,19 +8,20 @@ export class DeleteNodeControlled extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // nodeId: 1,
       nodes: [],
     };
   }
 
-  onConfirm =
-    () =>
-      deleteNodeAction(this.state.nodes);
-
-  handleNodeIdChange =
-    (e, { value }) => {
-      this.setState({ nodes: value });
-    }
+  handlers = {
+    onConfirm:
+      () =>
+        deleteNodeAction(this.state.nodes),
+    onNodeIdChange:
+      (e, { value }) => {
+        this.setState({ nodes: value });
+      },
+  }
+  
 
   render =
     () => {
@@ -34,12 +35,11 @@ export class DeleteNodeControlled extends React.Component {
             value: id,
           }))
           .filter(option => option.value != 1); // eslint-disable-line
-      // todo hack above! Speakers have id == 1.
+      // hack above! Speakers have id == 1.
 
       return (
         <DeleteNodeDumb
-          onNodeIdChange={this.handleNodeIdChange}
-          onConfirm={this.onConfirm}
+          {...this.handlers}
           options={options}
         />
       );

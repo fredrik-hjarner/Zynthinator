@@ -5,7 +5,6 @@ import { BestModal } from '../commonImports';
 export const EditNodeDumb = (props) => {
   const firstInputString = 'nodeId';
 
-
   const form = (
     <Form inverted>
       <Form.Select

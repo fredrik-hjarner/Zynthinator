@@ -3,12 +3,12 @@ import {
   store,
 } from './commonImports';
 
-export const deleteKnobAction =
-  (ids) => {
+export const ejectNodeAction =
+  (nodeId) => {
     store.dispatch({
-      type: actionTypes.DELETE_KNOB,
+      type: actionTypes.EJECT_NODE,
       payload: {
-        ids,
+        nodeId,
       },
     });
   };

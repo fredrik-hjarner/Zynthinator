@@ -44,25 +44,23 @@ module.exports = {
       // for SASS
       {
         test: /\.sass$/,
-        use: [{
-          loader: 'style-loader',
-        }, {
-          loader: 'css-loader',
-        }, {
-          loader: 'sass-loader',
-          options: {
-            includePaths: [path.join(__dirname, 'src')],
-          },
-        }],
+        use: [
+          { loader: 'style-loader' }, 
+          { loader: 'css-loader' },
+          {
+            loader: 'sass-loader',
+            options:
+              { includePaths: [path.join(__dirname, 'src')] },
+          }
+        ],
       },
       // for CSS
       {
         test: /\.css$/,
-        use: [{
-          loader: 'style-loader',
-        }, {
-          loader: 'css-loader',
-        }],
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' }
+        ],
       },
       {
         test: /\.jsx?$/,

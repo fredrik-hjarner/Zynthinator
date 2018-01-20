@@ -93,6 +93,35 @@ class RamdaHelpers {
         R.contains(R.__, array),
         prop,
       )
+
+  /**
+   * a helper function to RH.evolvePaths.
+   */
+  _constructEvolveObject =
+    R.compose(
+      R.reduce(
+        (accum, [key, value]) =>
+          R.assocPath(R.split('.', key), value, accum),
+        {},
+      ),        
+      R.toPairs,
+    )
+
+  /*
+    evolvePaths(
+      {
+        'a.b.c': R.reject(R.equals(4)),
+        'a.b.d': R.append(13),
+      },
+      state,
+    );
+  */
+  evolvePaths =
+    (obj, state) =>
+      R.evolve(
+        this._constructEvolveObject(obj),
+        state,
+      )
 }
 
 export const ramdaHelpers = new RamdaHelpers();

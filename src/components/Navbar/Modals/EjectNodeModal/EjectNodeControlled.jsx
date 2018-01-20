@@ -1,32 +1,26 @@
 import React from 'react';
-import { EditNodeDumb } from './EditNodeDumb';
+// import * as R from 'ramda';
+import { EjectNodeDumb } from './EjectNodeDumb';
 import {
-  openModalAction,
+  ejectNodeAction,
 } from '../commonImports';
 
-export class EditNodeControlled extends React.Component {
+export class EjectNodeControlled extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nodeId: 1, // todo. why 1 ???
+      nodeId: null,
     };
   }
 
   handlers = {
     onConfirm:
-      () => {
-        const node =
-          this.props.nodes[this.state.nodeId];
-        openModalAction('CreateNodeModal', {
-          nodeType:
-            node.nodeType,
-          node,
-        });
-      },
+      () =>
+        ejectNodeAction(this.state.nodeId),
     onNodeIdChange:
-      nodeId =>
+      (e, { value }) =>
         this.setState({
-          nodeId: parseInt(nodeId),
+          nodeId: parseInt(value, 10),
         }),
   }
 
@@ -35,7 +29,8 @@ export class EditNodeControlled extends React.Component {
       const {
         allNodesInReadableFormat,
       } = this.props;
-      const options =
+
+      const nodeOptions =
         Object.entries(allNodesInReadableFormat)
           .map(([id, nodeAsString]) => ({
             text: nodeAsString,
@@ -45,10 +40,10 @@ export class EditNodeControlled extends React.Component {
       // todo hack above! Speakers have id == 1.
 
       return (
-        <EditNodeDumb
-          nodeId={this.state.nodeId.toString()}
-          options={options}
+        <EjectNodeDumb
           {...this.handlers}
+          nodeOptions={nodeOptions}
+          {...this.state}
         />
       );
     };

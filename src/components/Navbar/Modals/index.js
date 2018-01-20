@@ -9,3 +9,5 @@ export * from './CreateNodeModal';
 export * from './CreateConnectionModal';
 export * from './CreateTriggerModal';
 export * from './DeleteTriggerModal';
+export * from './InjectNodeModal';
+export * from './EjectNodeModal';
