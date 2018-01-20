@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Popup } from 'semantic-ui-react';
 import { SimpleWindowRedux } from '../../components/SimpleWindow';
 import {
   memoizedStateQueries,
   stateQueries,
 } from '../../redux';
+import './style.sass';
 
 // ----------------------------------
 // Connections
@@ -18,10 +20,17 @@ const Nodes =
     } = props;
 
     const lis =
-      ungroupedNodes.map(node => (
-        <p>
-          {`id${node.id}: ${stateQueries.getNodeInReadableFormat(node)}`}
-        </p>));
+      ungroupedNodes.map((node) => {
+        const p = (
+          <div className="nodes-node">
+            {`id${node.id}: ${stateQueries.getNodeInReadableFormat(node)}`}
+          </div>
+        );
+
+        const popupContent = <pre>{JSON.stringify(node, null, 2)}</pre>;
+
+        return <Popup trigger={p} content={popupContent} position="right center" />;
+      });
 
     if (lis.length < 1) {
       return null;
