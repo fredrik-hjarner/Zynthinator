@@ -1,0 +1,184 @@
+* deleteAllNodesReducer blev
+  revertToInitialStateReducer.
+
+* implement UNDO.
+
+* Init <selects> in ConnectNodesButton.jsx (and other buttons as well).
+
+* I have no VALIDATION on my MODALS.
+
+* getConnectionsInReadableFormat
+    should be split up.
+    getConnectionInReadableFormat should do it,
+    then getConnectionsInReadableFormat just calls that one.
+
+* Should not be able to connect a node to itself !!!
+
+* Flytta "NodeManager/jsx".
+
+* All MODELs should have it's outputs and inputs as getters on them!
+    Makes it more dynamic!
+    For example the PHASE of the OSCILLATOR can become an input!!
+
+* probably remove the "nodeManagement" from state.
+
+* Bug when minimizing Visualizers.
+
+* TODO:
+    - One should be able to disable some top-right icons in SimpleWindow.
+
+* I removed the Popups over nodes,
+    add them again!
+
+* Allow the deepFreezing to be enabled and disabled in a DEBUG file.
+
+* Upload the files to fredrikhjarner.se
+    automatically on 'npm run build'
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+* [
+    {
+      action,
+      timestamp,
+    }
+  ]
+  rename timestamp to deltaTime.
+
+* Frekvensen av LowResolutionSine
+    kan göras modifierbar i real-time
+    mha. en sawTooth och en Delay.
+
+* Gör fler semantic++ komponenter.
+  - T ex en select ska inte synas om den inte har några options.
+
+* Implementera "Spectogram".
+
+* Byt ut alla
+  handleX()
+  mot
+  onX()
+
+* När jag tar bort en node, så ska också de grupper den ingår i tas bort.
+
+* Efter en memoized reselect så ska det inte finnas någon .map
+    osv, för då är memoizeringen onödig eftersom det skapas
+    nya object hela tiden ändå.
+
+* FrequencyDomainVisualizersRedux shit:
+    node.webAudioNode = nodeModels.nodes[node.id]; // todo there is no guarantee that the node exists yet!!!
+
+    Lös detta genom att ha en state.webAudioNodes
+    som håller koll på vilka webAudioNodes som skapats
+    När en webAudioNodes skapas så ska den dispatcha en action!!!!!!
+
+* CreateConnectionsRedux 
+  & CreateGroupRedux
+  & FrequencyDomainVisualizersRedux
+  & TimeDomainVisualizersRedux
+    are unoptimized because it does map after memoizedStateQueries.
+
+* Viss kod anropar .webAudioNode direkt, vilket suger eftersom den inte
+    ska kallas på direkt.
+
+* lista över
+    "inputs" och "outputs"
+    borde vara i NodeTypeDefinitions
+      som i sin tur borde vara i STATE:et.
+
+* "inputs"
+    till noder kanske ska kunna ha typer.
+    de vanligaste är float
+    men t ex en "play" input ska kunna vara BOOLEAN.
+
+* Edit Knob.
+
+* highestNodeIdYet: 1,
+    highestConnectionIdYet: 0,
+    highestGroupIdYet: 0,
+    highestKnobIdYet: 1,
+    highestTriggerIdYet: 0,
+
+    looks like shit.
+    Should be only one: 'highestIdYet'
+
+* AudioSystem borde vara uppdelat i delar som var för sig lyssnar
+    på den del av state som de är intresserade av.
+    Delarna ska vara t ex:
+      - nodes
+      - connections
+      - triggeredTriggers
+      - knobs?
+
+* DeleteTriggerRedux &
+  DeleteKnobRedux
+  är identiska.
+
+* One should be able to disable/enable removing duplicates/unnecessary
+    stuff from the action history file.
+
+* History (and history files) should be dynamically compressed.
+
+* the knobs don't get their position from state
+    which could be a problem for example when saving and
+    loading history, the knobs will always show 0 (zero).
+
+* The history should be able to be filtered as it is added to
+    the state. Now only the downloaded file is filtered.
+
+* this.timeDomainCanvasId
+    should be
+    this.state.timeDomainCanvasId
+
+* bitsToRecord is a bad name. it's not bits.
+
+* Minimizing oscillator stops all visualization and can't be resumed... :/
+
+* audioSystem is running at Splash Screen, it should not!
+  - should perhaps be it's own separate page
+      i.e. outside of a Single-page App.
+
+* When it crashes I should have the ability to download the ACTION HISTORY.
+
+* When I replay a history I should be able to manually go forward
+    action by action!
+
+* The name prop, does not make any sense
+    for many-to-one connections
+    since it creates several connections.
+
+* The "multiple selection dropdowns"
+    should have their "value prop" set
+    and now it is not.
+
+* For better testing:
+    Record a session. Record all the actions and the state afterwards.
+    After refactorings, play the session and see if the actions
+      produce exact the same outputs :)
+
+* Use absolute paths like in Backoffice.
+
+* _updateScaleAndOffset
+    can probably be refactored into some Util.js.
+
+* Example 2 is not working.
+    Only works when I refresh the page does it start to work.
+    What the fuck is wrong?
+
+* Refactoring possibility.
+    I might split all the inputs up!
+    So that I have a
+      - SelectNodeInput
+      - SelectNodeWithInputsInput
+      - SelectConnectionInput
+      - etc.
+
+* Use redux-forms! Maybe...
+
+* Top menu is not wholly visible on low-res.
+    Do something with menu in low-res.
+
+* Layout is not a fucking reusable component,
+    so it should not be under /components.
+
+* Home is a really bad name for the route.
+
