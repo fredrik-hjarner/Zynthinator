@@ -1,14 +1,17 @@
 import _ from 'lodash';
 import React from 'react';
-/* import {
-  renderNodeTree,
-} from '../../redux'; */
+import { SimpleWindowRedux } from '../../components/SimpleWindow';
 
 export const ConnectionsDrawer =
   (props) => {
     // get the list of all nodes
     const { connectionsInReadableFormat } = props;
     const numConnections = connectionsInReadableFormat.length;
+
+    if (numConnections < 1) {
+      return null;
+    }
+
     const elements =
       connectionsInReadableFormat
         .map(obj => obj.text) // todo. this is bacause stateQueries.connectionsInReadableFormat sucks.
@@ -35,14 +38,16 @@ export const ConnectionsDrawer =
             }
           </div>));
 
-    return [
-      <div key="connectionsQuantity">Nr of connections: {numConnections}</div>,
-      <ul key="connectionsList">
-        {elements}
-      </ul>,
-      <pre>{chainElements}</pre>,
-      <pre>{randomElements}</pre>,
-    ];
+    return (
+      <SimpleWindowRedux title="List of connections">
+        <div key="connectionsQuantity">Nr of connections: {numConnections}</div>
+        <ul key="connectionsList">
+          {elements}
+        </ul>
+        <pre>{chainElements}</pre>
+        <pre>{randomElements}</pre>
+      </SimpleWindowRedux>
+    );
   };
 
 /* NodeManagerDrawer.propTypes = {
