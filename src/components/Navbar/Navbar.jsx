@@ -139,9 +139,14 @@ export const Navbar = () => { // eslint-disable-line
         <Dropdown item text="Examples">
           <Dropdown.Menu>
             <Dropdown.Item
-              onClick={Examples.amplitudeModulatedSine}
+              onClick={Examples.example1}
             >
               1. Amplitude-modulated sine
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={Examples.example2}
+            >
+              2. Simple music with low-res sine
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

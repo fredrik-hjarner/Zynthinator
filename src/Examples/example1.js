@@ -4,7 +4,7 @@ import {
 
 let history;
 
-export const amplitudeModulatedSine =
+export const example1 =
   () => {
     importHistory(history, 0);
   };
