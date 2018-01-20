@@ -4,9 +4,11 @@ import {
 } from './commonImports';
 
 export const deleteTriggerAction =
-  (id) => {
+  (ids) => {
     store.dispatch({
       type: actionTypes.DELETE_TRIGGER,
-      id,
+      payload: {
+        ids,
+      },
     });
   };

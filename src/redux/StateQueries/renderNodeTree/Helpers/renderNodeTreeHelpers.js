@@ -228,11 +228,12 @@ class RenderNodeTreeHelpers {
     }
 
   /**
+   * 
    * @param index the index in idAndLastIndexArray
    *              that we are looking at.
    */
   alignId =
-    (chains, idAndLastIndexArray, index, allIds) => {
+    (chains, idAndLastIndexArray, index /* , allIds */) => {
       // move them to the right until they line up.
       // for every insertion of a null move all the previously
       // lined up nodes (i.e. with index less than this index)
@@ -256,11 +257,12 @@ class RenderNodeTreeHelpers {
           this.moveCellRight(ch, i, indexDiff);
           // move previously aligned lines
           // on the OTHER chains.
-          for (let prevIndex = index - 1; prevIndex > -1; prevIndex--) {
+          /* for (let prevIndex = index - 1; prevIndex > -1; prevIndex--) {
             const _idAndLastIndexArray =
               this.calcIdAndLastIndexArray(chains, allIds);
+            // TODO this recursion takes EXTREME time.
             this.alignId(chains, _idAndLastIndexArray, prevIndex, allIds);
-          }
+          } */
         }
       });
     }
@@ -289,7 +291,7 @@ class RenderNodeTreeHelpers {
         this._alignChainsBySkill(allChains),
     )
 
-  _alignChainsBySkill =
+  _alignChainsBySkill = // todo. finish this awesome functionality :)
     debugHelpers.collectIoForUnitTests(
       '_alignChainsBySkill',
       (...args) => this.__alignChainsBySkill(...args),

@@ -19,3 +19,5 @@ export * from './createFrequencyDomainAnalyserReducer';
 export * from './uiTdAnalyserChangeParamsReducer';
 export * from './uiFdAnalyserChangeParamsReducer';
 export * from './addPreviousStateReducer';
+export * from './ejectNodeReducer';
+export * from './injectNodeReducer';

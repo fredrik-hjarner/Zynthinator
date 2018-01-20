@@ -1,17 +1,12 @@
 import * as R from 'ramda';
+import {
+  ramdaHelpers as RH,
+} from '../../../helpers';
 
 export const deleteConnectionReducer =
-  (state, action) =>
-    R.dissocPath(['nodeManagement', 'connections', `${action.connectionId}`], state);
+  (state, { payload: { ids } }) =>
+    RH.evolvePaths(
+      { 'nodeManagement.connections': R.reject(RH.propInArray('id', ids)) },
+      state,
+    );
 
-export const deleteConnectionReducer2 =
-  R.flip(R.uncurryN(
-    2,
-    R.compose(
-      R.dissocPath,
-      R.append(R.__, ['nodeManagement', 'connections']), // todo looks like shit
-      R.toString,
-      R.prop('connectionId'),
-    ),
-  ));
-  

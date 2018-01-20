@@ -11,42 +11,23 @@ export class CreateTriggerControlled extends React.Component {
     super(props);
     this.state = {
       name: '',
-      connectedToWhichNode: undefined,
-      connectedToWhichParam: undefined,
-      childNodeInputs: [],
+      connectedToWhichNodes: [],
+      // connectedToWhichNode: undefined,
+      // connectedToWhichParam: undefined,
+      // childNodeInputs: [],
     };
   }
 
   handlers = {
     onConfirm:
-      () => {
-        const {
-          childNodeInputs,
-          ...rest
-        } = this.state;
-        createTriggerAction({
-          ...rest,
-        });
-      },
+      () =>
+        createTriggerAction(this.state),
+    /**
+     * value is an array.
+     */
     onChildNodeIdChange:
-      (e, { value }) => {
-        const connectedToWhichNode = parseInt(value);
-        this.setState({ connectedToWhichNode });
-        // populate <select> with the inputs of this node
-        const {
-          nodes,
-        } = this.props;
-        const node =
-          nodes[value];
-        const inputs =
-          stateQueries.getTriggerableInputsOfNode(node);
-        this.setState({ childNodeInputs: inputs.map(input => ({ text: input, value: input })) });
-      },
-    /* onChildNodeInputChange:
-      (e, { value }) => {
-        this.setState({ connectedToWhichParam: value });
-        // this.state.connectedToWhichParam = value;
-      }, */
+      (e, { value }) =>
+        this.setState({ connectedToWhichNodes: value }),
     onNameChange:
       value =>
         this.setState({
@@ -61,17 +42,6 @@ export class CreateTriggerControlled extends React.Component {
         this.setState({
           [name]:
             value,
-        });
-      },
-    onFormFloatChange:
-      (e) => {
-        const {
-          name,
-          value,
-        } = e.target;
-        this.setState({
-          [name]:
-            parseFloat(value),
         });
       },
   }

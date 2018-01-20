@@ -54,6 +54,7 @@ export const TimeDomainVisualizerSettingsDumb =
               type="number"
               name="canvasWidth"
               defaultValue={props.canvasWidth}
+              min="1"
               step="1"
             />
             px
@@ -66,6 +67,7 @@ export const TimeDomainVisualizerSettingsDumb =
               type="number"
               name="canvasHeight"
               defaultValue={props.canvasHeight}
+              min="1"
               step="1"
             />
             px

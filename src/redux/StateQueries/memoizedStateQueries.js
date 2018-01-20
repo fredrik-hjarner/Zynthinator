@@ -32,8 +32,9 @@ class MemoizedStateQueries {
     )
 
   /**
-  * @param state
-  */
+   * Returns an object.
+   * @param state
+   */
   getNodesThatHaveConnectableInputs =
     createSelector(
       [stateQueries.getAllNodes],
@@ -216,6 +217,82 @@ class MemoizedStateQueries {
    */
   getUiComponentIdsByType =
     RH.valEqArrayReturnsEqArray(this._getUiComponentIdsByType)
+
+  /**
+   *  [
+   *    {
+   *      key: `${nodeId}${input}`,
+   *      value: { nodeId :int, input :str },
+   *      text: nodeInReadableFormat + input,
+   *    },
+   *  ]
+   */
+  getChildNodesForCreateConnectionModal =
+    (state) => {
+      // get all nodes with inputs
+      const nodes =
+        Object.values(this.getNodesThatHaveConnectableInputs(state));
+
+      // in readable format
+      const nodesInReadableFormat =
+        nodes.map(stateQueries.getNodeInReadableFormat);
+      
+      // get the params of them all.
+      const inputsForEachNode =
+        nodes.map(stateQueries.getConnectableInputsOfNode);
+      
+      // combine them all
+      const output = [];
+      nodes.forEach((node, i) => {
+        inputsForEachNode[i].forEach((input) => {
+          output.push({
+            key: `${node.id}${input}`,
+            value: { nodeId: node.id, input },
+            text: `${nodesInReadableFormat[i]}.${input}`,
+          });
+        });
+      });
+
+      return output;
+    }
+
+    /**
+     *  [
+     *    {
+     *      key: `${nodeId}${triggerableInput}`,
+     *      value: { nodeId :int, triggerableInput :str },
+     *      text: nodeInReadableFormat + triggerableInput,
+     *    },
+     *  ]
+     */
+    getNodesForCreateTriggerModal =
+      (state) => {
+        // get all nodes with inputs
+        const nodes =
+          Object.values(this.getNodesThatHaveTriggerableInputs(state));
+
+        // in readable format
+        const nodesInReadableFormat =
+          nodes.map(stateQueries.getNodeInReadableFormat);
+        
+        // get the params of them all.
+        const inputsForEachNode =
+          nodes.map(stateQueries.getTriggerableInputsOfNode);
+        
+        // combine them all
+        const output = [];
+        nodes.forEach((node, i) => {
+          inputsForEachNode[i].forEach((input) => {
+            output.push({
+              key: `${node.id}${input}`,
+              value: { nodeId: node.id, input },
+              text: `${nodesInReadableFormat[i]}.${input}`,
+            });
+          });
+        });
+
+        return output;
+      }
 }
 
 export const memoizedStateQueries = new MemoizedStateQueries();

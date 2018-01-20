@@ -4,6 +4,10 @@ export const nodeTypeDefinitions = {
    */
   ADSR: {
     params: {
+      name: {
+        type: 'string',
+        defaultValue: '',
+      },
       A: {
         type: 'float',
         defaultValue: 0.05,
@@ -24,6 +28,33 @@ export const nodeTypeDefinitions = {
     connectableInputs: [],
     knobableInputs: [],
     triggers: ['play'],
+    output: true,
+  },
+  ChangeRange: {
+    params: {
+      name: {
+        type: 'string',
+        defaultValue: '',
+      },
+      lowestInput: {
+        type: 'float',
+        defaultValue: -1,
+      },
+      highestInput: {
+        type: 'float',
+        defaultValue: 1,
+      }, 
+      lowestOutput: {
+        type: 'float',
+        defaultValue: -1,
+      },
+      highestOutput: {
+        type: 'float',
+        defaultValue: 1,
+      },
+    },
+    connectableInputs: ['input'],
+    knobableInputs: ['input'],
     output: true,
   },
   Oscillator: {
@@ -232,6 +263,18 @@ export const nodeTypeDefinitions = {
       levels: {
         type: 'integer',
         defaultValue: 4,
+      },
+      minValue: {
+        type: 'float',
+        defaultValue: -1,
+      },
+      maxValue: {
+        type: 'float',
+        defaultValue: 1,
+      },
+      gain: {
+        type: 'float',
+        defaultValue: 1,
       },
     },
     connectableInputs: [],

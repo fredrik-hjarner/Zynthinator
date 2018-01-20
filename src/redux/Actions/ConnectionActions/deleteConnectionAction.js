@@ -4,11 +4,11 @@ import {
 } from './commonImports';
 
 export const deleteConnectionAction =
-  ({
-    connectionId,
-  }) => {
+  (ids) => {
     store.dispatch({
       type: actionTypes.DELETE_CONNECTION,
-      connectionId,
+      payload: {
+        ids,
+      },
     });
   };

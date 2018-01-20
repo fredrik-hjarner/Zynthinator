@@ -18,13 +18,10 @@ const mapStateToProps =
         .map(node => ({
           text: stateQueries.getNodeInReadableFormat(node),
           value: node.id,
+          key: node.id,
         })),
     nodesThatHaveInputs:
-      Object.values(memoizedStateQueries.getNodesThatHaveConnectableInputs(state))
-        .map(node => ({
-          text: stateQueries.getNodeInReadableFormat(node),
-          value: node.id,
-        })),
+      memoizedStateQueries.getChildNodesForCreateConnectionModal(state),
     ...ownProps,
   });
 

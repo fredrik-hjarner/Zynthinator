@@ -162,18 +162,29 @@ class StateQueries {
    */
   getParentsOfNode =
     (connections, nodeId) =>
-      // pick 'parentNodeId' where 'childNodeId === nodeId'
-      R.reduce(
+      R.map(
         R.prop('parentNodeId'),
-        [],
         R.filter(R.propEq('childNodeId', nodeId), R.values(connections)),
       )
 
   getChildrenIdsOfNodeWithId =
-    ({ connections, nodeId }) =>
+    (connections, nodeId) =>
       R.map(
         R.prop('childNodeId'),
         R.filter(R.propEq('parentNodeId', nodeId), R.values(connections)),
+      )
+
+  /**
+   * Return an array of connections.
+   */
+  getConnectionsByNodeId =
+    (connections, nodeId) =>
+      R.filter(
+        R.either(
+          R.propEq('parentNodeId', nodeId),
+          R.propEq('childNodeId', nodeId),
+        ),
+        R.values(connections),
       )
 
   doesConnectionWithIdExist =
@@ -206,11 +217,7 @@ class StateQueries {
     }) => {
       parentIdChain.push(nodeIdToExamine);
       const childrenIds =
-        this.getChildrenIdsOfNodeWithId({
-          connections,
-          nodeId:
-            nodeIdToExamine,
-        });
+        this.getChildrenIdsOfNodeWithId(connections, nodeIdToExamine);
       if (childrenIds.length === 0) {
         // chain has reached the bottom.
         chainsAccum.push(parentIdChain);
@@ -229,9 +236,15 @@ class StateQueries {
       });
     }
 
+  /**
+   * Returns an array.
+   */
   getConnectableInputsOfNodeType =
     nodeType =>
       nodeTypeDefinitions[nodeType].connectableInputs
+  /**
+   * Returns an array.
+   */
   getConnectableInputsOfNode =
     node =>
       this.getConnectableInputsOfNodeType(node.nodeType)

@@ -4,9 +4,9 @@ import {
 } from './commonImports';
 
 export const deleteNodeAction =
-  (nodeId) => {
+  (nodes) => {
     store.dispatch({
       type: actionTypes.DELETE_NODE,
-      nodeId,
+      nodes,
     });
   };

@@ -71,5 +71,22 @@ describe('Stack Overflow.', function() { // eslint-disable-line
     console.log(JSON.stringify(targetWithCost));
     console.log('\n\n'); */
   });
+
+  it('Stack Overflow 2.1', function() { // eslint-disable-line
+
+    const example =
+      // getChapter =>
+      //  ownProps =>
+
+          R.compose(
+            R.filter(R.where({
+              sectionId: R.equals(R.prop('section', ownProps)),
+              subsectionId: R.isNil,
+              sub2sectionId: R.isNil,
+              sub3sectionId: R.isNil,
+            })),
+            R.prop('getContents'),
+          );
+  });
 });
 

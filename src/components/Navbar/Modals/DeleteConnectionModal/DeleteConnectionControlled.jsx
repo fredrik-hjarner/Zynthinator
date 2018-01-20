@@ -1,4 +1,5 @@
 import React from 'react';
+import * as R from 'ramda';
 import { DeleteConnectionDumb } from './DeleteConnectionDumb';
 import {
   deleteConnectionAction,
@@ -8,33 +9,31 @@ export class DeleteConnectionControlled extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      connectionId: 1,
+      connectionIds: [],
     };
   }
 
-  onConfirm =
-    () =>
-      deleteConnectionAction({
-        connectionId: this.state.connectionId,
-      });
-  handleConnectionIdChange =
-    connectionId =>
-      this.setState({
-        connectionId: parseInt(connectionId),
-      });
+  handlers = {
+    onConfirm:
+      () =>
+        deleteConnectionAction(this.state.connectionIds),
+    onConnectionIdChange:
+      (e, { value }) => {
+        this.setState({ connectionIds: R.map(parseInt, value) });
+      },
+  }
 
-  render = () => {
-    const {
-      connectionsInReadableFormat,
-    } = this.props;
+  render =
+    () => {
+      const {
+        connectionsInReadableFormat,
+      } = this.props;
 
-    return (
-      <DeleteConnectionDumb
-        onConnectionIdChange={this.handleConnectionIdChange}
-        connectionId={this.state.connectionId}
-        onConfirm={this.onConfirm}
-        connections={connectionsInReadableFormat}
-      />
-    );
-  };
+      return (
+        <DeleteConnectionDumb
+          {...this.handlers}
+          options={connectionsInReadableFormat}
+        />
+      );
+    };
 }

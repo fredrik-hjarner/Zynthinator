@@ -8,7 +8,7 @@ export class EditNodeControlled extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nodeId: 1,
+      nodeId: 1, // todo. why 1 ???
     };
   }
 

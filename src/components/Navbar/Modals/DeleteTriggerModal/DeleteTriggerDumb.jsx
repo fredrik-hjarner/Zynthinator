@@ -1,23 +1,22 @@
 import React from 'react';
-import { Form } from 'semantic-ui-react';
+import {
+  Form,
+  Dropdown,
+} from 'semantic-ui-react';
 import { BestModal } from '../commonImports';
 
 export const DeleteTriggerDumb = (props) => {
-  const firstInputString = 'triggerId';
-
   const form = (
     <Form inverted>
-      <Form.Select
-        label={firstInputString}
-        onChange={
-          (e, { value }) => {
-            props.onTriggerIdChange(value);
-          }
-        }
-        options={props.options}
-        placeholder={firstInputString}
-        value={props.triggerId}
-      />
+      <Form.Field>
+        <label>triggers</label>
+        <Dropdown
+          onChange={props.onTriggerIdChange}
+          options={props.options}
+          multiple
+          selection
+        />
+      </Form.Field>
     </Form>);
 
   return (
