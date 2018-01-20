@@ -14,6 +14,11 @@ export const FrequencyDomainVisualizersDumb =
           uiComponentId={uiComponentId}
         />
       ));
+
+    if (analysers.length < 1) {
+      return null;
+    }
+
     return (
       <SimpleWindowRedux title="Frequency-Domain Analysers">
         {analysers}

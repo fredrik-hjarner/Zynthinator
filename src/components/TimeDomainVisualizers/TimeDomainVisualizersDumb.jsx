@@ -14,6 +14,11 @@ export const TimeDomainVisualizersDumb =
           uiComponentId={uiComponentId}
         />
       ));
+
+    if (analysers.length < 1) {
+      return null;
+    }
+      
     return (
       <SimpleWindowRedux title="Time-Domain Analysers">
         {analysers}

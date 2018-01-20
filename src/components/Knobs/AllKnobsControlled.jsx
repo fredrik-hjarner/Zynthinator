@@ -11,6 +11,11 @@ export const AllKnobsControlled =
     const knobElements =
       Object.values(props.knobs).map(k =>
         <KnobControlled knob={k} />);
+
+    if (knobElements.length < 1) {
+      return null;
+    }
+
     return (
       <SimpleWindowRedux title="Knobs">
         {knobElements}

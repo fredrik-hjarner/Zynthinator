@@ -15,6 +15,11 @@ export const NodeManagerDrawer =
         <li>
           {stateQueries.getNodeInReadableFormat(node)}
         </li>));
+
+    if (lis.length < 1) {
+      return null;
+    }
+
     return (
       <SimpleWindowRedux title="List of ungrouped nodes">
         <ul key="nodeList">

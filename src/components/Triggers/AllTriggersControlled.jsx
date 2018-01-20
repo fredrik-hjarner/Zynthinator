@@ -11,6 +11,11 @@ export const AllTriggersControlled =
     const triggerElements =
       Object.values(props.triggers).map(t =>
         <TriggerControlled trigger={t} />);
+
+    if (triggerElements.length < 1) {
+      return null;
+    }
+
     return (
       <SimpleWindowRedux title="Triggers">
         {triggerElements}
