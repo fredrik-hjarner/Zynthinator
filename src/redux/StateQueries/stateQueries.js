@@ -229,9 +229,15 @@ class StateQueries {
       });
     }
 
+  /**
+   * Returns an array.
+   */
   getConnectableInputsOfNodeType =
     nodeType =>
       nodeTypeDefinitions[nodeType].connectableInputs
+  /**
+   * Returns an array.
+   */
   getConnectableInputsOfNode =
     node =>
       this.getConnectableInputsOfNodeType(node.nodeType)

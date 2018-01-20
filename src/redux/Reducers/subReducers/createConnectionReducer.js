@@ -1,6 +1,6 @@
-// import _ from 'lodash';
+import _ from 'lodash';
 import * as R from 'ramda';
-import { stateQueries } from '../../StateQueries';
+// import { stateQueries } from '../../StateQueries';
 
 export const createConnectionReducer =
   (state, action) => {
@@ -14,40 +14,65 @@ export const createConnectionReducer =
      *    * that this exact connection doesn't already exist.
      */
     const {
-      parentNodeId,
-      childNodeId,
-      childNodeInput,
+      parentNodeIds,
+      /**
+       *  [
+       *    { nodeId :int, input :str },
+       *  ]
+       */
+      childNodes,
     } = action;
 
-    const {
+    /* const {
       nodes,
-    } = state.nodeManagement;
+    } = state.nodeManagement; */
 
-    if (stateQueries.doesNodeWithIdExist({ nodes, nodeId: parentNodeId }) &&
+    /*
+    if (stateQueries.doesNodeWithIdExist({ nodes, nodeId: parentNodeIds }) &&
         stateQueries.doesNodeWithIdExist({ nodes, nodeId: childNodeId }) &&
         stateQueries.doesNodeHaveInputWithName({ nodes, nodeId: childNodeId, inputName: childNodeInput })
     ) {
-      // create the connection.
-      const connectionId = state.nodeManagement.highestConnectionIdYet + 1;
+    */
 
-      const connection = {
-        id: connectionId,
-        parentNodeId,
-        childNodeId,
-        childNodeInput,
-      };
+    // create the connections.
+    let connectionId = state.nodeManagement.highestConnectionIdYet;
 
-      return R.evolve({
-        nodeManagement: {
-          highestConnectionIdYet:
-            () => connectionId,
-          connections:
-            R.assoc(`${connectionId}`, connection),
-        },
-      }, state);
-    }
+    /* const connectionsValues =
+      R.map(parentNodeId => (
+        {
+          id: ++connectionId,
+          parentNodeId,
+          childNodeId,
+          childNodeInput,
+        }
+      ))(parentNodeIds); */
 
-    alert('Error!');
-    debugger;
-    return state;
+    const connectionsValues = [];
+    childNodes.forEach((childNode) => {
+      // connect each parent node to this child node.
+      parentNodeIds.forEach((parentNodeId) => {
+        connectionsValues.push({
+          id: ++connectionId,
+          parentNodeId,
+          childNodeId: childNode.nodeId,
+          childNodeInput: childNode.input,
+        });
+      });
+    });
+
+    const connections =
+      _.keyBy(connectionsValues, R.prop('id'));
+
+    return R.evolve({
+      nodeManagement: {
+        highestConnectionIdYet:
+          () => connectionId,
+        connections:
+          R.merge(R.__, connections),
+      },
+    }, state);
+
+    // alert('Error!');
+    // debugger;
+    // return state;
   };

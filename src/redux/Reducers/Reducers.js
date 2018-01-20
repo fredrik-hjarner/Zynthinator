@@ -69,6 +69,7 @@ const _rootReducer =
       return Reducers[reducerName](state, action);
     } catch (exception) {
       alert(`action.type=${type}. Error with/in reducer with name '${reducerName}'.`);
+      console.log(exception);
       debugger;
       return state;
     }

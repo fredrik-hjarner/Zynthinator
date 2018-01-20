@@ -8,6 +8,7 @@ import {
   DownloadHistoryFileRedux,
 } from './DownloadHistoryFileRedux';
 import * as Actions from '../../redux';
+import * as Examples from '../../Examples';
 
 export const Navbar = () => { // eslint-disable-line
   return (
@@ -23,7 +24,7 @@ export const Navbar = () => { // eslint-disable-line
             >
               New
             </Dropdown.Item>
-            <Dropdown.Item>Load previous</Dropdown.Item>
+            <Dropdown.Item disabled>Load previous</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown item text="Nodes">
@@ -79,6 +80,11 @@ export const Navbar = () => { // eslint-disable-line
               Create ADSR
             </Dropdown.Item>
             <Dropdown.Item
+              onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'ChangeRange' })}
+            >
+              Create ChangeRange
+            </Dropdown.Item>
+            <Dropdown.Item
               onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType: 'TimeDomainAnalyser' })}
             >
               Create time domain analyser
@@ -98,7 +104,7 @@ export const Navbar = () => { // eslint-disable-line
             <Dropdown.Item
               onClick={() => Actions.openModalAction('DeleteNodeModal')}
             >
-              Delete node
+              Delete nodes
             </Dropdown.Item>
             <Dropdown.Item disabled>
               Delete all nodes
@@ -119,7 +125,7 @@ export const Navbar = () => { // eslint-disable-line
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Dropdown item text="Groups">
+        <Dropdown item text="Groups" disabled>
           <Dropdown.Menu>
             <Dropdown.Item
               onClick={() => Actions.openModalAction('CreateGroupModal')}
@@ -162,13 +168,13 @@ export const Navbar = () => { // eslint-disable-line
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Dropdown item text="Examples" disabled>
+        <Dropdown item text="Examples">
           <Dropdown.Menu>
-            <Dropdown.Item disabled>Undo an action</Dropdown.Item>
-            <Dropdown.Item disabled>Redo an action</Dropdown.Item>
-            <Dropdown.Divider />
-            <DownloadHistoryFileRedux />
-            <ReplayAHistoryFile />
+            <Dropdown.Item
+              onClick={Examples.amplitudeModulatedSine}
+            >
+              1. Amplitude-modulated sine
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown item text="History">
