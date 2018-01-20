@@ -37,7 +37,7 @@ const Nodes =
     }
 
     return (
-      <SimpleWindowRedux title="List of ungrouped nodes">
+      <SimpleWindowRedux title="Nodes">
         {lis}
       </SimpleWindowRedux>
     );
