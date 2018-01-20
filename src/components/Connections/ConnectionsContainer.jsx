@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { ConnectionsDrawer } from './ConnectionsDrawer';
+import { Connections } from './Connections';
 import {
   memoizedStateQueries,
   stateQueries,
@@ -20,5 +20,7 @@ const mapStateToProps =
       renderNodeTree(state),
   });
 
-export const ConnectionsDrawerContainer =
-  connect(mapStateToProps)(ConnectionsDrawer);
+const ConnectionsContainer =
+  connect(mapStateToProps)(Connections);
+
+export { ConnectionsContainer as Connections };

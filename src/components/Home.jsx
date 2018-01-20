@@ -6,11 +6,11 @@ export function Home() {
     <div>
       <C.AllKnobs />
       <C.AllTriggers />
-      <C.NodeManagerDrawerContainer />
-      <C.ConnectionsDrawerContainer />
-      { /* <C.ListOfGroupsRedux /> */ }
-      <C.TimeDomainVisualizersRedux />
-      <C.FrequencyDomainVisualizersRedux />
+      <C.Nodes />
+      <C.Connections />
+      { /* <C.ListOfGroups /> */ }
+      <C.TimeDomainVisualizers />
+      <C.FrequencyDomainVisualizers />
       <C.ModalWindow />
     </div>
   );

@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import { SimpleWindowRedux } from '../../components/SimpleWindow';
 
-export const ConnectionsDrawer =
+export const Connections =
   (props) => {
     // get the list of all nodes
     const { connectionsInReadableFormat } = props;
@@ -14,9 +14,8 @@ export const ConnectionsDrawer =
 
     const elements =
       connectionsInReadableFormat
-        .map(obj => obj.text) // todo. this is bacause stateQueries.connectionsInReadableFormat sucks.
-        .map(connection => (
-          <li>{connection}</li>
+        .map(obj => ( // todo. this is bacause stateQueries.connectionsInReadableFormat sucks.
+          <p>{`id${obj.value}: ${obj.text}`}</p>
         ));
 
     const { allChains } = props;
@@ -25,7 +24,7 @@ export const ConnectionsDrawer =
       allChains.map(chain => (
         <div>
           {
-            chain.map(id => _.padStart(id, 2)).join('\u2192')
+            chain.map(id => _.padStart(id, 4)).join('\u2192')
           }
         </div>));
 
@@ -34,22 +33,21 @@ export const ConnectionsDrawer =
         .map(chain => (
           <div>
             {
-              chain.map(id => _.padStart(id, 4)).join('\u2192')
+              chain.map(id => _.padStart(id, 10)).join('\u2192')
             }
           </div>));
 
     return (
       <SimpleWindowRedux title="List of connections">
-        <div key="connectionsQuantity">Nr of connections: {numConnections}</div>
-        <ul key="connectionsList">
+        <div style={{ maxWidth: '300px' }}>
+          {/* { <div key="connectionsQuantity">Nr of connections: {numConnections}</div> } */}
           {elements}
-        </ul>
-        <pre>{chainElements}</pre>
-        <pre>{randomElements}</pre>
+          <h4>Attempt to draw connections as tree:</h4>
+          <div style={{ overflowX: 'scroll' }}>
+            <pre>{chainElements}</pre>
+            <pre>{randomElements}</pre>
+          </div>
+        </div>
       </SimpleWindowRedux>
     );
   };
-
-/* NodeManagerDrawer.propTypes = {
-  nodes: PropTypes.arrayOf(Node).isRequired,
-}; */

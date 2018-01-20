@@ -1,2 +1,1 @@
-export * from './TimeDomainVisualizersRedux';
-export * from './TimeDomainVisualiser';
+export { TimeDomainVisualizersRedux as TimeDomainVisualizers } from './TimeDomainVisualizersRedux';

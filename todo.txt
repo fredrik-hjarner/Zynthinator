@@ -80,11 +80,6 @@
 * Viss kod anropar .webAudioNode direkt, vilket suger eftersom den inte
     ska kallas på direkt.
 
-* lista över
-    "inputs" och "outputs"
-    borde vara i NodeTypeDefinitions
-      som i sin tur borde vara i STATE:et.
-
 * "inputs"
     till noder kanske ska kunna ha typer.
     de vanligaste är float
