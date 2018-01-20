@@ -33,7 +33,7 @@ module.exports = {
   },
   // devtool: false,
   // entry: './js/client.js',
-  entry: [entryPath],
+  entry: entryPath,
   module: {
     rules: [
       {

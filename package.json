@@ -1,10 +1,9 @@
 {
-  "name": "Zynthinator",
+  "name": "zynthinator",
   "version": "0.0.2",
-  "description": "",
+  "description": "Das Zynth!",
   "main": "webpack.config.js",
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
     "copy-webpack-plugin": "^4.3.1",
     "deep-freeze": "0.0.1",
     "file-saver": "^1.3.3",
@@ -13,7 +12,6 @@
     "lz-string": "^1.4.4",
     "prop-types": "^15.6.0",
     "ramda": "^0.25.0",
-    "ramda-adjunct": "^2.2.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
@@ -21,19 +19,19 @@
     "react-router-redux": "^5.0.0-alpha.8",
     "redux": "^3.7.2",
     "reselect": "^3.0.1",
-    "semantic-ui-react": "^0.77.0"
+    "semantic-ui-react": "^0.77.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.1.2",
+    "babel-eslint": "^8.2.1",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "chai": "^4.1.2",
-    "circular-dependency-plugin": "^4.3.0",
-    "css-loader": "^0.28.7",
-    "eslint": "^4.12.1",
+    "circular-dependency-plugin": "^4.4.0",
+    "css-loader": "^0.28.9",
+    "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-import": "^2.8.0",
@@ -41,22 +39,21 @@
     "eslint-plugin-react": "^7.5.1",
     "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.30.1",
-    "mocha": "^4.1.0",
-    "node-sass": "^4.7.1",
+    "mocha": "^5.0.0",
+    "node-sass": "^4.7.2",
     "sass-lint": "^1.12.1",
     "sass-loader": "^6.0.6",
     "semantic-ui": "^2.2.13",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7"
+    "webpack-dev-server": "^2.11.1"
   },
   "scripts": {
     "dev": "webpack-dev-server --content-base src --inline --hot --port 8080 --host 192.168.1.218",
-    "local": "webpack-dev-server --content-base src --inline --hot --port 8080",
     "start": "webpack-dev-server --inline --hot --port 8080",
     "build": "webpack",
     "test": "mocha --require babel-register || exit 0"
   },
-  "author": "",
+  "author": "Fredrik Hjärner",
   "license": "ISC"
 }
