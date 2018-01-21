@@ -10,3 +10,10 @@
 - Ability to set as many dynamic parameters as possible, all stored with Redux.
 - Nice and maintainable code.
 - As much as possible should happen in real-time. No loading times. If you want to change frequencies, scales, octaves, inject some stupid node wherever then just do it and notice the results immediately.
+
+### Build/install/run
+
+1. Clone the repository.
+2. Run `npm install`.
+3. Run `npm start`.
+4. Open http://localhost:8080 in browser.
