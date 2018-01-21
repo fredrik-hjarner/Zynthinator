@@ -1,7 +1,7 @@
 import React from 'react';
-import _ from 'lodash';
 // import PropTypes from 'prop-types';
 import { Menu, Dropdown } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 import {
   ReplayAHistoryFile,
 } from './ReplayAHistoryFile';
@@ -10,168 +10,113 @@ import {
 } from './DownloadHistoryFileRedux';
 import * as Actions from '../../redux';
 import * as Examples from '../../Examples';
+import { DropDownMenu } from './primitive-building-blocks';
+import {
+  File,
+  Create,
+  Connect,
+  Modify,
+  Delete,
+  Examples as ExamplesMenu,
+  History
+} from './menus';
 
-const createNodeDropdownItem =
-  (nodeType, asReadable) => (
-    <Dropdown.Item
-      onClick={() => Actions.openModalAction('CreateNodeModal', { nodeType })}
-    >
-      Create {asReadable || _.lowerCase(nodeType)}
-    </Dropdown.Item>
-  );
+export class Navbar extends React.Component { // eslint-disable-line
+  componentDidMount = () => {
+    $('.ui.dropdown').dropdown({ // eslint-disable-line
+      action: 'hide',
+      duration: 0,
+      on: 'hover',
+      delay: {
+        hide: 500,
+        show: 0,
+      }
+    });
+  }
 
-export const Navbar = () => { // eslint-disable-line
-  return (
-    <Menu inverted>
-      <Menu.Menu>
-        <Dropdown item text="File">
-          <Dropdown.Menu>
-            <Dropdown.Item
-              onClick={() => {
-                localStorage.clear();
-                location.reload(); // eslint-disable-line
-              }}
-            >
-              New
-            </Dropdown.Item>
-            <Dropdown.Item disabled>Load previous</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        <Dropdown item text="Nodes">
-          <Dropdown.Menu>
-            {createNodeDropdownItem('Oscillator')}
-            {createNodeDropdownItem('Gain')}
-            {createNodeDropdownItem('LowPassFilter', 'low-pass filter')}
-            {createNodeDropdownItem('HighPassFilter', 'high-pass filter')}
-            {createNodeDropdownItem('BandPassFilter', 'band-pass filter')}
-            {createNodeDropdownItem('Noise')}
-            {createNodeDropdownItem('DcSignal', 'DC signal')}
-            {createNodeDropdownItem('Delay')}
-            {createNodeDropdownItem('LowResolutionSine', 'low-resolution sine')}
-            {createNodeDropdownItem('ADSR', 'ADSR')}
-            {createNodeDropdownItem('ChangeRange', 'ChangeRange')}
-            {createNodeDropdownItem('TimeDomainAnalyser')}
-            {createNodeDropdownItem('FrequencyDomainAnalyser')}
-            <Dropdown.Divider />
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('EditNodeModal')}
-            >
-              Edit node
-            </Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('DeleteNodeModal')}
-            >
-              Delete nodes
-            </Dropdown.Item>
-            <Dropdown.Item disabled>
-              Delete all nodes
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        <Dropdown item text="Connections">
-          <Dropdown.Menu>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateConnectionModal')}
-            >
-              Create connection
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('DeleteConnectionModal')}
-            >
-              Delete connection
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('InjectNodeModal')}
-            >
-              Inject node
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('EjectNodeModal')}
-            >
-              Eject node
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        <Dropdown item text="Groups" disabled>
-          <Dropdown.Menu>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateGroupModal')}
-            >
-              Create group
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        <Dropdown item text="Knobs">
-          <Dropdown.Menu>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateKnobModal')}
-            >
-              Create knob
-            </Dropdown.Item>
-            <Dropdown.Item disabled>
-              Edit knob
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('DeleteKnobModal')}
-            >
-              Delete knob
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        <Dropdown item text="Triggers">
-          <Dropdown.Menu>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('CreateTriggerModal')}
-            >
-              Create trigger
-            </Dropdown.Item>
-            <Dropdown.Item disabled>
-              Edit trigger
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => Actions.openModalAction('DeleteTriggerModal')}
-            >
-              Delete trigger
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        <Dropdown item text="Examples">
-          <Dropdown.Menu>
-            <Dropdown.Item
-              onClick={Examples.example1}
-            >
-              1. Amplitude-modulated sine
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={Examples.example2}
-            >
-              2. Simple music with low-res sine
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        <Dropdown item text="History">
-          <Dropdown.Menu>
-            <Dropdown.Item disabled>Undo an action</Dropdown.Item>
-            <Dropdown.Item disabled>Redo an action</Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item disabled>Download state file</Dropdown.Item>
-            <Dropdown.Item disabled>Upload state file</Dropdown.Item>
-            <Dropdown.Divider />
-            <DownloadHistoryFileRedux />
-            <ReplayAHistoryFile />
-          </Dropdown.Menu>
-        </Dropdown>
-        <Dropdown item text="View" disabled>
-          <Dropdown.Menu>
-            <Dropdown.Item>List of nodes</Dropdown.Item>
-            <Dropdown.Item>List of connections</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </Menu.Menu>
-    </Menu>
+  render = () => (
+    <div>
+      <Menu inverted>
+        <Menu.Menu>
+          <Dropdown item text="Nodes">
+            <Dropdown.Menu>
+              <Dropdown.Item
+                onClick={() => Actions.openModalAction('EditNodeModal')}
+              >
+                Edit node
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item
+                onClick={() => Actions.openModalAction('DeleteNodeModal')}
+              >
+                Delete nodes
+              </Dropdown.Item>
+              <Dropdown.Item disabled>
+                Delete all nodes
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <Dropdown item text="Groups" disabled>
+            <Dropdown.Menu>
+              <Dropdown.Item
+                onClick={() => Actions.openModalAction('CreateGroupModal')}
+              >
+                Create group
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <Dropdown item text="Examples">
+            <Dropdown.Menu>
+              <Dropdown.Item
+                onClick={Examples.example1}
+              >
+                1. Amplitude-modulated sine
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={Examples.example2}
+              >
+                2. Simple music with low-res sine
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <Dropdown item text="History">
+            <Dropdown.Menu>
+              <Dropdown.Item disabled>Undo an action</Dropdown.Item>
+              <Dropdown.Item disabled>Redo an action</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item disabled>Download state file</Dropdown.Item>
+              <Dropdown.Item disabled>Upload state file</Dropdown.Item>
+              <Dropdown.Divider />
+              <DownloadHistoryFileRedux />
+              <ReplayAHistoryFile />
+            </Dropdown.Menu>
+          </Dropdown>
+          <Dropdown item text="View" disabled>
+            <Dropdown.Menu>
+              <Dropdown.Item>List of nodes</Dropdown.Item>
+              <Dropdown.Item>List of connections</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Menu.Menu>
+      </Menu>
+      <DropDownMenu>
+        <File />
+        <Create />
+        <Connect />
+        <Modify />
+        <Delete />
+        <ExamplesMenu />
+        <History />
+      </DropDownMenu>
+    </div>
   );
-};
+}
+
+export const NavbarContainer =
+  connect(
+    null,
+    null,
+  )(Navbar);
 
 /* Navbar.propTypes = {
   path: PropTypes.string.isRequired,

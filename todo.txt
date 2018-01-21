@@ -177,8 +177,6 @@
 
 * Home is a really bad name for the route.
 
-* draw NodeTree in a separate SimpleWindow!!
-
 * ESLint should force me to make PropTypes!
 
 * getConnectionInReadableFormat is right generates "semantic options"
@@ -191,6 +189,6 @@
       R.flip(R.prop)
     )
 
-* getNodeInReadableFormat
-    should always include an id, because FUUUCK if it does not.
-    That is... always prefixed with "idX: "
+* Bug: Delete trigger doesn't work!!
+
+* Don't use lodash, use lodash/fp.

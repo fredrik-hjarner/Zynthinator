@@ -1,1 +1,1 @@
-export * from './NavbarContainer';
+export * from './Navbar';

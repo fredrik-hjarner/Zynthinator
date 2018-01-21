@@ -1,0 +1,23 @@
+import React from 'react';
+import {
+  TopMenuItem,
+  MenuItem
+} from '../primitive-building-blocks';
+import { openModalAction } from '../../../redux';
+
+export const Connect = () => (
+  <TopMenuItem caption="Connect">
+    <MenuItem
+      caption="Connect nodes"
+      onClick={() => openModalAction('CreateConnectionModal')}
+    />
+    <MenuItem
+      caption="Eject node"
+      onClick={() => openModalAction('EjectNodeModal')}
+    />
+    <MenuItem
+      caption="Inject node"
+      onClick={() => openModalAction('InjectNodeModal')}
+    />
+  </TopMenuItem>
+);
