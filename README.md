@@ -1,6 +1,6 @@
 # Zynthinator 0.0.2
 
-- Insert gif here -
+![Alt Text](https://github.com/fredrik-hjarner/Zynthinator/blob/master/2018-01-21-02-27-34.gif)
 
 [Test out Zynthinator (may not be updated to lastest version)](http://fredrikhjarner.se "Test out Zynthinator")
 
