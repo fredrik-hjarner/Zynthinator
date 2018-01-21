@@ -1,4 +1,6 @@
-export const nodeTypeDefinitions = {
+import * as R from 'ramda';
+
+const _nodeTypeDefinitions = {
   /**
    *
    */
@@ -30,6 +32,9 @@ export const nodeTypeDefinitions = {
     triggers: ['play'],
     output: true,
   },
+  /**
+   *
+   */
   ChangeRange: {
     params: {
       name: {
@@ -57,6 +62,9 @@ export const nodeTypeDefinitions = {
     knobableInputs: ['input'],
     output: true,
   },
+  /**
+   * 
+   */
   Oscillator: {
     params: {
       name: {
@@ -291,6 +299,21 @@ export const nodeTypeDefinitions = {
     output: false,
   },
 };
+
+// Add UI colors.
+export const nodeTypeDefinitions =
+  R.addIndex(R.map)(
+    (def, index) => {
+      const hue = index * 60;
+      const saturation = 70; // 25 + (Math.floor(hue / 360) * 25);
+      const lightness = 25 + (Math.floor(hue / 360) * 25); // hue < 360 ? 75 : 50;
+      return R.merge(
+        def,
+        { ui: { color: `hsl(${hue}, ${saturation}%, ${lightness}%)` } }
+      );
+    },
+    _nodeTypeDefinitions
+  );
 
 /**
  * defaultValues('Oscillator')

@@ -9,3 +9,4 @@ export * from './Connections';
 export * from './Nodes';
 export * from './Triggers';
 export * from './NodeTree';
+export * from './Node';

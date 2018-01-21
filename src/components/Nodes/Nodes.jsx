@@ -1,58 +1,45 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Popup } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import { SimpleWindowRedux } from '../../components/SimpleWindow';
 import {
-  memoizedStateQueries,
   stateQueries,
 } from '../../redux';
-import './style.sass';
+import { Node } from '../Node';
 
 // ----------------------------------
-// Connections
+// Nodes
 // ----------------------------------
 
 const Nodes =
-  (props) => {
-    const {
-      // nodes,
-      ungroupedNodes,
-    } = props;
-
-    const lis =
-      ungroupedNodes.map((node) => {
-        const p = (
-          <div className="nodes-node">
-            {`${stateQueries.getNodeInReadableFormat(node)}`}
-          </div>
-        );
-
-        const popupContent = <pre>{JSON.stringify(node, null, 2)}</pre>;
-
-        return <Popup trigger={p} content={popupContent} position="right center" />;
-      });
-
-    if (lis.length < 1) {
+  ({ nodeIds }) => {
+    if (nodeIds.length < 1) {
       return null;
     }
 
     return (
       <SimpleWindowRedux title="Nodes">
-        {lis}
+        {
+          nodeIds.map(nodeId => (
+            <Node nodeId={nodeId} display="block" />
+          ))
+        }
       </SimpleWindowRedux>
     );
   };
 
+Nodes.propTypes = {
+  nodeIds: PropTypes.arrayOf(PropTypes.number).isRequired
+};
+
 // ----------------------------------
-// ConnectionsContainer
+// NodesContainer
 // ----------------------------------
 
 const mapStateToProps =
   state => ({
-    ungroupedNodes:
-      memoizedStateQueries.getAllUngroupedNodes(state),
-    nodes:
-      stateQueries.getAllNodes(state),
+    nodeIds:
+      stateQueries.getAllNodeIds(state)
   });
 
 const NodesContainer = connect(mapStateToProps)(Nodes);

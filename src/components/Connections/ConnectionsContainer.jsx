@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import { Connections } from './Connections';
 import {
-  memoizedStateQueries,
+  stateQueries,
 } from '../../redux';
 
 const mapStateToProps =
   state => ({
-    connectionsInReadableFormat:
-      memoizedStateQueries.getConnectionsInReadableFormat(state)
+    connections:
+      stateQueries.getAllConnections(state)
   });
 
 const ConnectionsContainer =
