@@ -4,6 +4,8 @@ import {
   TopMenuItem,
   MenuItem
 } from '../primitive-building-blocks';
+import { ReplayAHistoryFile } from '../ReplayAHistoryFile';
+import { DownloadHistoryFileRedux } from '../DownloadHistoryFileRedux';
 
 export const History = () => (
   <TopMenuItem caption="History">
@@ -13,7 +15,7 @@ export const History = () => (
     <MenuItem disabled="disabled" caption="Download state file" />
     <MenuItem disabled="disabled" caption="Upload state file" />
     <Dropdown.Divider />
-    <MenuItem caption="Download history file" />
-    <MenuItem caption="(Re)play a history file" />
+    <DownloadHistoryFileRedux />
+    <ReplayAHistoryFile />
   </TopMenuItem>
 );

@@ -192,3 +192,7 @@
 * Bug: Delete trigger doesn't work!!
 
 * Don't use lodash, use lodash/fp.
+
+* Add pink noise. rename noise to white noise.
+
+* All nodes should have a gain!!!! Including Noise.
