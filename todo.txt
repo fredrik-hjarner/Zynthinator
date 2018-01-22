@@ -198,3 +198,19 @@
 * All nodes should have a gain!!!! Including Noise.
 
 * Implement Redux Ducks.
+
+* Web Audio API square waves look like crap!!!!!!!!1
+    So make my own one with audiobuffer
+
+* Inspired by Falstad:
+    Nested examples menu showing how different nodees work etc.
+
+* "bounds" for parameters in nodeTypeDefinitons.js
+    i.e max and min values so the user doesn't fuck up.
+
+* Have an option for each node (or node param) in nodeTypeDefinitons
+    that indicates whether the whole Node should be recreated
+    upon a change in value of a parameter.
+
+    It is the easiest way to change the value of a parameter,
+      simply recreate the Node with the updated parameter value!

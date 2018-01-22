@@ -285,8 +285,8 @@ const _nodeTypeDefinitions = {
         defaultValue: 1,
       },
     },
-    connectableInputs: [],
-    knobableInputs: ['levels', 'frequency'],
+    connectableInputs: ['minValue', 'maxValue', 'gain'],
+    knobableInputs: ['minValue', 'maxValue', 'gain'],
     output: true,
   },
   /**
@@ -297,6 +297,40 @@ const _nodeTypeDefinitions = {
     connectableInputs: ['input'],
     knobableInputs: ['gain'],
     output: false,
+  },
+  /**
+   *
+   */
+  PWM: {
+    params: {
+      name: {
+        type: 'string',
+        defaultValue: '',
+      },
+      frequency: {
+        type: 'float',
+        defaultValue: 440,
+      },
+      dutyCycleInPercent: {
+        type: 'float',
+        defaultValue: 50,
+      },
+      minValue: {
+        type: 'float',
+        defaultValue: -1,
+      },
+      maxValue: {
+        type: 'float',
+        defaultValue: 1,
+      },
+      gain: {
+        type: 'float',
+        defaultValue: 1,
+      },
+    },
+    connectableInputs: ['minValue', 'maxValue', 'gain'],
+    knobableInputs: ['minValue', 'maxValue', 'gain'],
+    output: true,
   },
 };
 
