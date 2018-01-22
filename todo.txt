@@ -196,3 +196,5 @@
 * Add pink noise. rename noise to white noise.
 
 * All nodes should have a gain!!!! Including Noise.
+
+* Implement Redux Ducks.
