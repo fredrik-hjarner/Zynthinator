@@ -15,5 +15,13 @@ export const Examples = () => (
       caption="2. Simple music with low-res sine"
       onClick={E.example2}
     />
+    <MenuItem caption="Oscillators">
+      <MenuItem caption="Sawtooths">
+        <MenuItem
+          caption="1Hz sawtooth"
+          onClick={E.example2}
+        />
+      </MenuItem>
+    </MenuItem>
   </TopMenuItem>
 );

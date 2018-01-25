@@ -311,9 +311,9 @@ const _nodeTypeDefinitions = {
         type: 'float',
         defaultValue: 440,
       },
-      dutyCycleInPercent: {
+      dutyCycle: {
         type: 'float',
-        defaultValue: 50,
+        defaultValue: 0.5,
       },
       minValue: {
         type: 'float',
@@ -328,8 +328,8 @@ const _nodeTypeDefinitions = {
         defaultValue: 1,
       },
     },
-    connectableInputs: ['minValue', 'maxValue', 'gain'],
-    knobableInputs: ['minValue', 'maxValue', 'gain'],
+    connectableInputs: ['minValue', 'maxValue', 'gain', 'dutyCycle'],
+    knobableInputs: ['minValue', 'maxValue', 'gain', 'dutyCycle'],
     output: true,
   },
 };

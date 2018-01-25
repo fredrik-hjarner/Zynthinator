@@ -13,7 +13,7 @@ export class PWM extends AudioNode {
     this.node = _.cloneDeep(node); // todo hmm.
     const {
       frequency,
-      dutyCycleInPercent,
+      dutyCycle,
       minValue,
       maxValue,
       // gain // todo use gain!!!!
@@ -28,44 +28,81 @@ export class PWM extends AudioNode {
 
     this.buffer =
       audioContext.createBuffer(1, waveLengthInSamples, sampleRate);
-    const data =
-      this.buffer.getChannelData(0);
 
-    const dutyCycleFactor = dutyCycleInPercent / 100;
+    /**
+     * Create a triangle that is later modified into a
+     * PWM via a WaveShaperNode
+     */
+    this.sawtooth = new OscillatorNode(audioContext, {
+      type: 'sawtooth',
+      frequency
+    });
+    this.sawtooth.start(); // todo. or should be started later
 
-    for (let i = 0; i < waveLengthInSamples; i++) {
-      if (i < waveLengthInSamples * (1 - dutyCycleFactor)) {
-        data[i] = minValue;
-      } else {
-        data[i] = maxValue;
-      }
+    this.waveShaper = audioContext.createWaveShaper();
+
+    // const dutyCycleFactor = dutyCycleInPercent / 100;
+    // const dutyCycleInSamples = Math.round(256 * dutyCycleFactor); // todo is this right?
+
+    const pwmCurve = new Float32Array(256); // todo why 256 ????
+    for (let i = 0; i < 128; i++) {
+      pwmCurve[i] = minValue;
+      pwmCurve[i + 128] = maxValue;
     }
 
-    this.webAudioNode = audioContext.createBufferSource();
-    this.webAudioNode.loop = true;
-    this.webAudioNode.buffer = this.buffer;
+    this.waveShaper.curve = pwmCurve;
 
-    this.webAudioNode.start();
+    // --------------------------------
+    // ConstantSourceNode
+    // --------------------------------
+
+    this.constantSource =
+      new ConstantSourceNode(audioContext, {
+        offset: dutyCycle,
+      });
+
+    this.constantSource.start();
 
     this.changeRangeModel =
       new ChangeRange({
         node: {
-          lowestInput: -1,
+          lowestInput: 0,
           highestInput: 1,
-          lowestOutput: minValue,
-          highestOutput: maxValue,
+          lowestOutput: -1,
+          highestOutput: 1,
         },
       });
 
-    this.webAudioNode.connect(this.changeRangeModel.input);
+    this.constantSource.connect(this.changeRangeModel.input);
+    this.changeRangeModel.output.connect(this.waveShaper);
+
+    this.sawtooth.connect(this.waveShaper);
+
+    // this.changeRangeModel =
+    //   new ChangeRange({
+    //     node: {
+      
+    //       lowestInput: -1,
+    //       highestInput: 1,
+    //       lowestOutput: minValue,
+    //       highestOutput: maxValue,
+    //     },
+    //   });
+
+    // this.webAudioNode.connect(this.changeRangeModel.input);
   }
   get output() {
-    return this.changeRangeModel.output;
+    // return this.changeRangeModel.output;
+    return this.waveShaper;
+  }
+  get dutyCycle() {
+    return this.constantSource.offset;
   }
   destruct =
     () => {
-      this.webAudioNode.disconnect();
-      this.webAudioNode = null;
-      this.buffer = null;
+      this.sawtooth.disconnect();
+      this.sawtooth = null;
+      this.waveShaper.disconnect();
+      this.waveShaper = null;
     }
 }
