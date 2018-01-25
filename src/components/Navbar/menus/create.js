@@ -37,6 +37,7 @@ export const Create = () => (
         {nodeItem('Noise')}
         {nodeItem('Oscillator')}
         {nodeItem('PWM', 'PWM')}
+        {nodeItem('RandomDigitalSignal')}
       </MenuItem>
     </MenuItem>
     <MenuItem
