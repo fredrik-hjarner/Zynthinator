@@ -7,7 +7,7 @@ export const initialState = {
   router: {},
   history: [],
   nodeManagement: {
-    highestNodeIdYet: 1,
+    highestNodeIdYet: 2,
     highestConnectionIdYet: 0,
     highestGroupIdYet: 0,
     highestKnobIdYet: 1,
@@ -19,6 +19,11 @@ export const initialState = {
         nodeType: 'Speakers',
         name: 'Speakers',
       },
+      2: {
+        id: 2,
+        name: 'Time-domain Analyser',
+        nodeType: 'TimeDomainAnalyser'
+      }
     },
     connections: {},
     groups: {},
@@ -45,8 +50,20 @@ export const initialState = {
   modal: null,        // move into UI
   propsToModal: null, // move into UI
   ui: {
-    highestIdYet: 0,
-    components: {},
+    highestIdYet: 1,
+    components: {
+      1: {
+        id: 1,
+        type: 'TimeDomainAnalyser',
+        nodeId: 2,
+        millisecondsBetweenUpdates: 40,
+        maxValue: 1,
+        minValue: -1,
+        canvasWidth: 350,
+        canvasHeight: 80,
+        bitsToRecord: 11
+      }
+    },
   },
 };
 

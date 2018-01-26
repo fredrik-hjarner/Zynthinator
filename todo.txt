@@ -214,3 +214,11 @@
 
     It is the easiest way to change the value of a parameter,
       simply recreate the Node with the updated parameter value!
+
+* When an Analyser is created a UI component is added to the state.
+   THAT SUCKS!
+    I should be like this:
+      1. An Analyser is added to the state
+      2. Something listens to Analysers and if one has been added,
+      3. then add a UI component to the state.
+      4. Then the UI listens to that state and draws it.
