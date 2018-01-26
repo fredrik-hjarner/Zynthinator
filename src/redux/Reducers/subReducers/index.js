@@ -21,3 +21,5 @@ export * from './uiFdAnalyserChangeParamsReducer';
 export * from './addPreviousStateReducer';
 export * from './ejectNodeReducer';
 export * from './injectNodeReducer';
+export * from './calculateHighestNodeIdReducer';
+export * from './calculateHighestUiIdReducer';

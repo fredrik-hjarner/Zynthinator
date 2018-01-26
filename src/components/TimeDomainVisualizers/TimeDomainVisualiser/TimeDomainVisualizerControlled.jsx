@@ -26,6 +26,11 @@ export class TimeDomainVisualizerControlled extends React.Component {
      * Get hold of the webAudioNode.
      */
     const webAudioNodeId = this.props.uiComponent.nodeId;
+    if (!webAudioNodeId || webAudioNodeId === Infinity || webAudioNodeId === -Infinity) {
+      debugger;
+      alert('Error!');
+    }
+
     const webAudioNode = nodes.nodes[webAudioNodeId];
 
     if (R.isNil(webAudioNode)) {

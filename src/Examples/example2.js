@@ -24,6 +24,18 @@ history =
     }
   },
   {
+    type: 'DELETE_NODE',
+    nodes: [
+      '2'
+    ]
+  },
+  {
+    type: 'CALCULATE_HIGHEST_NODE_ID'
+  },
+  {
+    type: 'CALCULATE_HIGHEST_UI_ID'
+  },
+  {
     type: 'OPEN_MODAL',
     modal: 'CreateNodeModal',
     props: {

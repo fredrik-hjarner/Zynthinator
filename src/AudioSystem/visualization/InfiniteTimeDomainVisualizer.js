@@ -16,6 +16,10 @@ import { FiniteTimeDomainVisualizer } from './FiniteTimeDomainVisualizer';
 
 export class InfiniteTimeDomainVisualizer {
   init(analyserNode, timeDomainCanvasId) {
+    if (!analyserNode) {
+      debugger;
+      alert('Error! analyserNode is undefined or null.');
+    }
     this.timeDomainCanvasId = timeDomainCanvasId;
     /* this.finiteTimeDomainVisualizer =
       new FiniteTimeDomainVisualizer(

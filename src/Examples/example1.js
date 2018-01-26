@@ -24,14 +24,16 @@ history =
     },
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateNodeModal',
-    props: {
-      nodeType: 'Oscillator',
-    },
+    type: 'DELETE_NODE',
+    nodes: [
+      '2'
+    ]
   },
   {
-    type: 'CLOSE_MODAL',
+    type: 'CALCULATE_HIGHEST_NODE_ID'
+  },
+  {
+    type: 'CALCULATE_HIGHEST_UI_ID'
   },
   {
     type: 'CREATE_NODE',
@@ -45,16 +47,6 @@ history =
     nodeType: 'Oscillator',
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateNodeModal',
-    props: {
-      nodeType: 'Oscillator',
-    },
-  },
-  {
-    type: 'CLOSE_MODAL',
-  },
-  {
     type: 'CREATE_NODE',
     name: 'amplitudeModulatingSine',
     frequency: 1,
@@ -66,26 +58,9 @@ history =
     nodeType: 'Oscillator',
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateNodeModal',
-    props: {
-      nodeType: 'TimeDomainAnalyser',
-    },
-  },
-  {
-    type: 'CLOSE_MODAL',
-  },
-  {
     type: 'CREATE_NODE',
     name: 'TDA',
     nodeType: 'TimeDomainAnalyser',
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateConnectionModal',
-  },
-  {
-    type: 'CLOSE_MODAL',
   },
   {
     type: 'CREATE_CONNECTION',
@@ -101,13 +76,6 @@ history =
     ],
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateConnectionModal',
-  },
-  {
-    type: 'CLOSE_MODAL',
-  },
-  {
     type: 'CREATE_CONNECTION',
     name: '',
     parentNodeIds: [
@@ -119,13 +87,6 @@ history =
         input: 'gain',
       },
     ],
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateConnectionModal',
-  },
-  {
-    type: 'CLOSE_MODAL',
   },
   {
     type: 'CREATE_CONNECTION',
@@ -153,13 +114,6 @@ history =
     value: '47',
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateKnobModal',
-  },
-  {
-    type: 'CLOSE_MODAL',
-  },
-  {
     type: 'CREATE_KNOB',
     name: 'max',
     connectedToWhichNode: 3,
@@ -167,13 +121,6 @@ history =
     minValue: 0,
     maxValue: 1,
     function: 'linear',
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateKnobModal',
-  },
-  {
-    type: 'CLOSE_MODAL',
   },
   {
     type: 'CREATE_KNOB',
@@ -203,13 +150,6 @@ history =
     value: '10',
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateKnobModal',
-  },
-  {
-    type: 'CLOSE_MODAL',
-  },
-  {
     type: 'CREATE_KNOB',
     name: 'frequency',
     connectedToWhichNode: 3,
@@ -217,13 +157,6 @@ history =
     minValue: 0,
     maxValue: 10,
     function: 'linear',
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'EditNodeModal',
-  },
-  {
-    type: 'CLOSE_MODAL',
   },
   {
     type: 'OPEN_MODAL',
@@ -262,13 +195,6 @@ history =
     nodeType: 'TimeDomainAnalyser',
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateConnectionModal',
-  },
-  {
-    type: 'CLOSE_MODAL',
-  },
-  {
     type: 'CREATE_CONNECTION',
     name: '',
     parentNodeIds: [
@@ -292,20 +218,6 @@ history =
     id: 2,
     param: 'canvasWidth',
     value: '100',
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'EditNodeModal',
-  },
-  {
-    type: 'CLOSE_MODAL',
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'EditNodeModal',
-  },
-  {
-    type: 'CLOSE_MODAL',
   },
   {
     type: 'OPEN_MODAL',

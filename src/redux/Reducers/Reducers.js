@@ -18,11 +18,19 @@ const actionConstToReducer =
   actionConst =>
     _.camelCase(`${actionConst}Reducer`);
 
+const isFuckedUp =
+  x =>
+    x === undefined || x === null || x === Infinity || x === -Infinity;
+
 /**
  * Does some checks to see if the state is consistent.
  */
 const checkStateConstistency =
-  (state) => {
+  (state) => { // todo, should receive latest action so that I can see what action caused it.
+    // -------------------------------
+    // Connections
+    // -------------------------------
+
     const connections =
       stateQueries.getAllConnectionValues(state);
     /**
@@ -31,6 +39,33 @@ const checkStateConstistency =
     if (!R.all(R.has('id'), connections)) {
       debugger;
       alert('Error: connections is not consistent!');
+    }
+
+    // -------------------------------
+    // Highest id values
+    // -------------------------------
+
+    const highestUiIdYet = state.ui.highestIdYet;
+    if (isFuckedUp(highestUiIdYet)) {
+      debugger;
+      alert('Error!');
+    }
+    const { highestNodeIdYet } = state.nodeManagement;
+    if (isFuckedUp(highestNodeIdYet)) {
+      debugger;
+      alert('Error!');
+    }
+
+    // ----------------------------
+    // Node id:s are numbers
+    // ----------------------------
+
+    const nodeKeys = Object.keys(state.nodeManagement.nodes);
+    const nodeKeysAreConsistent = nodeKeys.every(key =>
+      !isFuckedUp(key));
+    if (!nodeKeysAreConsistent) {
+      debugger;
+      alert('Error!');
     }
   };
 
