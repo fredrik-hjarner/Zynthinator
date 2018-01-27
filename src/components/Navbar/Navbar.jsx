@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { DropDownMenu } from './primitive-building-blocks';
+import { DropDownMenu } from 'components/semantic++';
 import {
   File,
   Create,
@@ -14,12 +14,12 @@ import {
 
 export class Navbar extends React.Component { // eslint-disable-line
   componentDidMount = () => {
-    $('.ui.dropdown').dropdown({ // eslint-disable-line
+    $('.ui.dropdown').dropdown({ /* todo this shit should be in the menu!! */ // eslint-disable-line
       action: 'hide',
       duration: 0,
       on: 'hover',
       delay: {
-        hide: 500,
+        hide: 400,
         show: 0,
       }
     });

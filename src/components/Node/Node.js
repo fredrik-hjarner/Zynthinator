@@ -7,11 +7,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Popup, Menu } from 'semantic-ui-react';
+import {
+  Popup,
+  // Menu,
+  // Dropdown,
+  Divider
+} from 'semantic-ui-react';
 import { deleteNodeAction } from 'redux/Actions';
 import {
   stateQueries,
-} from '../../redux';
+} from 'redux/StateQueries';
+import {
+  ContextMenu,
+  ContextMenuItem,
+  TopContextMenuItem
+} from 'components/semantic++';
 import { nodeTypeDefinitions } from '../../NodeTypeDefinitions';
 import './style.sass';
 
@@ -20,7 +30,7 @@ import './style.sass';
 // ----------------------------------
 
 const Node =
-  ({ node, display, deleteNode }) => {
+  ({ node, display, deleteNode }) => { // eslint-disable-line
     const backgroundColor =
       nodeTypeDefinitions[node.nodeType].ui.color;
 
@@ -47,7 +57,7 @@ const Node =
     // );
 
     /**
-     * Trying to make a simple context menu.
+     * Trying to use my new ContextMenu class
      */
     return (
       <Popup
@@ -56,23 +66,23 @@ const Node =
         size="mini"
         trigger={div}
         content={(
-          <Menu size="tiny" vertical compact>
-            <Menu.Item className="link">
-              Show JSON
-            </Menu.Item>
-            <Menu.Item className="link">
-              Inspect
-            </Menu.Item>
-            <Menu.Item className="link">
-              Edit
-            </Menu.Item>
-            <Menu.Item className="link">
-              Connect
-            </Menu.Item>
-            <Menu.Item className="link" onClick={deleteNode}>
-              Delete
-            </Menu.Item>
-          </Menu>
+          <ContextMenu>
+            <TopContextMenuItem caption="Parameters" disabled="disabled">
+              <ContextMenuItem caption=".gain = 1.0">
+                <ContextMenuItem caption="Create knob for this" />
+                <ContextMenuItem caption="Create trigger for this" />
+              </ContextMenuItem>
+              <Divider />
+              <ContextMenuItem caption="Show node as raw json-data" />
+            </TopContextMenuItem>
+            <ContextMenuItem caption="Edit" disabled="disabled" />
+            <TopContextMenuItem caption="Connect" disabled="disabled">
+              <ContextMenuItem caption="Connect" />
+              <ContextMenuItem caption="Inject" />
+              <ContextMenuItem caption="Eject" />
+            </TopContextMenuItem>
+            <ContextMenuItem caption="Delete" onClick={deleteNode} />
+          </ContextMenu>
         )}
         position="bottom right"
         on="click"

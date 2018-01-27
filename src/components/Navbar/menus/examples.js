@@ -2,7 +2,7 @@ import React from 'react';
 import {
   TopMenuItem,
   MenuItem
-} from '../primitive-building-blocks';
+} from 'components/semantic++';
 import * as E from '../../../Examples';
 
 export const Examples = () => (

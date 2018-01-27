@@ -3,7 +3,7 @@ import { Dropdown } from 'semantic-ui-react';
 import {
   TopMenuItem,
   MenuItem
-} from '../primitive-building-blocks';
+} from 'components/semantic++';
 import { ReplayAHistoryFile } from '../ReplayAHistoryFile';
 import { DownloadHistoryFileRedux } from '../DownloadHistoryFileRedux';
 

@@ -3,7 +3,7 @@ import _ from 'lodash';
 import {
   TopMenuItem,
   MenuItem
-} from '../primitive-building-blocks';
+} from 'components/semantic++';
 import { openModalAction } from '../../../redux';
 
 const nodeItem =
