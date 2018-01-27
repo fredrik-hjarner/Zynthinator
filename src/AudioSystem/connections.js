@@ -1,6 +1,6 @@
 import {
   stateQueries,
-} from 'redux';
+} from 'redux/StateQueries';
 import { nodes } from './nodes';
 
 class Connections {
