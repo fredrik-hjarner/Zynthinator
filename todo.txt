@@ -222,3 +222,5 @@
       2. Something listens to Analysers and if one has been added,
       3. then add a UI component to the state.
       4. Then the UI listens to that state and draws it.
+
+* Only draw the connections window if there are any connections.

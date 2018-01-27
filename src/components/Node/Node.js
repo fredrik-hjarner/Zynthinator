@@ -7,7 +7,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Popup } from 'semantic-ui-react';
+import { Popup, Menu } from 'semantic-ui-react';
 import {
   stateQueries,
 } from '../../redux';
@@ -29,14 +29,51 @@ const Node =
       </div>
     );
 
-    const popupContent = <pre>{JSON.stringify(node, null, 2).slice(2, -2)}</pre>;
+    /**
+     * Simply displays node POJO.
+     */
+    // return (
+    //   <Popup
+    //     size="tiny"
+    //     trigger={div}
+    //     content={(
+    //       <pre>{JSON.stringify(node, null, 2).slice(2, -2)}</pre>
+    //     )}
+    //     position="top center"
+    //     on="click"
+    //     hoverable="false"
+    //   />
+    // );
 
+    /**
+     * Trying to make a simple context menu.
+     */
     return (
       <Popup
-        size="tiny"
+        className="context-menu"
+        basic
+        size="mini"
         trigger={div}
-        content={popupContent}
-        position="top center"
+        content={(
+          <Menu size="tiny" vertical compact>
+            <Menu.Item>
+              Show JSON
+            </Menu.Item>
+            <Menu.Item>
+              Inspect
+            </Menu.Item>
+            <Menu.Item>
+              Edit
+            </Menu.Item>
+            <Menu.Item>
+              Connect
+            </Menu.Item>
+            <Menu.Item>
+              Delete
+            </Menu.Item>
+          </Menu>
+        )}
+        position="bottom right"
         on="click"
         hoverable="false"
       />
