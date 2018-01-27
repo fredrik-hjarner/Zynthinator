@@ -1,8 +1,8 @@
-# Zynthinator 0.0.2
+# Zynthinator 0.0.3
 
 ![Alt Text](https://github.com/fredrik-hjarner/Zynthinator/blob/master/2018-01-21-02-27-34.gif)
 
-[Test out Zynthinator (may not be updated to lastest version)](http://fredrikhjarner.se "Test out Zynthinator")
+[Test out Zynthinator (not guaranteed to be lastest version)](http://fredrikhjarner.se "Test out Zynthinator")
 
 ### Goals
 
