@@ -32,12 +32,12 @@ export const Create = () => (
       {nodeItem('Gain')}
       <MenuItem caption="Waveforms">
         {nodeItem('DcSignal', 'DC signal')}
-        {nodeItem('DigitalSignal')}
+        {/* {nodeItem('DigitalSignal')} */}
         {nodeItem('LowResolutionSine', 'Low-resolution sine')}
         {nodeItem('Noise')}
         {nodeItem('Oscillator')}
         {nodeItem('PWM', 'PWM')}
-        {nodeItem('RandomDigitalSignal')}
+        {/* {nodeItem('RandomDigitalSignal')} */}
       </MenuItem>
     </MenuItem>
     <MenuItem

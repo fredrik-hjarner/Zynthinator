@@ -4,7 +4,7 @@ export const TopMenuItem = ({ caption, children, disabled }) => (
   <a className={`ui dropdown item ${disabled}`}>
     {caption}
     <i className="dropdown icon" />
-    <div className="menu">
+    <div className="menu compact">
       {children}
     </div>
   </a>

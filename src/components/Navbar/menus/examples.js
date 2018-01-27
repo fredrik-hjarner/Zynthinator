@@ -12,7 +12,7 @@ export const Examples = () => (
       onClick={E.example1}
     />
     <MenuItem
-      caption="2. Simple music with low-res sine"
+      caption="2. Simple music with low-res sine (must refresh page!!)"
       onClick={E.example2}
     />
     <MenuItem caption="Oscillators">
@@ -20,6 +20,7 @@ export const Examples = () => (
         <MenuItem
           caption="1Hz sawtooth"
           onClick={E.example2}
+          disabled="disabled"
         />
       </MenuItem>
     </MenuItem>

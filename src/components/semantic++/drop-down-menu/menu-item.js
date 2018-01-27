@@ -15,7 +15,7 @@ export const MenuItem = ({
     <div className="item">
       <i className="dropdown icon" />
       <span className="text">{caption}</span>
-      <div className="menu">
+      <div className="menu compact">
         {children}
       </div>
     </div>
