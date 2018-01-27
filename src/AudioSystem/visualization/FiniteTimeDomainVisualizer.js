@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import {
   mathHelpers,
-} from '../../helpers';
+} from 'helpers';
 
 /**
  * Vizualizer class

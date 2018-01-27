@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import { FrequencyDomainVisualizerControlled } from './FrequencyDomainVisualizerControlled';
 import {
   stateQueries,
-} from '../../../redux';
+} from 'redux/StateQueries';
+import { FrequencyDomainVisualizerControlled } from './FrequencyDomainVisualizerControlled';
 
 const mapStateToProps =
   (state, ownProps) => {

@@ -8,7 +8,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Popup, Menu } from 'semantic-ui-react';
-import { deleteNodeAction } from 'redux';
+import { deleteNodeAction } from 'redux/Actions';
 import {
   stateQueries,
 } from '../../redux';

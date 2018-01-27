@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'semantic-ui-react';
-import { SimpleWindowRedux } from '../../components/SimpleWindow';
+import { SimpleWindowRedux } from 'components/SimpleWindow';
 import { Node } from '../Node';
 
 export const Connections =

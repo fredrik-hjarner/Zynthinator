@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import { Connections } from './Connections';
 import {
   stateQueries,
-} from '../../redux';
+} from 'redux/StateQueries';
+import { Connections } from './Connections';
 
 const mapStateToProps =
   state => ({

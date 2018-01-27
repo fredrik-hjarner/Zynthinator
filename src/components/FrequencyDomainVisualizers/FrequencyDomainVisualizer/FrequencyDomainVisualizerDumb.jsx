@@ -4,9 +4,9 @@ import {
 // Icon,
 } from 'semantic-ui-react';
 import {
-  calculateFrequencyInNthBin,
+  calculateFrequencyInNthBin, // eslint-disable-line
   InfiniteFrequencyDomainVizualizer,
-} from '../../AudioSystem';
+} from 'AudioSystem';
 import { SimpleWindowRedux } from '../SimpleWindow';
 import {
   FrequencyDomainVisualizerSettingsDumb,
