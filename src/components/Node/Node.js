@@ -56,26 +56,25 @@ const Node =
         trigger={div}
         content={(
           <Menu size="tiny" vertical compact>
-            <Menu.Item>
+            <Menu.Item className="link">
               Show JSON
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item className="link">
               Inspect
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item className="link">
               Edit
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item className="link">
               Connect
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item className="link">
               Delete
             </Menu.Item>
           </Menu>
         )}
         position="bottom right"
         on="click"
-        hoverable="false"
       />
     );
   };
