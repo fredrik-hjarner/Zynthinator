@@ -8,6 +8,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Popup, Menu } from 'semantic-ui-react';
+import { deleteNodeAction } from 'redux';
 import {
   stateQueries,
 } from '../../redux';
@@ -19,7 +20,7 @@ import './style.sass';
 // ----------------------------------
 
 const Node =
-  ({ node, display }) => {
+  ({ node, display, deleteNode }) => {
     const backgroundColor =
       nodeTypeDefinitions[node.nodeType].ui.color;
 
@@ -68,7 +69,7 @@ const Node =
             <Menu.Item className="link">
               Connect
             </Menu.Item>
-            <Menu.Item className="link">
+            <Menu.Item className="link" onClick={deleteNode}>
               Delete
             </Menu.Item>
           </Menu>
@@ -81,7 +82,8 @@ const Node =
 
 Node.propTypes = {
   node: PropTypes.object.isRequired,
-  display: PropTypes.string.isRequired
+  display: PropTypes.string.isRequired,
+  deleteNode: PropTypes.func.isRequired
 };
 
 // ----------------------------------
@@ -91,14 +93,12 @@ Node.propTypes = {
 const mapStateToProps =
   (state, { nodeId }) => ({
     node:
-      stateQueries.getAllNodes(state)[nodeId],
+      stateQueries.getAllNodes(state)[nodeId]
   });
 
 const mapDispatchToProps =
-  () => ({
-    /* onMasterVolumeChange:
-      () =>
-        changeMasterVolumeAction(), */
+  (dispatch, { nodeId }) => ({
+    deleteNode: () => deleteNodeAction([nodeId])
   });
 
 const NodeContainer =

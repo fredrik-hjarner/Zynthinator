@@ -1,9 +1,9 @@
+import {
+  stateQueries,
+} from 'redux/StateQueries';
 import _ from 'lodash';
 import * as R from 'ramda';
 import { connections } from './connections';
-import {
-  stateQueries,
-} from '../redux/StateQueries';
 
 class ConnectionsListener {
   /**

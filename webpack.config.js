@@ -26,10 +26,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.sass'],
-    /* modules: [
-      path.join(__dirname, 'src', 'js'),
+    modules: [
       'node_modules',
-    ], */
+      'src'
+    ],
   },
   // devtool: false,
   // entry: './js/client.js',

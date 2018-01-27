@@ -1,10 +1,10 @@
 import {
   stateQueries,
-} from '../redux/StateQueries';
+} from 'redux/StateQueries';
+import * as Actions from 'redux/Actions';
 import {
   nodes,
 } from './nodes';
-import * as Actions from '../redux/Actions';
 
 class TriggeredTriggersListener {
   onActionWasDispatched =

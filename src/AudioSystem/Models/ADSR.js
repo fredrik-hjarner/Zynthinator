@@ -1,8 +1,8 @@
-import * as Ra from 'ramda';
-import { audioContext } from './audioContext';
 import {
   mathHelpers,
-} from '../../helpers/';
+} from 'helpers';
+import * as Ra from 'ramda';
+import { audioContext } from './audioContext';
 import {
   AudioNode,
 } from './BaseClasses';

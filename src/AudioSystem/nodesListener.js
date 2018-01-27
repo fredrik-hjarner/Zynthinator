@@ -1,9 +1,9 @@
+import {
+  stateQueries,
+} from 'redux/StateQueries';
 import _ from 'lodash';
 import * as R from 'ramda';
 import { nodes } from './nodes';
-import {
-  stateQueries,
-} from '../redux/StateQueries';
 
 class NodesListener {
   /**

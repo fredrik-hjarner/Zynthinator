@@ -1,7 +1,7 @@
-import { nodes } from './nodes';
 import {
   stateQueries,
-} from '../redux';
+} from 'redux';
+import { nodes } from './nodes';
 
 class Connections {
   createConnections = ({ connectionsThatWereAdded }) => {
