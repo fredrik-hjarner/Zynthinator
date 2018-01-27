@@ -328,8 +328,8 @@ const _nodeTypeDefinitions = {
         defaultValue: 1,
       },
     },
-    connectableInputs: ['minValue', 'maxValue', 'gain', 'dutyCycle'],
-    knobableInputs: ['minValue', 'maxValue', 'gain', 'dutyCycle'],
+    connectableInputs: ['minValue', 'maxValue', 'gain', 'dutyCycle', 'frequency'],
+    knobableInputs: ['minValue', 'maxValue', 'gain', 'dutyCycle', 'frequency'],
     output: true,
   },
 };

@@ -98,11 +98,21 @@ export class PWM extends AudioNode {
   get dutyCycle() {
     return this.constantSource.offset;
   }
+  get frequency() {
+    return this.sawtooth.frequency;
+  }
   destruct =
     () => {
       this.sawtooth.disconnect();
       this.sawtooth = null;
+
       this.waveShaper.disconnect();
       this.waveShaper = null;
+
+      this.changeRangeModel.destruct();
+      this.changeRangeModel = null;
+
+      this.constantSource.disconnect();
+      this.constantSource = null;
     }
 }
