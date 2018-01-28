@@ -4,11 +4,22 @@
 
 [Test out Zynthinator (not guaranteed to be lastest version)](http://fredrikhjarner.se "Test out Zynthinator")
 
+### What
+
+- Essentially provides a graphical user interface to Web Audio API.
+- Wraps the Web Audio API nodes types in classes that provides some additional features. For example when you create a sine oscillator you can choose between what values it oscillates, that is not just the Web Audio API-standard of -1 to +1 but you can choose to make it oscillate between any two values.
+- Adds new node types. For example Low-Resolution Sine, ADSR, PWM, DigitalSignal, Noise and more.
+
+### Current development state
+
+Not finished at all. I've made a stable ground. I can use it but I have not concentrated upon making it user-friendly for others yet.
+
 ### Goals
 
 - Allow to create interesting sounds by combining and mixing basic waveforms with Web Audio API.
 - Ability to set as many dynamic parameters as possible, all stored with Redux.
 - Nice and maintainable code.
+- Intuitive and user-friendly.
 - As much as possible should happen in real-time. No loading times. If you want to change frequencies, scales, octaves, inject some stupid node wherever then just do it and notice the results immediately.
 
 ### Build/install/run
