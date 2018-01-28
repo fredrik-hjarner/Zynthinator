@@ -22,18 +22,23 @@ export class Noise extends AudioNode {
     this.webAudioNode.loop = true;
     this.webAudioNode.buffer = this.buffer;
 
+    this.gainNode = new GainNode(audioContext);
+    this.webAudioNode.connect(this.gainNode);
     this.webAudioNode.start();
   }
   get output() {
-    return this.webAudioNode;
+    return this.gainNode;
   }
-  /* get input() {
-    return this.webAudioNode;
-  } */
+  get gain() {
+    return this.gainNode.gain;
+  }
   destruct =
     () => {
       this.webAudioNode.disconnect();
       this.webAudioNode = null;
       this.buffer = null;
+
+      this.gainNode.disconnect();
+      this.gainNode = null;
     }
 }

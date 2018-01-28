@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { SimpleWindowRedux } from '../../components/SimpleWindow';
+import { SimpleWindowRedux } from 'components/SimpleWindow';
 import {
   stateQueries,
-} from '../../redux';
+} from 'redux/StateQueries';
 import { Node } from '../Node';
 
 // ----------------------------------

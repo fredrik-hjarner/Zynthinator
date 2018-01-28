@@ -96,10 +96,10 @@ const _nodeTypeDefinitions = {
         type: 'float',
         defaultValue: 1,
       },
-      gain: {
-        type: 'float',
-        defaultValue: 1,
-      },
+      // gain: {
+      //   type: 'float',
+      //   defaultValue: 1,
+      // },
     },
     connectableInputs: ['frequency', 'detune', 'gain'],
     knobableInputs: ['frequency', 'detune', 'gain', 'minValue', 'maxValue'],
@@ -133,8 +133,8 @@ const _nodeTypeDefinitions = {
         defaultValue: '',
       },
     },
-    connectableInputs: [],
-    knobableInputs: [],
+    connectableInputs: ['gain'],
+    knobableInputs: ['gain'],
     output: true,
   },
   /**
@@ -280,10 +280,6 @@ const _nodeTypeDefinitions = {
         type: 'float',
         defaultValue: 1,
       },
-      gain: {
-        type: 'float',
-        defaultValue: 1,
-      },
     },
     connectableInputs: ['minValue', 'maxValue', 'gain'],
     knobableInputs: ['minValue', 'maxValue', 'gain'],
@@ -317,16 +313,12 @@ const _nodeTypeDefinitions = {
       },
       minValue: {
         type: 'float',
-        defaultValue: -1,
+        defaultValue: 0,
       },
       maxValue: {
         type: 'float',
         defaultValue: 1,
-      },
-      gain: {
-        type: 'float',
-        defaultValue: 1,
-      },
+      }
     },
     connectableInputs: ['minValue', 'maxValue', 'gain', 'dutyCycle', 'frequency'],
     knobableInputs: ['minValue', 'maxValue', 'gain', 'dutyCycle', 'frequency'],
