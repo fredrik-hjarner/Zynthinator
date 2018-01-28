@@ -14,8 +14,6 @@
 
 * Should not be able to connect a node to itself !!!
 
-* Flytta "NodeManager/jsx".
-
 * All MODELs should have it's outputs and inputs as getters on them!
     Makes it more dynamic!
     For example the PHASE of the OSCILLATOR can become an input!!
@@ -26,9 +24,6 @@
 
 * TODO:
     - One should be able to disable some top-right icons in SimpleWindow.
-
-* I removed the Popups over nodes,
-    add them again!
 
 * Allow the deepFreezing to be enabled and disabled in a DEBUG file.
 
@@ -150,8 +145,6 @@
     After refactorings, play the session and see if the actions
       produce exact the same outputs :)
 
-* Use absolute paths like in Backoffice.
-
 * _updateScaleAndOffset
     can probably be refactored into some Util.js.
 
@@ -189,18 +182,16 @@
       R.flip(R.prop)
     )
 
-* Bug: Delete trigger doesn't work!!
-
 * Don't use lodash, use lodash/fp.
 
 * Add pink noise. rename noise to white noise.
 
-* All nodes should have a gain!!!! Including Noise.
+* All nodes should have a gain!!!!
 
 * Implement Redux Ducks.
 
 * Web Audio API square waves look like crap!!!!!!!!1
-    So make my own one with audiobuffer
+    So make my own one with audiobuffer or Triangle + WaveShaper
 
 * Inspired by Falstad:
     Nested examples menu showing how different nodees work etc.
