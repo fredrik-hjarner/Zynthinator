@@ -14,6 +14,8 @@
 
 Not finished at all. I've made a stable ground. I can use it but I have not concentrated upon making it user-friendly for others yet.
 
+If you want it to be more user-friendly, one certain way of achieving that it to add an **issue** in which you explain the problem. That will give me motivation.
+
 ### Goals
 
 - Allow to create interesting sounds by combining and mixing basic waveforms with Web Audio API.
