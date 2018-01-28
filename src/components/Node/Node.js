@@ -9,8 +9,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   Popup,
-  // Menu,
-  // Dropdown,
   Divider
 } from 'semantic-ui-react';
 import { deleteNodeAction } from 'redux/Actions';
