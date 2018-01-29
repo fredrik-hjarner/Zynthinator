@@ -11,7 +11,10 @@ import {
   Popup,
   Divider
 } from 'semantic-ui-react';
-import { deleteNodeAction } from 'redux/Actions';
+import {
+  deleteNodeAction,
+  openModalAction
+} from 'redux/Actions';
 import {
   stateQueries,
 } from 'redux/StateQueries';
@@ -27,66 +30,90 @@ import './style.sass';
 // Node
 // ----------------------------------
 
-const Node =
-  ({ node, display, deleteNode }) => { // eslint-disable-line
-    const backgroundColor =
-      nodeTypeDefinitions[node.nodeType].ui.color;
+class Node extends React.Component {
+  onEdit =
+    node => 
+      openModalAction('CreateNodeModal', {
+        nodeType:
+          node.nodeType,
+        node,
+      });
 
-    const div = (
-      <div style={{ display, backgroundColor }} className="node">
-        {`${stateQueries.getNodeInReadableFormat(node)}`}
-      </div>
-    );
+  closeContextMenu =
+    () => {
+      
+    }
 
-    /**
-     * Simply displays node POJO.
-     */
-    // return (
-    //   <Popup
-    //     size="tiny"
-    //     trigger={div}
-    //     content={(
-    //       <pre>{JSON.stringify(node, null, 2).slice(2, -2)}</pre>
-    //     )}
-    //     position="top center"
-    //     on="click"
-    //     hoverable="false"
-    //   />
-    // );
+  render =
+    () => {
+      const { node, display, deleteNode } = this.props;
 
-    /**
-     * Trying to use my new ContextMenu class
-     */
-    return (
-      <Popup
-        className="context-menu"
-        basic
-        size="mini"
-        trigger={div}
-        content={(
-          <ContextMenu>
-            <TopContextMenuItem caption="Parameters" disabled="disabled">
-              <ContextMenuItem caption=".gain = 1.0">
-                <ContextMenuItem caption="Create knob for this" />
-                <ContextMenuItem caption="Create trigger for this" />
-              </ContextMenuItem>
-              <Divider />
-              <ContextMenuItem caption="Show node as raw json-data" />
-            </TopContextMenuItem>
-            <ContextMenuItem caption="Edit" disabled="disabled" />
-            <TopContextMenuItem caption="Connect" disabled="disabled">
-              <ContextMenuItem caption="Connect" />
-              <ContextMenuItem caption="Inject" />
-              <ContextMenuItem caption="Eject" />
-            </TopContextMenuItem>
-            <ContextMenuItem caption="Delete" onClick={deleteNode} />
-          </ContextMenu>
-        )}
-        position="bottom right"
-        on="click"
-      />
-    );
-  };
+      const backgroundColor =
+        nodeTypeDefinitions[node.nodeType].ui.color;
+
+      const div = (
+        <div style={{ display, backgroundColor }} className="node">
+          {`${stateQueries.getNodeInReadableFormat(node)}`}
+        </div>
+      );
+
+      /**
+       * Simply displays node POJO.
+       */
+      // return (
+      //   <Popup
+      //     size="tiny"
+      //     trigger={div}
+      //     content={(
+      //       <pre>{JSON.stringify(node, null, 2).slice(2, -2)}</pre>
+      //     )}
+      //     position="top center"
+      //     on="click"
+      //     hoverable="false"
+      //   />
+      // );
+
+      /**
+       * Trying to use my new ContextMenu class
+       */
+      return (
+        <Popup
+          className="context-menu"
+          basic
+          size="mini"
+          trigger={div}
+          content={(
+            <ContextMenu>
+              <TopContextMenuItem caption="Parameters" disabled="disabled">
+                <ContextMenuItem caption=".gain = 1.0">
+                  <ContextMenuItem caption="Create knob for this" />
+                  <ContextMenuItem caption="Create trigger for this" />
+                </ContextMenuItem>
+                <Divider />
+                <ContextMenuItem caption="Show node as raw json-data" />
+              </TopContextMenuItem>
+              <ContextMenuItem
+                caption="Edit"
+                onClick={() => {
+                  this.closeContextMenu();
+                  this.onEdit(node);
+                }}
+              />
+              <TopContextMenuItem caption="Connect" disabled="disabled">
+                <ContextMenuItem caption="Connect" />
+                <ContextMenuItem caption="Inject" />
+                <ContextMenuItem caption="Eject" />
+              </TopContextMenuItem>
+              <ContextMenuItem caption="Delete" onClick={deleteNode} />
+            </ContextMenu>
+          )}
+          position="bottom right"
+          on="click"
+        />
+      );
+    };
+}
+  
 
 Node.propTypes = {
   node: PropTypes.object.isRequired,

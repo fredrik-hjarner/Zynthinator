@@ -6,8 +6,8 @@ export function Home() {
     <div>
       <C.AllKnobs />
       <C.AllTriggers />
-      <C.Nodes />
-      <C.Connections />
+      {/* <C.Nodes /> */}
+      {/* <C.Connections /> */}
       <C.NodeTree />
       { /* <C.ListOfGroups /> */ }
       <C.TimeDomainVisualizers />

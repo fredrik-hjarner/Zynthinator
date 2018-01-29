@@ -1,13 +1,7 @@
 import React from 'react';
 import * as R from 'ramda';
-import {
-  Icon
-} from 'semantic-ui-react'; // eslint-disable-line
+import { Icon } from 'semantic-ui-react';
 import { SimpleWindowRedux } from 'components/SimpleWindow';
-// import {
-//   stateQueries,
-// } from 'redux/StateQueries';
-// import { stringHelpers } from 'helpers';
 import { Node } from '../Node';
 
 export const NodeTree =
@@ -17,7 +11,7 @@ export const NodeTree =
     const numConnections = connectionsInReadableFormat.length;
 
     if (numConnections < 1) {
-      return null;
+      // return null; // display only when we have at least one connection.
     }
 
     // const { allChains } = props;
@@ -29,38 +23,6 @@ export const NodeTree =
     //         chain.map(id => _.padStart(id, 4)).join('\u2192')
     //       }
     //     </div>));
-
-    // ----------------------------------
-    //
-    // ----------------------------------
-
-    // const nodesInReadableFormat =
-    //   props.alignedChains
-    //     .map(chain =>
-    //       chain
-    //         .map((nodeId) => {
-    //           if (nodeId === undefined || nodeId === null) { // I have holes in the data.
-    //             return '';
-    //           }
-    //           const node = props.nodes[nodeId];
-    //           return stateQueries.getNodeInReadableFormat(node);
-    //         })
-    //         .map(str =>
-    //           stringHelpers.setLength(
-    //             14,
-    //             str
-    //           )));
-
-    // const randomElements =
-    //   nodesInReadableFormat.map(arr => (
-    //     <div>{arr.join(' \u2192 ')}</div>
-    //   ));
-
-    // const withNilsRejected = // eslint-disable-line
-    //   /**
-    //    * alignedChains is an array of int-arrays.
-    //    */
-    //   props.alignedChains.map(chain => R.reject(R.isNil, chain));
 
     /**
      * Constructing an array of node-element-arrays.
@@ -89,13 +51,11 @@ export const NodeTree =
           </tr>
         ));
 
-    debugger;
+    // debugger;
 
     return (
       <SimpleWindowRedux title="Node tree">
         <div style={{ maxWidth: '500px', overflowX: 'scroll' }}>
-          {/* {<pre>{chainElements}</pre>} */}
-          {/* <pre>{randomElements}</pre> */}
           <table>
             {flexed}
           </table>
