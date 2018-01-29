@@ -1,6 +1,8 @@
 import React from 'react';
 import * as R from 'ramda';
-import { Icon } from 'semantic-ui-react'; // eslint-disable-line
+import {
+  Icon
+} from 'semantic-ui-react'; // eslint-disable-line
 import { SimpleWindowRedux } from 'components/SimpleWindow';
 // import {
 //   stateQueries,
@@ -54,19 +56,19 @@ export const NodeTree =
     //     <div>{arr.join(' \u2192 ')}</div>
     //   ));
 
-    const withNilsRejected = // eslint-disable-line
-      /**
-       * alignedChains is an array of int-arrays.
-       */
-      props.alignedChains.map(chain => R.reject(R.isNil, chain));
+    // const withNilsRejected = // eslint-disable-line
+    //   /**
+    //    * alignedChains is an array of int-arrays.
+    //    */
+    //   props.alignedChains.map(chain => R.reject(R.isNil, chain));
 
     /**
      * Constructing an array of node-element-arrays.
      */
     const asNodeElements =
-      withNilsRejected
+      props.alignedChains
         .map(chain => 
-          chain.map(nodeId => (<Node nodeId={nodeId} display="inline-block" />)));
+          chain.map(nodeId => (nodeId === null ? <div /> : (<Node nodeId={nodeId} display="inline-block" />))));
 
     /**
      * Then the last step is to connect them with arrow Icon:s.
@@ -74,20 +76,29 @@ export const NodeTree =
     const elements =
       asNodeElements
         .map(chain => (
-          <div style={{ whiteSpace: 'nowrap' }}>
-            {R.intersperse(<Icon name="long arrow right" color="grey" size="big" />, chain)}
-          </div>
+          // <div style={{ whiteSpace: 'nowrap' }}>
+          R.intersperse(<Icon name="long arrow right" color="grey" size="big" />, chain)
+          // </div>
         ));
 
+    const flexed =
+      elements
+        .map(row => (
+          <tr>
+            {row.map(el => <td>{el}</td>)}
+          </tr>
+        ));
 
-    // debugger;
+    debugger;
 
     return (
       <SimpleWindowRedux title="Node tree">
         <div style={{ maxWidth: '500px', overflowX: 'scroll' }}>
           {/* {<pre>{chainElements}</pre>} */}
           {/* <pre>{randomElements}</pre> */}
-          {elements}
+          <table>
+            {flexed}
+          </table>
         </div>
       </SimpleWindowRedux>
     );
