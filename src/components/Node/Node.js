@@ -31,6 +31,10 @@ import './style.sass';
 // ----------------------------------
 
 class Node extends React.Component {
+  state = {
+    open: false
+  }
+
   onEdit =
     node => 
       openModalAction('CreateNodeModal', {
@@ -39,10 +43,13 @@ class Node extends React.Component {
         node,
       });
 
-  closeContextMenu =
-    () => {
-      
-    }
+  handleClose = () => {
+    this.setState({ open: false });
+  }
+  
+  handleOpen = () => {
+    this.setState({ open: true });
+  }
 
   render =
     () => {
@@ -78,6 +85,9 @@ class Node extends React.Component {
        */
       return (
         <Popup
+          open={this.state.open}
+          onOpen={this.handleOpen}
+          onClose={this.handleClose}
           className="context-menu"
           basic
           size="mini"
@@ -95,7 +105,7 @@ class Node extends React.Component {
               <ContextMenuItem
                 caption="Edit"
                 onClick={() => {
-                  this.closeContextMenu();
+                  this.handleClose();
                   this.onEdit(node);
                 }}
               />
