@@ -1,8 +1,8 @@
 import React from 'react';
 import * as R from 'ramda';
-import { Icon } from 'semantic-ui-react';
 import { SimpleWindowRedux } from 'components/SimpleWindow';
 import { Node } from '../Node';
+import { ConnectionArrow } from '../connection-arrow';
 
 export const NodeTree =
   (props) => {
@@ -39,7 +39,7 @@ export const NodeTree =
       asNodeElements
         .map(chain => (
           // <div style={{ whiteSpace: 'nowrap' }}>
-          R.intersperse(<Icon name="long arrow right" color="grey" size="big" />, chain)
+          R.intersperse(<ConnectionArrow />, chain)
           // </div>
         ));
 

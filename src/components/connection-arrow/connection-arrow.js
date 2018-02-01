@@ -6,19 +6,18 @@
  */
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import {
   Popup,
-  Divider
+  Icon
 } from 'semantic-ui-react';
-import { openModalAction } from 'redux/Actions';
-import {
-  stateQueries,
-} from 'redux/StateQueries';
+// import {
+//   stateQueries,
+// } from 'redux/StateQueries';
 import {
   ContextMenu,
   ContextMenuItem,
-  TopContextMenuItem
+  TopContextMenuItem // eslint-disable-line
 } from 'components/semantic++';
 import './style.sass';
 
@@ -41,12 +40,10 @@ class ConnectionArrow extends React.Component {
 
   render =
     () => {
-      const { node, display } = this.props;
+      // const { node, display } = this.props;
 
       const div = (
-        <div style={{ display, backgroundColor }} className="node">
-          {`${stateQueries.getNodeInReadableFormat(node)}`}
-        </div>
+        <Icon name="long arrow right" color="grey" size="big" />
       );
 
       /**
@@ -73,10 +70,9 @@ class ConnectionArrow extends React.Component {
     };
 }
   
-
 ConnectionArrow.propTypes = {
-  node: PropTypes.object.isRequired,
-  display: PropTypes.string.isRequired
+  // node: PropTypes.object.isRequired,
+  // display: PropTypes.string.isRequired
 };
 
 // ----------------------------------
@@ -84,9 +80,9 @@ ConnectionArrow.propTypes = {
 // ----------------------------------
 
 const mapStateToProps =
-  (state, { nodeId }) => ({
-    node:
-      stateQueries.getAllNodes(state)[nodeId]
+  (state, { nodeId }) => ({ // eslint-disable-line
+    // node:
+    //   stateQueries.getAllNodes(state)[nodeId]
   });
 
 const mapDispatchToProps =
@@ -101,8 +97,8 @@ const ConnectionArrowContainer =
   )(ConnectionArrow);
 
 ConnectionArrowContainer.propTypes = {
-  nodeId: PropTypes.number.isRequired,
-  display: PropTypes.string.isRequired
+  // nodeId: PropTypes.number.isRequired,
+  // display: PropTypes.string.isRequired
 };
 
 export { ConnectionArrowContainer as ConnectionArrow };
