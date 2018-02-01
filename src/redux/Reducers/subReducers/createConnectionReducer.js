@@ -37,11 +37,13 @@ export const createConnectionReducer =
     childNodes.forEach((childNode) => {
       // connect each parent node to this child node.
       parentNodeIds.forEach((parentNodeId) => {
+        // create a Connection
         connectionsValues.push({
           id: ++connectionId,
           parentNodeId,
           childNodeId: childNode.nodeId,
           childNodeInput: childNode.input,
+          enabled: true
         });
       });
     });
