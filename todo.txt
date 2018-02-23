@@ -220,3 +220,14 @@
     By clicking an arrow symbol in a displayed connection
     I toggle enabled/disabled, so I can test to connect/disconnect
     parts of the tree on the fly in real-time.
+
+* ConnectionArrow component should get the connection or
+    connectionId as a prop.
+    Should be possible to trigger a disableConnection(id)
+    action by clicking on a ConnectionArrow.
+
+* Create a CrashModal that shows
+    at window.onerror
+    and allows to
+      - save history
+      - reset localStorage

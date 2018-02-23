@@ -41,7 +41,8 @@
     "no-trailing-spaces": 0,
     "no-multi-spaces": ["error", { "ignoreEOLComments": true }],
     "comma-dangle": 0,
-    "react/jsx-filename-extension": 0
+    "react/jsx-filename-extension": 0,
+    "padded-blocks": 0
   },
   "extends": ["airbnb"]
 }

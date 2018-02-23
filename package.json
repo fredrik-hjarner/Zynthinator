@@ -1,6 +1,6 @@
 {
   "name": "zynthinator",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Das Zynth!",
   "main": "webpack.config.js",
   "dependencies": {
@@ -9,7 +9,6 @@
     "file-saver": "^1.3.3",
     "history": "^4.7.2",
     "lodash": "^4.17.4",
-    "lz-string": "^1.4.4",
     "prop-types": "^15.6.0",
     "ramda": "^0.25.0",
     "react": "^16.2.0",
