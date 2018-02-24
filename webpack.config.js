@@ -6,7 +6,7 @@ const path = require('path');
 /**
  * Just used to output some text in the console when building.
  */
-const entryPath = path.join(__dirname, 'src/app.jsx');
+const entryPath = path.join(__dirname, 'src/app.js');
 const outputPath = path.join(__dirname, 'build');
 const indexHtmlPath = path.join(__dirname, 'src/index.html');
 

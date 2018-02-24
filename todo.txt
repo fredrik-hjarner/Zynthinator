@@ -214,8 +214,6 @@
       3. then add a UI component to the state.
       4. Then the UI listens to that state and draws it.
 
-* Only draw the connections window if there are any connections.
-
 * Disable/enable connections.
     By clicking an arrow symbol in a displayed connection
     I toggle enabled/disabled, so I can test to connect/disconnect
@@ -234,3 +232,5 @@
 
 * Don't always split up into Dumb, Smart and Redux Components.
     Only do so if a file exceeds 100 lines of code.
+
+* Rename all .jsx to .js
