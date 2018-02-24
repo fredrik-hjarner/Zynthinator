@@ -2,7 +2,7 @@ import React from 'react';
 import {
   TriggerDumb,
 } from './TriggerDumb';
-import * as Actions from 'redux/Actions';
+import { clickTriggerAction } from 'redux/modules/trigger';
 
 export class TriggerControlled extends React.Component {
   state = {
@@ -13,7 +13,7 @@ export class TriggerControlled extends React.Component {
   handlers = {
     onTriggerClick:
       () =>
-        Actions.clickTriggerAction(this.props.trigger.id),
+        clickTriggerAction(this.props.trigger.id),
   }
 
   render =

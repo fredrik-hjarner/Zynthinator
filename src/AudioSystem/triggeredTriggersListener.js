@@ -1,10 +1,6 @@
-import {
-  stateQueries,
-} from 'redux/StateQueries';
-import * as Actions from 'redux/Actions';
-import {
-  nodes,
-} from './nodes';
+import { stateQueries } from 'redux/StateQueries';
+import { triggerHandledAction } from 'redux/modules/trigger';
+import { nodes } from './nodes';
 
 class TriggeredTriggersListener {
   onActionWasDispatched =
@@ -20,7 +16,7 @@ class TriggeredTriggersListener {
         const node =
           nodes.nodes[trig.connectedToWhichNode];
         node[trig.connectedToWhichParam]();
-        Actions.triggerHandledAction(trig.id);
+        triggerHandledAction(trig.id);
       });
     }
 }
