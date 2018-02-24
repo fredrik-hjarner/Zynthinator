@@ -9,7 +9,7 @@ import {
 } from 'AudioSystem';
 import {
   uiFdAnalyserChangeParamsAction,
-} from 'redux/Actions';
+} from 'redux/modules/ui';
 import { SimpleWindowRedux } from 'components/SimpleWindow';
 import {
   FrequencyDomainVisualizerSettingsDumb,

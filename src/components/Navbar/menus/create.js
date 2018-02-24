@@ -4,7 +4,7 @@ import {
   TopMenuItem,
   MenuItem
 } from 'components/semantic++';
-import { openModalAction } from 'redux/Actions';
+import { openModalAction } from 'redux/modules/ui';
 
 const nodeItem =
   (nodeType, asReadable) => (

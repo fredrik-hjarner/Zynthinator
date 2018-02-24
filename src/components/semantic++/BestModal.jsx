@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Header, Icon, Modal } from 'semantic-ui-react';
-import * as Actions from 'redux/Actions';
+import { closeModalAction } from 'redux/modules/ui';
 
 export class BestModal extends React.Component {
   render =
@@ -26,7 +26,7 @@ export class BestModal extends React.Component {
               basic
               color="red"
               inverted
-              onClick={() => Actions.closeModalAction()}
+              onClick={() => closeModalAction()}
             >
               <Icon name="remove" /> Cancel
             </Button>
@@ -34,7 +34,7 @@ export class BestModal extends React.Component {
               color="green"
               inverted
               onClick={() => {
-                  Actions.closeModalAction();
+                  closeModalAction();
                   this.props.onConfirm();
                 }}
             >

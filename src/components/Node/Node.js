@@ -13,8 +13,10 @@ import {
 } from 'semantic-ui-react';
 import {
   deleteNodeAction,
+} from 'redux/modules/node';
+import {
   openModalAction
-} from 'redux/Actions';
+} from 'redux/modules/ui';
 import {
   stateQueries,
 } from 'redux/StateQueries';

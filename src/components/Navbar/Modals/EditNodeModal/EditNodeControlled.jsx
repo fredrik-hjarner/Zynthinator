@@ -1,6 +1,6 @@
 import React from 'react';
 import { EditNodeDumb } from './EditNodeDumb';
-import { openModalAction } from 'redux/Actions';
+import { openModalAction } from 'redux/modules/ui';
 
 export class EditNodeControlled extends React.Component {
   constructor(props) {

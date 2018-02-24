@@ -3,7 +3,7 @@ import {
   TopMenuItem,
   MenuItem
 } from 'components/semantic++';
-import { openModalAction } from 'redux/Actions';
+import { openModalAction } from 'redux/modules/ui';
 
 export const Modify = () => (
   <TopMenuItem caption="Modify">

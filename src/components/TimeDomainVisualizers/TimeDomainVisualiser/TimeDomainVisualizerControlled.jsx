@@ -1,21 +1,15 @@
 import React from 'react';
 import * as R from 'ramda';
 import _ from 'lodash';
-import {
-  uiTdAnalyserChangeParamsAction,
-} from 'redux/Actions';
+import { uiTdAnalyserChangeParamsAction } from 'redux/modules/ui';
 import {
   nodes,
   InfiniteTimeDomainVisualizer,
-  audioContext,
+  audioContext
 } from '../../../AudioSystem';
 import { SimpleWindowRedux } from '../../SimpleWindow';
-import {
-  TimeDomainVisualizerSettingsDumb,
-} from './TimeDomainVisualizerSettingsDumb';
-import {
-  CanvasContainer,
-} from './CanvasContainer';
+import { TimeDomainVisualizerSettingsDumb } from './TimeDomainVisualizerSettingsDumb';
+import { CanvasContainer } from './CanvasContainer';
 
 export class TimeDomainVisualizerControlled extends React.Component {
   componentDidMount() {
