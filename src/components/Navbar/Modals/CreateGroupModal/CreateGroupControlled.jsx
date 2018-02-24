@@ -1,8 +1,6 @@
 import React from 'react';
 import { CreateGroupDumb } from './CreateGroupDumb';
-import {
-  createGroupAction,
-} from 'redux/Actions';
+import { createGroupAction } from 'redux/modules/group';
 
 export class CreateGroupControlled extends React.Component {
   constructor(props) {
