@@ -1,6 +1,6 @@
 import React from 'react';
 import { DeleteAllNodesDumb } from './DeleteAllNodesDumb';
-import { deleteAllNodesAction } from 'redux/Actions';
+import { deleteAllNodesAction } from 'redux/modules/node';
 
 export class DeleteAllNodesControlled extends React.Component {
   onConfirm =

@@ -1,9 +1,9 @@
 import {
   store,
-} from '../../redux/Store';
+} from 'redux/Store';
 import {
   deleteAllNodesAction,
-} from '../../redux/Actions';
+} from 'redux/modules/node';
 
 export const importHistory =
   (history, delay = 0) => {
