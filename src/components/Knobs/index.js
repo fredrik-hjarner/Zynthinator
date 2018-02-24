@@ -1,1 +1,1 @@
-export { AllKnobsRedux as AllKnobs } from './AllKnobsRedux';
+export * from './AllKnobs';

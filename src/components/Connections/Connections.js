@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'semantic-ui-react';
 import { SimpleWindowRedux } from 'components/SimpleWindow';
-import { Node } from '../Node';
+import { Node } from 'components/Node';
+import { connect } from 'react-redux';
+import { stateQueries } from 'redux/StateQueries';
 
-export const Connections =
+const Connections =
   ({ connections }) => {
     // get the list of all nodes
     const numConnections = connections.length;
@@ -33,3 +35,18 @@ export const Connections =
 Connections.propTypes = {
   connections: PropTypes.object.isRequired
 };
+
+// ----------------------
+// Redux
+// ----------------------
+
+const mapStateToProps =
+  state => ({
+    connections:
+      stateQueries.getAllConnections(state)
+  });
+
+const ConnectionsContainer =
+  connect(mapStateToProps)(Connections);
+
+export { ConnectionsContainer as Connections };

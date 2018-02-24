@@ -1,13 +1,24 @@
 import React from 'react';
 import { moveKnobAction } from 'redux/modules/knob';
-import {
-  mathHelpers,
-} from 'helpers';
-import {
-  KnobDumb,
-} from './KnobDumb';
+import { mathHelpers } from 'helpers';
 
-export class KnobControlled extends React.Component {
+const Knob =
+  props => (
+    <div>
+      <p>[{props.knob.id}] {props.knob.name}</p>
+      <p>range: {props.knob.minValue} to {props.knob.maxValue}</p>
+      <p>val: {props.displayValue}</p>
+      <input
+        type="range"
+        min={props.knob.minValue}
+        max={props.knob.maxValue}
+        step="0.0001"
+        onChange={event => props.onKnobMove(parseFloat(event.target.value))}
+      />
+    </div>
+  );
+
+class KnobControlled extends React.Component {
   state = {
     value: undefined,
     displayValue: undefined,
@@ -56,7 +67,7 @@ export class KnobControlled extends React.Component {
 
   render =
     () => (
-      <KnobDumb
+      <Knob
         {...this.state}
         {...this.props}
         {...this.handlers}
@@ -72,3 +83,5 @@ export class KnobControlled extends React.Component {
     gain =>
       0.5 ** (Math.log(gain) / Math.log(0.1));
 */
+
+export { KnobControlled as Knob };
