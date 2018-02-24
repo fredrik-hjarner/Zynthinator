@@ -1,1 +1,1 @@
-export * from './ListOfGroupsRedux';
+export * from './ListOfGroups';

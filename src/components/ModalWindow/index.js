@@ -1,3 +1,1 @@
-export {
-  ModalWindowRedux as ModalWindow,
-} from './ModalWindowRedux';
+export * from './ModalWindow';

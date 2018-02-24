@@ -5,7 +5,7 @@ import {
   MenuItem
 } from 'components/semantic++';
 import { ReplayAHistoryFile } from '../ReplayAHistoryFile';
-import { DownloadHistoryFileRedux } from '../DownloadHistoryFileRedux';
+import { DownloadHistoryFile } from '../DownloadHistoryFile';
 
 export const History = () => (
   <TopMenuItem caption="History">
@@ -15,7 +15,7 @@ export const History = () => (
     <MenuItem disabled="disabled" caption="Download state file" />
     <MenuItem disabled="disabled" caption="Upload state file" />
     <Dropdown.Divider />
-    <DownloadHistoryFileRedux />
+    <DownloadHistoryFile />
     <ReplayAHistoryFile />
   </TopMenuItem>
 );

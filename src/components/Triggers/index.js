@@ -1,1 +1,1 @@
-export { AllTriggersRedux as AllTriggers } from './AllTriggersRedux';
+export * from './AllTriggers';

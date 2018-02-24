@@ -2,21 +2,20 @@ import React from 'react';
 import { moveKnobAction } from 'redux/modules/knob';
 import { mathHelpers } from 'helpers';
 
-const Knob =
-  props => (
-    <div>
-      <p>[{props.knob.id}] {props.knob.name}</p>
-      <p>range: {props.knob.minValue} to {props.knob.maxValue}</p>
-      <p>val: {props.displayValue}</p>
-      <input
-        type="range"
-        min={props.knob.minValue}
-        max={props.knob.maxValue}
-        step="0.0001"
-        onChange={event => props.onKnobMove(parseFloat(event.target.value))}
-      />
-    </div>
-  );
+const Knob = props => (
+  <div>
+    <p>[{props.knob.id}] {props.knob.name}</p>
+    <p>range: {props.knob.minValue} to {props.knob.maxValue}</p>
+    <p>val: {props.displayValue}</p>
+    <input
+      type="range"
+      min={props.knob.minValue}
+      max={props.knob.maxValue}
+      step="0.0001"
+      onChange={event => props.onKnobMove(parseFloat(event.target.value))}
+    />
+  </div>
+);
 
 class KnobControlled extends React.Component {
   state = {
@@ -25,54 +24,52 @@ class KnobControlled extends React.Component {
   }
 
   handlers = {
-    onKnobMove:
-      (value) => {
-        const {
-          knob,
-        } = this.props;
-        let displayValue;
-        switch (knob.function) {
-          case 'linear':
-            // do nothing
-            displayValue = value;
-            break;
-          case 'exponential':
-            // convert value to exponential range.
-            displayValue =
-              mathHelpers.linearToExponential(
-                this.props.knob.minValue,
-                this.props.knob.maxValue,
-                value,
-              );
-            break;
-          case 'logarithmic':
-            // convert value to exponential range.
-            displayValue = mathHelpers.linearToLogarithmic(
+    onKnobMove: (value) => {
+      const {
+        knob,
+      } = this.props;
+      let displayValue;
+      switch (knob.function) {
+        case 'linear':
+          // do nothing
+          displayValue = value;
+          break;
+        case 'exponential':
+          // convert value to exponential range.
+          displayValue =
+            mathHelpers.linearToExponential(
               this.props.knob.minValue,
               this.props.knob.maxValue,
               value,
             );
-            break;
-          default:
-            alert('Error');
-            debugger;
-        }
-        this.setState({
-          value,
-          displayValue,
-        });
-        moveKnobAction(this.props.knob.id, displayValue);
-      },
+          break;
+        case 'logarithmic':
+          // convert value to exponential range.
+          displayValue = mathHelpers.linearToLogarithmic(
+            this.props.knob.minValue,
+            this.props.knob.maxValue,
+            value,
+          );
+          break;
+        default:
+          alert('Error');
+          debugger;
+      }
+      this.setState({
+        value,
+        displayValue,
+      });
+      moveKnobAction(this.props.knob.id, displayValue);
+    },
   }
 
-  render =
-    () => (
-      <Knob
-        {...this.state}
-        {...this.props}
-        {...this.handlers}
-      />
-    )
+  render = () => (
+    <Knob
+      {...this.state}
+      {...this.props}
+      {...this.handlers}
+    />
+  )
 }
 
 /*

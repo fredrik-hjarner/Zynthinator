@@ -24,20 +24,18 @@ const AllKnobs =
 // Redux
 // ----------------------
 
-const mapStateToProps =
-  (state) => {
-    const {
-      knobs,
-    } = state.nodeManagement;
-    return {
-      knobs,
-    };
+const mapStateToProps = (state) => {
+  const {
+    knobs,
+  } = state.nodeManagement;
+  return {
+    knobs,
   };
+};
 
-const AllKnobsRedux =
-  connect(
-    mapStateToProps,
-    {},
-  )(AllKnobs);  
+const AllKnobsRedux = connect(
+  mapStateToProps,
+  {},
+)(AllKnobs);
 
 export { AllKnobsRedux as AllKnobs };

@@ -1,12 +1,9 @@
 import React from 'react';
-import {
-  stateQueries,
-} from 'redux/StateQueries';
-import {
-  SimpleWindowRedux,
-} from '../SimpleWindow';
+import { stateQueries } from 'redux/StateQueries';
+import { SimpleWindowRedux } from 'components/SimpleWindow';
+import { connect } from 'react-redux';
 
-export const ListOfGroupsDumb =
+const ListOfGroups =
   (props) => {
     const {
       nodes,
@@ -40,3 +37,24 @@ export const ListOfGroupsDumb =
       </SimpleWindowRedux>
     );
   };
+
+const mapStateToProps =
+  (state) => {
+    const {
+      nodes,
+      groups,
+    } = state.nodeManagement;
+
+    return {
+      nodes,
+      groups,
+    };
+  };
+
+const ListOfGroupsRedux =
+  connect(
+    mapStateToProps,
+    {},
+  )(ListOfGroups);
+
+export { ListOfGroupsRedux as ListOfGroups };
