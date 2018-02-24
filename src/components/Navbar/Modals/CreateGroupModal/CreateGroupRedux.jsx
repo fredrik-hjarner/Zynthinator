@@ -1,12 +1,8 @@
-import {
-  connect,
-} from 'react-redux';
-import {
-  CreateGroupControlled,
-} from './CreateGroupControlled';
+import { connect } from 'react-redux';
+import { CreateGroupControlled } from './CreateGroupControlled';
 import {
   stateQueries,
-  memoizedStateQueries,
+  memoizedStateQueries
 } from 'redux/StateQueries';
 
 const mapStateToProps =

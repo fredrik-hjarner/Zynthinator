@@ -43,7 +43,8 @@
     "comma-dangle": 0,
     "react/jsx-filename-extension": 0,
     "padded-blocks": 0,
-    "import/first": 0
+    "import/first": 0,
+    "object-curly-newline": 0
   },
   "extends": ["airbnb"]
 }
