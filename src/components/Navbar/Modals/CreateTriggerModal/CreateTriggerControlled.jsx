@@ -1,10 +1,7 @@
 import React from 'react';
 import { CreateTriggerDumb } from './CreateTriggerDumb';
-import {
-  createTriggerAction,
-  stateQueries,
-  // memoizedStateQueries,
-} from '../commonImports';
+import { createTriggerAction } from 'redux/Actions';
+import { stateQueries } from 'redux/StateQueries';
 
 export class CreateTriggerControlled extends React.Component {
   constructor(props) {

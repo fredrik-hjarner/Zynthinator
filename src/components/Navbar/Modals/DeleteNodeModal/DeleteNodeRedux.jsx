@@ -4,9 +4,7 @@ import {
 import {
   DeleteNodeControlled,
 } from './DeleteNodeControlled';
-import {
-  memoizedStateQueries,
-} from '../commonImports';
+import { memoizedStateQueries } from 'redux/StateQueries';
 
 const mapStateToProps =
   (state, ownProps) => ({

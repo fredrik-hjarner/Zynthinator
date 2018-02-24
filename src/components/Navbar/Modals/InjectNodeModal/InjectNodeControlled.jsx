@@ -1,9 +1,6 @@
 import React from 'react';
-// import * as R from 'ramda';
 import { InjectNodeDumb } from './InjectNodeDumb';
-import {
-  injectNodeAction,
-} from '../commonImports';
+import { injectNodeAction } from 'redux/Actions';
 
 export class InjectNodeControlled extends React.Component {
   constructor(props) {

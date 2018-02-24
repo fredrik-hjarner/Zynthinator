@@ -1,7 +1,5 @@
-import {
-  actionTypes,
-  store,
-} from './commonImports';
+import { store } from 'redux/Store';
+import { actionTypes } from 'redux/Constants';
 
 export const createConnectionAction =
   (params) => {

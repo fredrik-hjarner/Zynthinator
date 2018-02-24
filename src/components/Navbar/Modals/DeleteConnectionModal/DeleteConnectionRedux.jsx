@@ -4,9 +4,7 @@ import {
 import {
   DeleteConnectionControlled,
 } from './DeleteConnectionControlled';
-import {
-  memoizedStateQueries,
-} from '../commonImports';
+import { memoizedStateQueries } from 'redux/StateQueries';
 
 const mapStateToProps =
   (state, ownProps) => ({

@@ -7,7 +7,7 @@ import {
 import {
   stateQueries,
   memoizedStateQueries,
-} from '../commonImports';
+} from 'redux/StateQueries';
 
 const mapStateToProps =
   (state, ownProps) => ({

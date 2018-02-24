@@ -1,9 +1,7 @@
 import React from 'react';
 import * as Types from 'NodeTypeDefinitions';
 import { CreateNodeDumb } from './CreateNodeDumb';
-import {
-  createNodeAction,
-} from '../commonImports';
+import { createNodeAction } from 'redux/Actions';
 
 export class CreateNodeControlled extends React.Component {
   constructor(props) {

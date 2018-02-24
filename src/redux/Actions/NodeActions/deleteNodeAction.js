@@ -1,7 +1,5 @@
-import {
-  actionTypes,
-  store,
-} from './commonImports';
+import { store } from 'redux/Store';
+import { actionTypes } from 'redux/Constants';
 
 /**
  * @param nodes An array of node id:s.

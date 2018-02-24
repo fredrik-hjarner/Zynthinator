@@ -4,9 +4,7 @@ import {
 import {
   CreateTriggerControlled,
 } from './CreateTriggerControlled';
-import {
-  memoizedStateQueries,
-} from '../commonImports';
+import { memoizedStateQueries } from 'redux/StateQueries';
 
 const mapStateToProps =
   (state) => {

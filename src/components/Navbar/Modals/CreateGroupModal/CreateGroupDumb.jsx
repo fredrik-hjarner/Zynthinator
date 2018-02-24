@@ -3,7 +3,7 @@ import {
   Dropdown,
   Form,
 } from 'semantic-ui-react';
-import { CommonModal } from '../commonImports';
+import { CommonModal } from 'components/Navbar/Modals/CommonModal';
 
 export const CreateGroupDumb =
   (props) => {

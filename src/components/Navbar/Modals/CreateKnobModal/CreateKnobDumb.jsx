@@ -1,8 +1,6 @@
 import React from 'react';
 import { Form } from 'semantic-ui-react';
-import {
-  CommonModal,
-} from '../commonImports';
+import { CommonModal } from 'components/Navbar/Modals/CommonModal';
 
 export const CreateKnobDumb =
   (props) => {

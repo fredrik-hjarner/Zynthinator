@@ -1,9 +1,7 @@
 import React from 'react';
 import * as R from 'ramda';
 import { DeleteKnobDumb } from './DeleteKnobDumb';
-import {
-  deleteKnobAction,
-} from '../commonImports';
+import { deleteKnobAction } from 'redux/Actions';
 
 export class DeleteKnobControlled extends React.Component {
   constructor(props) {

@@ -2,7 +2,7 @@ import React from 'react';
 import { CreateGroupDumb } from './CreateGroupDumb';
 import {
   createGroupAction,
-} from '../commonImports';
+} from 'redux/Actions';
 
 export class CreateGroupControlled extends React.Component {
   constructor(props) {

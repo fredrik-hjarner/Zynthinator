@@ -231,3 +231,6 @@
     and allows to
       - save history
       - reset localStorage
+
+* Don't always split up into Dumb, Smart and Redux Components.
+    Only do so if a file exceeds 100 lines of code.

@@ -3,9 +3,7 @@ import {
   Form,
   Dropdown,
 } from 'semantic-ui-react';
-import {
-  CommonModal,
-} from '../commonImports';
+import { CommonModal } from 'components/Navbar/Modals/CommonModal';
 
 export const CreateTriggerDumb =
   (props) => {

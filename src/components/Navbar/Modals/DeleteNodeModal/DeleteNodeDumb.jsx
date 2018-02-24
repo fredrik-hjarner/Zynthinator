@@ -3,7 +3,7 @@ import {
   Form,
   Dropdown,
 } from 'semantic-ui-react';
-import { BestModal } from '../commonImports';
+import { BestModal } from 'components/semantic++';
 
 export const DeleteNodeDumb =
   (props) => {

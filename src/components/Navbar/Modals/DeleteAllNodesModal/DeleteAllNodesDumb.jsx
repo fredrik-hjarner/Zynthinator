@@ -1,5 +1,5 @@
 import React from 'react';
-import { BestModal } from '../commonImports';
+import { BestModal } from 'components/semantic++';
 
 export const DeleteAllNodesDumb =
   props => (

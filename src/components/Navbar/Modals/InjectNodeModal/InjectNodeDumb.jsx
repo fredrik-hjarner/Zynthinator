@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Form,
 } from 'semantic-ui-react';
-import { BestModal } from '../commonImports';
+import { BestModal } from 'components/semantic++';
 
 export const InjectNodeDumb =
   (props) => {

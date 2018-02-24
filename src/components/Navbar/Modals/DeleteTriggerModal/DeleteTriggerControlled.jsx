@@ -1,10 +1,7 @@
 import React from 'react';
 import * as R from 'ramda';
 import { DeleteTriggerDumb } from './DeleteTriggerDumb';
-import {
-  deleteTriggerAction,
-  // stateQueries,
-} from '../commonImports';
+import { deleteTriggerAction } from 'redux/Actions';
 
 export class DeleteTriggerControlled extends React.Component {
   constructor(props) {

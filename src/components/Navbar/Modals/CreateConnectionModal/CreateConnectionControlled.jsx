@@ -1,11 +1,8 @@
 import React from 'react';
-// import _ from 'lodash';
-// import * as R from 'ramda';
 import { CreateConnectionDumb } from './CreateConnectionDumb';
 import {
   createConnectionAction,
-  // stateQueries,
-} from '../commonImports';
+} from 'redux/Actions';
 
 export class CreateConnectionControlled extends React.Component {
   constructor(props) {

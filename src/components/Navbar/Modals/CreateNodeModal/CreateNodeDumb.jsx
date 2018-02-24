@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input } from 'semantic-ui-react';
-import { BestModal } from '../commonImports';
-import * as Types from '../../../../NodeTypeDefinitions';
+import { BestModal } from 'components/semantic++';
+import * as Types from 'NodeTypeDefinitions';
 
 export const CreateNodeDumb =
   (props) => {

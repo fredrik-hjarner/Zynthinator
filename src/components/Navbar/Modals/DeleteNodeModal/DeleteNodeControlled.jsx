@@ -1,8 +1,6 @@
 import React from 'react';
 import { DeleteNodeDumb } from './DeleteNodeDumb';
-import {
-  deleteNodeAction,
-} from '../commonImports';
+import { deleteNodeAction } from 'redux/Actions';
 
 export class DeleteNodeControlled extends React.Component {
   constructor(props) {

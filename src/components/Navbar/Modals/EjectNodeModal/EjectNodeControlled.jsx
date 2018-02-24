@@ -1,9 +1,6 @@
 import React from 'react';
-// import * as R from 'ramda';
 import { EjectNodeDumb } from './EjectNodeDumb';
-import {
-  ejectNodeAction,
-} from '../commonImports';
+import { ejectNodeAction } from 'redux/Actions';
 
 export class EjectNodeControlled extends React.Component {
   constructor(props) {

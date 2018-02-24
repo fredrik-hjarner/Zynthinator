@@ -1,10 +1,7 @@
 import React from 'react';
 import { CreateKnobDumb } from './CreateKnobDumb';
-import {
-  createKnobAction,
-  stateQueries,
-  // memoizedStateQueries,
-} from '../commonImports';
+import { createKnobAction } from 'redux/Actions';
+import { stateQueries } from 'redux/StateQueries';
 
 export class CreateKnobControlled extends React.Component {
   constructor(props) {
