@@ -1,9 +1,6 @@
 export * from './deleteConnectionReducer';
 export * from './createConnectionReducer';
 export * from './createGroupReducer';
-export * from './createKnobReducer';
-export * from './moveKnobReducer';
-export * from './deleteKnobReducer';
 export * from './createTriggerReducer';
 export * from './clickTriggerReducer';
 export * from './addToHistoryReducer';
@@ -25,3 +22,5 @@ export * from './calculateHighestUiIdReducer';
 export * from './node/node';
 
 export * from './ui/ui';
+
+export * from './knob/knob';
