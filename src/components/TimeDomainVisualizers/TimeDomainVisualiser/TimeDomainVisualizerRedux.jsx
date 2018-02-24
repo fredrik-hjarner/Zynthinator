@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { TimeDomainVisualizerControlled } from './TimeDomainVisualizerControlled';
 import {
   stateQueries,
-} from '../../../redux';
+} from 'redux/StateQueries';
 
 const mapStateToProps =
   (state, ownProps) => {

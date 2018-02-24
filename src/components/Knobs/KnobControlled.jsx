@@ -1,11 +1,11 @@
 import React from 'react';
+import * as Actions from 'redux/Actions';
+import {
+  mathHelpers,
+} from 'helpers';
 import {
   KnobDumb,
 } from './KnobDumb';
-import * as Actions from '../../redux';
-import {
-  mathHelpers,
-} from '../../helpers';
 
 export class KnobControlled extends React.Component {
   state = {

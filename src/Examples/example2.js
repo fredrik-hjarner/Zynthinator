@@ -1,6 +1,6 @@
 import {
   importHistory,
-} from '../redux';
+} from 'redux/ReduxHistory';
 
 let history;
 

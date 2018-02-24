@@ -2,9 +2,6 @@ import {
   connect,
 } from 'react-redux';
 import {
-// stateQueries,
-} from '../../redux';
-import {
   ListOfGroupsDumb,
 } from './ListOfGroupsDumb';
 

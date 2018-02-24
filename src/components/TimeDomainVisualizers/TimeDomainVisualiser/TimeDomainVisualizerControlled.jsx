@@ -2,6 +2,9 @@ import React from 'react';
 import * as R from 'ramda';
 import _ from 'lodash';
 import {
+  uiTdAnalyserChangeParamsAction,
+} from 'redux/Actions';
+import {
   nodes,
   InfiniteTimeDomainVisualizer,
   audioContext,
@@ -10,9 +13,6 @@ import { SimpleWindowRedux } from '../../SimpleWindow';
 import {
   TimeDomainVisualizerSettingsDumb,
 } from './TimeDomainVisualizerSettingsDumb';
-import {
-  uiTdAnalyserChangeParamsAction,
-} from '../../../redux';
 import {
   CanvasContainer,
 } from './CanvasContainer';

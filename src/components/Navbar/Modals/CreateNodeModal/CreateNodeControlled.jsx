@@ -1,9 +1,9 @@
 import React from 'react';
+import * as Types from 'NodeTypeDefinitions';
 import { CreateNodeDumb } from './CreateNodeDumb';
 import {
   createNodeAction,
 } from '../commonImports';
-import * as Types from '../../../../NodeTypeDefinitions';
 
 export class CreateNodeControlled extends React.Component {
   constructor(props) {

@@ -1,10 +1,10 @@
 import React from 'react';
 import {
+  stateQueries,
+} from 'redux/StateQueries';
+import {
   SimpleWindowRedux,
 } from '../SimpleWindow';
-import {
-  stateQueries,
-} from '../../redux';
 
 export const ListOfGroupsDumb =
   (props) => {

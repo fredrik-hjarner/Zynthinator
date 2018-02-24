@@ -2,7 +2,7 @@ import React from 'react';
 import {
   TriggerDumb,
 } from './TriggerDumb';
-import * as Actions from '../../redux';
+import * as Actions from 'redux/Actions';
 
 export class TriggerControlled extends React.Component {
   state = {

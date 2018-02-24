@@ -4,13 +4,11 @@ import {
   Button,
 } from 'semantic-ui-react';
 import {
-  push,
+  push
 } from 'react-router-redux';
 import './styles.sass';
-import {
-  store,
-  stateQueries,
-} from '../redux';
+import { stateQueries } from 'redux/StateQueries';
+import { store } from 'redux/Store';
 
 export const Splash =
   () => (

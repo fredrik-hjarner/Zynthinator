@@ -3,7 +3,7 @@ import {
   TopMenuItem,
   MenuItem
 } from 'components/semantic++';
-import { openModalAction } from '../../../redux';
+import { openModalAction } from 'redux/Actions';
 
 export const Connect = () => (
   <TopMenuItem caption="Connect">

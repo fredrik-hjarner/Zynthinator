@@ -10,7 +10,7 @@ import {
   Switch,
 } from 'react-router-dom';
 import { Layout } from './components/Layout';
-import { store } from './redux';
+import { store } from 'redux/Store';
 import { saveState } from './webStorage';
 import {
   nodesListener,

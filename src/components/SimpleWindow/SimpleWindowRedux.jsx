@@ -2,9 +2,6 @@ import {
   connect,
 } from 'react-redux';
 import {
-// changeMasterVolumeAction,
-} from '../../redux';
-import {
   SimpleWindowControlled,
 } from './SimpleWindowControlled';
 
@@ -20,16 +17,9 @@ const mapStateToProps =
     };
   };
 
-const mapDispatchToProps =
-  () => ({
-    /* onMasterVolumeChange:
-      () =>
-        changeMasterVolumeAction(), */
-  });
-
 export const SimpleWindowRedux =
   connect(
     mapStateToProps,
-    mapDispatchToProps,
+    null,
   )(SimpleWindowControlled);
 

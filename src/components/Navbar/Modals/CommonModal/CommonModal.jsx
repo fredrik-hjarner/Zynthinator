@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input } from 'semantic-ui-react';
-import { BestModal } from '../../../semantic++';
+import { BestModal } from 'components/semantic++';
 
 export const CommonModal =
   (props) => {

@@ -4,7 +4,7 @@ import {
 } from 'semantic-ui-react';
 import {
   importHistory,
-} from '../../redux';
+} from 'redux/ReduxHistory';
 
 export class ReplayAHistoryFile extends React.Component {
   state = {

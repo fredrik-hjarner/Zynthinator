@@ -60,7 +60,9 @@ class ConnectionArrow extends React.Component {
           trigger={div}
           content={(
             <ContextMenu>
+              <ContextMenuItem caption="Inject node here" disabled="disabled" />
               <ContextMenuItem caption="Disable" />
+              <ContextMenuItem caption="Disconnect" disabled="disabled" />
             </ContextMenu>
           )}
           position="bottom right"

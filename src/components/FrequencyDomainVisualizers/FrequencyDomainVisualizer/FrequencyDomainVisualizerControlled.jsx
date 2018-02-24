@@ -10,7 +10,7 @@ import {
 import {
   uiFdAnalyserChangeParamsAction,
 } from 'redux/Actions';
-import { SimpleWindowRedux } from '../../SimpleWindow';
+import { SimpleWindowRedux } from 'components/SimpleWindow';
 import {
   FrequencyDomainVisualizerSettingsDumb,
 } from './FrequencyDomainVisualizerSettingsDumb';

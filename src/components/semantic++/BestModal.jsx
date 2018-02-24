@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Header, Icon, Modal } from 'semantic-ui-react';
-import * as Actions from '../../redux';
+import * as Actions from 'redux/Actions';
 
 export class BestModal extends React.Component {
   render =

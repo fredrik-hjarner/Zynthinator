@@ -3,8 +3,8 @@ import { NodeTree } from './NodeTree';
 import {
   memoizedStateQueries,
   stateQueries,
-  renderNodeTree,
-} from '../../redux';
+  renderNodeTree
+} from 'redux/StateQueries';
 
 const mapStateToProps =
   state => ({
