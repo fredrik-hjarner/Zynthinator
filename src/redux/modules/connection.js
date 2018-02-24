@@ -1,6 +1,10 @@
 import { store } from 'redux/Store';
 import { actionTypes } from 'redux/Constants';
 
+// -------------------
+// Actions
+// -------------------
+
 export const createConnectionAction =
   (params) => {
     store.dispatch({

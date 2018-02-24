@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Actions from 'redux/Actions';
+import { moveKnobAction } from 'redux/modules/knob';
 import {
   mathHelpers,
 } from 'helpers';
@@ -50,7 +50,7 @@ export class KnobControlled extends React.Component {
           value,
           displayValue,
         });
-        Actions.moveKnobAction(this.props.knob.id, displayValue);
+        moveKnobAction(this.props.knob.id, displayValue);
       },
   }
 
