@@ -1,11 +1,6 @@
-export * from './deleteAllNodesReducer';
-export * from './deleteNodeReducer';
 export * from './deleteConnectionReducer';
 export * from './createConnectionReducer';
-export * from './createNodeReducer';
 export * from './createGroupReducer';
-export * from './openModalReducer';
-export * from './closeModalReducer';
 export * from './createKnobReducer';
 export * from './moveKnobReducer';
 export * from './deleteKnobReducer';
@@ -16,10 +11,17 @@ export * from './triggerHandledReducer';
 export * from './deleteTriggerReducer';
 export * from './createTimeDomainAnalyserReducer';
 export * from './createFrequencyDomainAnalyserReducer';
-export * from './uiTdAnalyserChangeParamsReducer';
-export * from './uiFdAnalyserChangeParamsReducer';
 export * from './addPreviousStateReducer';
 export * from './ejectNodeReducer';
 export * from './injectNodeReducer';
 export * from './calculateHighestNodeIdReducer';
 export * from './calculateHighestUiIdReducer';
+
+// export {
+//   createNodeReducer,
+//   deleteAllNodesReducer,
+//   deleteNodeReducer
+// } from './node/node';
+export * from './node/node';
+
+export * from './ui/ui';
