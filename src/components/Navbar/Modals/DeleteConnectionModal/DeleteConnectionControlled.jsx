@@ -1,7 +1,7 @@
 import React from 'react';
 import * as R from 'ramda';
 import { DeleteConnectionDumb } from './DeleteConnectionDumb';
-import { deleteConnectionAction } from 'redux/Actions';
+import { deleteConnectionAction } from 'redux/modules/connection';
 
 export class DeleteConnectionControlled extends React.Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { InjectNodeDumb } from './InjectNodeDumb';
-import { injectNodeAction } from 'redux/Actions';
+import { injectNodeAction } from 'redux/modules/connection';
 
 export class InjectNodeControlled extends React.Component {
   constructor(props) {

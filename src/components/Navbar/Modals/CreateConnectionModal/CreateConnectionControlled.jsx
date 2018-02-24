@@ -1,8 +1,6 @@
 import React from 'react';
 import { CreateConnectionDumb } from './CreateConnectionDumb';
-import {
-  createConnectionAction,
-} from 'redux/Actions';
+import { createConnectionAction } from 'redux/modules/connection';
 
 export class CreateConnectionControlled extends React.Component {
   constructor(props) {

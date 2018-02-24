@@ -1,4 +1,3 @@
-export * from './ConnectionActions';
 export * from './GroupActions';
 export * from './UserInterfaceActions';
 export * from './KnobActions';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { EjectNodeDumb } from './EjectNodeDumb';
-import { ejectNodeAction } from 'redux/Actions';
+import { ejectNodeAction } from 'redux/modules/connection';
 
 export class EjectNodeControlled extends React.Component {
   constructor(props) {
