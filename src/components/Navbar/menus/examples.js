@@ -20,11 +20,10 @@ export const Examples = () => (
       <MenuItem caption="2. As nr. 1 but delay is sine-modulated" onClick={E.delay.example2} />
     </MenuItem>
     <MenuItem caption="Oscillators">
-      <MenuItem caption="Sawtooths">
+      <MenuItem caption="DigitalSequence">
         <MenuItem
-          caption="1Hz sawtooth"
-          onClick={E.example2}
-          disabled="disabled"
+          caption="1. Basic example"
+          onClick={E.digitalSequence.example1}
         />
       </MenuItem>
     </MenuItem>

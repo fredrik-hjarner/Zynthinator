@@ -333,6 +333,10 @@ const _nodeTypeDefinitions = {
         type: 'string',
         defaultValue: '',
       },
+      sequenceOfBits: {
+        type: 'string',
+        defaultValue: '',
+      },
       millisecondsPerBit: {
         type: 'float',
         defaultValue: 500,
@@ -346,8 +350,8 @@ const _nodeTypeDefinitions = {
         defaultValue: 1,
       }
     },
-    connectableInputs: ['minValue', 'maxValue'],
-    knobableInputs: ['minValue', 'maxValue'],
+    connectableInputs: ['minValue', 'maxValue', 'millisecondsPerBit'],
+    knobableInputs: ['minValue', 'maxValue', 'millisecondsPerBit'],
     output: true,
   },
 };

@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import { audioContext } from './audioContext';
 import { AudioNode } from './BaseClasses';
 import { ChangeRange } from './ChangeRange';
@@ -9,94 +10,56 @@ export class DigitalSequence extends AudioNode {
     this.id = node.id;
     // this.node = _.cloneDeep(node); // todo hmm.
     const {
-      frequency,
-      dutyCycle,
+      sequenceOfBits,
+      millisecondsPerBit,
       minValue,
-      maxValue,
-      // gain // todo use gain!!!!
+      maxValue
     } = node;
 
-    const { sampleRate } = audioContext;
+    // convert to array of ints.
+    const bitArray = R.map(char => (char === '1' ? 1 : 0), sequenceOfBits);
 
-    const waveLengthInSamples =
-      frequency === 0 ?
-        10 ** 12 :
-        sampleRate / frequency;
+    const samplesPerSeconds = audioContext.sampleRate;
+    const lengthInSeconds = (bitArray.length * millisecondsPerBit) / 1000;
+    const numberOfSamples = samplesPerSeconds * lengthInSeconds;
 
-    this.buffer =
-      audioContext.createBuffer(1, waveLengthInSamples, sampleRate);
+    this.buffer = audioContext.createBuffer(1, numberOfSamples, samplesPerSeconds);
+    const channelData = this.buffer.getChannelData(0);
+
+    const samplesPerBit = numberOfSamples / bitArray.length;
 
     /**
-     * Create a triangle that is later modified into a
-     * PWM via a WaveShaperNode
+     * So then just fill in the data bit per bit.
      */
-    this.sawtooth = new OscillatorNode(audioContext, {
-      type: 'sawtooth',
-      frequency
-    });
-    this.sawtooth.start(); // todo. or should be started later
+    // R.chain acts as flapMap on arrays.
+    // const data = R.chain(R.repeat(R._, samplesPerBit), bitArray); // todo <-- ramda bug?
+    const data = R.chain(R.flip(R.repeat)(samplesPerBit), bitArray);
+    channelData.set(data);
 
-    this.waveShaper = audioContext.createWaveShaper();
+    this.webAudioNode = audioContext.createBufferSource();
+    this.webAudioNode.loop = true;
+    this.webAudioNode.buffer = this.buffer;
 
-    // const dutyCycleFactor = dutyCycleInPercent / 100;
-    // const dutyCycleInSamples = Math.round(256 * dutyCycleFactor); // todo is this right?
-
-    const pwmCurve = new Float32Array(256); // todo why 256 ????
-    for (let i = 0; i < 128; i++) {
-      pwmCurve[i] = minValue;
-      pwmCurve[i + 128] = maxValue;
-    }
-
-    this.waveShaper.curve = pwmCurve;
-
-    // --------------------------------
-    // ConstantSourceNode
-    // --------------------------------
-
-    this.constantSource =
-      new ConstantSourceNode(audioContext, {
-        offset: dutyCycle,
-      });
-
-    this.constantSource.start();
+    this.webAudioNode.start();
 
     this.changeRangeModel =
       new ChangeRange({
         node: {
           lowestInput: 0,
           highestInput: 1,
-          lowestOutput: -1,
-          highestOutput: 1,
+          lowestOutput: minValue,
+          highestOutput: maxValue,
         },
       });
 
-    this.constantSource.connect(this.changeRangeModel.input);
-    this.changeRangeModel.output.connect(this.waveShaper);
-
-    this.sawtooth.connect(this.waveShaper);
+    this.webAudioNode.connect(this.changeRangeModel.input);
   }
   get output() {
-    // return this.changeRangeModel.output;
-    return this.waveShaper;
+    return this.changeRangeModel.output;
   }
-  get dutyCycle() {
-    return this.constantSource.offset;
+  destruct = () => {
+    this.webAudioNode.disconnect();
+    this.webAudioNode = null;
+    this.buffer = null;
   }
-  get frequency() {
-    return this.sawtooth.frequency;
-  }
-  destruct =
-    () => {
-      this.sawtooth.disconnect();
-      this.sawtooth = null;
-
-      this.waveShaper.disconnect();
-      this.waveShaper = null;
-
-      this.changeRangeModel.destruct();
-      this.changeRangeModel = null;
-
-      this.constantSource.disconnect();
-      this.constantSource = null;
-    }
 }

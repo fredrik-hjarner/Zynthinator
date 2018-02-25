@@ -19,15 +19,15 @@ export class PWM extends AudioNode {
       // gain // todo use gain!!!!
     } = node;
 
-    const { sampleRate } = audioContext;
+    // const { sampleRate } = audioContext;
 
-    const waveLengthInSamples =
-      frequency === 0 ?
-        10 ** 12 :
-        sampleRate / frequency;
+    // const waveLengthInSamples =
+    //   frequency === 0 ?
+    //     10 ** 12 :
+    //     sampleRate / frequency;
 
-    this.buffer =
-      audioContext.createBuffer(1, waveLengthInSamples, sampleRate);
+    // this.buffer =
+    //   audioContext.createBuffer(1, waveLengthInSamples, sampleRate);
 
     /**
      * Create a triangle that is later modified into a
