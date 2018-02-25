@@ -233,4 +233,12 @@
 * Don't always split up into Dumb, Smart and Redux Components.
     Only do so if a file exceeds 100 lines of code.
 
-* Rename all .jsx to .js
+* Every example should make a Modal pop up with information
+    about the example.
+
+* When creating example I need functionality to clean up all
+    extra fluff in the action history.
+
+* When a node is displayed in an input, it should
+    get the color from the node-type just as when 
+    nodes are displayed in node-tree.

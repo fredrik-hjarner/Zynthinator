@@ -15,6 +15,10 @@ export const Examples = () => (
       caption="2. Simple music with low-res sine (must refresh page!!)"
       onClick={E.example2}
     />
+    <MenuItem caption="Delay">
+      <MenuItem caption="1. A sine and delayed sine summed" onClick={E.delay.example1} />
+      <MenuItem caption="2. As nr. 1 but delay is sine-modulated" onClick={E.delay.example2} />
+    </MenuItem>
     <MenuItem caption="Oscillators">
       <MenuItem caption="Sawtooths">
         <MenuItem

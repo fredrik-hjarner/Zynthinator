@@ -32,7 +32,7 @@ export const createConnectionReducer = (state, { parentNodeIds, childNodes }) =>
     )
   ) {
     debugger;
-    alert('Error!');
+    alert('Error! parentNodeIds or childNodes are fucked up.');
   }
 
   // create the connections.

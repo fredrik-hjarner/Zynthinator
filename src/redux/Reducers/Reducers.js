@@ -48,12 +48,12 @@ const checkStateConstistency =
     const highestUiIdYet = state.ui.highestIdYet;
     if (isFuckedUp(highestUiIdYet)) {
       debugger;
-      alert('Error!');
+      alert('Error! highestUiIdYet is fucked up.');
     }
     const { highestNodeIdYet } = state.nodeManagement;
     if (isFuckedUp(highestNodeIdYet)) {
       debugger;
-      alert('Error!');
+      alert('Error! highestNodeIdYet is fucked up.');
     }
 
     // ----------------------------
@@ -65,7 +65,7 @@ const checkStateConstistency =
       !isFuckedUp(key));
     if (!nodeKeysAreConsistent) {
       debugger;
-      alert('Error!');
+      alert('Error! Node keys are not consistent.');
     }
   };
 

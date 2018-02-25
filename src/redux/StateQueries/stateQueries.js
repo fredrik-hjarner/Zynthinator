@@ -207,7 +207,7 @@ class StateQueries {
         connectionId,
       })) {
         debugger;
-        throw 'Error!';
+        throw 'Error! In stateQueries.js.';
       }
       // else
       return connections[connectionId];

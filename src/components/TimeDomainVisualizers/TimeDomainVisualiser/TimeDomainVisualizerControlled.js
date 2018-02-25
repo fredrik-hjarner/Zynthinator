@@ -22,7 +22,7 @@ export class TimeDomainVisualizerControlled extends React.Component {
     const webAudioNodeId = this.props.uiComponent.nodeId;
     if (!webAudioNodeId || webAudioNodeId === Infinity || webAudioNodeId === -Infinity) {
       debugger;
-      alert('Error!');
+      alert('Error! The value webAudioNodeId is fucked up.');
     }
 
     const webAudioNode = nodes.nodes[webAudioNodeId];

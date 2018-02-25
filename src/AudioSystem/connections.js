@@ -18,7 +18,7 @@ class Connections {
 
       if (childNode === undefined) {
         debugger;
-        alert('Error!');
+        alert('Error! childNode === undefined');
       }
 
       const {
@@ -27,7 +27,7 @@ class Connections {
       
       if (willConnectToMe === undefined) {
         debugger;
-        alert('Error!');
+        alert('Error! willConnectToMe === undefined');
       }
       willConnectToMe(childNodeInput);
 
