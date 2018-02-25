@@ -324,6 +324,32 @@ const _nodeTypeDefinitions = {
     knobableInputs: ['minValue', 'maxValue', 'gain', 'dutyCycle', 'frequency'],
     output: true,
   },
+  /**
+   *
+   */
+  DigitalSequence: {
+    params: {
+      name: {
+        type: 'string',
+        defaultValue: '',
+      },
+      millisecondsPerBit: {
+        type: 'float',
+        defaultValue: 500,
+      },
+      minValue: {
+        type: 'float',
+        defaultValue: 0,
+      },
+      maxValue: {
+        type: 'float',
+        defaultValue: 1,
+      }
+    },
+    connectableInputs: ['minValue', 'maxValue'],
+    knobableInputs: ['minValue', 'maxValue'],
+    output: true,
+  },
 };
 
 // Add UI colors.

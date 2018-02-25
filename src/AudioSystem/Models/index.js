@@ -14,3 +14,4 @@ export * from './LowResolutionSine';
 export * from './ADSR';
 export * from './ChangeRange';
 export * from './pwm';
+export * from './digital-sequence';

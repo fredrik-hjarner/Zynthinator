@@ -32,7 +32,7 @@ export const Create = () => (
       {nodeItem('Gain')}
       <MenuItem caption="Waveforms">
         {nodeItem('DcSignal', 'DC signal')}
-        {/* {nodeItem('DigitalSignal')} */}
+        {nodeItem('DigitalSequence')}
         {nodeItem('LowResolutionSine', 'Low-resolution sine')}
         {nodeItem('Noise')}
         {nodeItem('Oscillator')}
