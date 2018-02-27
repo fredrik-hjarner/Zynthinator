@@ -29,7 +29,7 @@ class ConnectionsListener {
 
   onConnectionsChanged =
     (newConnections) => {
-      console.log('onConnectionsChanged {');
+      // console.log('onConnectionsChanged {');
       // nodes can have been removed, changed or added.
       const prevConnections = this.previousConnections; // todo refactor.
       // Check which ones were removed
@@ -38,7 +38,7 @@ class ConnectionsListener {
           Object.keys(prevConnections),
           Object.keys(newConnections),
         );
-      console.log(`\tidsForConnectionsThatWereDeleted: ${idsForConnectionsThatWereDeleted}`);
+      // console.log(`\tidsForConnectionsThatWereDeleted: ${idsForConnectionsThatWereDeleted}`);
       connections.deleteConnections({
         previousConnections: this.previousConnections,
         idsForConnectionsThatWereDeleted,
@@ -55,7 +55,7 @@ class ConnectionsListener {
       
       connections.createConnections({ connectionsThatWereAdded });
 
-      console.log('}');
+      // console.log('}');
     }
 }
 

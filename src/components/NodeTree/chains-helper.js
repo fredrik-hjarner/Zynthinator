@@ -23,12 +23,12 @@ const lookAhead = (arr) => {
   const arrWithNull = R.append(null, arr);
 
   // use R.aperture here instead.
-  console.log(`beforeAperture: ${JSON.stringify(arrWithNull)}`);
+  // console.log(`beforeAperture: ${JSON.stringify(arrWithNull)}`);
   const aperture = R.aperture(2, arrWithNull);
-  console.log(`afterAperture: ${JSON.stringify(aperture)}`);
+  // console.log(`afterAperture: ${JSON.stringify(aperture)}`);
 
   const objs = aperture.map(a => ({ value: a[0], nextValue: a[1] }));
-  console.log(`afterMap: ${JSON.stringify(objs)}`);
+  // console.log(`afterMap: ${JSON.stringify(objs)}`);
 
   return objs;
 };

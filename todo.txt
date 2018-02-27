@@ -252,3 +252,5 @@
     When I connect a node that the gain-node,
     a gain of 1 is added to the input,
     but the gain should really be zero + input.
+
+* As I did with 'addGain' I should make a 'addChangeRange'.

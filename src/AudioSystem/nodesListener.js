@@ -29,7 +29,7 @@ class NodesListener {
 
   onNodesChanged =
     (newNodes) => {
-      console.log('onNodesChanged {');
+      // console.log('onNodesChanged {');
       // nodes can have been removed, changed or added.
       const prevNodes = this.previousNodes; // todo refactor.
       // Check which ones were removed
@@ -38,7 +38,7 @@ class NodesListener {
           Object.keys(prevNodes),
           Object.keys(newNodes),
         );
-      console.log(`\tidsForNodesThatWereDeleted: ${idsForNodesThatWereDeleted}`);
+      // console.log(`\tidsForNodesThatWereDeleted: ${idsForNodesThatWereDeleted}`);
       nodes.deleteNodes({
         idsForNodesThatWereDeleted,
       });
@@ -72,10 +72,10 @@ class NodesListener {
           }
           return accum;
         }, []);
-      console.log(`\tnodesThatWereChanged: ${nodesThatWereChanged}`);
+      // console.log(`\tnodesThatWereChanged: ${nodesThatWereChanged}`);
       nodes.changeNodes({ nodesThatWereChanged });
 
-      console.log('}');
+      // console.log('}');
     }
 }
 

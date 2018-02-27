@@ -37,7 +37,7 @@ class Connections {
       willConnectToMe(childNodeInput);
 
       parentNode.output.connect(childNode[childNodeInput]);
-      console.log(`parentNode.output.connect(childNode[${childNodeInput}]);`);
+      // console.log(`parentNode.output.connect(childNode[${childNodeInput}]);`);
     });
   }
 
@@ -55,14 +55,12 @@ class Connections {
       } = connection;
       const parentNode = nodes.nodes[parentNodeId];
       const childNode = nodes.nodes[childNodeId];
-      if (
-        parentNode !== undefined &&
-        childNode !== undefined
-      ) { // i.e. the node has not already been deleted.
-        childNode.willDisconnectFromMe(childNodeInput);
-
+      if (parentNode !== undefined
+      && childNode !== undefined) { // i.e. the node has not already been deleted.
         parentNode.output.disconnect(childNode[childNodeInput]);
-        console.log(`parentNode.output.disconnect(childNode[${childNodeInput}]);`);
+      }
+      if (childNode !== undefined) { // i.e. the node has not already been deleted.
+        childNode.willDisconnectFromMe(childNodeInput);
       }
     });
   }
