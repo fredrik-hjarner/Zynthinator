@@ -254,3 +254,6 @@
     but the gain should really be zero + input.
 
 * As I did with 'addGain' I should make a 'addChangeRange'.
+
+* ChangeRange should ideally have connectable/knobable
+    minValue maxValue.

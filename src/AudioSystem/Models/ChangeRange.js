@@ -43,12 +43,11 @@ export class ChangeRange extends AudioNode {
   get input() {
     return this.gainNode;
   }
-  destruct =
-    () => {
-      this.constantNode.stop();
-      this.constantNode.disconnect();
-      this.constantNode = null;
-      this.gainNode.disconnect();
-      this.gainNode = null;
-    }
+  destruct = () => {
+    this.constantNode.stop();
+    this.constantNode.disconnect();
+    this.constantNode = null;
+    this.gainNode.disconnect();
+    this.gainNode = null;
+  }
 }
