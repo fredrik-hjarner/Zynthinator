@@ -25,6 +25,10 @@ export const Examples = () => (
           caption="1. Basic example"
           onClick={E.digitalSequence.example1}
         />
+        <MenuItem
+          caption="2. Noise drums"
+          onClick={E.digitalSequence.example2}
+        />
       </MenuItem>
     </MenuItem>
   </TopMenuItem>

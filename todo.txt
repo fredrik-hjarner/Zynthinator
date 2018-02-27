@@ -242,3 +242,13 @@
 * When a node is displayed in an input, it should
     get the color from the node-type just as when 
     nodes are displayed in node-tree.
+
+* Eject node problems:
+    Now I can only choose the node and not the specific
+    connection, which means that the node is ejected
+    from ALL connections.
+
+* Model:s built-in gain-nodes have a problem:
+    When I connect a node that the gain-node,
+    a gain of 1 is added to the input,
+    but the gain should really be zero + input.
