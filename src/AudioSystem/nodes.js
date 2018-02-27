@@ -3,12 +3,16 @@ import * as Models from './Models';
 
 class Nodes {
   /**
-   * Contains all the WEB AUDIO NODES wrapppers.
+   * Contains all the WEB AUDIO NODES wrappers.
    */
   nodes = {};
 
   addNode =
     (node) => {
+      if (node.id === undefined) {
+        debugger;
+        console.log('node.id === undefined');
+      }
       this.nodes[node.id] = node;
     }
 

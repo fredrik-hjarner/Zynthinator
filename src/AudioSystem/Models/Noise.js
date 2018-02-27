@@ -1,11 +1,8 @@
 import { audioContext } from './audioContext';
-import {
-  AudioNode,
-} from './BaseClasses';
+import { withGain } from './BaseClasses';
 
-export class Noise extends AudioNode {
+class _Noise {
   constructor({ node }) {
-    super();
     this.id = node.id;
     const { sampleRate } = audioContext;
     const noiseInSeconds = 1; // 1 second noise... too much or too little?
@@ -22,23 +19,25 @@ export class Noise extends AudioNode {
     this.webAudioNode.loop = true;
     this.webAudioNode.buffer = this.buffer;
 
-    this.gainNode = new GainNode(audioContext);
-    this.webAudioNode.connect(this.gainNode);
+    // this.gainNode = new GainNode(audioContext);
+    // this.webAudioNode.connect(this.gainNode);
     this.webAudioNode.start();
   }
   get output() {
-    return this.gainNode;
+    return this.webAudioNode;
   }
-  get gain() {
-    return this.gainNode.gain;
-  }
+  // get gain() {
+  //   return this.gainNode.gain;
+  // }
   destruct =
     () => {
       this.webAudioNode.disconnect();
       this.webAudioNode = null;
       this.buffer = null;
 
-      this.gainNode.disconnect();
-      this.gainNode = null;
+      // this.gainNode.disconnect();
+      // this.gainNode = null;
     }
 }
+
+export const Noise = withGain(_Noise);
