@@ -257,3 +257,8 @@
 
 * ChangeRange should ideally have connectable/knobable
     minValue maxValue.
+
+* AudioBufferSourceNode has a
+    'playbackRate' prop
+    make use of it.
+

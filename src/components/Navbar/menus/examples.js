@@ -30,6 +30,16 @@ export const Examples = () => (
           onClick={E.digitalSequence.example2}
         />
       </MenuItem>
+      <MenuItem caption="LowResolutionSine">
+        <MenuItem
+          caption="1. Basic example"
+          onClick={E.lowResolutionSine.example1}
+        />
+        <MenuItem
+          caption="2. Frequency modulate an oscillator"
+          onClick={E.lowResolutionSine.example2}
+        />
+      </MenuItem>
     </MenuItem>
   </TopMenuItem>
 );

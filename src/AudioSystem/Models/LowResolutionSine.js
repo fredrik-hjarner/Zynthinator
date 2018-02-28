@@ -1,14 +1,10 @@
 import _ from 'lodash';
 import { audioContext } from './audioContext';
-import {
-  AudioNode,
-} from './BaseClasses';
+import { withGain } from './BaseClasses';
 import { ChangeRange } from './ChangeRange';
 
-export class LowResolutionSine extends AudioNode {
+class _LowResolutionSine {
   constructor({ node }) {
-    super();
-    // debugger;
     this.id = node.id;
     this.node = _.cloneDeep(node); // todo hmm.
     const {
@@ -62,6 +58,9 @@ export class LowResolutionSine extends AudioNode {
   get output() {
     return this.changeRangeModel.output;
   }
+  get playbackRate() {
+    return this.webAudioNode.playbackRate;
+  }
   destruct =
     () => {
       this.webAudioNode.disconnect();
@@ -69,3 +68,5 @@ export class LowResolutionSine extends AudioNode {
       this.buffer = null;
     }
 }
+
+export const LowResolutionSine = withGain(_LowResolutionSine);

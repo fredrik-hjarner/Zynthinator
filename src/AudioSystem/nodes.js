@@ -53,8 +53,9 @@ class Nodes {
           ]);
         Object.entries(params).forEach(([param, value]) => {
           if (prevNode[param] !== value) {
-            if (!(param in nodeModel)) {
-              alert(`${param} is not a parameter of ${node.nodeType}'s model`);
+            // if (!(param in nodeModel)) {
+            if (nodeModel[param] === undefined) {
+              alert(`${param} is not exposed on the ${node.nodeType} class.`);
               debugger;
             }
             nodeModel[param].value = value;

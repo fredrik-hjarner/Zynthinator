@@ -281,8 +281,18 @@ const _nodeTypeDefinitions = {
         defaultValue: 1,
       },
     },
-    connectableInputs: ['minValue', 'maxValue', 'gain'],
-    knobableInputs: ['minValue', 'maxValue', 'gain'],
+    connectableInputs: [
+      // 'minValue',
+      // 'maxValue',
+      'gain',
+      'playbackRate'
+    ],
+    knobableInputs: [
+      // 'minValue',
+      // 'maxValue',
+      'gain',
+      'playbackRate'
+    ],
     output: true,
   },
   /**
