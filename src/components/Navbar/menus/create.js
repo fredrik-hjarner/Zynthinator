@@ -23,6 +23,11 @@ export const Create = () => (
         {nodeItem('TimeDomainAnalyser')}
       </MenuItem>
       {nodeItem('ChangeRange', 'ChangeRange')}
+      <MenuItem caption="Chords">
+        {nodeItem('HarmonicChord')}
+        {nodeItem('MajorTriad')}
+        {nodeItem('PerfectFifth')}
+      </MenuItem>
       {nodeItem('Delay')}
       <MenuItem caption="Filters">
         {nodeItem('BandPassFilter', 'Band-pass filter')}

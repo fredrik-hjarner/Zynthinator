@@ -364,6 +364,72 @@ const _nodeTypeDefinitions = {
     knobableInputs: ['minValue', 'maxValue', 'millisecondsPerBit'],
     output: true,
   },
+  /**
+   *
+   */
+  HarmonicChord: {
+    params: {
+      name: {
+        type: 'string',
+        defaultValue: '',
+      },
+      frequency: {
+        type: 'float',
+        defaultValue: 440,
+      },
+    },
+    connectableInputs: [
+      'frequency'
+    ],
+    knobableInputs: [
+      'frequency'
+    ],
+    output: true
+  },
+  /**
+   * 
+   */
+  PerfectFifth: {
+    params: {
+      name: {
+        type: 'string',
+        defaultValue: '',
+      },
+      frequency: {
+        type: 'float',
+        defaultValue: 440,
+      },
+    },
+    connectableInputs: [
+      'frequency'
+    ],
+    knobableInputs: [
+      'frequency'
+    ],
+    output: true
+  },
+  /**
+   * 
+   */
+  MajorTriad: {
+    params: {
+      name: {
+        type: 'string',
+        defaultValue: '',
+      },
+      frequency: {
+        type: 'float',
+        defaultValue: 440,
+      },
+    },
+    connectableInputs: [
+      'frequency'
+    ],
+    knobableInputs: [
+      'frequency'
+    ],
+    output: true
+  },
 };
 
 // Add UI colors.
