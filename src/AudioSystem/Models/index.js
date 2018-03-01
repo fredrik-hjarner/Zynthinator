@@ -15,6 +15,7 @@ export * from './ADSR';
 export * from './ChangeRange';
 export * from './pwm';
 export * from './digital-sequence';
-export * from './harmonic-chord';
+// export * from './harmonic-chord';
 export * from './perfect-fifth';
 export * from './major-triad';
+export * from './twoway-switch';

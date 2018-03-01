@@ -57,6 +57,9 @@ export class DigitalSequence extends AudioNode {
   get output() {
     return this.changeRangeModel.output;
   }
+  get playbackRate() {
+    return this.webAudioNode.playbackRate;
+  }
   destruct = () => {
     this.webAudioNode.disconnect();
     this.webAudioNode = null;

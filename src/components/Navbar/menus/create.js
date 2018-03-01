@@ -24,11 +24,14 @@ export const Create = () => (
       </MenuItem>
       {nodeItem('ChangeRange', 'ChangeRange')}
       <MenuItem caption="Chords">
-        {nodeItem('HarmonicChord')}
+        {/* {nodeItem('HarmonicChord')} */}
         {nodeItem('MajorTriad')}
         {nodeItem('PerfectFifth')}
       </MenuItem>
       {nodeItem('Delay')}
+      <MenuItem caption="Digital logic">
+        {nodeItem('TwowaySwitch')}
+      </MenuItem>
       <MenuItem caption="Filters">
         {nodeItem('BandPassFilter', 'Band-pass filter')}
         {nodeItem('HighPassFilter', 'High-pass filter')}

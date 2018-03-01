@@ -360,32 +360,32 @@ const _nodeTypeDefinitions = {
         defaultValue: 1,
       }
     },
-    connectableInputs: ['minValue', 'maxValue', 'millisecondsPerBit'],
-    knobableInputs: ['minValue', 'maxValue', 'millisecondsPerBit'],
+    connectableInputs: ['minValue', 'maxValue', 'millisecondsPerBit', 'playbackRate'],
+    knobableInputs: ['minValue', 'maxValue', 'millisecondsPerBit', 'playbackRate'],
     output: true,
   },
   /**
    *
    */
-  HarmonicChord: {
-    params: {
-      name: {
-        type: 'string',
-        defaultValue: '',
-      },
-      frequency: {
-        type: 'float',
-        defaultValue: 440,
-      },
-    },
-    connectableInputs: [
-      'frequency'
-    ],
-    knobableInputs: [
-      'frequency'
-    ],
-    output: true
-  },
+  // HarmonicChord: {
+  //   params: {
+  //     name: {
+  //       type: 'string',
+  //       defaultValue: '',
+  //     },
+  //     frequency: {
+  //       type: 'float',
+  //       defaultValue: 440,
+  //     },
+  //   },
+  //   connectableInputs: [
+  //     'frequency'
+  //   ],
+  //   knobableInputs: [
+  //     'frequency'
+  //   ],
+  //   output: true
+  // },
   /**
    * 
    */
@@ -428,6 +428,20 @@ const _nodeTypeDefinitions = {
     knobableInputs: [
       'frequency'
     ],
+    output: true
+  },
+  /**
+   * 
+   */
+  TwowaySwitch: {
+    params: {
+      name: {
+        type: 'string',
+        defaultValue: '',
+      },
+    },
+    connectableInputs: ['A', 'B', 'switchSignal', 'gain'],
+    knobableInputs: ['switchSignal', 'gain'],
     output: true
   },
 };
