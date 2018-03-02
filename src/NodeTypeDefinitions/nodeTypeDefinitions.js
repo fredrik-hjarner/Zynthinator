@@ -444,6 +444,15 @@ const _nodeTypeDefinitions = {
     knobableInputs: ['switchSignal', 'gain'],
     output: true
   },
+  /**
+   * 
+   */
+  Knob: {
+    params: {},
+    connectableInputs: [],
+    knobableInputs: [],
+    output: false
+  },
 };
 
 // Add UI colors.

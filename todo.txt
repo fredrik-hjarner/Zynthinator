@@ -262,3 +262,8 @@
     'playbackRate' prop
     make use of it.
 
+* Many problems with Knob.
+    Perhaps Knob should be a Node-type instead,
+    a simple Gain-node that the Knob changes .gain on
+
+* 

@@ -7,6 +7,12 @@ import { stateQueries } from 'redux/StateQueries';
 // Reducers
 // ----------------
 
+/**
+ * childNodes = [
+ *   { nodeId: number, input: string },
+ *   ...
+ * ]
+ */
 export const createConnectionReducer = (state, { parentNodeIds, childNodes }) => {
   /**
    * Confirm that the connection is possible/valid.

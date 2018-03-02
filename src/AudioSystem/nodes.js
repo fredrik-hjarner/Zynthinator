@@ -22,8 +22,15 @@ class Nodes {
       // go through the array and create all the nodes.
       nodesThatWereAdded.forEach((node) => {
         const { nodeType } = node;
-        const audioNode =
-          new Models[nodeType]({ node });
+        let audioNode;
+        try {
+          audioNode = new Models[nodeType]({ node });
+        } catch (error) {
+          alert(error);
+          alert(`nodeType was '${nodeType}'`);
+          alert(`node was '${JSON.stringify(node, null, 2)}'`);
+        }
+        
         this.addNode(audioNode);
       });
     }

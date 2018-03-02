@@ -7,8 +7,8 @@ export const initialState = {
   router: {},
   history: [],
   nodeManagement: {
-    highestNodeIdYet: 2,
-    highestConnectionIdYet: 0,
+    highestNodeIdYet: 3,
+    highestConnectionIdYet: 1,
     highestGroupIdYet: 0,
     highestKnobIdYet: 1,
     highestTriggerIdYet: 0,
@@ -23,13 +23,28 @@ export const initialState = {
         id: 2,
         name: 'Time-domain Analyser',
         nodeType: 'TimeDomainAnalyser'
+      },
+      3: {
+        id: 3,
+        name: 'Master Volume Knob',
+        nodeType: 'Knob',
+        value: 0.01
       }
     },
-    connections: {},
+    connections: {
+      1: {
+        id: 1,
+        parentNodeId: 3,
+        childNodeId: 1,
+        childNodeInput: 'gain',
+        enabled: true
+      }
+    },
     groups: {},
     knobs: {
       1: {
         id: 1,
+        knobNodeId: 3,
         name: 'Master loudness',
         connectedToWhichNode: 1,
         connectedToWhichParam: 'gain',
