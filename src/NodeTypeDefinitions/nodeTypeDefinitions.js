@@ -101,7 +101,7 @@ const _nodeTypeDefinitions = {
       //   defaultValue: 1,
       // },
     },
-    connectableInputs: ['frequency', 'detune', 'gain'],
+    connectableInputs: ['frequency', 'detune', 'gain', 'minValue', 'maxValue'],
     knobableInputs: ['frequency', 'detune', 'gain', 'minValue', 'maxValue'],
     output: true,
   },

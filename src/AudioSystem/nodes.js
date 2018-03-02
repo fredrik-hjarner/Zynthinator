@@ -26,6 +26,7 @@ class Nodes {
         try {
           audioNode = new Models[nodeType]({ node });
         } catch (error) {
+          debugger;
           alert(error);
           alert(`nodeType was '${nodeType}'`);
           alert(`node was '${JSON.stringify(node, null, 2)}'`);
