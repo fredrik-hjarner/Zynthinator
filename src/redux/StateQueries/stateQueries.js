@@ -9,6 +9,12 @@ import {
 import { nodeTypeDefinitions } from '../../NodeTypeDefinitions'; // todo. cheating. I dont take it from state.
 
 class StateQueries {
+  /**
+   * @param ids An array of ids.
+   */
+  getKnobsByIds = (state, ids) =>
+    R.pick(ids, state.nodeManagement.knobs)
+
   getAllNodes =
     (state) => {
       if (state === undefined

@@ -168,27 +168,34 @@ export class Oscillator extends AudioNode {
   }
 
   destruct = () => {
-    this.oscillatorNode.disconnect();
-    this.oscillatorNode = null;
+    try {
+      this.oscillatorNode.disconnect();
+      this.oscillatorNode = null;
 
-    this.gainNode.disconnect();
-    this.gainNode = null;
+      this.gainNode.disconnect();
+      this.gainNode = null;
 
-    this.dcBiasNode.disconnect();
-    this.dcBiasNode = null;
+      this.dcBiasNode.disconnect();
+      this.dcBiasNode = null;
 
-    this.minValueConnections = 0;
-    this.maxValueConnections = 0;
+      this.maxValueGain.disconnect();
+      this.maxValueGain = null;
 
-    this.maxValueGain
+      this.minValueGain.disconnect();
+      this.minValueGain = null;
 
-    this.minValueGain
+      this.scriptProcessorNode.disconnect();
+      this.scriptProcessorNode = null;
 
-    this.scriptProcessorNode
+      this.channelMergerNode.disconnect();
+      this.channelMergerNode = null;
 
-    this.channelMergerNode
-
-    this.gainNode2
-    
+      this.gainNode2.disconnect();
+      this.gainNode2 = null;
+    } catch (error) {
+      alert(error);
+      console.log(error);
+      debugger;
+    }
   }
 }
