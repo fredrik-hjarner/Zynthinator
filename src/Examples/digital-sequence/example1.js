@@ -51,7 +51,7 @@ history =
     type: 'CREATE_CONNECTION',
     name: '',
     parentNodeIds: [
-      3
+      4
     ],
     childNodes: [
       {
@@ -83,24 +83,5 @@ history =
     id: 1,
     param: 'millisecondsBetweenUpdates',
     value: '100'
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateNodeModal',
-    props: {
-      nodeType: 'DigitalSequence',
-      node: {
-        id: 3,
-        name: '',
-        sequenceOfBits: '000000000100000000110000000111',
-        millisecondsPerBit: 50,
-        minValue: 0,
-        maxValue: 1,
-        nodeType: 'DigitalSequence'
-      }
-    }
-  },
-  {
-    type: 'CLOSE_MODAL'
   }
 ];

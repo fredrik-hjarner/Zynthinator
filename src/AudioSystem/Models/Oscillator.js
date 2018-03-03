@@ -169,6 +169,14 @@ export class Oscillator extends AudioNode {
 
   destruct = () => {
     try {
+      /**
+       * delete scriptProcessorNode first because it
+       * runs checks on other nodes.
+       */
+      this.scriptProcessorNode.disconnect();
+      this.scriptProcessorNode.onaudioprocess = () => {};
+      this.scriptProcessorNode = null;
+
       this.oscillatorNode.disconnect();
       this.oscillatorNode = null;
 
@@ -183,9 +191,6 @@ export class Oscillator extends AudioNode {
 
       this.minValueGain.disconnect();
       this.minValueGain = null;
-
-      this.scriptProcessorNode.disconnect();
-      this.scriptProcessorNode = null;
 
       this.channelMergerNode.disconnect();
       this.channelMergerNode = null;

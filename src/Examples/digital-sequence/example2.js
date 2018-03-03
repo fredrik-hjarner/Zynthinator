@@ -66,7 +66,7 @@ history =
     type: 'CREATE_CONNECTION',
     name: '',
     parentNodeIds: [
-      4
+      5
     ],
     childNodes: [
       {
@@ -111,11 +111,11 @@ history =
     type: 'CREATE_CONNECTION',
     name: '',
     parentNodeIds: [
-      3
+      4
     ],
     childNodes: [
       {
-        nodeId: 4,
+        nodeId: 5,
         input: 'gain'
       }
     ]

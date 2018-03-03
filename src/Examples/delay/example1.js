@@ -83,19 +83,19 @@ history =
   {
     type: 'CLOSE_MODAL'
   },
-  {
-    type: 'CREATE_CONNECTION',
-    name: '',
-    parentNodeIds: [
-      4
-    ],
-    childNodes: [
-      {
-        nodeId: 2,
-        input: 'input'
-      }
-    ]
-  },
+  // {
+  //   type: 'CREATE_CONNECTION',
+  //   name: '',
+  //   parentNodeIds: [
+  //     4
+  //   ],
+  //   childNodes: [
+  //     {
+  //       nodeId: 2,
+  //       input: 'input'
+  //     }
+  //   ]
+  // },
   {
     type: 'OPEN_MODAL',
     modal: 'CreateConnectionModal'
@@ -103,19 +103,19 @@ history =
   {
     type: 'CLOSE_MODAL'
   },
-  {
-    type: 'CREATE_CONNECTION',
-    name: '',
-    parentNodeIds: [
-      5
-    ],
-    childNodes: [
-      {
-        nodeId: 3,
-        input: 'input'
-      }
-    ]
-  },
+  // {
+  //   type: 'CREATE_CONNECTION',
+  //   name: '',
+  //   parentNodeIds: [
+  //     5
+  //   ],
+  //   childNodes: [
+  //     {
+  //       nodeId: 3,
+  //       input: 'input'
+  //     }
+  //   ]
+  // },
   {
     type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
     id: 1,
@@ -146,7 +146,7 @@ history =
     props: {
       nodeType: 'Oscillator',
       node: {
-        id: 4,
+        id: 5,
         name: 'sine1',
         frequency: 440,
         detune: 0,
@@ -162,7 +162,7 @@ history =
   },
   {
     type: 'CREATE_NODE',
-    id: 4,
+    id: 5,
     name: 'sine1',
     frequency: 220,
     detune: 0,
@@ -232,7 +232,7 @@ history =
     props: {
       nodeType: 'Oscillator',
       node: {
-        id: 4,
+        id: 5,
         name: 'sine1',
         frequency: 220,
         detune: 0,
@@ -248,7 +248,7 @@ history =
   },
   {
     type: 'CREATE_NODE',
-    id: 4,
+    id: 5,
     name: 'sine1',
     frequency: 10,
     detune: 0,
@@ -275,7 +275,7 @@ history =
     props: {
       nodeType: 'Oscillator',
       node: {
-        id: 5,
+        id: 6,
         name: 'sine2',
         frequency: 220,
         detune: 0,
@@ -291,7 +291,7 @@ history =
   },
   {
     type: 'CREATE_NODE',
-    id: 5,
+    id: 6,
     name: 'sine2',
     frequency: 10,
     detune: 0,
@@ -312,7 +312,7 @@ history =
     props: {
       nodeType: 'Oscillator',
       node: {
-        id: 4,
+        id: 5,
         name: 'sine1',
         frequency: 10,
         detune: 0,
@@ -328,7 +328,7 @@ history =
   },
   {
     type: 'CREATE_NODE',
-    id: 4,
+    id: 5,
     name: 'sine1',
     frequency: 1,
     detune: 0,
@@ -361,7 +361,7 @@ history =
     props: {
       nodeType: 'Oscillator',
       node: {
-        id: 5,
+        id: 6,
         name: 'sine2',
         frequency: 10,
         detune: 0,
@@ -377,7 +377,7 @@ history =
   },
   {
     type: 'CREATE_NODE',
-    id: 5,
+    id: 6,
     name: 'sine2',
     frequency: 1,
     detune: 0,
@@ -442,20 +442,20 @@ history =
   {
     type: 'CLOSE_MODAL'
   },
-  {
-    type: 'CREATE_CONNECTION',
-    name: '',
-    parentNodeIds: [
-      2,
-      3
-    ],
-    childNodes: [
-      {
-        nodeId: 6,
-        input: 'input'
-      }
-    ]
-  },
+  // {
+  //   type: 'CREATE_CONNECTION',
+  //   name: '',
+  //   parentNodeIds: [
+  //     2,
+  //     3
+  //   ],
+  //   childNodes: [
+  //     {
+  //       nodeId: 6,
+  //       input: 'input'
+  //     }
+  //   ]
+  // },
   {
     type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
     id: 3,
@@ -538,38 +538,14 @@ history =
     maxValue: 1,
     function: 'linear'
   },
-  {
-    type: 'MOVE_KNOB',
-    id: 2,
-    value: 0.5
-  },
-  {
-    type: '@@INIT'
-  },
-  {
-    type: '@@router/LOCATION_CHANGE',
-    payload: {
-      pathname: '/synth',
-      search: '',
-      hash: '',
-      key: 'ck479x'
-    }
-  },
-  {
-    type: 'MOVE_KNOB',
-    id: 2,
-    value: 0
-  },
-  {
-    type: '@@INIT'
-  },
-  {
-    type: '@@router/LOCATION_CHANGE',
-    payload: {
-      pathname: '/synth',
-      search: '',
-      hash: '',
-      key: 'ck479x'
-    }
-  }
+  // {
+  //   type: 'MOVE_KNOB',
+  //   id: 2,
+  //   value: 0.5
+  // },
+  // {
+  //   type: 'MOVE_KNOB',
+  //   id: 2,
+  //   value: 0
+  // }
 ];
