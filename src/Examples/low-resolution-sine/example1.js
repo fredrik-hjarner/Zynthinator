@@ -18,7 +18,7 @@ history =
       pathname: '/synth',
       search: '',
       hash: '',
-      key: 'uummnn'
+      key: 'dy6tek'
     }
   },
   {
@@ -51,7 +51,7 @@ history =
     type: 'CREATE_CONNECTION',
     name: '',
     parentNodeIds: [
-      3
+      4
     ],
     childNodes: [
       {
@@ -59,42 +59,6 @@ history =
         input: 'input'
       }
     ]
-  },
-  {
-    type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
-    id: 1,
-    param: 'bitsToRecord',
-    value: '5'
-  },
-  {
-    type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
-    id: 1,
-    param: 'maxValue',
-    value: '1.1'
-  },
-  {
-    type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
-    id: 1,
-    param: 'minValue',
-    value: '-1.1'
-  },
-  {
-    type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
-    id: 1,
-    param: 'bitsToRecord',
-    value: '7'
-  },
-  {
-    type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
-    id: 1,
-    param: 'millisecondsBetweenUpdates',
-    value: '56'
-  },
-  {
-    type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
-    id: 1,
-    param: 'bitsToRecord',
-    value: '8'
   },
   {
     type: 'OPEN_MODAL',
@@ -117,9 +81,28 @@ history =
     ]
   },
   {
-    type: 'MOVE_KNOB',
+    type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
     id: 1,
-    value: 0.2144673903339414
+    param: 'bitsToRecord',
+    value: '8'
+  },
+  {
+    type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
+    id: 1,
+    param: 'minValue',
+    value: '-1.1'
+  },
+  {
+    type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
+    id: 1,
+    param: 'maxValue',
+    value: '1.1'
+  },
+  {
+    type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
+    id: 1,
+    param: 'millisecondsBetweenUpdates',
+    value: '56'
   },
   {
     type: 'OPEN_MODAL',
@@ -131,15 +114,10 @@ history =
   {
     type: 'CREATE_KNOB',
     name: 'playback-rate',
-    connectedToWhichNode: 3,
+    connectedToWhichNode: 4,
     connectedToWhichParam: 'playbackRate',
     minValue: 0,
     maxValue: 20,
     function: 'exponential'
-  },
-  {
-    type: 'MOVE_KNOB',
-    id: 2,
-    value: 0.9987207664892662
   }
 ];
