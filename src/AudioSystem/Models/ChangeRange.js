@@ -29,6 +29,8 @@ export class ChangeRange extends AudioNode {
       highestOutput: new ConstantSourceNode(audioContext, { offset: highestOutput })
     };
 
+    Object.values(this.defaultValueNodes).forEach(n => n.start());
+
     /**
      * These nodes exist so that there is always something to connect to
      * even if the AudioWorkletProcessor has not loaded yet.
@@ -52,9 +54,6 @@ export class ChangeRange extends AudioNode {
      * processorPromise.then... maybe
      */
     processorPromise.then(() => {
-      /**
-       * Wtf should happen here?
-       */
       // Reconnect stuff.
       // I should have a lot of UnityBuffers. For input and output.
       /**
@@ -69,15 +68,18 @@ export class ChangeRange extends AudioNode {
        * to changeRange.
        */
       this.changeRange = new AudioWorkletNode(audioContext, 'change-range'); // eslint-disable-line
-      console.log('In file ChangeRange.js:');
-      console.log('this.changeRange:');
-      console.dir(this.changeRange);
-      console.log('');
+
+      this.changeRange.port.onmessage = (event) => {
+        console.log(event.data);
+      };
 
       this.unityGainNodes.input.connect(this.changeRange);
 
       const params = this.changeRange.parameters;
 
+      console.log('this.defaultValueNodes.lowestInput');
+      console.dir(this.defaultValueNodes.lowestInput);
+      console.log('');
       this.defaultValueNodes.lowestInput.connect(params.get('lowestInput'));
       this.defaultValueNodes.highestInput.connect(params.get('highestInput'));
 

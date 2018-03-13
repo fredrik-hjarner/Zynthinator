@@ -1,8 +1,8 @@
-class ChangeRangeProcessor extends AudioWorkletProcessor { // eslint-disable-line
-  constructor() { // eslint-disable-line
-    super();
-  }
+// ----------------------------
+// AudioWorkletProcessor
+// ----------------------------
 
+class Processor extends AudioWorkletProcessor { // eslint-disable-line
   static get parameterDescriptors() {
     return [
       { name: 'lowestInput', defaultValue: 0 },
@@ -12,31 +12,30 @@ class ChangeRangeProcessor extends AudioWorkletProcessor { // eslint-disable-lin
     ];
   }
 
-  static calcGainAndOffset(lowestInput, highestInput, lowestOutput, highestOutput) {
-    const inputRange = highestInput - lowestInput;
-    const outputRange = highestOutput - lowestOutput;
-
+  calcGainAndOffset({ lowestInput, highestInput, lowestOutput, highestOutput }) {
+    const inputRange = highestInput[0] - lowestInput[0];
+    const outputRange = highestOutput[0] - lowestOutput[0];
+  
     const gain = inputRange === 0 ?
       10 ** 15 : // todo. does this value make sense?
       outputRange / inputRange;
-
+  
     const offset = gain === 0 ?
       0 : // todo. does this value make sense?
-      (lowestOutput - (lowestInput * gain)) / gain;
-
+      (lowestOutput[0] - (lowestInput[0] * gain)) / gain;
+  
     return { gain, offset };
-  }
+  };
 
-  process(inputs, outputs, parameters) { // eslint-disable-line
+  process([[input]], [[output]], params) { // eslint-disable-line
+    const { gain, offset } = this.calcGainAndOffset(params);
 
-    outputs.fill(0.3);
-
-    /**
-     * output = (input + offset) * gain
-     */
+    input.forEach((val, i) => {
+      output[i] = (val + offset) * gain; // eslint-disable-line
+    });
 
     return true; // keep processor alive
   }
 }
 
-registerProcessor('change-range', ChangeRangeProcessor); // eslint-disable-line
+registerProcessor('change-range', Processor); // eslint-disable-line
