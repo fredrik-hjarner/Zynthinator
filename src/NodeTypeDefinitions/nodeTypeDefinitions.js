@@ -58,8 +58,8 @@ const _nodeTypeDefinitions = {
         defaultValue: 1,
       },
     },
-    connectableInputs: ['input'],
-    knobableInputs: ['input'],
+    connectableInputs: ['input', 'lowestOutput', 'highestOutput'],
+    knobableInputs: ['input', 'lowestOutput', 'highestOutput'],
     output: true,
   },
   /**

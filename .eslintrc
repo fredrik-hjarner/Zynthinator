@@ -44,7 +44,10 @@
     "react/jsx-filename-extension": 0,
     "padded-blocks": 0,
     "import/first": 0,
-    "object-curly-newline": 0
+    "object-curly-newline": 0,
+    "jsx-quotes": 0,
+    "react/jsx-tag-spacing": 0,
+    "react/require-default-props": 0
   },
   "extends": ["airbnb"]
 }

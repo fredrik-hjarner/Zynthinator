@@ -16,6 +16,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CopyWebpackPluginConfig = new CopyWebpackPlugin([
   // { from: './src/assets', to: 'assets' },
   { from: './semantic/dist', to: './semantic' }, // relativa till output path !!!!
+  { from: './audio-worklet-processors', to: './audio-worklet-processors' }, // relativa till output path !!!!
 ]);
 
 module.exports = {

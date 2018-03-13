@@ -49,7 +49,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --content-base src --inline --hot --port 8080 --host 192.168.1.218",
-    "start": "webpack-dev-server --inline --hot --port 8080",
+    "start": "webpack-dev-server --inline --hot",
     "build": "webpack",
     "test": "mocha --require babel-register || exit 0",
     "lint": "eslint src"
