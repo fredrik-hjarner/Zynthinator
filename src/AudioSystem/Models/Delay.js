@@ -1,20 +1,15 @@
 import { audioContext } from './audioContext';
-import {
-  AudioNode,
-} from './BaseClasses';
+import { AudioNode } from './BaseClasses';
 
 export class Delay extends AudioNode {
   constructor({ node }) {
     super();
     this.id = node.id;
     const options = {
-      delayTime:
-        node.delayTime,
-      maxDelayTime:
-        3,
+      delayTime: node.delayTime,
+      maxDelayTime: 3,
     };
-    this.webAudioNode =
-      new DelayNode(audioContext, options);
+    this.webAudioNode = new DelayNode(audioContext, options);
   }
   get delayTime() {
     return this.webAudioNode.delayTime;
@@ -25,9 +20,8 @@ export class Delay extends AudioNode {
   get input() {
     return this.webAudioNode;
   }
-  destruct =
-    () => {
-      this.webAudioNode.disconnect();
-      this.webAudioNode = null;
-    }
+  destruct = () => {
+    this.webAudioNode.disconnect();
+    this.webAudioNode = null;
+  }
 }

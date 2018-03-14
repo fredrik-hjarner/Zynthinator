@@ -36,6 +36,12 @@ export const Examples = () => (
           onClick={E.lowResolutionSine.example2}
         />
       </MenuItem>
+      <MenuItem caption="Sine">
+        <MenuItem
+          caption="1. 440Hz sine"
+          onClick={E.sine.example1}
+        />
+      </MenuItem>
     </MenuItem>
   </TopMenuItem>
 );
