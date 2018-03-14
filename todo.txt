@@ -276,3 +276,5 @@
 
 * Dont use CDN:s because they can go down.
     for jQuery.
+
+* Fix E.lowResolutionSine.example2

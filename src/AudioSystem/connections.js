@@ -36,8 +36,21 @@ class Connections {
       }
       willConnectToMe(childNodeInput);
 
-      parentNode.output.connect(childNode[childNodeInput]);
-      // console.log(`parentNode.output.connect(childNode[${childNodeInput}]);`);
+      try {
+        parentNode.output.connect(childNode[childNodeInput]);
+      } catch (ex) {
+        console.log('In connections.js:');
+        console.log('parentNode: ');
+        console.dir(parentNode);
+        console.log('');
+        console.log('childNode: ');
+        console.dir(childNode);
+        console.log('');
+        console.log('childNodeInput: ');
+        console.dir(childNodeInput);
+        console.log('');
+        debugger;
+      }
     });
   }
 

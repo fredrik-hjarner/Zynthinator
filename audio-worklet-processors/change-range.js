@@ -12,7 +12,11 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
     ];
   }
 
-  calcGainAndOffset({ lowestInput, highestInput, lowestOutput, highestOutput }, index) {  // eslint-disable-line
+  calcOutput(input, { lowestInput, highestInput, lowestOutput, highestOutput }, index) {  // eslint-disable-line
+    if (lowestOutput[index] === highestOutput[index]) {
+      return lowestOutput;
+    }
+
     const inputRange = highestInput[index] - lowestInput[index];
     const outputRange = highestOutput[index] - lowestOutput[index];
   
@@ -24,13 +28,12 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
       0 : // todo. does this value make sense?
       (lowestOutput[index] - (lowestInput[index] * gain)) / gain;
   
-    return { gain, offset };
+    return (input + offset) * gain;
   }
 
   process([[input]], [[output]], params) { // eslint-disable-line
     input.forEach((val, i) => {
-      const { gain, offset } = this.calcGainAndOffset(params, i);
-      output[i] = (val + offset) * gain; // eslint-disable-line
+      output[i] = this.calcOutput(val, params, i); // eslint-disable-line
     });
 
     return true; // keep processor alive
