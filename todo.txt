@@ -277,4 +277,5 @@
 * Dont use CDN:s because they can go down.
     for jQuery.
 
-* Fix E.lowResolutionSine.example2
+* All actions should have uuid:s so it is easier to
+    find a specific action in history.

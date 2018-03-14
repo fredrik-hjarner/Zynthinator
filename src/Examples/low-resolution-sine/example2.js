@@ -52,7 +52,7 @@ history =
     type: 'CREATE_CONNECTION',
     name: '',
     parentNodeIds: [
-      3
+      4
     ],
     childNodes: [
       {
@@ -111,11 +111,11 @@ history =
     type: 'CREATE_CONNECTION',
     name: '',
     parentNodeIds: [
-      4
+      5
     ],
     childNodes: [
       {
-        nodeId: 3,
+        nodeId: 4,
         input: 'detune'
       }
     ]
@@ -154,7 +154,7 @@ history =
   {
     type: 'CREATE_KNOB',
     name: 'freq-modulator-playback-rate',
-    connectedToWhichNode: 4,
+    connectedToWhichNode: 5,
     connectedToWhichParam: 'playbackRate',
     minValue: 0,
     maxValue: 10,
@@ -170,7 +170,7 @@ history =
   {
     type: 'CREATE_KNOB',
     name: 'freq-modulator-gain',
-    connectedToWhichNode: 4,
+    connectedToWhichNode: 5,
     connectedToWhichParam: 'gain',
     minValue: 0,
     maxValue: 4,
@@ -198,15 +198,18 @@ history =
   {
     type: 'CLOSE_MODAL'
   },
+  // -------------------------------------
+  // Stopped debugging here
+  // -------------------------------------
   {
     type: 'CREATE_CONNECTION',
-    name: '',
+    name: 'some random connection',
     parentNodeIds: [
-      4
+      5
     ],
     childNodes: [
       {
-        nodeId: 5,
+        nodeId: 8,
         input: 'input'
       }
     ]

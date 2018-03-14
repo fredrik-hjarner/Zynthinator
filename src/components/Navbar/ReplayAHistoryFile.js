@@ -16,14 +16,11 @@ export class ReplayAHistoryFile extends React.Component {
       document.querySelector('#fileId').click();
     }
 
-  onFileReaderLoad =
-    (event) => {
-      const serialized =
-        event.target.result;
-      const history =
-        JSON.parse(serialized);
-      importHistory(history);
-    };
+  onFileReaderLoad = (event) => {
+    const serialized = event.target.result;
+    const history = JSON.parse(serialized);
+    importHistory(history);
+  };
 
   onChange =
     () => {

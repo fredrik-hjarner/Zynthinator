@@ -6,7 +6,7 @@ import {
 } from 'redux/modules/node';
 
 export const importHistory =
-  (history, delay = 0) => {
+  (history, delay = 0) => { // todo make this settable via UI !!!
     /**
      * Clear localStorage
      */
@@ -42,6 +42,7 @@ export const importHistory =
         // store.dispatch(history[i].action);
         store.dispatch(history[i]);
         i++;
+        debugger;
         setTimeout(replayAction, delay);
       }
     }, delay);

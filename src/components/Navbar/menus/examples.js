@@ -30,10 +30,10 @@ export const Examples = () => (
           caption="1. Basic example"
           onClick={E.lowResolutionSine.example1}
         />
-        {/* <MenuItem
+        <MenuItem
           caption="2. Frequency modulate an oscillator"
           onClick={E.lowResolutionSine.example2}
-        /> */}
+        />
       </MenuItem>
       <MenuItem caption="Sine">
         <MenuItem
