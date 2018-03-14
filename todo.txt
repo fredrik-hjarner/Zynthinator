@@ -266,3 +266,13 @@
     Should add with zero when a knob is connected.
 
 * I can do 'quantization' with AudioWorklets!!
+
+* I can do what I am doing in ChangeRange and have
+    - defaults
+    - params
+    - willConnectToMe
+    - willDisconnectToMe
+  and use that for ALL nodes i.e. generalize.
+
+* Dont use CDN:s because they can go down.
+    for jQuery.

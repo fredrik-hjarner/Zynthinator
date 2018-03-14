@@ -12,9 +12,9 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
     ];
   }
 
-  calcGainAndOffset({ lowestInput, highestInput, lowestOutput, highestOutput }) {
-    const inputRange = highestInput[0] - lowestInput[0];
-    const outputRange = highestOutput[0] - lowestOutput[0];
+  calcGainAndOffset({ lowestInput, highestInput, lowestOutput, highestOutput }, index) {  // eslint-disable-line
+    const inputRange = highestInput[index] - lowestInput[index];
+    const outputRange = highestOutput[index] - lowestOutput[index];
   
     const gain = inputRange === 0 ?
       10 ** 15 : // todo. does this value make sense?
@@ -22,15 +22,14 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
   
     const offset = gain === 0 ?
       0 : // todo. does this value make sense?
-      (lowestOutput[0] - (lowestInput[0] * gain)) / gain;
+      (lowestOutput[index] - (lowestInput[index] * gain)) / gain;
   
     return { gain, offset };
-  };
+  }
 
   process([[input]], [[output]], params) { // eslint-disable-line
-    const { gain, offset } = this.calcGainAndOffset(params);
-
     input.forEach((val, i) => {
+      const { gain, offset } = this.calcGainAndOffset(params, i);
       output[i] = (val + offset) * gain; // eslint-disable-line
     });
 
