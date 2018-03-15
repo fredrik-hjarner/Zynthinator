@@ -27,9 +27,9 @@ const _nodeTypeDefinitions = {
         defaultValue: 0.9,
       },
     },
-    connectableInputs: [],
-    knobableInputs: [],
-    triggers: ['play'],
+    connectableInputs: ['play'],
+    knobableInputs: ['play'],
+    // triggers: ['play'],
     output: true,
   },
   /**

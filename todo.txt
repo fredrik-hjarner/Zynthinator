@@ -239,7 +239,7 @@
 * When creating example I need functionality to clean up all
     extra fluff in the action history.
 
-* When a node is displayed in an input, it should
+* When a node is displayed in an form-input, it should
     get the color from the node-type just as when 
     nodes are displayed in node-tree.
 
@@ -254,9 +254,6 @@
     but the gain should really be zero + input.
 
 * As I did with 'addGain' I should make a 'addChangeRange'.
-
-* ChangeRange should ideally have connectable/knobable
-    minValue maxValue.
 
 * AudioBufferSourceNode has a
     'playbackRate' prop
@@ -279,3 +276,12 @@
 
 * All actions should have uuid:s so it is easier to
     find a specific action in history.
+
+* use 'safeDisconnect' everywhere.
+
+* Remake ADSR so that 'play' is triggered on rising edge
+    and 'stop' on falling edge.
+
+* create a Schmitt Trigger.
+
+* PWM glitches because ChangeRange glitches.

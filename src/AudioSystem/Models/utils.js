@@ -7,3 +7,13 @@ export const safeDisconnect = (node) => {
     console.log('');
   }
 };
+
+export const safeStop = (node) => {
+  try {
+    node.stop();
+  } catch (ex) {
+    console.log('Exception in safeStop: ');
+    console.dir(ex);
+    console.log('');
+  }
+};

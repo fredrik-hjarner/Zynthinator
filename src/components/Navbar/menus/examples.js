@@ -7,6 +7,10 @@ import * as E from 'Examples';
 
 export const Examples = () => (
   <TopMenuItem caption="Examples">
+    <MenuItem caption="ADSR">
+      <MenuItem caption="1. PWM triggers ADSR" onClick={E.adsr.example1} />
+      <MenuItem caption="2. Knob triggers ADSR" onClick={E.adsr.example2} />
+    </MenuItem>
     <MenuItem caption="ChangeRange">
       <MenuItem caption="1. Knob max val of sine" onClick={E.changeRange.example1} />
     </MenuItem>

@@ -3,5 +3,8 @@
     "env",
     "react",
     "stage-0"
+  ],
+  "only": [
+    "/src"
   ]
 }
