@@ -1,6 +1,6 @@
-export const safeDisconnect = (node) => {
+export const safeDisconnect = (node, disconnectFrom = undefined) => {
   try {
-    node.disconnect();
+    node.disconnect(disconnectFrom); // this should work right?
   } catch (ex) {
     console.log('Exception in safeDisconnect: ');
     console.dir(ex);

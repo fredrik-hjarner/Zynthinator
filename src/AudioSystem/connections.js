@@ -36,8 +36,10 @@ class Connections {
       }
       willConnectToMe(childNodeInput);
 
+      const childInput = childNode[childNodeInput];
+
       try {
-        parentNode.output.connect(childNode[childNodeInput]);
+        parentNode.output.connect(childInput);
       } catch (ex) {
         console.log('In connections.js:');
         console.log('parentNode: ');
@@ -49,7 +51,11 @@ class Connections {
         console.log('childNodeInput: ');
         console.dir(childNodeInput);
         console.log('');
+        console.log('childInput: ');
+        console.dir(childInput);
+        console.log('');
         debugger;
+        throw ex;
       }
     });
   }

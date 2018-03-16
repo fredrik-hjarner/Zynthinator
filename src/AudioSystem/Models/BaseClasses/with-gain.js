@@ -34,14 +34,14 @@ export const withGain = Class => class {
   }
     
   willConnectToMe = (whichInput) => {
-    console.log('willConnectToMe');
+    // console.log('willConnectToMe');
     if (whichInput === 'gain') {
       this.gainNode.gain.value = 0;
     }
   }
 
   willDisconnectFromMe = (whichInput) => {
-    console.log('willDisconnectFromMe');
+    // console.log('willDisconnectFromMe');
     if (whichInput === 'gain') {
       this.gainNode.gain.value = 1;
     }
