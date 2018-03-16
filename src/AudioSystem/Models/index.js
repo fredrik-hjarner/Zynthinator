@@ -20,3 +20,4 @@ export * from './perfect-fifth';
 export * from './major-triad';
 export * from './twoway-switch';
 export * from './knob';
+export * from './schmitt-trigger';

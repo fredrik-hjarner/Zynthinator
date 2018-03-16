@@ -31,6 +31,7 @@ export const Create = () => (
       {nodeItem('Delay')}
       <MenuItem caption="Digital logic">
         {nodeItem('TwowaySwitch')}
+        {nodeItem('SchmittTrigger')}
       </MenuItem>
       <MenuItem caption="Filters">
         {nodeItem('BandPassFilter', 'Band-pass filter')}

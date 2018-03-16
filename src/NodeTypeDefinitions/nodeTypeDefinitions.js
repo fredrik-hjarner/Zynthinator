@@ -447,6 +447,20 @@ const _nodeTypeDefinitions = {
   /**
    * 
    */
+  SchmittTrigger: {
+    params: {
+      name: {
+        type: 'string',
+        defaultValue: '',
+      },
+    },
+    connectableInputs: ['input'],
+    knobableInputs: ['input'],
+    output: true
+  },
+  /**
+   * 
+   */
   Knob: {
     params: {},
     connectableInputs: [],

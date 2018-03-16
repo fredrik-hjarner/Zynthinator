@@ -285,3 +285,5 @@
 * create a Schmitt Trigger.
 
 * PWM glitches because ChangeRange glitches.
+
+* user @withGain decorators.
