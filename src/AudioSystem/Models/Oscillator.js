@@ -14,10 +14,12 @@ export class Oscillator extends AudioNode {
       type: node.oscillatorType,
     };
     this.oscillatorNode = new OscillatorNode(audioContext, options);
-    this.gainNode = new GainNode(audioContext);
+    this.multiplyNode = new GainNode(audioContext);
+    this.gainNode = new GainNode(audioContext); // todo make sure to destruct this gainNode !!!
     this.dcBiasNode = new ConstantSourceNode(audioContext);
 
     this.oscillatorNode.connect(this.gainNode);
+    this.gainNode.connect(this.multiplyNode);
 
     // -------------------------------------
     // new code
@@ -48,11 +50,11 @@ export class Oscillator extends AudioNode {
      * so that I can connect to gain without
      * creating a gain node manually (tedious).
      */
-    this.gainNode2 = new GainNode(audioContext);
+    this.outputBuffer = new GainNode(audioContext);
 
-    this.dcBiasNode.connect(this.gainNode2);
+    this.dcBiasNode.connect(this.outputBuffer);
 
-    this.gainNode.connect(this.gainNode2);
+    this.multiplyNode.connect(this.outputBuffer);
 
     // this._updateScaleAndOffset();
 
@@ -108,22 +110,22 @@ export class Oscillator extends AudioNode {
   }
 
   get gain() {
-    return this.gainNode2.gain;
+    return this.gainNode.gain;
   }
   
   get output() {
-    return this.gainNode2;
+    return this.outputBuffer;
   }
 
   updateScaleAndOffset = (maxValue, minValue) => {
     if (maxValue === minValue) {
-      this.gainNode.gain.value = 0;
+      this.multiplyNode.gain.value = 0;
       this.dcBiasNode.offset.value = minValue;
       return;
     }
 
     const gain = (maxValue - minValue) / 2;
-    this.gainNode.gain.value = gain;
+    this.multiplyNode.gain.value = gain;
 
     const dcValue = (maxValue + minValue) / 2;
     this.dcBiasNode.offset.value = dcValue;
@@ -140,7 +142,7 @@ export class Oscillator extends AudioNode {
   willConnectToMe = (whichInput) => {
     switch (whichInput) {
       case 'gain':
-        this.gainNode2.gain.value = 0;
+        this.gainNode.gain.value = 0;
         break;
       case 'minValue':
         this.minValueConnections++;
@@ -155,7 +157,7 @@ export class Oscillator extends AudioNode {
   willDisconnectFromMe = (whichInput) => {
     switch (whichInput) {
       case 'gain':
-        this.gainNode2.gain.value = 1;
+        this.gainNode.gain.value = 1;
         break;
       case 'minValue':
         this.minValueConnections--;
@@ -168,7 +170,7 @@ export class Oscillator extends AudioNode {
   }
 
   destruct = () => {
-    try {
+    try { // todo remove. use safeDisconnect instead.
       /**
        * delete scriptProcessorNode first because it
        * runs checks on other nodes.
@@ -180,8 +182,11 @@ export class Oscillator extends AudioNode {
       this.oscillatorNode.disconnect();
       this.oscillatorNode = null;
 
-      this.gainNode.disconnect();
+      this.gainNode.disconnect(); // todo use safeDisconnect.
       this.gainNode = null;
+
+      this.multiplyNode.disconnect();
+      this.multiplyNode = null;
 
       this.dcBiasNode.disconnect();
       this.dcBiasNode = null;
@@ -195,8 +200,8 @@ export class Oscillator extends AudioNode {
       this.channelMergerNode.disconnect();
       this.channelMergerNode = null;
 
-      this.gainNode2.disconnect();
-      this.gainNode2 = null;
+      this.outputBuffer.disconnect();
+      this.outputBuffer = null;
     } catch (error) {
       alert(error);
       console.log(error);

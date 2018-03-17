@@ -453,9 +453,31 @@ const _nodeTypeDefinitions = {
         type: 'string',
         defaultValue: '',
       },
+      threshold: {
+        type: 'float', // todo. types should be enums ffs!
+        defaultValue: 0,
+      },
     },
-    connectableInputs: ['input'],
-    knobableInputs: ['input'],
+    connectableInputs: ['input', 'threshold'],
+    knobableInputs: ['input', 'threshold'],
+    output: true
+  },
+  /**
+   * 
+   */
+  CrossoverDistortion: {
+    params: {
+      name: {
+        type: 'string',
+        defaultValue: '',
+      },
+      threshold: {
+        type: 'float', // todo. types should be enums ffs!
+        defaultValue: 0,
+      },
+    },
+    connectableInputs: ['input', 'threshold'],
+    knobableInputs: ['input', 'threshold'],
     output: true
   },
   /**

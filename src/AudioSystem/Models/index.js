@@ -21,3 +21,4 @@ export * from './major-triad';
 export * from './twoway-switch';
 export * from './knob';
 export * from './schmitt-trigger';
+export * from './crossover-distortion';

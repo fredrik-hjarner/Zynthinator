@@ -337,7 +337,7 @@ class RenderNodeTreeHelpers {
       this.makeAllChainsEqualLength(alignedChains);
 
       if (!this.fulfillsCriteria(alignedChains, allIds)) {
-        alert('Error! !this.fulfillsCriteria(alignedChains, allIds).');
+        console.log('Error! !this.fulfillsCriteria(alignedChains, allIds).');
         debugger;
       }
 

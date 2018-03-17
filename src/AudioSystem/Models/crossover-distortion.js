@@ -2,10 +2,10 @@ import { audioContext } from './audioContext';
 import { AudioNode } from './BaseClasses';
 import { safeDisconnect } from './utils';
 
-const processorPromise = audioContext.audioWorklet.addModule('./audio-worklet-processors/schmitt-trigger.js');
+const processorPromise = audioContext.audioWorklet.addModule('./audio-worklet-processors/crossover-distortion.js');
 
 // @withGain
-export class SchmittTrigger extends AudioNode {
+export class CrossoverDistortion extends AudioNode {
   constructor({ node }) {
     super();
     this.id = node.id;
@@ -16,7 +16,7 @@ export class SchmittTrigger extends AudioNode {
 
     processorPromise.then(() => {
       console.log('processorPromise.then()');
-      this.worklet = new AudioWorkletNode(audioContext, 'schmitt-trigger'); // eslint-disable-line
+      this.worklet = new AudioWorkletNode(audioContext, 'crossover-distortion'); // eslint-disable-line
       console.log('worklet created');
 
       this.worklet.connect(this.outputGain);

@@ -287,3 +287,21 @@
 * PWM glitches because ChangeRange glitches.
 
 * user @withGain decorators.
+
+* Should I do my own Time-Domain-Analyser node with AudioWorklets??!
+    that are super-dynamic and awesome.
+
+* In UI there should be a function to ADD NODES TOGETHER i.e. PLUS THEM.
+    What this does it that it creates a UnityGaiNode and
+    connects all those nodes to that UnityGaiNode etc.
+
+* Resizable Analyser windows. Is simple as shit with css
+    and a JS-event-listener.
+
+* Zoom-in zoom-out on scroll when oscillator is focused!
+
+* ValueAnalyser node. Simply displays the value of a signal as a float.
+
+* One Knob should be able to connect/control to several things.
+
+* Create a crossover-distortion node, because it's cool.

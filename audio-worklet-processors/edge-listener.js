@@ -15,7 +15,7 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
     this.firstTime = true;
   }
 
-  process([[input]], _, params) { // eslint-disable-line
+  process([[input]]) {
     // Look for rising and falling edges.
     input.forEach(value => {
       if ((this.firstTime || this.lastValueWasHigh) && value < 0.5) {         // falling edge

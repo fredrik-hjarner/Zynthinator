@@ -3,17 +3,26 @@
 // ----------------------------
 
 class Processor extends AudioWorkletProcessor { // eslint-disable-line
-  // constructor() {
-  //   super();
-  // }
+  constructor() {
+    super();
+    this.lastHigh = false; // just initialize it to some random value. doesn't matter.
+  }
 
-  process([[input]], [[output]], _) { // eslint-disable-line
+  static get parameterDescriptors() {
+    return [
+      { name: 'threshold', defaultValue: 0 },
+    ];
+  }
+
+  process([[input]], [[output]], { threshold }) {
+    const deadie = threshold[0];
     input.forEach((value, index) => {
-      if (value > 0.5) {
-        output[index] = 1; // eslint-disable-line
-      } else {
-        output[index] = 0; // eslint-disable-line
+      if (this.lastHigh && value < 0.5 - deadie) {
+        this.lastHigh = false;
+      } else if (!this.lastHigh && value > 0.5 + deadie) {
+        this.lastHigh = true;
       }
+      output[index] = this.lastHigh ? 1 : 0; // eslint-disable-line
     });
 
     return true; // keep processor alive

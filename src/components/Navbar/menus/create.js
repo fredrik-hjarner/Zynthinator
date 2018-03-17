@@ -33,6 +33,9 @@ export const Create = () => (
         {nodeItem('TwowaySwitch')}
         {nodeItem('SchmittTrigger')}
       </MenuItem>
+      <MenuItem caption="Distortions">
+        {nodeItem('CrossoverDistortion')}
+      </MenuItem>
       <MenuItem caption="Filters">
         {nodeItem('BandPassFilter', 'Band-pass filter')}
         {nodeItem('HighPassFilter', 'High-pass filter')}
