@@ -59,11 +59,6 @@ export class CustomAnalyser extends AudioNode {
     console.log('samplesToStore()');
     return this.samplesToStoreNode.offset;
   }
-
-  // set samplesToStore(value) {
-  //   console.log(`samplesToStore(${value})`);
-  //   this.samplesToStoreNode.offset = value;
-  // }
   
   destruct = () => {
     safeDisconnect(this.worklet); // todo fix this destruct function. send 'destroy' message.

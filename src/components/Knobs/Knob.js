@@ -11,7 +11,7 @@ const Knob = props => (
       type="range"
       min={props.knob.minValue}
       max={props.knob.maxValue}
-      step="0.0001"
+      step={props.knob.step}
       onChange={event => props.onKnobMove(parseFloat(event.target.value))}
     />
   </div>
@@ -25,9 +25,7 @@ class KnobControlled extends React.Component {
 
   handlers = {
     onKnobMove: (value) => {
-      const {
-        knob,
-      } = this.props;
+      const { knob } = this.props;
       let displayValue;
       switch (knob.function) {
         case 'linear':

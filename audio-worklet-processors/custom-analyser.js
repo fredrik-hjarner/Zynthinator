@@ -50,6 +50,7 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
    * => 2.666 ms / 1 process
    */
   process([[input]], [[output]], { samplesToStore }) {  // eslint-disable-line
+    // console.log('samplesToStore[127]:', samplesToStore[127]);
     if (this.samplesToStore !== samplesToStore[127]) {
       this.samplesToStore = samplesToStore[127]; // eslint-disable-line
       this.createBuffer();

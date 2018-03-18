@@ -284,12 +284,9 @@
 
 * create a Schmitt Trigger.
 
-* PWM glitches because ChangeRange glitches.
+* PWM glitches because ChangeRange glitches because of AudioWorklet.
 
 * user @withGain decorators.
-
-* Should I do my own Time-Domain-Analyser node with AudioWorklets??!
-    that are super-dynamic and awesome.
 
 * In UI there should be a function to ADD NODES TOGETHER i.e. PLUS THEM.
     What this does it that it creates a UnityGaiNode and
@@ -307,3 +304,5 @@
 * Create a crossover-distortion node, because it's cool.
 
 * Ugly: CanvasContainer exists in three places. One place is enough.
+
+* Knob should be able to set 'step'.

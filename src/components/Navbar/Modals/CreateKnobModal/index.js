@@ -1,1 +1,1 @@
-export { CreateKnobRedux as CreateKnobModal } from './CreateKnobRedux';
+export { CreateKnobModal } from './CreateKnob';

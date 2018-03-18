@@ -46,6 +46,15 @@ export const CreateKnobDumb =
             value={props.maxValue}
           />
         </Form.Group>
+        <Form.Group widths="equal">
+          <Form.Input
+            name="step"
+            type="number"
+            label="Step"
+            onChange={props.onFormFloatChange}
+            value={props.step}
+          />
+        </Form.Group>
       </div>);
 
     return (
