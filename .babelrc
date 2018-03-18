@@ -6,5 +6,11 @@
   ],
   "only": [
     "/src"
+  ],
+  "plugins": [
+    "transform-decorators-legacy"
+  ],
+  "ignore": [
+    "/node_modules"
   ]
 }

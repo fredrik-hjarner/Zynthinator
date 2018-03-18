@@ -11,8 +11,7 @@ export class TimeDomainAnalyser extends AudioNode {
       // todo this should be taken from redux state.
       fftSize: 2 ** 11, // 15 == highest // 5 == lowest
     };
-    this.webAudioNode =
-      new AnalyserNode(audioContext, options);
+    this.webAudioNode = new AnalyserNode(audioContext, options);
   }
   get output() {
     return this.webAudioNode;
@@ -20,9 +19,8 @@ export class TimeDomainAnalyser extends AudioNode {
   get input() {
     return this.webAudioNode;
   }
-  destruct =
-    () => {
-      this.webAudioNode.disconnect();
-      this.webAudioNode = null;
-    }
+  destruct = () => {
+    this.webAudioNode.disconnect();
+    this.webAudioNode = null;
+  }
 }

@@ -21,6 +21,7 @@ export const Create = () => (
       <MenuItem caption="Analysers">
         {nodeItem('FrequencyDomainAnalyser')}
         {nodeItem('TimeDomainAnalyser')}
+        {nodeItem('CustomAnalyser', 'My CustomAnalyser based AudioWorklet')}
       </MenuItem>
       {nodeItem('ChangeRange', 'ChangeRange')}
       <MenuItem caption="Chords">

@@ -305,3 +305,5 @@
 * One Knob should be able to connect/control to several things.
 
 * Create a crossover-distortion node, because it's cool.
+
+* Ugly: CanvasContainer exists in three places. One place is enough.

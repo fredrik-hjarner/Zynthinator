@@ -69,43 +69,43 @@ const checkStateConstistency =
     }
   };
 
-const _rootReducer =
-  (_state, action) => {
-    const state = {
-      ..._state,
-      router:
-        routerReducer(_state.router, action),
-    };
-    const {
-      type,
-    } = action;
-
-    if (type.startsWith('@@')) {
-      return state;
-    }
-    
-    /**
-     * Specifically handle Analysers, because
-     * some state.ui need to also be added.
-     */
-    if (type === 'CREATE_NODE' && action.nodeType === 'TimeDomainAnalyser') {
-      return Reducers.createTimeDomainAnalyserReducer(state, action);
-    }
-    if (type === 'CREATE_NODE' && action.nodeType === 'FrequencyDomainAnalyser') {
-      return Reducers.createFrequencyDomainAnalyserReducer(state, action);
-    }
-
-    const reducerName = actionConstToReducer(type);
-
-    try {
-      return Reducers[reducerName](state, action);
-    } catch (exception) {
-      alert(`action.type=${type}. Error with/in reducer with name '${reducerName}'.`);
-      console.log(exception);
-      debugger;
-      return state;
-    }
+const _rootReducer = (_state, action) => {
+  const state = {
+    ..._state,
+    router:
+      routerReducer(_state.router, action),
   };
+  const {
+    type,
+  } = action;
+
+  if (type.startsWith('@@')) {
+    return state;
+  }
+  
+  /**
+   * Specifically handle Analysers, because
+   * some state.ui need to also be added.
+   */
+  if (type === 'CREATE_NODE' && action.nodeType === 'TimeDomainAnalyser') {
+    return Reducers.createTimeDomainAnalyserReducer(state, action);
+  } else if (type === 'CREATE_NODE' && action.nodeType === 'FrequencyDomainAnalyser') {
+    return Reducers.createFrequencyDomainAnalyserReducer(state, action);
+  } else if (type === 'CREATE_NODE' && action.nodeType === 'CustomAnalyser') {
+    return Reducers.createCustomAnalyserReducer(state, action);
+  }
+
+  const reducerName = actionConstToReducer(type);
+
+  try {
+    return Reducers[reducerName](state, action);
+  } catch (exception) {
+    alert(`action.type=${type}. Error with/in reducer with name '${reducerName}'.`);
+    console.log(exception);
+    debugger;
+    return state;
+  }
+};
 
 /**
  * Throw exception when trying to access a key that does not exist!
@@ -129,17 +129,15 @@ const handler = {
   },
 };
 
-export const rootReducer =
-  (_state = initialState, action) => {
-    let state = Reducers.addToHistoryReducer(_state, action);
-    state = Reducers.addPreviousStateReducer(state);
-    // reduxHistory.addActionToHistory(action);
-    state =
-      _rootReducer(state, action);
+export const rootReducer = (_state = initialState, action) => {
+  let state = Reducers.addToHistoryReducer(_state, action);
+  state = Reducers.addPreviousStateReducer(state);
+  // reduxHistory.addActionToHistory(action);
+  state = _rootReducer(state, action);
 
-    checkStateConstistency(state);
+  checkStateConstistency(state);
 
-    deepFreeze(state);
-    state = new Proxy(state, handler);
-    return state;
-  };
+  deepFreeze(state);
+  state = new Proxy(state, handler);
+  return state;
+};

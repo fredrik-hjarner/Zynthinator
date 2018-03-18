@@ -12,6 +12,7 @@ export function Home() {
       { /* <C.ListOfGroups /> */ }
       <C.TimeDomainVisualizers />
       <C.FrequencyDomainVisualizers />
+      <C.CustomVisualizers />
       <C.ModalWindow />
     </div>
   );

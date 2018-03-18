@@ -9,15 +9,11 @@ export * from './deleteTriggerReducer';
 
 export * from './createTimeDomainAnalyserReducer';
 export * from './createFrequencyDomainAnalyserReducer';
+export * from './createCustomAnalyserReducer';
 export * from './addPreviousStateReducer';
 export * from './calculateHighestNodeIdReducer';
 export * from './calculateHighestUiIdReducer';
 
-// export {
-//   createNodeReducer,
-//   deleteAllNodesReducer,
-//   deleteNodeReducer
-// } from './node/node';
 export * from './node/node';
 export * from './ui/ui';
 export * from './knob/knob';

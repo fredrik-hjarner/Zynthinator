@@ -483,6 +483,24 @@ const _nodeTypeDefinitions = {
   /**
    * 
    */
+  CustomAnalyser: {
+    params: {
+      name: {
+        type: 'string',
+        defaultValue: '',
+      },
+      samplesToStore: {
+        type: 'integer',
+        defaultValue: 375,
+      }
+    },
+    connectableInputs: ['input', 'samplesToStore'],
+    knobableInputs: ['input', 'samplesToStore'],
+    output: false
+  },
+  /**
+   * 
+   */
   Knob: {
     params: {},
     connectableInputs: [],
