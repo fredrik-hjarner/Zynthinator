@@ -306,3 +306,5 @@
 * Ugly: CanvasContainer exists in three places. One place is enough.
 
 * Knob should be able to set 'step'.
+
+* history-custom-analyser does work correctly until refresh.

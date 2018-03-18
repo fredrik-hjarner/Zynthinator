@@ -1,30 +1,42 @@
+import * as R from 'ramda';
 import { audioContext } from './audioContext';
-import { AudioNode } from './BaseClasses';
-import { safeDisconnect } from './utils';
+import { AudioWorkletBase } from './BaseClasses';
 
 const processorPromise = audioContext.audioWorklet.addModule('./audio-worklet-processors/custom-analyser.js');
 
-export class CustomAnalyser extends AudioNode {
+export class CustomAnalyser extends AudioWorkletBase {
   constructor({ node }) {
-    super();
-    this.id = node.id;
+    /**
+     * todo I dont want to pick manually.
+     * I want to pick automatically!
+     */
+    const defaultParams = R.pick([
+      'samplesToStore',
+    ], node);
 
-    this.outputGain = new GainNode(audioContext);
-    console.log('node.samplesToStore:', node.samplesToStore);
-    this.samplesToStoreNode =
-      new ConstantSourceNode(audioContext, { offset: node.samplesToStore });
-    this.samplesToStoreNode.start(); // todo stop and destruct correctly.
+    /**
+     * todo I dont want to pick manually.
+     * I want to pick automatically!
+     */
+    const bufferNodeNames = [
+      'samplesToStore',
+      'input'
+    ];
 
-    this.inputGain = new GainNode(audioContext);
+    super({
+      id: node.id,
+      defaultParams,
+      bufferNodeNames
+    });
 
     // Return all zeros if WorkletProcessor has not loaded.
     this.requestDataPromise = () => new Promise(r => r(new Array(375).fill(0)));
     this.onData = () => {};
 
     processorPromise.then(() => {
-      console.log('processorPromise.then()');
+      // console.log('processorPromise.then()');
       this.worklet = new AudioWorkletNode(audioContext, 'custom-analyser'); // eslint-disable-line
-      console.log('worklet created');
+      // console.log('worklet created');
 
       this.worklet.port.onmessage = ({ data: { type, payload } }) => {
         switch (type) {
@@ -45,26 +57,19 @@ export class CustomAnalyser extends AudioNode {
         this.onData = resolve;
       });
 
-      this.inputGain.connect(this.worklet);
-      this.samplesToStoreNode.connect(this.worklet.parameters.get('samplesToStore'));
+      this.connectBufferNodesToWorklet();
       this.worklet.connect(audioContext.destination);
     });
   }
-
-  get input() {
-    return this.inputGain;
-  }
-
-  get samplesToStore() {
-    console.log('samplesToStore()');
-    return this.samplesToStoreNode.offset;
-  }
   
-  destruct = () => {
-    safeDisconnect(this.worklet); // todo fix this destruct function. send 'destroy' message.
-    this.worklet = null;
-
-    safeDisconnect(this.inputGain);
-    this.inputGain = null;
+  /**
+   * These getters
+   * can all be automatically created.
+   */
+  get samplesToStore() {
+    return this.params.samplesToStore;
+  }
+  get input() {
+    return this.params.input;
   }
 }
