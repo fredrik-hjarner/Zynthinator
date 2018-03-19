@@ -15,6 +15,14 @@ const BITS_PER_WINDOW = 8;
 const SAMPLES_PER_WINDOW = 2 ** BITS_PER_WINDOW;
 
 /**
+ * For example 9 means that we send 512 samples to the client/node.
+ * By changing this value I can change the resolution,
+ * so to speak.
+ */
+const MAX_BITS_TO_STORE = 9;
+// const MAX_SAMPLES_TO_STORE = 2 ** MAX_BITS_TO_STORE;
+
+/**
  * One idea would be to set parameters on this
  * by sending a message instead of supplying them
  * through parameters. That would probably be faster.
@@ -52,7 +60,7 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
        * First windowsToCapture windows are captured,
        * then every this.nth of the tempBuffer is returned :)
        */
-      this.nth = Math.max(1, 2 ** (this.exponent - 9));
+      this.nth = Math.max(1, 2 ** (this.exponent - MAX_BITS_TO_STORE));
       const bufferLength = (SAMPLES_PER_WINDOW * this.windowsToCapture) / this.nth;
       this.buffer = new Array(bufferLength).fill(0);
     }
