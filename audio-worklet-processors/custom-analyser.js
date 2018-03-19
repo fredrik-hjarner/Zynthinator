@@ -3,17 +3,16 @@
 // ----------------------------
 
 /**
- * Assumes inputArr size of 128.
- * nth must be at most 7 because 2^7 = 128.
- */
-/**
- * I should replace this with a pushEveryNth.
+ * 
  */
 function pushEveryNth(pushTo, input, nth) {
-  for (let i = 0; i < 128; i += nth) {
+  for (let i = 0; i < input.length; i += nth) {
     pushTo.push(input[i]);
   }
 }
+
+const BITS_PER_WINDOW = 8;
+const SAMPLES_PER_WINDOW = 2 ** BITS_PER_WINDOW;
 
 /**
  * One idea would be to set parameters on this
@@ -23,6 +22,7 @@ function pushEveryNth(pushTo, input, nth) {
 class Processor extends AudioWorkletProcessor { // eslint-disable-line
   constructor() {
     super();
+    this.input256 = [];
     /**
      * AudioWorkletNode asks for data.
      * This class responds by giving it data.
@@ -44,8 +44,8 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
      * That is we need to capture
      * 1 or more whole process-buffer-windows.
      */
-    if (this.exponent >= 7) {
-      this.windowsToCapture = 2 ** (this.exponent - 7);
+    if (this.exponent >= BITS_PER_WINDOW) {
+      this.windowsToCapture = 2 ** (this.exponent - BITS_PER_WINDOW);
       /**
        * 2**9 = 512 which is the max that
        * I want to return in this.buffer.
@@ -53,13 +53,11 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
        * then every this.nth of the tempBuffer is returned :)
        */
       this.nth = Math.max(1, 2 ** (this.exponent - 9));
-      this.windowsCaptured = 0;
-      // this.tempBuffer = [];
-      const bufferLength = (128 * this.windowsToCapture) / this.nth;
+      const bufferLength = (SAMPLES_PER_WINDOW * this.windowsToCapture) / this.nth;
       this.buffer = new Array(bufferLength).fill(0);
     }
 
-    if (this.exponent < 7) {
+    if (this.exponent < BITS_PER_WINDOW) {
       this.windowsToCapture = null;
       /**
        * 2**9 = 512 which is the max that
@@ -68,8 +66,6 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
        * then every this.nth of the tempBuffer is returned :)
        */
       this.nth = null;
-      this.windowsCaptured = null;
-      // this.tempBuffer = null;
     }
 
     console.log('this.exponent: ', this.exponent);
@@ -83,8 +79,22 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
    * => 375 process(...) / second
    * => 2.666 ms / 1 process
    */
-  process([[input]], [[output]], { exponent }) {  // eslint-disable-line
-    let exp = exponent[127];
+  process([[input]], _, { exponent }) {
+    this.input256.splice(-1, 0, ...input);
+    if (this.input256.length === SAMPLES_PER_WINDOW) {
+      // Copying with this.input256.slice() would be more secure.
+      this.process256(this.input256, exponent[127]);
+      this.input256 = [];
+    }
+    return true; // keep processor alive
+  }
+
+  /**
+   * Like process
+   * but has input buffer of 256 samples.
+   */
+  process256(input, exponent) {
+    let exp = exponent;
     /**
      * cap value.
      * 2**17 ~= 3 seconds
@@ -98,25 +108,18 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
     }
 
     // Do the processing
-    if (this.exponent < 7) {
-      const samplesToGrab = 2 ** this.exponent;
+    if (this.exponent < BITS_PER_WINDOW) {
       // capture part of the first window
-      this.buffer = input.subarray(128 - samplesToGrab);
+      const samplesToGrab = 2 ** this.exponent;
+      const samplesToRemove = SAMPLES_PER_WINDOW - samplesToGrab;
+      this.buffer = input.slice(samplesToRemove);
     }
     
-    if (this.exponent >= 7) {
+    if (this.exponent >= BITS_PER_WINDOW) {
       // remove a window then add a window.
-      this.buffer.splice(0, 128 / this.nth);
+      this.buffer.splice(0, SAMPLES_PER_WINDOW / this.nth);
       pushEveryNth(this.buffer, input, this.nth);
-      this.windowsCaptured++;
-      // if (this.windowsCaptured >= this.windowsToCapture) {
-      //   // this.buffer = this.tempBuffer;
-      //   // this.tempBuffer = [];
-      //   this.windowsCaptured = 0;
-      // }
     }
-
-    return true; // keep processor alive
   }
 }
 
