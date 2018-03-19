@@ -11,7 +11,7 @@ export class CustomAnalyser extends AudioWorkletBase {
      * I want to pick automatically!
      */
     const defaultParams = R.pick([
-      'samplesToStore',
+      'exponent',
     ], node);
 
     /**
@@ -19,7 +19,7 @@ export class CustomAnalyser extends AudioWorkletBase {
      * I want to pick automatically!
      */
     const bufferNodeNames = [
-      'samplesToStore',
+      'exponent',
       'input'
     ];
 
@@ -53,7 +53,7 @@ export class CustomAnalyser extends AudioWorkletBase {
       this.requestDataPromise = () => new Promise((resolve) => {
         // signals that we want data now.
         this.worklet.port.postMessage('');
-        // Receives an array of size node.samplesToStore.
+        // Receives an array of size node.exponent.
         this.onData = resolve;
       });
 
@@ -66,8 +66,8 @@ export class CustomAnalyser extends AudioWorkletBase {
    * These getters
    * can all be automatically created.
    */
-  get samplesToStore() {
-    return this.params.samplesToStore;
+  get exponent() {
+    return this.params.exponent;
   }
   get input() {
     return this.params.input;

@@ -489,13 +489,13 @@ const _nodeTypeDefinitions = {
         type: 'string',
         defaultValue: '',
       },
-      samplesToStore: {
+      exponent: {
         type: 'integer',
         defaultValue: 375,
       }
     },
-    connectableInputs: ['input', 'samplesToStore'],
-    knobableInputs: ['input', 'samplesToStore'],
+    connectableInputs: ['input', 'exponent'],
+    knobableInputs: ['input', 'exponent'],
     output: false
   },
   /**

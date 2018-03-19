@@ -3,6 +3,19 @@
 // ----------------------------
 
 /**
+ * Assumes inputArr size of 128.
+ * nth must be at most 7 because 2^7 = 128.
+ */
+/**
+ * I should replace this with a pushEveryNth.
+ */
+function pushEveryNth(pushTo, input, nth) {
+  for (let i = 0; i < 128; i += nth) {
+    pushTo.push(input[i]);
+  }
+}
+
+/**
  * One idea would be to set parameters on this
  * by sending a message instead of supplying them
  * through parameters. That would probably be faster.
@@ -10,10 +23,6 @@
 class Processor extends AudioWorkletProcessor { // eslint-disable-line
   constructor() {
     super();
-    // this.samplesToStore = 375;
-
-    // this.createBuffer();
-
     /**
      * AudioWorkletNode asks for data.
      * This class responds by giving it data.
@@ -25,67 +34,47 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
 
   static get parameterDescriptors() {
     return [
-      { name: 'samplesToStore', defaultValue: 0 },
+      { name: 'exponent', defaultValue: 0 },
     ];
   }
 
-  // createBuffer() {
-  //   /**
-  //    * Stores what is going to be sent to
-  //    * the AudioWorkletNode.
-  //    */
-  //   /**
-  //    * Ideally I should not recreate the whole buffer,
-  //    * but I should shrink or expand it,
-  //    * so that the current data is not lost
-  //    * and also it is more efficient.
-  //    */
-  //   this.buffer = new Array(this.samplesToStore).fill(0);
-  // }
-
-  proc(input) {
-    this.proc3(input);
-  } 
-
-  proc1(input) {
-    /**
-     * Must I copy the input or can I just assign it ??
-     * slice vs subarray.
-     */
-    this.buffer = input.subarray(128 - this.samplesToStore);
-  }
-
-  // proc2count = 0
-  proc2(input) {
-    if (this.proc2count === 0) {
-      this.proc2temp = [].concat(input.subarray(256 - this.samplesToStore));
-      this.proc2count = 1;
-    } else {
-      // console.log('this.proc2temp: ', this.proc2temp);
-      this.buffer = this.proc2temp.concat(...input);
-      // console.log('this.buffer.length: ', this.buffer.length);
-      this.proc2temp = undefined;
-      this.proc2count = 0;
-    }
-  }
-
-  proc3(input) {
-    this.buffer.shift();
-    this.buffer.push(input[127]);
-  }
-
   recalculate() {
-    if (this.samplesToStore <= 128) {
-      this.buffer = new Array(this.samplesToStore).fill(0);
-      this.proc = this.proc1;
-    } else if (this.samplesToStore <= 256) {
-      this.buffer = new Array(this.samplesToStore).fill(0);
-      this.proc2count = 0;
-      this.proc = this.proc2;
-    } else {
-      this.buffer = new Array(this.samplesToStore).fill(0);
-      this.proc = this.proc3;
+    /**
+     * 2**7 = 128
+     * That is we need to capture
+     * 1 or more whole process-buffer-windows.
+     */
+    if (this.exponent >= 7) {
+      this.windowsToCapture = 2 ** (this.exponent - 7);
+      /**
+       * 2**9 = 512 which is the max that
+       * I want to return in this.buffer.
+       * First windowsToCapture windows are captured,
+       * then every this.nth of the tempBuffer is returned :)
+       */
+      this.nth = Math.max(1, 2 ** (this.exponent - 9));
+      this.windowsCaptured = 0;
+      // this.tempBuffer = [];
+      const bufferLength = (128 * this.windowsToCapture) / this.nth;
+      this.buffer = new Array(bufferLength).fill(0);
     }
+
+    if (this.exponent < 7) {
+      this.windowsToCapture = null;
+      /**
+       * 2**9 = 512 which is the max that
+       * I want to return in this.buffer.
+       * First windowsToCapture windows are captured,
+       * then every this.nth of the tempBuffer is returned :)
+       */
+      this.nth = null;
+      this.windowsCaptured = null;
+      // this.tempBuffer = null;
+    }
+
+    console.log('this.exponent: ', this.exponent);
+    console.log('this.windowsToCapture: ', this.windowsToCapture);
+    console.log('this.nth: ', this.nth);
   }
 
   /**
@@ -94,13 +83,38 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
    * => 375 process(...) / second
    * => 2.666 ms / 1 process
    */
-  process([[input]], [[output]], { samplesToStore }) {  // eslint-disable-line
-    // console.log('samplesToStore[127]:', samplesToStore[127]);
-    if (this.samplesToStore !== samplesToStore[127]) {
-      this.samplesToStore = samplesToStore[127]; // eslint-disable-line
+  process([[input]], [[output]], { exponent }) {  // eslint-disable-line
+    let exp = exponent[127];
+    /**
+     * cap value.
+     * 2**17 ~= 3 seconds
+     */
+    if (exp > 17) {
+      exp = 17;
+    }
+    if (this.exponent !== exp) {
+      this.exponent = exp; // eslint-disable-line
       this.recalculate();
     }
-    this.proc(input);
+
+    // Do the processing
+    if (this.exponent < 7) {
+      const samplesToGrab = 2 ** this.exponent;
+      // capture part of the first window
+      this.buffer = input.subarray(128 - samplesToGrab);
+    }
+    
+    if (this.exponent >= 7) {
+      // remove a window then add a window.
+      this.buffer.splice(0, 128 / this.nth);
+      pushEveryNth(this.buffer, input, this.nth);
+      this.windowsCaptured++;
+      // if (this.windowsCaptured >= this.windowsToCapture) {
+      //   // this.buffer = this.tempBuffer;
+      //   // this.tempBuffer = [];
+      //   this.windowsCaptured = 0;
+      // }
+    }
 
     return true; // keep processor alive
   }
