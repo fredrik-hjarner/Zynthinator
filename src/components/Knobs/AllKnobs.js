@@ -3,39 +3,32 @@ import { SimpleWindowRedux } from 'components/SimpleWindow';
 import { Knob } from './Knob';
 import { connect } from 'react-redux';
 
-const AllKnobs =
-  (props) => {
-    const knobElements =
-      Object.values(props.knobs).map(k =>
-        <Knob knob={k} />);
+const AllKnobs = (props) => {
+  const knobElements =
+    Object.values(props.knobs).map(k => <Knob key={k.id} knob={k} />);
 
-    if (knobElements.length < 1) {
-      return null;
-    }
+  if (knobElements.length < 1) {
+    return null;
+  }
 
-    return (
-      <SimpleWindowRedux title="Knobs">
-        {knobElements}
-      </SimpleWindowRedux>
-    );
-  };
+  return (
+    <SimpleWindowRedux title="Knobs">
+      {knobElements}
+    </SimpleWindowRedux>
+  );
+};
 
 // ----------------------
 // Redux
 // ----------------------
 
 const mapStateToProps = (state) => {
-  const {
-    knobs,
-  } = state.nodeManagement;
+  const { knobs } = state.nodeManagement;
   return {
-    knobs,
+    knobs
   };
 };
 
-const AllKnobsRedux = connect(
-  mapStateToProps,
-  {},
-)(AllKnobs);
+const AllKnobsRedux = connect(mapStateToProps)(AllKnobs);
 
 export { AllKnobsRedux as AllKnobs };

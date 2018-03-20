@@ -3,7 +3,7 @@ import { Select } from 'semantic-ui-react';
 
 export const CustomVisualizerSettings =
   props => (
-    props.settingsMinimized ?
+    props.settingsminimized ?
       null :
       (
         <div>

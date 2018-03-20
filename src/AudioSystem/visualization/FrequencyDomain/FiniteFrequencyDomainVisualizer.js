@@ -20,7 +20,7 @@ export class FiniteFrequencyDomainVisualizer {
     if (R.isNil(this.canvas)) {
       console.log('Error: canvas does not exist.');
       debugger;
-      alert('Error');
+      alert('Error: canvas does not exist.');
     }
     this.canvasCtx = this.canvas.getContext('2d');
   }

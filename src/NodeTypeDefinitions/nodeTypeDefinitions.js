@@ -1,4 +1,15 @@
 import * as R from 'ramda';
+import { unknownKeysThrowsExceptions } from 'helpers';
+
+/**
+ * Use this everywhere.
+ */
+@unknownKeysThrowsExceptions
+export class Types {
+  static string = 'string'
+  static integer = 'integer'
+  static float = 'float'
+}
 
 const _nodeTypeDefinitions = {
   /**
@@ -7,23 +18,23 @@ const _nodeTypeDefinitions = {
   ADSR: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       A: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 0.05,
       },
       D: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 0,
       }, 
       S: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 1,
       },
       R: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 0.9,
       },
     },
@@ -38,23 +49,23 @@ const _nodeTypeDefinitions = {
   ChangeRange: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       lowestInput: {
-        type: 'float',
+        type: Types.float,
         defaultValue: -1,
       },
       highestInput: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 1,
       }, 
       lowestOutput: {
-        type: 'float',
+        type: Types.float,
         defaultValue: -1,
       },
       highestOutput: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 1,
       },
     },
@@ -68,15 +79,15 @@ const _nodeTypeDefinitions = {
   Oscillator: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       frequency: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 440,
       },
       detune: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 0,
       },
       oscillatorType: {
@@ -89,15 +100,15 @@ const _nodeTypeDefinitions = {
         defaultValue: 'sine',
       },
       minValue: {
-        type: 'float',
+        type: Types.float,
         defaultValue: -1,
       },
       maxValue: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 1,
       },
       // gain: {
-      //   type: 'float',
+      //   type: Types.float,
       //   defaultValue: 1,
       // },
     },
@@ -111,11 +122,11 @@ const _nodeTypeDefinitions = {
   Gain: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       gain: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 1,
       },
     },
@@ -129,7 +140,7 @@ const _nodeTypeDefinitions = {
   Noise: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
     },
@@ -143,7 +154,7 @@ const _nodeTypeDefinitions = {
   TimeDomainAnalyser: {
     params: {
       name: {
-        type: 'string',
+        type: Types,
         defaultValue: '',
       },
     },
@@ -157,7 +168,7 @@ const _nodeTypeDefinitions = {
   FrequencyDomainAnalyser: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
     },
@@ -171,11 +182,11 @@ const _nodeTypeDefinitions = {
   LowPassFilter: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       frequency: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 350,
       },
     },
@@ -189,11 +200,11 @@ const _nodeTypeDefinitions = {
   HighPassFilter: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       frequency: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 350,
       },
     },
@@ -207,11 +218,11 @@ const _nodeTypeDefinitions = {
   BandPassFilter: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       frequency: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 350,
       },
     },
@@ -225,11 +236,11 @@ const _nodeTypeDefinitions = {
   DcSignal: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       dcValue: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 1,
       },
     },
@@ -243,11 +254,11 @@ const _nodeTypeDefinitions = {
   Delay: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       delayTime: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 1,
       },
     },
@@ -261,23 +272,23 @@ const _nodeTypeDefinitions = {
   LowResolutionSine: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       frequency: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 440,
       },
       levels: {
-        type: 'integer',
+        type: Types.integer,
         defaultValue: 4,
       },
       minValue: {
-        type: 'float',
+        type: Types.float,
         defaultValue: -1,
       },
       maxValue: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 1,
       },
     },
@@ -310,23 +321,23 @@ const _nodeTypeDefinitions = {
   PWM: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       frequency: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 440,
       },
       dutyCycle: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 0.5,
       },
       minValue: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 0,
       },
       maxValue: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 1,
       }
     },
@@ -340,23 +351,23 @@ const _nodeTypeDefinitions = {
   DigitalSequence: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       sequenceOfBits: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       millisecondsPerBit: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 500,
       },
       minValue: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 0,
       },
       maxValue: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 1,
       }
     },
@@ -370,11 +381,11 @@ const _nodeTypeDefinitions = {
   // HarmonicChord: {
   //   params: {
   //     name: {
-  //       type: 'string',
+  //       type: Types.string,
   //       defaultValue: '',
   //     },
   //     frequency: {
-  //       type: 'float',
+  //       type: Types.float,
   //       defaultValue: 440,
   //     },
   //   },
@@ -392,11 +403,11 @@ const _nodeTypeDefinitions = {
   PerfectFifth: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       frequency: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 440,
       },
     },
@@ -414,11 +425,11 @@ const _nodeTypeDefinitions = {
   MajorTriad: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       frequency: {
-        type: 'float',
+        type: Types.float,
         defaultValue: 440,
       },
     },
@@ -436,7 +447,7 @@ const _nodeTypeDefinitions = {
   TwowaySwitch: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
     },
@@ -450,11 +461,11 @@ const _nodeTypeDefinitions = {
   SchmittTrigger: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       threshold: {
-        type: 'float', // todo. types should be enums ffs!
+        type: Types.float, // todo. types should be enums ffs!
         defaultValue: 0,
       },
     },
@@ -468,11 +479,11 @@ const _nodeTypeDefinitions = {
   CrossoverDistortion: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       threshold: {
-        type: 'float', // todo. types should be enums ffs!
+        type: Types.float, // todo. types should be enums ffs!
         defaultValue: 0,
       },
     },
@@ -486,12 +497,12 @@ const _nodeTypeDefinitions = {
   CustomAnalyser: {
     params: {
       name: {
-        type: 'string',
+        type: Types.string,
         defaultValue: '',
       },
       exponent: {
-        type: 'integer',
-        defaultValue: 375,
+        type: Types.integer,
+        defaultValue: 8,
       }
     },
     connectableInputs: ['input', 'exponent'],
@@ -529,28 +540,26 @@ export const nodeTypeDefinitions =
  * returns the default values for this.state
  * for a Oscillator form component.
  */
-export const defaultValues =
-  type =>
-    Object.entries(nodeTypeDefinitions[type].params)
-      .reduce((accum, [param, { defaultValue }]) => {
-        accum[param] = defaultValue; // eslint-disable-line
-        return accum;
-      }, {});
+export const defaultValues = type =>
+  Object.entries(nodeTypeDefinitions[type].params)
+    .reduce((accum, [param, { defaultValue }]) => {
+      accum[param] = defaultValue; // eslint-disable-line
+      return accum;
+    }, {});
 
-export const parseValue =
-  (nodeType, paramName, value) => {
-    const { type } =
-      nodeTypeDefinitions[nodeType].params[paramName];
-    if (type === 'string') {
-      return value;
-    } else if (type === 'float') {
-      return parseFloat(value);
-    } else if (type === 'integer') {
-      return parseInt(value);
-    } else if (Array.isArray(type)) {
-      return value;
-    }
-    alert('Error');
-    debugger;
-    return null;
-  };
+export const parseValue = (nodeType, paramName, value) => {
+  const { type } =
+    nodeTypeDefinitions[nodeType].params[paramName];
+  if (type === 'string') {
+    return value;
+  } else if (type === 'float') {
+    return parseFloat(value);
+  } else if (type === 'integer') {
+    return Math.round(parseFloat(value));
+  } else if (Array.isArray(type)) {
+    return value;
+  }
+  alert('Error');
+  debugger;
+  return null;
+};

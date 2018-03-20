@@ -305,6 +305,17 @@
 
 * Ugly: CanvasContainer exists in three places. One place is enough.
 
-* Knob should be able to set 'step'.
-
 * history-custom-analyser does work correctly until refresh.
+
+* array-types like this fuck up @unknownKeysThrowsExceptions
+    oscillatorType: {
+        type: [
+          'sawtooth',
+          'sine',
+          'square',
+          'triangle',
+        ],
+        defaultValue: 'sine',
+      }
+
+

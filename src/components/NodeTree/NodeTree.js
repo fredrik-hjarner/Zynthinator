@@ -24,40 +24,36 @@ export const NodeTree =
     /**
      * Constructing an array of node-element-arrays.
      */
-    const asNodeElements =
-      chains
-        .map(chain => 
-          chain.map(nodeId => (R.is(Number, nodeId) ? (<Node nodeId={nodeId} display="inline-block" />) : nodeId)));
+    const asNodeElements = chains.map(chain => 
+      chain.map(nodeId => (R.is(Number, nodeId) ? (<Node key={nodeId} nodeId={nodeId} display="inline-block" />) : nodeId)));
     // console.log(`asNodeElements: ${asNodeElements}`);
 
     /**
      * Then the last step is to connect them with arrow Icon:s.
      */
-    const elements =
-      asNodeElements
-        .map(chain =>
-          chain.map((val) => {
-            if (val === type.ARROW) {
-              return <ConnectionArrow />;
-            } else if (val === type.NOTHING) {
-              return null;
-            }
-            return val;
-          }));
+    const elements = asNodeElements
+      .map(chain => chain.map((val, index) => {
+        if (val === type.ARROW) {
+          return <ConnectionArrow key={index} />;
+        } else if (val === type.NOTHING) {
+          return null;
+        }
+        return val;
+      }));
 
-    const flexed =
-      elements
-        .map(row => (
-          <tr>
-            {row.map(el => <td>{el}</td>)}
-          </tr>
-        ));
+    const flexed = elements.map((row, index) => (
+      <tr key={index}>
+        {row.map((el, i) => <td key={i}>{el}</td>)}
+      </tr>
+    ));
 
     return (
       <SimpleWindowRedux title="Node tree">
         <div style={{ maxWidth: '500px', overflowX: 'scroll' }}>
           <table>
-            {flexed}
+            <tbody>
+              {flexed}
+            </tbody>
           </table>
         </div>
       </SimpleWindowRedux>

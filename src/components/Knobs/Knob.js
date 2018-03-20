@@ -50,8 +50,9 @@ class KnobControlled extends React.Component {
           );
           break;
         default:
-          alert('Error');
+          alert('Error: default case');
           debugger;
+          throw 'Error: default case';
       }
       this.setState({
         value,

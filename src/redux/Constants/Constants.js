@@ -34,5 +34,4 @@ const handler = {
   },
 };
 
-export const actionTypes =
-  new Proxy(_actionTypes, handler);
+export const actionTypes = new Proxy(_actionTypes, handler);

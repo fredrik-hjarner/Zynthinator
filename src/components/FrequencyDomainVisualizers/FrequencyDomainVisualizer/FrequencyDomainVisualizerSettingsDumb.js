@@ -6,7 +6,7 @@ import {
 
 export const FrequencyDomainVisualizerSettingsDumb =
   props => (
-    props.settingsMinimized ?
+    props.settingsminimized ?
       null :
       (
         <div>

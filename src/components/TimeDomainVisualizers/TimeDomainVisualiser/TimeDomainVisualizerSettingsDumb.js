@@ -5,7 +5,7 @@ import {
 
 export const TimeDomainVisualizerSettingsDumb =
   props => (
-    props.settingsMinimized ?
+    props.settingsminimized ?
       null :
       (
         <div>

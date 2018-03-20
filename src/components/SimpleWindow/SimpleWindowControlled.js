@@ -6,7 +6,7 @@ import {
 export class SimpleWindowControlled extends React.Component {
   state = {
     minimized: false, // eslint-disable-line
-    settingsMinimized: true, // eslint-disable-line
+    settingsminimized: true, // eslint-disable-line
   };
 
   handlers = {
@@ -20,8 +20,8 @@ export class SimpleWindowControlled extends React.Component {
     onMinimizeSettings:
       () => {
         this.setState(prevState => ({
-          settingsMinimized:
-            !prevState.settingsMinimized,
+          settingsminimized:
+            !prevState.settingsminimized,
         }));
       },
   }
