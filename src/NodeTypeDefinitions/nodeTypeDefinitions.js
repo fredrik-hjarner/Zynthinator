@@ -512,6 +512,24 @@ const _nodeTypeDefinitions = {
   /**
    * 
    */
+  Quantizer: {
+    params: {
+      name: {
+        type: Types.string,
+        defaultValue: '',
+      },
+      quantumSize: {
+        type: Types.float,
+        defaultValue: 0.1,
+      }
+    },
+    connectableInputs: ['input', 'quantumSize'],
+    knobableInputs: ['input', 'quantumSize'],
+    output: false
+  },
+  /**
+   * 
+   */
   Knob: {
     params: {},
     connectableInputs: [],

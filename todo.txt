@@ -279,8 +279,6 @@
 
 * Remake ADSR so that 'stop' is triggered on falling edge, maybe.
 
-* create a Schmitt Trigger.
-
 * PWM glitches because ChangeRange glitches because of AudioWorklet.
 
 * user @withGain decorators.
