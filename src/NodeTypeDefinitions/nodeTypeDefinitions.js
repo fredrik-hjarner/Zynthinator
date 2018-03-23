@@ -521,19 +521,18 @@ const _nodeTypeDefinitions = {
 };
 
 // Add UI colors.
-export const nodeTypeDefinitions =
-  R.addIndex(R.map)(
-    (def, index) => {
-      const hue = index * 60;
-      const saturation = 70; // 25 + (Math.floor(hue / 360) * 25);
-      const lightness = 25 + (Math.floor(hue / 360) * 25); // hue < 360 ? 75 : 50;
-      return R.merge(
-        def,
-        { ui: { color: `hsl(${hue}, ${saturation}%, ${lightness}%)` } }
-      );
-    },
-    _nodeTypeDefinitions
-  );
+export const nodeTypeDefinitions = R.addIndex(R.map)(
+  (def, index) => {
+    const hue = index * 60;
+    const saturation = 70; // 25 + (Math.floor(hue / 360) * 25);
+    const lightness = 25 + (Math.floor(hue / 360) * 25); // hue < 360 ? 75 : 50;
+    return R.merge(
+      def,
+      { ui: { color: `hsl(${hue}, ${saturation}%, ${lightness}%)` } }
+    );
+  },
+  _nodeTypeDefinitions
+);
 
 /**
  * defaultValues('Oscillator')
@@ -559,7 +558,8 @@ export const parseValue = (nodeType, paramName, value) => {
   } else if (Array.isArray(type)) {
     return value;
   }
-  alert('Error');
-  debugger;
-  return null;
+  alert("Error in nodeTypeDefinitions.js: Invalid value of 'type'");
+  throw "Error in nodeTypeDefinitions.js: Invalid value of 'type'";
+  // debugger;
+  // return null;
 };

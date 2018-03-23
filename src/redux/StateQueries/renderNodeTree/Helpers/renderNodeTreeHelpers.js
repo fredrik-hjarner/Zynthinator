@@ -129,7 +129,7 @@ class RenderNodeTreeHelpers {
           return false;
         });
         if (index === undefined || index === -1) {
-          alert('Error');
+          alert('Error in renderNodeTreeHelpers.js.');
           debugger;
         }
         if (index === 0) {
@@ -162,11 +162,11 @@ class RenderNodeTreeHelpers {
           return false;
         });
         if (index === undefined || index === -1) {
-          alert('Error');
+          alert('Error in renderNodeTreeHelpers.js.');
           debugger;
         }
         if (index === 0) {
-          alert('Error');
+          alert('Error in renderNodeTreeHelpers.js.');
           debugger;
           return;
         }

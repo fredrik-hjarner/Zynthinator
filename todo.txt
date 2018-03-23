@@ -277,8 +277,7 @@
 
 * use 'safeDisconnect' everywhere.
 
-* Remake ADSR so that 'play' is triggered on rising edge
-    and 'stop' on falling edge.
+* Remake ADSR so that 'stop' is triggered on falling edge, maybe.
 
 * create a Schmitt Trigger.
 
@@ -299,8 +298,6 @@
 
 * One Knob should be able to connect/control to several things.
 
-* Create a crossover-distortion node, because it's cool.
-
 * Ugly: CanvasContainer exists in three places. One place is enough.
 
 * history-custom-analyser does work correctly until refresh.
@@ -316,4 +313,5 @@
         defaultValue: 'sine',
       }
 
-
+* Sometimes I have an alert which just displays a stupid 'Error'
+    it is extremely unhelpful.

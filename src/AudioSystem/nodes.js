@@ -16,25 +16,25 @@ class Nodes {
       this.nodes[node.id] = node;
     }
 
-  createNodes =
-    ({ nodesThatWereAdded }) => {
-      // alert(JSON.stringify(nodesThatWereAdded, null, 2));
-      // go through the array and create all the nodes.
-      nodesThatWereAdded.forEach((node) => {
-        const { nodeType } = node;
-        let audioNode;
-        try {
-          audioNode = new Models[nodeType]({ node });
-        } catch (error) {
-          debugger;
-          alert(error);
-          alert(`nodeType was '${nodeType}'`);
-          alert(`node was '${JSON.stringify(node, null, 2)}'`);
-        }
-        
-        this.addNode(audioNode);
-      });
-    }
+  createNodes = ({ nodesThatWereAdded }) => {
+    // alert(JSON.stringify(nodesThatWereAdded, null, 2));
+    // go through the array and create all the nodes.
+    nodesThatWereAdded.forEach((node) => {
+      const { nodeType } = node;
+      let audioNode;
+      try {
+        audioNode = new Models[nodeType]({ node });
+      } catch (error) {
+        debugger;
+        alert(error);
+        alert(`nodeType was '${nodeType}'`);
+        alert(`node was '${JSON.stringify(node, null, 2)}'`);
+        throw error;
+      }
+      
+      this.addNode(audioNode);
+    });
+  }
 
   deleteNodes =
     ({ idsForNodesThatWereDeleted }) => { // eslint-disable-line

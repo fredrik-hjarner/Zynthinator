@@ -43,9 +43,11 @@ export const CreateNodeDumb =
           </Form.Field>
         );
       }
-      alert('Error');
+      alert("Error in CreateNodeDumb.js: Incorrect value of 'type'");
       debugger;
-      return null;
+      throw '';
+      // debugger;
+      // return null;
     };
 
     const allFormFieldElements =
