@@ -15,9 +15,9 @@ export class SchmittTrigger extends AudioNode {
     this.thresholdBuffer = new GainNode(audioContext);
 
     processorPromise.then(() => {
-      console.log('processorPromise.then()');
+      // console.log('processorPromise.then()');
       this.worklet = new AudioWorkletNode(audioContext, 'schmitt-trigger'); // eslint-disable-line
-      console.log('worklet created');
+      // console.log('worklet created');
 
       this.worklet.connect(this.outputGain);
       this.workletBuffer.connect(this.worklet);

@@ -121,6 +121,7 @@ history =
     minValue: 0,
     maxValue: 1,
     function: 'linear',
+    step: 0.01
   },
   {
     type: 'CREATE_KNOB',
@@ -130,6 +131,7 @@ history =
     minValue: 0,
     maxValue: 1,
     function: 'linear',
+    step: 0.01
   },
   {
     type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
@@ -157,6 +159,7 @@ history =
     minValue: 0,
     maxValue: 10,
     function: 'linear',
+    step: 0.01
   },
   {
     type: 'OPEN_MODAL',

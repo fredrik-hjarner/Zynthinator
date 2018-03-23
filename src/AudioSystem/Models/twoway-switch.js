@@ -23,9 +23,9 @@ class _TwowaySwitch extends AudioNode {
     // this.gainB.connect(this.outputGain); // start out with A connected.
 
     processorPromise.then(() => {
-      console.log('processorPromise.then()');
+      // console.log('processorPromise.then()');
       this.worklet = new AudioWorkletNode(audioContext, 'edge-listener'); // eslint-disable-line
-      console.log('worklet created');
+      // console.log('worklet created');
 
       this.worklet.port.onmessage = ({ data }) => {
         if (data === 'rising-edge') {

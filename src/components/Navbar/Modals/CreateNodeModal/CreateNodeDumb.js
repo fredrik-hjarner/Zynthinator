@@ -43,17 +43,17 @@ export const CreateNodeDumb =
           </Form.Field>
         );
       }
-      alert("Error in CreateNodeDumb.js: Incorrect value of 'type'");
+      const message =
+        `Error in CreateNodeDumb.js: ${JSON.stringify(type, null, 2)} is not a valid 'type'. 'name' was ${name}`;
+      alert(message);
+      console.log(message);
       debugger;
-      throw '';
-      // debugger;
+      throw message;
       // return null;
     };
 
-    const allFormFieldElements =
-      Object.entries(Types.nodeTypeDefinitions[props.nodeType].params) // eslint-disable-line
-        .map(([name, { type }]) =>
-          createFormField(name, type, props[name]));
+    const entries = Object.entries(Types.nodeTypeDefinitions[props.nodeType].params);
+    const allFormFieldElements = entries.map(([name, { type }]) => createFormField(name, type, props[name]));
 
     const form = (
       <Form inverted>

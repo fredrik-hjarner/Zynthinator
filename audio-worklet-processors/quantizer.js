@@ -20,7 +20,7 @@ class Quantizer extends AudioWorkletProcessor { // eslint-disable-line
     }
 
     input.forEach((value, index) => {
-      const quanti = Math.round(value / size);
+      const quanti = (value / size) | 0; // eslint-disable-line
       output[index] = quanti * size; // eslint-disable-line
     });
 

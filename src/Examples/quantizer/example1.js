@@ -129,7 +129,7 @@ history =
     connectedToWhichNode: 5,
     connectedToWhichParam: 'quantumSize',
     minValue: 0,
-    maxValue: 2,
+    maxValue: 1,
     step: 0.01,
     function: 'linear'
   },
@@ -178,13 +178,13 @@ history =
     type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
     id: 1,
     param: 'maxValue',
-    value: '2.1'
+    value: '1.1'
   },
   {
     type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
     id: 1,
     param: 'minValue',
-    value: '-2.1'
+    value: '-1.1'
   },
   {
     type: 'UI_TD_ANALYSER_CHANGE_PARAMS',

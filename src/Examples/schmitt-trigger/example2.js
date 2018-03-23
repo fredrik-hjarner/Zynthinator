@@ -200,7 +200,8 @@ history =
     connectedToWhichParam: 'gain',
     minValue: 0,
     maxValue: 1,
-    function: 'linear'
+    function: 'linear',
+    step: 0.01
   },
   {
     type: 'MOVE_KNOB',
@@ -221,6 +222,7 @@ history =
     connectedToWhichParam: 'threshold',
     minValue: 0,
     maxValue: 0.5,
-    function: 'linear'
+    function: 'linear',
+    step: 0.01
   }
 ];

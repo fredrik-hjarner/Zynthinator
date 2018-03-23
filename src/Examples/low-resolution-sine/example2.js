@@ -158,7 +158,8 @@ history =
     connectedToWhichParam: 'playbackRate',
     minValue: 0,
     maxValue: 10,
-    function: 'exponential'
+    function: 'exponential',
+    step: 0.01
   },
   {
     type: 'OPEN_MODAL',
@@ -174,7 +175,8 @@ history =
     connectedToWhichParam: 'gain',
     minValue: 0,
     maxValue: 4,
-    function: 'linear'
+    function: 'linear',
+    step: 0.01
   },
   {
     type: 'OPEN_MODAL',

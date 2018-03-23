@@ -4,7 +4,6 @@ import {
   Dropdown,
 } from 'semantic-ui-react';
 import { BestModal } from 'components/semantic++';
-// import { CommonModal } from 'components/Navbar/Modals/CommonModal';
 
 export const CreateConnectionDumb = (props) => {
   const formFields = (
@@ -35,15 +34,6 @@ export const CreateConnectionDumb = (props) => {
     </Form>
   );
 
-  // return (
-  //   <CommonModal
-  //     {...props}
-  //     formFields={formFields}
-  //     header="Connect Nodes"
-  //     description="Choose which nodes to connect."
-  //     okButtonString="Connect them!"
-  //   />
-  // );
   return (
     <BestModal
       {...props}

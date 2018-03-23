@@ -154,7 +154,7 @@ const _nodeTypeDefinitions = {
   TimeDomainAnalyser: {
     params: {
       name: {
-        type: Types,
+        type: Types.string,
         defaultValue: '',
       },
     },
@@ -576,8 +576,10 @@ export const parseValue = (nodeType, paramName, value) => {
   } else if (Array.isArray(type)) {
     return value;
   }
-  alert("Error in nodeTypeDefinitions.js: Invalid value of 'type'");
-  throw "Error in nodeTypeDefinitions.js: Invalid value of 'type'";
-  // debugger;
+  const message = `Error in nodeTypeDefinitions.js: ${type} is not a valid 'type'`;
+  alert(message);
+  console.log(message);
+  debugger;
+  throw message;
   // return null;
 };

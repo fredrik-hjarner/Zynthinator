@@ -248,7 +248,8 @@ history =
     connectedToWhichParam: 'delayTime',
     minValue: 0,
     maxValue: 1,
-    function: 'linear'
+    function: 'linear',
+    step: 0.01
   },
   {
     type: 'OPEN_MODAL',
@@ -264,7 +265,8 @@ history =
     connectedToWhichParam: 'frequency',
     minValue: 0,
     maxValue: 100,
-    function: 'exponential'
+    function: 'exponential',
+    step: 0.01
   },
   {
     type: 'MOVE_KNOB',

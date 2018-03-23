@@ -24,7 +24,7 @@ export class CreateKnobModal extends React.Component {
       connectedToWhichParam: undefined,
       minValue: 0,
       maxValue: 100,
-      step: 1,
+      step: 0.01,
       childNodeInputs: [],
     };
   }

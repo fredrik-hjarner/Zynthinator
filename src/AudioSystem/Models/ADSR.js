@@ -73,9 +73,9 @@ export class ADSR extends AudioNode {
     };
 
     processorPromise.then(() => {
-      console.log('processorPromise.then()');
+      // console.log('processorPromise.then()');
       this.worklet = new AudioWorkletNode(audioContext, 'edge-listener'); // eslint-disable-line
-      console.log('worklet created');
+      // console.log('worklet created');
 
       this.worklet.port.onmessage = ({ data }) => {
         if (data === 'rising-edge') {

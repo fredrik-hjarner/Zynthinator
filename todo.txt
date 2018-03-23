@@ -130,10 +130,6 @@
 * When I replay a history I should be able to manually go forward
     action by action!
 
-* The name prop, does not make any sense
-    for many-to-one connections
-    since it creates several connections.
-
 * The "multiple selection dropdowns"
     should have their "value prop" set
     and now it is not.

@@ -189,7 +189,8 @@ history =
     connectedToWhichParam: 'play',
     minValue: 0,
     maxValue: 1,
-    function: 'linear'
+    function: 'linear',
+    step: 0.01
   },
   {
     type: 'MOVE_KNOB',
