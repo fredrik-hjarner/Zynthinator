@@ -313,3 +313,7 @@
 
 * Sometimes I have an alert which just displays a stupid 'Error'
     it is extremely unhelpful.
+
+* When Master volume is set to zero I can still friggin hear stuff !?!?!?
+
+* Exception: The smoothing value provided (80) is outside the range [0, 1].

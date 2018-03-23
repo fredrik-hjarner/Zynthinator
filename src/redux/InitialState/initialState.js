@@ -51,6 +51,7 @@ export const initialState = {
         minValue: 0,
         maxValue: 1,
         function: 'exponential',
+        step: 0.01
       },
     },
     triggers: {},

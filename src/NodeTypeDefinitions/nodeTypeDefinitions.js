@@ -525,7 +525,7 @@ const _nodeTypeDefinitions = {
     },
     connectableInputs: ['input', 'quantumSize'],
     knobableInputs: ['input', 'quantumSize'],
-    output: false
+    output: true
   },
   /**
    * 
