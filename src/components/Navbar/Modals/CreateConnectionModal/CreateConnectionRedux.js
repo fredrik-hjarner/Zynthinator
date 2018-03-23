@@ -1,6 +1,4 @@
-import {
-  connect,
-} from 'react-redux';
+import { connect } from 'react-redux';
 import {
   CreateConnectionControlled,
 } from './CreateConnectionControlled';
@@ -9,24 +7,18 @@ import {
   stateQueries,
 } from 'redux/StateQueries';
 
-const mapStateToProps =
-  (state, ownProps) => ({
-    nodes:
-      stateQueries.getAllNodes(state),
-    nodesThatHaveOutputs:
-      Object.values(memoizedStateQueries.getNodesThatHaveOutputs(state))
-        .map(node => ({
-          text: stateQueries.getNodeInReadableFormat(node),
-          value: node.id,
-          key: node.id,
-        })),
-    nodesThatHaveInputs:
-      memoizedStateQueries.getChildNodesForCreateConnectionModal(state),
-    ...ownProps,
-  });
+const mapStateToProps = (state, ownProps) => ({
+  nodes: stateQueries.getAllNodes(state),
+  nodesThatHaveOutputs:
+    Object.values(memoizedStateQueries.getNodesThatHaveOutputs(state))
+      .map(node => ({
+        text: stateQueries.getNodeInReadableFormat(node),
+        value: node.id,
+        key: node.id,
+      })),
+  nodesThatHaveInputs:
+    memoizedStateQueries.getChildNodesForCreateConnectionModal(state),
+  ...ownProps,
+});
 
-export const CreateConnectionRedux =
-  connect(
-    mapStateToProps,
-    {},
-  )(CreateConnectionControlled);
+export const CreateConnectionRedux = connect(mapStateToProps)(CreateConnectionControlled);

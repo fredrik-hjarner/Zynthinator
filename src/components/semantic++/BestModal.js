@@ -4,46 +4,43 @@ import { Button, Header, Icon, Modal } from 'semantic-ui-react';
 import { closeModalAction } from 'redux/modules/ui';
 
 export class BestModal extends React.Component {
-  render =
-    () => { // eslint-disable-line
-      return (
-        <Modal
-          closeOnDimmerClick={false}
+  render = () => (
+    <Modal
+      closeOnDimmerClick={false}
+      basic
+      open="true"
+      onClose={this.onModalClose}
+      size="mini"
+    >
+      <Header icon="archive" content={this.props.header} />
+      <Modal.Content>
+        <Modal.Description>
+          <p>{this.props.description}</p>
+          {this.props.form}
+        </Modal.Description>
+      </Modal.Content>
+      <Modal.Actions>
+        <Button
           basic
-          open="true"
-          onClose={this.onModalClose}
-          size="mini"
+          color="red"
+          inverted
+          onClick={() => closeModalAction()}
         >
-          <Header icon="archive" content={this.props.header} />
-          <Modal.Content>
-            <Modal.Description>
-              <p>{this.props.description}</p>
-              {this.props.form}
-            </Modal.Description>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button
-              basic
-              color="red"
-              inverted
-              onClick={() => closeModalAction()}
-            >
-              <Icon name="remove" /> Cancel
-            </Button>
-            <Button
-              color="green"
-              inverted
-              onClick={() => {
-                  closeModalAction();
-                  this.props.onConfirm();
-                }}
-            >
-              <Icon name="checkmark" /> {this.props.okButtonString}
-            </Button>
-          </Modal.Actions>
-        </Modal>
-      );
-    }
+          <Icon name="remove" /> Cancel
+        </Button>
+        <Button
+          color="green"
+          inverted
+          onClick={() => {
+              closeModalAction();
+              this.props.onConfirm();
+            }}
+        >
+          <Icon name="checkmark" /> {this.props.okButtonString}
+        </Button>
+      </Modal.Actions>
+    </Modal>
+  );
 }
 
 BestModal.propTypes = {

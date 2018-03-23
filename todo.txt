@@ -18,8 +18,6 @@
     Makes it more dynamic!
     For example the PHASE of the OSCILLATOR can become an input!!
 
-* probably remove the "nodeManagement" from state.
-
 * Bug when minimizing Visualizers.
 
 * TODO:
@@ -148,10 +146,6 @@
 * _updateScaleAndOffset
     can probably be refactored into some Util.js.
 
-* Example 2 is not working.
-    Only works when I refresh the page does it start to work.
-    What the fuck is wrong?
-
 * Refactoring possibility.
     I might split all the inputs up!
     So that I have a
@@ -190,9 +184,6 @@
 
 * Web Audio API square waves look like crap!!!!!!!!1
     So make my own one with audiobuffer or Triangle + WaveShaper
-
-* Inspired by Falstad:
-    Nested examples menu showing how different nodees work etc.
 
 * "bounds" for parameters in nodeTypeDefinitons.js
     i.e max and min values so the user doesn't fuck up.
@@ -260,8 +251,6 @@
 * Bug where "knobbing" playbackRate adds to 1
     Should add with zero when a knob is connected.
 
-* I can do 'quantization' with AudioWorklets!!
-
 * I can do what I am doing in ChangeRange and have
     - defaults
     - params
@@ -278,6 +267,7 @@
 * use 'safeDisconnect' everywhere.
 
 * Remake ADSR so that 'stop' is triggered on falling edge, maybe.
+  - Or no. It should have a 'stop' input and the 'play' input !!!!!
 
 * PWM glitches because ChangeRange glitches because of AudioWorklet.
 

@@ -19,16 +19,13 @@ export class CreateConnectionControlled extends React.Component {
   }
 
   handlers = {
-    onConfirm:
-      () =>
-        createConnectionAction(this.state),
+    onConfirm: () => createConnectionAction(this.state),
     /**
      * Receives many ids as an array via 'value'.
      */
-    onParentNodeIdChange:
-      (e, { value }) => {
-        this.setState({ parentNodeIds: value });
-      },
+    onParentNodeIdChange: (e, { value }) => {
+      this.setState({ parentNodeIds: value });
+    },
     /**
      * Receives value =
      * [
@@ -36,23 +33,16 @@ export class CreateConnectionControlled extends React.Component {
      *   { nodeId, param },
      * ]
      */
-    onChildNodeIdChange:
-      (e, { value }) => {
-        this.setState({ childNodes: value });
-      },
-    onNameChange:
-      value =>
-        this.setState({
-          name: value,
-        }),
+    onChildNodeIdChange: (e, { value }) => {
+      this.setState({ childNodes: value });
+    }
   }
 
-  render =
-    () => (
-      <CreateConnectionDumb
-        {...this.props}
-        {...this.state}
-        {...this.handlers}
-      />
-    );
+  render = () => (
+    <CreateConnectionDumb
+      {...this.props}
+      {...this.state}
+      {...this.handlers}
+    />
+  );
 }
