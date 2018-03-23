@@ -69,5 +69,8 @@ export const Examples = () => (
     <DigitalLogic/>
     <Distortions/>
     <Oscillators/>
+    <MenuItem caption="Quantizer">
+      <MenuItem caption="Changing resolution of a sine" onClick={E.quantizer.example1} />
+    </MenuItem>
   </TopMenuItem>
 );
