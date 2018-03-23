@@ -17,8 +17,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const middleware = routerMiddleware(history);
 
-const persistedState =
-  getState();
+const persistedState = getState();
 
 export const store = createStore(
   rootReducer,

@@ -65,7 +65,8 @@ export const initialState = {
   modal: null,        // move into UI
   propsToModal: null, // move into UI
   ui: {
-    highestIdYet: 1,
+    messageModal: null,
+    highestIdYet: 1, // hm. for components
     components: {
       1: {
         id: 1,

@@ -5,6 +5,7 @@ export * from './TimeDomainVisualizers';
 export * from './CustomVisualizers';
 export * from './ListOfGroups';
 export * from './ModalWindow';
+export * from './modals/message-modal';
 export * from './Knobs';
 export * from './Connections';
 export * from './Nodes';

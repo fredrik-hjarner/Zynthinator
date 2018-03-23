@@ -1,73 +1,66 @@
 import _ from 'lodash';
 import * as R from 'ramda';
 import deepFreeze from 'deep-freeze';
-import {
-  routerReducer,
-} from 'react-router-redux';
+import { routerReducer } from 'react-router-redux';
 import { initialState } from '../InitialState';
 import * as Reducers from './subReducers';
-import {
-  stateQueries,
-} from '../StateQueries';
+// import { openMessageModalReducer } from 'redux/modules/ui'; // eslint-disable-line
+import { stateQueries } from '../StateQueries';
 
 /**
  * string -> string
  * CLICK_TRIGGER -> clickTriggerReducer
  */
-const actionConstToReducer =
-  actionConst =>
-    _.camelCase(`${actionConst}Reducer`);
+const actionConstToReducer = actionConst => _.camelCase(`${actionConst}Reducer`);
 
-const isFuckedUp =
-  x =>
-    x === undefined || x === null || x === Infinity || x === -Infinity;
+const isFuckedUp = x =>
+  x === undefined || x === null || x === Infinity || x === -Infinity;
 
 /**
  * Does some checks to see if the state is consistent.
  */
-const checkStateConstistency =
-  (state) => { // todo, should receive latest action so that I can see what action caused it.
-    // -------------------------------
-    // Connections
-    // -------------------------------
+const checkStateConstistency = (state) => { // todo, should receive latest action so that I can see what action caused it.
+  // -------------------------------
+  // Connections
+  // -------------------------------
 
-    const connections =
-      stateQueries.getAllConnectionValues(state);
-    /**
-     * All connections should have an 'id' prop.
-     */
-    if (!R.all(R.has('id'), connections)) {
-      debugger;
-      alert('Error: connections is not consistent!');
-    }
+  const connections =
+    stateQueries.getAllConnectionValues(state);
+  /**
+   * All connections should have an 'id' prop.
+   */
+  if (!R.all(R.has('id'), connections)) {
+    debugger;
+    alert('Error: connections is not consistent!');
+  }
 
-    // -------------------------------
-    // Highest id values
-    // -------------------------------
+  // -------------------------------
+  // Highest id values
+  // -------------------------------
 
-    const highestUiIdYet = state.ui.highestIdYet;
-    if (isFuckedUp(highestUiIdYet)) {
-      debugger;
-      alert('Error! highestUiIdYet is fucked up.');
-    }
-    const { highestNodeIdYet } = state.nodeManagement;
-    if (isFuckedUp(highestNodeIdYet)) {
-      debugger;
-      alert('Error! highestNodeIdYet is fucked up.');
-    }
+  const highestUiIdYet = state.ui.highestIdYet;
+  if (isFuckedUp(highestUiIdYet)) {
+    debugger;
+    alert('Error! highestUiIdYet is fucked up.');
+  }
+  const { highestNodeIdYet } = state.nodeManagement;
+  if (isFuckedUp(highestNodeIdYet)) {
+    debugger;
+    alert('Error! highestNodeIdYet is fucked up.');
+  }
 
-    // ----------------------------
-    // Node id:s are numbers
-    // ----------------------------
+  // ----------------------------
+  // Node id:s are numbers
+  // ----------------------------
 
-    const nodeKeys = Object.keys(state.nodeManagement.nodes);
-    const nodeKeysAreConsistent = nodeKeys.every(key =>
-      !isFuckedUp(key));
-    if (!nodeKeysAreConsistent) {
-      debugger;
-      alert('Error! Node keys are not consistent.');
-    }
-  };
+  const nodeKeys = Object.keys(state.nodeManagement.nodes);
+  const nodeKeysAreConsistent = nodeKeys.every(key =>
+    !isFuckedUp(key));
+  if (!nodeKeysAreConsistent) {
+    debugger;
+    alert('Error! Node keys are not consistent.');
+  }
+};
 
 const _rootReducer = (_state, action) => {
   const state = {
@@ -95,6 +88,7 @@ const _rootReducer = (_state, action) => {
     return Reducers.createCustomAnalyserReducer(state, action);
   }
 
+  // reducers have to follow format of the corresponding action
   const reducerName = actionConstToReducer(type);
 
   try {

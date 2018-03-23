@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import { store } from 'redux/Store';
 import { actionTypes } from 'redux/Constants';
 
@@ -9,6 +10,15 @@ export const openModalAction = (modal, props) =>
     type: actionTypes.OPEN_MODAL,
     modal,
     props,
+  });
+
+export const openMessageModalAction = (header, content) =>
+  store.dispatch({
+    type: actionTypes.OPEN_MESSAGE_MODAL,
+    payload: {
+      header,
+      content
+    }
   });
 
 export const uiFdAnalyserChangeParamsAction = (id, param, value) =>
@@ -26,3 +36,17 @@ export const uiTdAnalyserChangeParamsAction = (id, param, value) =>
     param,
     value,
   });
+
+// --------------------------
+// Reducers
+// ---------------------------
+
+export const openMessageModalReducer = (state, { payload: { header, content } }) =>
+  R.evolve({
+    ui: {
+      messageModal: () => ({
+        header,
+        content
+      }) 
+    }
+  }, state);

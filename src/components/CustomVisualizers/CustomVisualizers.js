@@ -18,7 +18,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-@connect(mapStateToProps, null)
+@connect(mapStateToProps)
 export class CustomVisualizers extends React.Component {
   render() {
     const { props } = this;

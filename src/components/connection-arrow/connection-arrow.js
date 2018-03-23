@@ -38,38 +38,37 @@ class ConnectionArrow extends React.Component {
     this.setState({ open: true });
   }
 
-  render =
-    () => {
-      // const { node, display } = this.props;
+  render = () => {
+    // const { node, display } = this.props;
 
-      const div = (
-        <Icon name="long arrow right" color="grey" size="big" />
-      );
+    const div = (
+      <Icon name="long arrow right" color="grey" size="big" />
+    );
 
-      /**
-       * Trying to use my new ContextMenu class
-       */
-      return (
-        <Popup
-          open={this.state.open}
-          onOpen={this.handleOpen}
-          onClose={this.handleClose}
-          className="context-menu"
-          basic
-          size="mini"
-          trigger={div}
-          content={(
-            <ContextMenu>
-              <ContextMenuItem caption="Disable" disabled="disabled" />
-              <ContextMenuItem caption="Disconnect" disabled="disabled" />
-              <ContextMenuItem caption="Inject node here" disabled="disabled" />
-            </ContextMenu>
-          )}
-          position="bottom right"
-          on="click"
-        />
-      );
-    };
+    /**
+     * Trying to use my new ContextMenu class
+     */
+    return (
+      <Popup
+        open={this.state.open}
+        onOpen={this.handleOpen}
+        onClose={this.handleClose}
+        className="context-menu"
+        basic
+        size="mini"
+        trigger={div}
+        content={(
+          <ContextMenu>
+            <ContextMenuItem caption="Disable" disabled="disabled" />
+            <ContextMenuItem caption="Disconnect" disabled="disabled" />
+            <ContextMenuItem caption="Inject node here" disabled="disabled" />
+          </ContextMenu>
+        )}
+        position="bottom right"
+        on="click"
+      />
+    );
+  };
 }
   
 ConnectionArrow.propTypes = {
@@ -81,22 +80,17 @@ ConnectionArrow.propTypes = {
 // ConnectionArrowContainer
 // ----------------------------------
 
-const mapStateToProps =
-  (state, { nodeId }) => ({ // eslint-disable-line
-    // node:
-    //   stateQueries.getAllNodes(state)[nodeId]
-  });
+const mapStateToProps = (state, { nodeId }) => ({ // eslint-disable-line
+  // node:
+  //   stateQueries.getAllNodes(state)[nodeId]
+});
 
-const mapDispatchToProps =
-  (dispatch, { nodeId }) => ({ // eslint-disable-line
-    // deleteNode: () => deleteNodeAction([nodeId])
-  });
+const mapDispatchToProps = (dispatch, { nodeId }) => ({ // eslint-disable-line
+  // deleteNode: () => deleteNodeAction([nodeId])
+});
 
-const ConnectionArrowContainer =
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ConnectionArrow);
+// todo. use @connect
+const ConnectionArrowContainer = connect(mapStateToProps, mapDispatchToProps)(ConnectionArrow);
 
 ConnectionArrowContainer.propTypes = {
   // nodeId: PropTypes.number.isRequired,

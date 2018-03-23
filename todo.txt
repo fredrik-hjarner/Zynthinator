@@ -168,8 +168,6 @@
 * Layout is not a fucking reusable component,
     so it should not be under /components.
 
-* Home is a really bad name for the route.
-
 * ESLint should force me to make PropTypes!
 
 * getConnectionInReadableFormat is right generates "semantic options"

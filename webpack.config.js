@@ -79,12 +79,12 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({ template: indexHtmlPath }),
     CopyWebpackPluginConfig,
-    new (require('circular-dependency-plugin'))({
-      // exclude detection of files based on a RegExp
-      exclude: /node_modules/,
-      // add errors to webpack instead of warnings
-      failOnError: true,
-    }),
+    // new (require('circular-dependency-plugin'))({
+    //   // exclude detection of files based on a RegExp
+    //   exclude: /node_modules/,
+    //   // add errors to webpack instead of warnings
+    //   failOnError: true,
+    // }),
     // new webpack.optimize.UglifyJsPlugin({ sourceMap: false }),
   ],
 };

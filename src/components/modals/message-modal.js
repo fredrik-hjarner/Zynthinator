@@ -2,14 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Icon, Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { closeModal as closeModalAction } from 'redux/modules/modal';
-import './style/modal.scss';
+import { closeModalAction } from 'redux/modules/ui';
+// import './style/modal.scss';
 
 /**
  * A simple warning modal that essentially mimics the
  * behaviour of window.alert.
  */
-const MessageModal = ({ modal, closeModal, color, icon }) => {
+const MessageModal = (props) => {
+  const { modal, color, icon } = props;
   if (!modal) {
     /**
      * modal === null means that there is no modal
@@ -26,7 +27,7 @@ const MessageModal = ({ modal, closeModal, color, icon }) => {
       <Button
         color='red'
         inverted
-        onClick={closeModal}
+        onClick={closeModalAction}
         size='big'
       >
         Ok
@@ -36,7 +37,6 @@ const MessageModal = ({ modal, closeModal, color, icon }) => {
 };
 
 MessageModal.propTypes = {
-  closeModal: PropTypes.func.isRequired,
   modal: PropTypes.object,
   color: PropTypes.string,
   icon: PropTypes.string,
@@ -52,17 +52,9 @@ MessageModal.defaultProps = {
 // ---------------------------------
 
 const mapStateToProps = state => ({
-  modal: state.modal.modal
+  modal: state.ui.messageModal
 });
 
-const mapDispatchToProps = dispatch => ({
-  closeModal: () => dispatch(closeModalAction())
-});
-
-const MessageModalContainer =
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  )(MessageModal);
+const MessageModalContainer = connect(mapStateToProps)(MessageModal);
 
 export { MessageModalContainer as MessageModal };

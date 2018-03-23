@@ -4,10 +4,17 @@ import * as R from 'ramda';
 // Reducers
 // --------------------
 
-export const closeModalReducer =
-  R.flip(R.merge)({
+export const closeModalReducer = 
+  // R.flip(R.merge)({
+  //   modal: null,
+  //   propsToModal: null
+  // });
+  R.mergeDeepLeft({
     modal: null,
-    propsToModal: null
+    propsToModal: null,
+    ui: {
+      messageModal: null
+    }
   });
 
 export const openModalReducer =
@@ -31,16 +38,15 @@ const adjustValue = (param, value) => {
   return value;
 };
 
-export const uiFdAnalyserChangeParamsReducer =
-  (state, action) => {
-    const { id, param, value } = action;
+export const uiFdAnalyserChangeParamsReducer = (state, action) => {
+  const { id, param, value } = action;
 
-    return R.assocPath(
-      ['ui', 'components', `${id}`, param],
-      adjustValue(param, value),
-      state,
-    );
-  };
+  return R.assocPath(
+    ['ui', 'components', `${id}`, param],
+    adjustValue(param, value),
+    state,
+  );
+};
 
 // todo this looks silly
 export const uiTdAnalyserChangeParamsReducer = uiFdAnalyserChangeParamsReducer;
