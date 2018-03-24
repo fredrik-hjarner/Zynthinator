@@ -327,3 +327,9 @@
 
 * Rervert the ChangeRange so that it uses a GAIN and a CONSTANT_SOURCE,
     and AudioWorklet only where it's needed.
+
+* @byPass
+    means that one can toggle a 'byPass' parameter that takes the input and output
+    of the node and connects them together,
+    while disconnecting the node.
+    I.e one can toggle to bypass the node.
