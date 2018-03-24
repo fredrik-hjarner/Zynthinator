@@ -503,10 +503,14 @@ const _nodeTypeDefinitions = {
       exponent: {
         type: Types.integer,
         defaultValue: 8,
+      },
+      trigger: {
+        type: Types.float,
+        defaultValue: 0,
       }
     },
-    connectableInputs: ['input', 'exponent'],
-    knobableInputs: ['input', 'exponent'],
+    connectableInputs: ['input', 'exponent', 'trigger'],
+    knobableInputs: ['input', 'exponent', 'trigger'],
     output: false
   },
   /**

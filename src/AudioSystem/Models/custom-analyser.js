@@ -12,6 +12,7 @@ export class CustomAnalyser extends AudioWorkletBase {
      */
     const defaultParams = R.pick([
       'exponent',
+      'trigger'
     ], node);
 
     /**
@@ -20,6 +21,7 @@ export class CustomAnalyser extends AudioWorkletBase {
      */
     const bufferNodeNames = [
       'exponent',
+      'trigger',
       'input'
     ];
 
@@ -68,6 +70,9 @@ export class CustomAnalyser extends AudioWorkletBase {
    */
   get exponent() {
     return this.params.exponent;
+  }
+  get trigger() {
+    return this.params.trigger;
   }
   get input() {
     return this.params.input;

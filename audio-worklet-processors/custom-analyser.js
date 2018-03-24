@@ -1,7 +1,3 @@
-// ----------------------------
-// AudioWorkletProcessor
-// ----------------------------
-
 /**
  * 
  */
@@ -10,6 +6,14 @@ function pushEveryNth(pushTo, input, nth) {
     pushTo.push(input[i]);
   }
 }
+
+/**
+ * Takes the average of the X last values.
+ */
+// function average(array) {
+//   const arr = array.slice(-5);
+//   return arr.reduce((acc, val) => acc + val, 0) / arr.length;
+// }
 
 const BITS_PER_WINDOW = 8;
 const SAMPLES_PER_WINDOW = 2 ** BITS_PER_WINDOW;
@@ -27,6 +31,11 @@ const MAX_BITS_TO_STORE = 9;
  * by sending a message instead of supplying them
  * through parameters. That would probably be faster.
  */
+
+// ----------------------------
+// AudioWorkletProcessor
+// ----------------------------
+
 class Processor extends AudioWorkletProcessor { // eslint-disable-line
   constructor() {
     super();
@@ -35,14 +44,17 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
      * AudioWorkletNode asks for data.
      * This class responds by giving it data.
      */
+    this.nodeRequestedData = false;
     this.port.onmessage = () => {
-      this.port.postMessage({ type: 'data', payload: this.buffer });
+      this.nodeRequestedData = true;
     };
+    this.lastWasOverTrigger = false;
   }
 
   static get parameterDescriptors() {
     return [
       { name: 'exponent', defaultValue: 0 },
+      { name: 'trigger', defaultValue: 0 },
     ];
   }
 
@@ -76,22 +88,20 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
       this.nth = null;
     }
 
-    console.log('this.exponent: ', this.exponent);
-    console.log('this.windowsToCapture: ', this.windowsToCapture);
-    console.log('this.nth: ', this.nth);
+    // console.log('this.exponent: ', this.exponent);
+    // console.log('this.windowsToCapture: ', this.windowsToCapture);
+    // console.log('this.nth: ', this.nth);
   }
 
   /**
-   * 128 samples
-   * 48 000 samples/second
-   * => 375 process(...) / second
-   * => 2.666 ms / 1 process
+   * Each frame is 128 samples.
+   * Collects two frames and sends them to this.process256.
    */
-  process([[input]], _, { exponent }) {
+  process([[input]], _, { exponent, trigger }) {
     this.input256.splice(-1, 0, ...input);
     if (this.input256.length === SAMPLES_PER_WINDOW) {
       // Copying with this.input256.slice() would be more secure.
-      this.process256(this.input256, exponent[127]);
+      this.process256(this.input256, Math.round(exponent[127]), trigger[127]);
       this.input256 = [];
     }
     return true; // keep processor alive
@@ -101,7 +111,7 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
    * Like process
    * but has input buffer of 256 samples.
    */
-  process256(input, exponent) {
+  process256(input, exponent, trigger) {
     let exp = exponent;
     /**
      * cap value.
@@ -127,6 +137,19 @@ class Processor extends AudioWorkletProcessor { // eslint-disable-line
       // remove a window then add a window.
       this.buffer.splice(0, SAMPLES_PER_WINDOW / this.nth);
       pushEveryNth(this.buffer, input, this.nth);
+    }
+
+    /**
+     * Attempting/trying to do some primitive triggering.
+     */
+    if (!this.lastWasHigh && this.buffer[this.buffer.length - 1] > trigger) { // if this was high
+      this.lastWasHigh = true;
+      if (this.nodeRequestedData) {
+        this.port.postMessage({ type: 'data', payload: this.buffer });
+        this.nodeRequestedData = false;
+      }
+    } else if (this.buffer[this.buffer.length - 1] < trigger) { // if this was low
+      this.lastWasHigh = false;
     }
   }
 }
