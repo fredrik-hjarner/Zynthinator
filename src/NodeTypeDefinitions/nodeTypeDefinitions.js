@@ -167,10 +167,7 @@ const _nodeTypeDefinitions = {
    */
   FrequencyDomainAnalyser: {
     params: {
-      name: {
-        type: Types.string,
-        defaultValue: '',
-      },
+      name: { type: Types.string, defaultValue: '' },
     },
     connectableInputs: ['input'],
     knobableInputs: [],
@@ -529,6 +526,24 @@ const _nodeTypeDefinitions = {
     },
     connectableInputs: ['input', 'quantumSize'],
     knobableInputs: ['input', 'quantumSize'],
+    output: true
+  },
+  /**
+   * 
+   */
+  TimeQuantizer: {
+    params: {
+      name: {
+        type: Types.string,
+        defaultValue: '',
+      },
+      milliseconds: {
+        type: Types.float,
+        defaultValue: 100,
+      }
+    },
+    connectableInputs: ['input', 'milliseconds'],
+    knobableInputs: ['input', 'milliseconds'],
     output: true
   },
   /**

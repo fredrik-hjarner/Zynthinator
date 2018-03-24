@@ -43,7 +43,10 @@ export const Create = () => (
         {nodeItem('LowPassFilter', 'Low-pass filter')}
       </MenuItem>
       {nodeItem('Gain')}
-      {nodeItem('Quantizer')}
+      <MenuItem caption="Quantizers">
+        {nodeItem('Quantizer')}
+        {nodeItem('TimeQuantizer')}
+      </MenuItem>
       <MenuItem caption="Waveforms">
         {nodeItem('DcSignal', 'DC signal')}
         {nodeItem('DigitalSequence')}

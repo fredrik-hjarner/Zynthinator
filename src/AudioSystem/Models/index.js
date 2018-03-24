@@ -24,3 +24,4 @@ export * from './schmitt-trigger';
 export * from './crossover-distortion';
 export * from './custom-analyser';
 export * from './quantizer';
+export * from './time-quantizer';
