@@ -60,6 +60,11 @@ export class CustomAnalyser extends AudioWorkletBase {
       });
 
       this.connectBufferNodesToWorklet();
+      /**
+       * I believe it must be connected otherwise nothing will happen.
+       * So the output that is generated MUST be all zeros,
+       * otherwise what comes out of the speakers will be affected !!!
+       */
       this.worklet.connect(audioContext.destination);
     });
   }

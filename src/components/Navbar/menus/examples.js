@@ -11,6 +11,9 @@ const DigitalLogic = () => (
       <MenuItem caption="1. Knob input & thresholhold" onClick={E.schmittTrigger.example1} />
       <MenuItem caption="2. Knob sine gain" onClick={E.schmittTrigger.example2} />
     </MenuItem>
+    <MenuItem caption="TwoWaySwitch">
+      <MenuItem caption="1. Switching between triangle and sine" onClick={E.twoWaySwitch.example1} />
+    </MenuItem>
   </MenuItem>
 );
 
@@ -70,7 +73,8 @@ export const Examples = () => (
     <Distortions/>
     <Oscillators/>
     <MenuItem caption="Quantizer">
-      <MenuItem caption="Changing resolution of a sine" onClick={E.quantizer.example1} />
+      <MenuItem caption="1. Change resolution of sine with knob" onClick={E.quantizer.example1} />
+      <MenuItem caption="2. Triangle changing resolution of sine" onClick={E.quantizer.example2} />
     </MenuItem>
   </TopMenuItem>
 );

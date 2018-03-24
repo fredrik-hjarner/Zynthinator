@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import { Button, Icon, Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { closeModalAction } from 'redux/modules/ui';
-// import './style/modal.scss';
+import './modal.sass';
 
 /**
  * A simple warning modal that essentially mimics the
  * behaviour of window.alert.
  */
-const MessageModal = (props) => {
-  const { modal, color, icon } = props;
+const MessageModal = ({ modal }) => {
   if (!modal) {
     /**
      * modal === null means that there is no modal
@@ -20,12 +19,12 @@ const MessageModal = (props) => {
   }
 
   return (
-    <Modal open size='tiny' styleName='modal-body'>
-      <Icon color={color} name={icon} size='massive'/>
+    <Modal open size='tiny' className='modal-body' dimmer="blurring">
+      <Icon color={modal.color} name={modal.icon} size='massive'/>
       <h2>{modal.header}</h2>
-      <div styleName='modal-content-text'>{modal.content}</div>
+      <div className='modal-content-text'>{modal.content}</div>
       <Button
-        color='red'
+        color={modal.color}
         inverted
         onClick={closeModalAction}
         size='big'
@@ -38,14 +37,14 @@ const MessageModal = (props) => {
 
 MessageModal.propTypes = {
   modal: PropTypes.object,
-  color: PropTypes.string,
-  icon: PropTypes.string,
+  // color: PropTypes.string,
+  // icon: PropTypes.string,
 };
 
-MessageModal.defaultProps = {
-  color: 'red',
-  icon: 'warning circle'
-};
+// MessageModal.defaultProps = {
+//   color: 'red',
+//   icon: 'warning circle'
+// };
 
 // ---------------------------------
 // MessageModalContainer

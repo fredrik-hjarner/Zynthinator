@@ -12,12 +12,14 @@ export const openModalAction = (modal, props) =>
     props,
   });
 
-export const openMessageModalAction = (header, content) =>
+export const openMessageModalAction = ({ header, content, icon, color }) =>
   store.dispatch({
     type: actionTypes.OPEN_MESSAGE_MODAL,
     payload: {
       header,
-      content
+      content,
+      icon,
+      color
     }
   });
 
@@ -41,12 +43,14 @@ export const uiTdAnalyserChangeParamsAction = (id, param, value) =>
 // Reducers
 // ---------------------------
 
-export const openMessageModalReducer = (state, { payload: { header, content } }) =>
+export const openMessageModalReducer = (state, { payload: { header, content, icon, color } }) =>
   R.evolve({
     ui: {
       messageModal: () => ({
         header,
-        content
+        content,
+        icon,
+        color
       }) 
     }
   }, state);

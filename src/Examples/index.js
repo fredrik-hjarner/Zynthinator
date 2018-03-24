@@ -7,3 +7,4 @@ export { examples as changeRange } from './change-range';
 export { examples as adsr } from './adsr';
 export { examples as schmittTrigger } from './schmitt-trigger';
 export { examples as quantizer } from './quantizer';
+export { examples as twoWaySwitch } from './two-way-switch';

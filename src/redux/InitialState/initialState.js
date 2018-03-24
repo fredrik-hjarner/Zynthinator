@@ -15,7 +15,7 @@ export const initialState = {
     nodes: {
       1: {
         id: 1,
-        gain: 0.01,
+        gain: 0,
         nodeType: 'Speakers',
         name: 'Speakers',
       },
@@ -28,7 +28,7 @@ export const initialState = {
         id: 3,
         name: 'Master Volume Knob',
         nodeType: 'Knob',
-        value: 0.01
+        value: 0
       }
     },
     connections: {

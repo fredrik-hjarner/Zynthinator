@@ -303,3 +303,18 @@
 * When Master volume is set to zero I can still friggin hear stuff !?!?!?
 
 * Exception: The smoothing value provided (80) is outside the range [0, 1].
+
+* Make use of my new MessageModal component.
+
+* All creations of Web API nodes should be recorded in an array,
+    that is creation methods should all be wrapped,
+    so that I know exactly what Web Audio API nodes exist and
+    what their properties are.
+
+* Add a SlowNoise node.
+
+* Add a TimeQuantizer node.
+
+* Add a Meld node
+    that works like TwoWaySwitch but does not switch
+    it melds the two instead.

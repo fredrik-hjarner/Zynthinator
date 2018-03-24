@@ -36,7 +36,7 @@ export class Quantizer extends AudioWorkletBase {
       // console.log('worklet created');
 
       this.connectBufferNodesToWorklet();
-      this.worklet.connect(audioContext.destination);
+      // this.worklet.connect(audioContext.destination);
     });
   }
   
