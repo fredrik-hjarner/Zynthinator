@@ -8,28 +8,19 @@ class DownloadHistoryFile extends React.Component {
     minimized: false // eslint-disable-line
   };
 
-  onClick =
-    () => {
-      reduxHistory.downloadHistory(this.props.state);
-    }
+  onClick = () => {
+    reduxHistory.downloadHistory(this.props.state);
+  }
 
-  render =
-    () => (
-      <Dropdown.Item onClick={this.onClick}>
-        Download history file
-      </Dropdown.Item>
-    );
+  render = () => (
+    <Dropdown.Item onClick={this.onClick}>
+      Download history file
+    </Dropdown.Item>
+  );
 }
 
-const mapStateToProps =
-  state => ({
-    state,
-  });
+const mapStateToProps = state => ({ state });
 
-const DownloadHistoryFileRedux =
-  connect(
-    mapStateToProps,
-    {},
-  )(DownloadHistoryFile);
+const DownloadHistoryFileRedux = connect(mapStateToProps)(DownloadHistoryFile); // todo. decorator.
 
 export { DownloadHistoryFileRedux as DownloadHistoryFile };

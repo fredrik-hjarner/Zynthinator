@@ -484,8 +484,8 @@ const _nodeTypeDefinitions = {
         defaultValue: 0,
       },
     },
-    connectableInputs: ['input', 'threshold'],
-    knobableInputs: ['input', 'threshold'],
+    connectableInputs: ['input', 'threshold', 'bypass'],
+    knobableInputs: ['input', 'threshold', 'bypass'],
     output: true
   },
   /**

@@ -1,9 +1,10 @@
 import _ from 'lodash';
 import { audioContext } from './audioContext';
-import { withGain } from './BaseClasses';
+import { withGain } from './decorators';
 import { ChangeRange } from './ChangeRange';
 
-class _LowResolutionSine {
+@withGain
+export class LowResolutionSine {
   constructor({ node }) {
     this.id = node.id;
     this.node = _.cloneDeep(node); // todo hmm.
@@ -68,5 +69,3 @@ class _LowResolutionSine {
       this.buffer = null;
     }
 }
-
-export const LowResolutionSine = withGain(_LowResolutionSine);

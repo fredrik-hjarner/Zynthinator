@@ -333,3 +333,6 @@
     of the node and connects them together,
     while disconnecting the node.
     I.e one can toggle to bypass the node.
+
+* Temporatily just show the connections that are INJECTABLE
+    in INJECT NODE maybe... ?

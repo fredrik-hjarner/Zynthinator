@@ -1,10 +1,12 @@
 import { audioContext } from './audioContext';
-import { AudioNode, withGain } from './BaseClasses';
+import { AudioNode } from './BaseClasses';
+import { withGain } from './decorators';
 import { safeDisconnect } from './utils';
 
 const processorPromise = audioContext.audioWorklet.addModule('./audio-worklet-processors/edge-listener.js');
 
-class _TwowaySwitch extends AudioNode {
+@withGain
+export class TwowaySwitch extends AudioNode {
   constructor({ node }) {
     super();
     this.id = node.id;
@@ -87,5 +89,3 @@ class _TwowaySwitch extends AudioNode {
     this.outputGain = null;
   }
 }
-
-export const TwowaySwitch = withGain(_TwowaySwitch);

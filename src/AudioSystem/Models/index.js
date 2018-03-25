@@ -4,7 +4,6 @@ export * from './Gain';
 export * from './Speakers';
 export * from './LowPassFilter';
 export * from './Noise';
-export * from './DcSignal';
 export * from './Delay';
 export * from './FrequencyDomainAnalyser';
 export * from './TimeDomainAnalyser';
@@ -25,3 +24,5 @@ export * from './crossover-distortion';
 export * from './custom-analyser';
 export * from './quantizer';
 export * from './time-quantizer';
+
+export * from './waveforms/DcSignal';

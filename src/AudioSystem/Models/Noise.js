@@ -1,7 +1,8 @@
 import { audioContext } from './audioContext';
-import { withGain } from './BaseClasses';
+import { withGain } from './decorators';
 
-class _Noise {
+@withGain
+export class Noise {
   constructor({ node }) {
     this.id = node.id;
     const { sampleRate } = audioContext;
@@ -29,15 +30,12 @@ class _Noise {
   // get gain() {
   //   return this.gainNode.gain;
   // }
-  destruct =
-    () => {
-      this.webAudioNode.disconnect();
-      this.webAudioNode = null;
-      this.buffer = null;
+  destruct = () => {
+    this.webAudioNode.disconnect();
+    this.webAudioNode = null;
+    this.buffer = null;
 
-      // this.gainNode.disconnect();
-      // this.gainNode = null;
-    }
+    // this.gainNode.disconnect();
+    // this.gainNode = null;
+  }
 }
-
-export const Noise = withGain(_Noise);

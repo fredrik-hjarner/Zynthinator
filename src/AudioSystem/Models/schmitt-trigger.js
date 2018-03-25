@@ -4,7 +4,6 @@ import { safeDisconnect } from './utils';
 
 const processorPromise = audioContext.audioWorklet.addModule('./audio-worklet-processors/schmitt-trigger.js');
 
-// @withGain
 export class SchmittTrigger extends AudioNode {
   constructor({ node }) {
     super();
@@ -54,5 +53,3 @@ export class SchmittTrigger extends AudioNode {
     this.outputGain = null;
   }
 }
-
-// export const TwowaySwitch = withGain(_TwowaySwitch);

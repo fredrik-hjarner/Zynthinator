@@ -1,11 +1,9 @@
 export class AudioNode {
-  willConnectToMe =
-    () => {
-      // do nothing
-    }
+  willConnectToMe = () => {
+    // do nothing
+  }
 
-  willDisconnectFromMe =
-    () => {
-      // do nothing
-    }
+  willDisconnectFromMe = () => {
+    // do nothing
+  }
 }

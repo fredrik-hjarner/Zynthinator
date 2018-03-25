@@ -1,10 +1,11 @@
 import { audioContext } from './audioContext';
 import { AudioNode } from './BaseClasses';
+import { bypass } from './decorators';
 import { safeDisconnect } from './utils';
 
 const processorPromise = audioContext.audioWorklet.addModule('./audio-worklet-processors/crossover-distortion.js');
 
-// @withGain
+@bypass
 export class CrossoverDistortion extends AudioNode {
   constructor({ node }) {
     super();
@@ -54,5 +55,3 @@ export class CrossoverDistortion extends AudioNode {
     this.outputGain = null;
   }
 }
-
-// export const TwowaySwitch = withGain(_TwowaySwitch);

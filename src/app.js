@@ -18,18 +18,14 @@ import {
   triggeredTriggersListener,
 } from './AudioSystem';
 import { history } from './history';
-import {
-  Splash,
-} from './pages';
+import { Splash } from './pages';
 
-window.onerror =
-  (message, source, lineno, colno, error) => { // eslint-disable-line
-    const ret =
-      window.confirm('Zynthinator crashed. Go back to splash screen?');
-    if (ret) {
-      store.dispatch(push('/'));
-    }
-  };
+window.onerror = (message, source, lineno, colno, error) => { // eslint-disable-line
+  const ret = window.confirm('Zynthinator crashed. Go back to splash screen?');
+  if (ret) {
+    store.dispatch(push('/'));
+  }
+};
 
 store.subscribe(() => saveState(store.getState())); // todo this code does not belong here. It looks like shit.
 store.subscribe(() => nodesListener.onActionWasDispatched(store.getState()));
@@ -53,7 +49,4 @@ const App = () => (
   </Provider>
 );
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app'),
-);
+ReactDOM.render(<App />, document.getElementById('app'));
