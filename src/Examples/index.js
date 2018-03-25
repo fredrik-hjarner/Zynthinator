@@ -8,3 +8,4 @@ export { examples as adsr } from './adsr';
 export { examples as schmittTrigger } from './schmitt-trigger';
 export { examples as quantizer } from './quantizer';
 export { examples as twoWaySwitch } from './two-way-switch';
+export { examples as crossoverDistortion } from './crossover-distortion';

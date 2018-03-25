@@ -20,7 +20,8 @@ const DigitalLogic = () => (
 const Distortions = () => (
   <MenuItem caption="Distortions">
     <MenuItem caption="CrossoverDistortion">
-      <MenuItem caption="1. Basic example" disabled="disabled" onClick={E.schmittTrigger.example1} />
+      <MenuItem caption="1. Basic example" onClick={E.crossoverDistortion.example1} />
+      <MenuItem caption="1. Square enables/disables distortion" onClick={E.crossoverDistortion.example2} />
     </MenuItem>
   </MenuItem>
 );
