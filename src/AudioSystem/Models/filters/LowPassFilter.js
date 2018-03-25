@@ -1,10 +1,8 @@
 import _ from 'lodash';
-import { audioContext } from './audioContext';
-import {
-  AudioNode,
-} from './BaseClasses';
+import { audioContext } from 'AudioSystem/Models/audioContext';
+import { AudioNode } from 'AudioSystem/Models/BaseClasses';
 
-export class BandPassFilter extends AudioNode {
+export class LowPassFilter extends AudioNode {
   constructor({ node }) {
     super();
     this.id = node.id;
@@ -14,7 +12,7 @@ export class BandPassFilter extends AudioNode {
         'frequency',
         'Q',
       ]);
-    options.type = 'bandpass';
+    options.type = 'lowpass';
     this.webAudioNode =
       new BiquadFilterNode(audioContext, options);
   }
@@ -24,15 +22,17 @@ export class BandPassFilter extends AudioNode {
   get frequency() {
     return this.webAudioNode.frequency;
   }
+  get Q() {
+    return this.webAudioNode.Q;
+  }
   get output() {
     return this.webAudioNode;
   }
   get input() {
     return this.webAudioNode;
   }
-  destruct =
-    () => {
-      this.webAudioNode.disconnect();
-      this.webAudioNode = null;
-    }
+  destruct = () => {
+    this.webAudioNode.disconnect();
+    this.webAudioNode = null;
+  }
 }
