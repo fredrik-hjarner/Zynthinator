@@ -86,6 +86,11 @@ export const Examples = () => (
     </MenuItem>
     <DigitalLogic/>
     <Distortions/>
+    <MenuItem caption="Filters">
+      <MenuItem caption="1. Low-pass filter" onClick={E.filters.example1} />
+      <MenuItem caption="2. High-pass filter" onClick={E.filters.example2} />
+      <MenuItem caption="3. Band-pass filter" onClick={E.filters.example3} />
+    </MenuItem>
     <Oscillators/>
     <Quantizers/>
   </TopMenuItem>
