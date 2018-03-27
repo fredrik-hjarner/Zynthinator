@@ -333,3 +333,6 @@
 
 * Temporarily just show the connections that are INJECTABLE
     in INJECT NODE maybe... ?
+
+* Knob-groups
+    So that I can have a group called 'Equalizer' for example.

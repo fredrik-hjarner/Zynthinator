@@ -1,7 +1,9 @@
 import _ from 'lodash';
 import { audioContext } from 'AudioSystem/Models/audioContext';
 import { AudioNode } from 'AudioSystem/Models/BaseClasses';
+import { bypass } from 'AudioSystem/Models/decorators';
 
+@bypass
 export class BandPassFilter extends AudioNode {
   constructor({ node }) {
     super();

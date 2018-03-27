@@ -57,6 +57,20 @@ const Oscillators = () => (
   </MenuItem>
 );
 
+const Quantizers = () => (
+  <MenuItem caption="Quantizers">
+    <MenuItem caption="Quantizer">
+      <MenuItem caption="1. Change resolution of sine with knob" onClick={E.quantizer.example1} />
+      <MenuItem caption="2. Triangle changing resolution of sine" onClick={E.quantizer.example2} />
+    </MenuItem>
+    <MenuItem caption="TimeQuantizer">
+      <MenuItem caption="1. " disabled="disabled" onClick={E.quantizer.example1} />
+      <MenuItem caption="2. " disabled="disabled" onClick={E.quantizer.example1} />
+      <MenuItem caption="3. " disabled="disabled" onClick={E.quantizer.example1} />
+    </MenuItem>
+  </MenuItem>
+);
+
 export const Examples = () => (
   <TopMenuItem caption="Examples">
     <MenuItem caption="ADSR">
@@ -73,9 +87,6 @@ export const Examples = () => (
     <DigitalLogic/>
     <Distortions/>
     <Oscillators/>
-    <MenuItem caption="Quantizer">
-      <MenuItem caption="1. Change resolution of sine with knob" onClick={E.quantizer.example1} />
-      <MenuItem caption="2. Triangle changing resolution of sine" onClick={E.quantizer.example2} />
-    </MenuItem>
+    <Quantizers/>
   </TopMenuItem>
 );

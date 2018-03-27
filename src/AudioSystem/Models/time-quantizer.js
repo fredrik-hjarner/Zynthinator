@@ -1,9 +1,11 @@
 import * as R from 'ramda';
 import { audioContext } from './audioContext';
 import { AudioWorkletBase } from './BaseClasses';
+import { bypass } from 'AudioSystem/Models/decorators';
 
 const processorPromise = audioContext.audioWorklet.addModule('./audio-worklet-processors/time-quantizer.js');
 
+@bypass
 export class TimeQuantizer extends AudioWorkletBase {
   constructor({ node }) {
     /**

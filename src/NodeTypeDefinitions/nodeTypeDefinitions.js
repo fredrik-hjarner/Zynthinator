@@ -187,8 +187,8 @@ const _nodeTypeDefinitions = {
         defaultValue: 350,
       },
     },
-    connectableInputs: ['input', 'frequency', 'detune', 'Q'],
-    knobableInputs: ['frequency', 'detune', 'Q'],
+    connectableInputs: ['input', 'frequency', 'detune', 'Q', 'bypass'],
+    knobableInputs: ['frequency', 'detune', 'Q', 'bypass'],
     output: true,
   },
   /**
@@ -205,8 +205,8 @@ const _nodeTypeDefinitions = {
         defaultValue: 350,
       },
     },
-    connectableInputs: ['input', 'frequency', 'detune', 'Q'],
-    knobableInputs: ['frequency', 'detune', 'Q'],
+    connectableInputs: ['input', 'frequency', 'detune', 'Q', 'bypass'],
+    knobableInputs: ['frequency', 'detune', 'Q', 'bypass'],
     output: true,
   },
   /**
@@ -223,8 +223,8 @@ const _nodeTypeDefinitions = {
         defaultValue: 350,
       },
     },
-    connectableInputs: ['input', 'frequency', 'detune', 'Q'],
-    knobableInputs: ['frequency', 'detune', 'Q'],
+    connectableInputs: ['input', 'frequency', 'detune', 'Q', 'bypass'],
+    knobableInputs: ['frequency', 'detune', 'Q', 'bypass'],
     output: true,
   },
   /**
@@ -524,8 +524,8 @@ const _nodeTypeDefinitions = {
         defaultValue: 0.1,
       }
     },
-    connectableInputs: ['input', 'quantumSize'],
-    knobableInputs: ['input', 'quantumSize'],
+    connectableInputs: ['input', 'quantumSize', 'bypass'],
+    knobableInputs: ['input', 'quantumSize', 'bypass'],
     output: true
   },
   /**
@@ -542,8 +542,8 @@ const _nodeTypeDefinitions = {
         defaultValue: 100,
       }
     },
-    connectableInputs: ['input', 'milliseconds'],
-    knobableInputs: ['input', 'milliseconds'],
+    connectableInputs: ['input', 'milliseconds', 'bypass'],
+    knobableInputs: ['input', 'milliseconds', 'bypass'],
     output: true
   },
   /**
