@@ -315,11 +315,6 @@
     that works like TwoWaySwitch but does not switch
     it melds the two instead.
 
-* Create cool examples for HighPassFilter where one
-    can see 3 Analysers showing the effects on 3 waveforms.
-
-* HighPassFilter does not work well with Knob.
-
 * All 'params' in nodeTypeDefinitons should have a description property.
 
 * Knobs should get a defaultName like 'timeQuantizer.milliseconds'
