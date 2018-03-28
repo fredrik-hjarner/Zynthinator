@@ -14,10 +14,6 @@
 
 * Should not be able to connect a node to itself !!!
 
-* All MODELs should have it's outputs and inputs as getters on them!
-    Makes it more dynamic!
-    For example the PHASE of the OSCILLATOR can become an input!!
-
 * Bug when minimizing Visualizers.
 
 * TODO:
@@ -36,10 +32,6 @@
     }
   ]
   rename timestamp to deltaTime.
-
-* Frekvensen av LowResolutionSine
-    kan göras modifierbar i real-time
-    mha. en sawTooth och en Delay.
 
 * Gör fler semantic++ komponenter.
   - T ex en select ska inte synas om den inte har några options.
@@ -120,10 +112,6 @@
 * bitsToRecord is a bad name. it's not bits.
 
 * Minimizing oscillator stops all visualization and can't be resumed... :/
-
-* audioSystem is running at Splash Screen, it should not!
-  - should perhaps be it's own separate page
-      i.e. outside of a Single-page App.
 
 * When it crashes I should have the ability to download the ACTION HISTORY.
 
@@ -331,3 +319,9 @@
 
 * Knob-groups
     So that I can have a group called 'Equalizer' for example.
+
+* Splash screen should have address 'index.html'
+    and synth should have 'synth.html'
+
+* There is a bug with Crash alert showing up twice
+    even though one chose to go to Splash screen.

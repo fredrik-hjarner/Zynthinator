@@ -1,14 +1,12 @@
 // var debug = process.env.NODE_ENV !== 'production';
 // const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 /**
  * Just used to output some text in the console when building.
  */
-const entryPath = path.join(__dirname, 'src/app.js');
 const outputPath = path.join(__dirname, 'build');
-const indexHtmlPath = path.join(__dirname, 'src/index.html');
 
 // Copy webpack plugin
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -17,6 +15,8 @@ const CopyWebpackPluginConfig = new CopyWebpackPlugin([
   // { from: './src/assets', to: 'assets' },
   { from: './semantic/dist', to: './semantic' }, // relativa till output path !!!!
   { from: './audio-worklet-processors', to: './audio-worklet-processors' }, // relativa till output path !!!!
+  { from: './src/index.html', to: './' }, // relativa till output path !!!!
+  { from: './src/splash.html', to: './' }, // relativa till output path !!!!
 ]);
 
 module.exports = {
@@ -32,9 +32,10 @@ module.exports = {
       'src'
     ],
   },
-  // devtool: false,
-  // entry: './js/client.js',
-  entry: entryPath,
+  entry: {
+    app: path.join(__dirname, 'src/app.js'),
+    'splash-app': path.join(__dirname, 'src/splash-app.js')
+  },
   module: {
     rules: [
       {
@@ -73,11 +74,13 @@ module.exports = {
   output: {
     // path: __dirname + '/src/',
     path: outputPath,
-    filename: 'app.bundle.js',
+    filename: '[name].js',
     publicPath: '/',
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: indexHtmlPath }),
+    // new HtmlWebpackPlugin({
+    //   template: path.join(__dirname, 'src/index.html')
+    // }),
     CopyWebpackPluginConfig,
     // new (require('circular-dependency-plugin'))({
     //   // exclude detection of files based on a RegExp

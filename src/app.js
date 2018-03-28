@@ -1,7 +1,4 @@
-import {
-  ConnectedRouter,
-  push,
-} from 'react-router-redux';
+import { ConnectedRouter } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -18,12 +15,11 @@ import {
   triggeredTriggersListener,
 } from './AudioSystem';
 import { history } from './history';
-import { Splash } from './pages';
 
 window.onerror = (message, source, lineno, colno, error) => { // eslint-disable-line
   const ret = window.confirm('Zynthinator crashed. Go back to splash screen?');
   if (ret) {
-    store.dispatch(push('/'));
+    location.pathname = "splash.html"; // eslint-disable-line
   }
 };
 
@@ -42,11 +38,12 @@ const App = () => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route path="/" exact component={Splash} />
         <Route path="*" component={Layout} />
       </Switch>
     </ConnectedRouter>
   </Provider>
 );
 
-ReactDOM.render(<App />, document.getElementById('app'));
+const domElement = document.getElementById('app');
+
+ReactDOM.render(<App />, domElement);
