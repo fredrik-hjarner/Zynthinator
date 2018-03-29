@@ -1,16 +1,9 @@
 import { Container, Button } from 'semantic-ui-react';
-// import { push } from 'react-router-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { store } from 'redux/Store';
 import { stateQueries } from 'redux/StateQueries';
 import './pages/styles.sass'; // todo fix path n shit.
-
-// /**
-//  * Execute the listeners once at the startup of the app.
-//  */
-// nodesListener.onActionWasDispatched(store.getState());
-// connectionsListener.onActionWasDispatched(store.getState());
 
 const App = () => (
   <div className="splash">
@@ -28,11 +21,10 @@ const App = () => (
         primary
         size="huge"
         onClick={() => {
-          // store.dispatch(push('/synth'));
           location.pathname = "index.html"; // eslint-disable-line
         }}
       >
-        {"Start zynthin'" || true}
+        {"Start zynthin'"}
       </Button>
       <Button
         secondary

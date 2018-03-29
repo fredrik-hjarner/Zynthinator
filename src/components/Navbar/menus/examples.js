@@ -64,9 +64,9 @@ const Quantizers = () => (
       <MenuItem caption="2. Triangle changing resolution of sine" onClick={E.quantizer.example2} />
     </MenuItem>
     <MenuItem caption="TimeQuantizer">
-      <MenuItem caption="1. " disabled="disabled" onClick={E.quantizer.example1} />
-      <MenuItem caption="2. " disabled="disabled" onClick={E.quantizer.example1} />
-      <MenuItem caption="3. " disabled="disabled" onClick={E.quantizer.example1} />
+      <MenuItem caption="1. Quantized noise" onClick={E.timeQuantizer.example1} />
+      <MenuItem caption="2. Playing random tones" onClick={E.timeQuantizer.example2} />
+      <MenuItem caption="3. Like 2. but sine modulates speed of melody" onClick={E.timeQuantizer.example3} />
     </MenuItem>
   </MenuItem>
 );
