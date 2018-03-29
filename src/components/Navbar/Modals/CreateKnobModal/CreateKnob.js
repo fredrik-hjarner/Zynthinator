@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createKnobAction } from 'redux/modules/knob';
-import { stateQueries, memoizedStateQueries } from 'redux/StateQueries';
+import {
+  memoizedStateQueries
+} from 'redux/StateQueries';
 import { CreateKnobDumb } from './CreateKnobDumb';
 
 const mapStateToProps = (state) => {
   const { nodes } = state.nodeManagement;
-  const nodesThatHaveInputs =
-    memoizedStateQueries.getNodesThatHaveKnobableInputs(state);
+  const nodesThatHaveInputs = memoizedStateQueries.getChildNodesForCreateKnobModal(state);
   return {
     nodes,
     nodesThatHaveInputs,
@@ -25,54 +26,51 @@ export class CreateKnobModal extends React.Component {
       minValue: 0,
       maxValue: 100,
       step: 0.01,
-      childNodeInputs: [],
     };
   }
 
   handlers = {
-    onConfirm: () => {
-      const {
-        childNodeInputs,
-        ...rest
-      } = this.state;
-      createKnobAction({ ...rest });
-    },
-    onChildNodeIdChange: (e, { value }) => {
-      const connectedToWhichNode = parseInt(value);
-      this.setState({ connectedToWhichNode });
-      // populate <select> with the inputs of this node
-      const { nodes } = this.props;
-      const node = nodes[value];
-      const inputs =
-        stateQueries.getKnobableInputsOfNode(node);
+    onConfirm: () => createKnobAction(this.state),
+    onChildNodeIdChange: (e, { value: { nodeId, input } }) => {
+
+      console.log('onChildNodeIdChange:');
+      console.log('nodeId:');
+      console.dir(nodeId);
+      console.log('');
+
+      console.log('input:');
+      console.dir(input);
+      console.log('');
+      
+      // const connectedToWhichNode = parseInt(value);
       this.setState({
-        childNodeInputs: inputs.map(input => ({ text: input, value: input }))
+        connectedToWhichNode: nodeId,
+        connectedToWhichParam: input
       });
+      // populate <select> with the inputs of this node
+      // const { nodes } = this.props;
+      // const node = nodes[value];
+      // const inputs = stateQueries.getKnobableInputsOfNode(node);
+      // this.setState({
+      //   childNodeInputs: inputs.map(input => ({ text: input, value: input }))
+      // });
     },
-    onNameChange: value =>
-      this.setState({
-        name: value,
-      }),
-    onFormStringChange: (e, { name, value }) => {
-      this.setState({ [name]: value });
-    },
+    onNameChange: value => this.setState({ name: value }),
+    onFormStringChange: (e, { name, value }) => this.setState({ [name]: value }),
     onFormFloatChange: (e) => {
-      const {
-        name,
-        value,
-      } = e.target;
+      const { name, value } = e.target;
       this.setState({ [name]: parseFloat(value) });
     },
   }
 
   render = () => {
     const moreProps = {
-      nodesThatHaveInputsInReadableFormat:
-        Object.values(this.props.nodesThatHaveInputs)
-          .map(node => ({
-            text: stateQueries.getNodeInReadableFormat(node),
-            value: node.id,
-          })),
+      // nodesThatHaveInputsInReadableFormat:
+      //   Object.values(this.props.nodesThatHaveInputs)
+      //     .map(node => ({
+      //       text: stateQueries.getNodeInReadableFormat(node),
+      //       value: node.id,
+      //     })),
       functionOptions: [
         { key: 'linear', value: 'linear', text: 'Linear' },
         { key: 'logarithmic', value: 'logarithmic', text: 'Logarithmic' },

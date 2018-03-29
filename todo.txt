@@ -111,7 +111,7 @@
 
 * bitsToRecord is a bad name. it's not bits.
 
-* Minimizing oscillator stops all visualization and can't be resumed... :/
+* Minimizing oscilloscope stops all visualization and can't be resumed... :/
 
 * When it crashes I should have the ability to download the ACTION HISTORY.
 
@@ -212,7 +212,7 @@
 * When creating example I need functionality to clean up all
     extra fluff in the action history.
 
-* When a node is displayed in an form-input, it should
+* When a node is displayed in a form-input, it should
     get the color from the node-type just as when 
     nodes are displayed in node-tree.
 
@@ -268,11 +268,9 @@
 
 * ValueAnalyser node. Simply displays the value of a signal as a float.
 
-* One Knob should be able to connect/control to several things.
-
 * Ugly: CanvasContainer exists in three places. One place is enough.
 
-* history-custom-analyser does work correctly until refresh.
+* history-custom-analyser does not work correctly until refresh.
 
 * array-types like this fuck up @unknownKeysThrowsExceptions
     oscillatorType: {
@@ -325,3 +323,11 @@
 
 * There is a bug with Crash alert showing up twice
     even though one chose to go to Splash screen.
+
+* Connecting a knob to Oscillator.frequency adds to the original frequency :'(
+    it should use willConnectToMe / willDisconnectFromMe.
+
+* One Knob should be able to connect/control to several things.
+    1. First replace input fields 'Node to control' & 'Parameter to control'
+       to a combined 'Connect to'
+         like in Create Connection etc.

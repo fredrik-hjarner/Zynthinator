@@ -1,1 +1,1 @@
-export { CreateConnectionRedux as CreateConnectionModal } from './CreateConnectionRedux';
+export { CreateConnectionModal } from './CreateConnectionControlled';

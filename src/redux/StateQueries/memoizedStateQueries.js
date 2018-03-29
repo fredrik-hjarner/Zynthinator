@@ -253,34 +253,61 @@ class MemoizedStateQueries {
    *    },
    *  ]
    */
-  getChildNodesForCreateConnectionModal =
-    (state) => {
-      // get all nodes with inputs
-      const nodes =
-        Object.values(this.getNodesThatHaveConnectableInputs(state));
+  getChildNodesForCreateConnectionModal = (state) => {
+    // get all nodes with inputs
+    const nodes = Object.values(this.getNodesThatHaveConnectableInputs(state));
 
-      // in readable format
-      const nodesInReadableFormat =
-        nodes.map(stateQueries.getNodeInReadableFormat);
-      
-      // get the params of them all.
-      const inputsForEachNode =
-        nodes.map(stateQueries.getConnectableInputsOfNode);
-      
-      // combine them all
-      const output = [];
-      nodes.forEach((node, i) => {
-        inputsForEachNode[i].forEach((input) => {
-          output.push({
-            key: `${node.id}${input}`,
-            value: { nodeId: node.id, input },
-            text: `${nodesInReadableFormat[i]}.${input}`,
-          });
+    // in readable format
+    const nodesInReadableFormat = nodes.map(stateQueries.getNodeInReadableFormat);
+    
+    // get the params of them all.
+    const inputsForEachNode = nodes.map(stateQueries.getConnectableInputsOfNode);
+    
+    // combine them all
+    const output = [];
+    nodes.forEach((node, i) => {
+      inputsForEachNode[i].forEach((input) => {
+        output.push({
+          key: `${node.id}${input}`,
+          value: { nodeId: node.id, input },
+          text: `${nodesInReadableFormat[i]}.${input}`,
         });
       });
+    });
 
-      return output;
-    }
+    return output;
+  }
+
+  /**
+   * Exactly as the previous function except
+   * getKnobableInputsOfNode
+   * instead of
+   * getConnectableInputsOfNode
+   */
+  getChildNodesForCreateKnobModal = (state) => {
+    // get all nodes with inputs
+    const nodes = Object.values(this.getNodesThatHaveKnobableInputs(state));
+
+    // in readable format
+    const nodesInReadableFormat = nodes.map(stateQueries.getNodeInReadableFormat);
+    
+    // get the params of them all.
+    const inputsForEachNode = nodes.map(stateQueries.getKnobableInputsOfNode);
+    
+    // combine them all
+    const output = [];
+    nodes.forEach((node, i) => {
+      inputsForEachNode[i].forEach((input) => {
+        output.push({
+          key: `${node.id}${input}`,
+          value: { nodeId: node.id, input },
+          text: `${nodesInReadableFormat[i]}.${input}`,
+        });
+      });
+    });
+
+    return output;
+  }
 
     /**
      *  [

@@ -16,8 +16,9 @@ export * from './calculateHighestUiIdReducer';
 
 export * from './node/node';
 export * from './ui/ui';
-export * from './knob/knob';
+// export * from './knob/knob';
 export * from './connection/connection';
 
 // todo this is ugly ->
 export { openMessageModalReducer } from 'redux/modules/ui';
+export { createKnobReducer, deleteKnobReducer, moveKnobReducer } from 'redux/modules/knob';

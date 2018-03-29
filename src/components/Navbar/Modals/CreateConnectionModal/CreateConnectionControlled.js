@@ -1,8 +1,27 @@
 import React from 'react';
 import { CreateConnectionDumb } from './CreateConnectionDumb';
 import { createConnectionAction } from 'redux/modules/connection';
+import { connect } from 'react-redux';
+import {
+  memoizedStateQueries,
+  stateQueries
+} from 'redux/StateQueries';
 
-export class CreateConnectionControlled extends React.Component {
+const mapStateToProps = (state, ownProps) => ({
+  nodes: stateQueries.getAllNodes(state),
+  nodesThatHaveOutputs:
+    Object.values(memoizedStateQueries.getNodesThatHaveOutputs(state))
+      .map(node => ({
+        text: stateQueries.getNodeInReadableFormat(node),
+        value: node.id,
+        key: node.id,
+      })),
+  nodesThatHaveInputs: memoizedStateQueries.getChildNodesForCreateConnectionModal(state),
+  ...ownProps,
+});
+
+@connect(mapStateToProps)
+export class CreateConnectionModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

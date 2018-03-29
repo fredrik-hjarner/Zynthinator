@@ -1,7 +1,5 @@
 import { audioContext } from './audioContext';
-import {
-  AudioNode,
-} from './BaseClasses';
+import { AudioNode } from './BaseClasses';
 
 export class Speakers extends AudioNode {
   constructor({ node }) {
@@ -15,9 +13,6 @@ export class Speakers extends AudioNode {
     return this.gainNode;
   }
   get gain() {
-    console.log('this:');
-    console.dir(this);
-    console.log('');
     return this.gainNode.gain;
   }
   destruct = () => {
