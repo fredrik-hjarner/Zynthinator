@@ -549,6 +549,24 @@ const _nodeTypeDefinitions = {
   /**
    * 
    */
+  Echo: {
+    params: {
+      name: {
+        type: Types.string,
+        defaultValue: '',
+      },
+      milliseconds: {
+        type: Types.float,
+        defaultValue: 100,
+      }
+    },
+    connectableInputs: ['input', 'milliseconds', 'bypass'],
+    knobableInputs: ['input', 'milliseconds', 'bypass'],
+    output: true
+  },
+  /**
+   * 
+   */
   Knob: {
     params: {},
     connectableInputs: [],

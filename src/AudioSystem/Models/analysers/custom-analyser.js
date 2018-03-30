@@ -1,6 +1,6 @@
 import * as R from 'ramda';
-import { audioContext } from './audioContext';
-import { AudioWorkletBase } from './BaseClasses';
+import { audioContext } from 'AudioSystem/Models/audioContext';
+import { AudioWorkletBase } from 'AudioSystem/Models/BaseClasses';
 
 const processorPromise = audioContext.audioWorklet.addModule('./audio-worklet-processors/custom-analyser.js');
 

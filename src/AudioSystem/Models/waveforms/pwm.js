@@ -1,9 +1,9 @@
 import _ from 'lodash';
-import { audioContext } from './audioContext';
+import { audioContext } from 'AudioSystem/Models/audioContext';
 import {
   AudioNode,
-} from './BaseClasses';
-import { ChangeRange } from './ChangeRange';
+} from 'AudioSystem/Models/BaseClasses';
+import { ChangeRange } from 'AudioSystem/Models/ChangeRange';
 
 export class PWM extends AudioNode {
   constructor({ node }) {

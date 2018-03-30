@@ -1,5 +1,5 @@
-import { audioContext } from './audioContext';
-import { withGain } from './decorators';
+import { audioContext } from 'AudioSystem/Models/audioContext';
+import { withGain } from 'AudioSystem/Models/decorators';
 
 @withGain
 export class Noise {

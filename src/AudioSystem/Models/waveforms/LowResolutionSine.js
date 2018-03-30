@@ -1,7 +1,7 @@
 import _ from 'lodash';
-import { audioContext } from './audioContext';
-import { withGain } from './decorators';
-import { ChangeRange } from './ChangeRange';
+import { audioContext } from 'AudioSystem/Models/audioContext';
+import { withGain } from 'AudioSystem/Models/decorators';
+import { ChangeRange } from 'AudioSystem/Models/ChangeRange';
 
 @withGain
 export class LowResolutionSine {

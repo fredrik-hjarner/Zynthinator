@@ -1,8 +1,8 @@
 import _ from 'lodash';
-import { audioContext } from './audioContext';
+import { audioContext } from 'AudioSystem/Models/audioContext';
 import {
   AudioNode,
-} from './BaseClasses';
+} from 'AudioSystem/Models/BaseClasses';
 
 export class Oscillator extends AudioNode {
   constructor({ node }) {
