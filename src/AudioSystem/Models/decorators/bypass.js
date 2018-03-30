@@ -92,4 +92,25 @@ export const bypass = Class => class {
   get output() {
     return this.outputBuffer;
   }
+  destruct = () => {
+    /**
+     * Destruct onmessage first!!
+     * Because it depends on nodes that might have been destructed.
+     */
+    this.worklet.port.onmessage = () => {};
+
+    safeDisconnect(this.worklet); // todo fix this destruct function. send 'destroy' message.
+    this.worklet = null;
+
+    safeDisconnect(this.inputBuffer);
+    this.inputBuffer = null;
+
+    safeDisconnect(this.outputBuffer);
+    this.outputBuffer = null;
+
+    safeDisconnect(this.workletBuffer);
+    this.workletBuffer = null;
+
+    this.node.destruct();
+  }
 };

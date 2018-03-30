@@ -17,3 +17,21 @@ export const safeStop = (node) => {
     console.log('');
   }
 };
+
+export const safeConnect = (node, connectTo) => {
+  if (connectTo === undefined) {
+    console.log('Exception in safeConnect(node, connectTo): ');
+    console.log('connectTo === undefined');
+    console.log('node:');
+    console.dir(node);
+    console.log('');
+    return;
+  }
+  try {
+    node.connect(connectTo);
+  } catch (ex) {
+    console.log('Exception in safeConnect(node, connectTo): ');
+    console.dir(ex);
+    console.log('');
+  }
+};

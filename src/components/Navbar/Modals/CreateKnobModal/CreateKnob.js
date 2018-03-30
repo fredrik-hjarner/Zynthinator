@@ -32,28 +32,10 @@ export class CreateKnobModal extends React.Component {
   handlers = {
     onConfirm: () => createKnobAction(this.state),
     onChildNodeIdChange: (e, { value: { nodeId, input } }) => {
-
-      console.log('onChildNodeIdChange:');
-      console.log('nodeId:');
-      console.dir(nodeId);
-      console.log('');
-
-      console.log('input:');
-      console.dir(input);
-      console.log('');
-      
-      // const connectedToWhichNode = parseInt(value);
       this.setState({
         connectedToWhichNode: nodeId,
         connectedToWhichParam: input
       });
-      // populate <select> with the inputs of this node
-      // const { nodes } = this.props;
-      // const node = nodes[value];
-      // const inputs = stateQueries.getKnobableInputsOfNode(node);
-      // this.setState({
-      //   childNodeInputs: inputs.map(input => ({ text: input, value: input }))
-      // });
     },
     onNameChange: value => this.setState({ name: value }),
     onFormStringChange: (e, { name, value }) => this.setState({ [name]: value }),
@@ -65,12 +47,6 @@ export class CreateKnobModal extends React.Component {
 
   render = () => {
     const moreProps = {
-      // nodesThatHaveInputsInReadableFormat:
-      //   Object.values(this.props.nodesThatHaveInputs)
-      //     .map(node => ({
-      //       text: stateQueries.getNodeInReadableFormat(node),
-      //       value: node.id,
-      //     })),
       functionOptions: [
         { key: 'linear', value: 'linear', text: 'Linear' },
         { key: 'logarithmic', value: 'logarithmic', text: 'Logarithmic' },

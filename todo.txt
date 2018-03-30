@@ -327,6 +327,10 @@
 * Connecting a knob to Oscillator.frequency adds to the original frequency :'(
     it should use willConnectToMe / willDisconnectFromMe.
 
+* Be sure to destruct 'model decorators' correctly.
+    because I had a bug in 'bypass' because it had no
+    destruct method.
+
 * One Knob should be able to connect/control to several things.
     1. First replace input fields 'Node to control' & 'Parameter to control'
        to a combined 'Connect to'

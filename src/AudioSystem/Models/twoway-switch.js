@@ -1,7 +1,10 @@
 import { audioContext } from './audioContext';
 import { AudioNode } from './BaseClasses';
 import { withGain } from './decorators';
-import { safeDisconnect } from './utils';
+import {
+  safeDisconnect
+  // safeConnect
+} from './utils';
 
 const processorPromise = audioContext.audioWorklet.addModule('./audio-worklet-processors/edge-listener.js');
 
@@ -49,11 +52,13 @@ export class TwowaySwitch extends AudioNode {
   risingEdge() {
     safeDisconnect(this.gainB, this.outputGain);
     this.gainA.connect(this.outputGain);
+    // safeConnect(this.gainA, this.outputGain);
   }
 
   fallingEdge() {
     safeDisconnect(this.gainA, this.outputGain);
     this.gainB.connect(this.outputGain);
+    // safeConnect(this.gainB, this.outputGain);
   }
 
   get A() {
@@ -73,17 +78,24 @@ export class TwowaySwitch extends AudioNode {
   }
 
   destruct = () => {
-    safeDisconnect(this.gainA);
-    this.gainA = null;
-
-    safeDisconnect(this.gainB);
-    this.gainB = null;
+    /**
+     * Destruct onmessage first!!
+     * Because it depends on nodes that might have been destructed.
+     */
+    this.worklet.port.onmessage = () => {};
+    // this.worklet.port.onmessage = undefined;
 
     safeDisconnect(this.worklet); // todo fix this destruct function. send 'destroy' message.
     this.worklet = null;
 
     safeDisconnect(this.workletBuffer);
     this.workletBuffer = null;
+
+    safeDisconnect(this.gainA);
+    this.gainA = null;
+
+    safeDisconnect(this.gainB);
+    this.gainB = null;
 
     safeDisconnect(this.outputGain);
     this.outputGain = null;

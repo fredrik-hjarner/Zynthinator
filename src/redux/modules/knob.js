@@ -39,9 +39,6 @@ export const moveKnobAction = (id, value) => {
 // --------------------------------
 
 export const createKnobReducer = (_state, action) => {
-  console.log('action:');
-  console.dir(action);
-  console.log('');
   /**
    * Create the Knob-node.
    * Then connect the Knob-node to whatever the
