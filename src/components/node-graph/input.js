@@ -1,9 +1,12 @@
 import { NEditor } from './Neditor';
 import { svgManager } from './svg';
+import { deleteConnectionAction } from 'redux/modules/connection';
 
 /* eslint-disable */
 export class Input {
-  constructor(pElm, name, nodeName){
+  constructor(pElm, name, nodeName, nodeId, connections){
+    this.connectionsFromRedux = connections;
+    this.nodeId = nodeId;
     this.name   = name;
     this.nodeName = nodeName;
     this.root   = document.createElement("li");
@@ -88,18 +91,51 @@ export class Input {
     svgManager.setCurveColor(connection.path, true);
   }
 
+  findConnectionId({ parentNodeId, childNodeId, childNodeInput }) {
+    // console.log('parentNodeId:');
+    // console.dir(parentNodeId);
+    // console.log('');
+
+    // console.log('childNodeId:');
+    // console.dir(childNodeId);
+    // console.log('');
+
+    // console.log('childNodeInput:');
+    // console.dir(childNodeInput);
+    // console.log('');
+
+    // console.log('this.connectionsFromRedux:');
+    // console.dir(this.connectionsFromRedux);
+    // console.log('');
+    const connection = this.connectionsFromRedux.find(conn =>
+      conn.parentNodeId === parentNodeId &&
+      conn.childNodeId === childNodeId &&
+      conn.childNodeInput === childNodeInput
+    );
+    if (!connection) {
+      throw 'Error! Connection not found.';
+    }
+    return connection.id;
+  }
+
   //clearing the connection from an output
   disconnectInput() {
     if(this.connections.length > 0){
-      var pathWeAreGoingToMove = this.connections[0];
-      const { input, output } = pathWeAreGoingToMove;
+      const pathWeAreGoingToMove = this.connections[0];
 
-      // window.connections = window.connections.filter(({ parentNode, parentInput, childNode, childInput }) =>
-      //   !(parentNode === output.nodeName &&
-      //   parentInput === output.name &&
-      //   childNode === input.nodeName &&
-      //   childInput === input.name)
-      // );
+
+      // Redux shit
+      const connectionData = {
+        parentNodeId: pathWeAreGoingToMove.output.nodeId,
+        childNodeId: this.nodeId,
+        childNodeInput: pathWeAreGoingToMove.input.name
+      }
+      const id = this.findConnectionId(connectionData);
+      deleteConnectionAction([id]);
+
+
+
+      const { input, output } = pathWeAreGoingToMove;
       
       pathWeAreGoingToMove.input = null;
 

@@ -30,7 +30,7 @@ const drawFirstColumns = () => (
     <C.AllTriggers />
     {/* <C.Nodes /> */}
     {/* <C.Connections /> */}
-    <C.NodeTree />
+    {/* <C.NodeTree /> */}
     { /* <C.ListOfGroups /> */ }
     <C.TimeDomainVisualizers />
     <C.FrequencyDomainVisualizers />
@@ -51,8 +51,6 @@ export const Synth = () => (
     }}
   >
     {drawFirstColumns()}
-    <div style={{ borderStyle: 'solid', borderWidth: '2px' }}>
-      <C.NodeGraph />
-    </div>
+    <C.NodeGraph />
   </div>
 );

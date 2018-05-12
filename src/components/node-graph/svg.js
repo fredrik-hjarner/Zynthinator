@@ -64,4 +64,4 @@ class SvgManager {
 }
 
 export const svgManager = new SvgManager();
-svgManager.init('connsvg');
+// svgManager.init('connsvg');

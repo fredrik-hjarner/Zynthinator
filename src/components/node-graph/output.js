@@ -3,7 +3,8 @@ import { svgManager } from './svg';
 
 /* eslint-disable */
 export class Output {
-  constructor(pElm, name, nodeName){
+  constructor(pElm, name, nodeName, nodeId){
+    this.nodeId = nodeId;
     this.name   = name;
     this.nodeName = nodeName;
     this.root   = document.createElement("li");

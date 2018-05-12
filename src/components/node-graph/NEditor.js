@@ -1,4 +1,5 @@
 import { svgManager } from './svg';
+import { createConnectionAction } from 'redux/modules/connection';
 
 /* eslint-disable */
 
@@ -41,11 +42,16 @@ Global Function */
 
 // Gets the position of the middle of a DOM element.
 NEditor.getConnPos = function(elm){
+  // Get positions of the 'node-graph-container'
+  const containerElement = document.getElementById('node-graph-container');
+  const containerRect = containerElement.getBoundingClientRect();
+
   const boundingRect = elm.getBoundingClientRect();
 	const pos = {
-    x: boundingRect.left,
-    y: boundingRect.top
+    x: boundingRect.left - containerRect.left,
+    y: boundingRect.top - containerRect.top
   };
+
 	pos.x += (elm.offsetWidth / 2) + 1.5; //Add some offset so its centers on the element
 	pos.y += (elm.offsetHeight / 2) + 0.5;
 	return pos;
@@ -122,8 +128,8 @@ NEditor.beginConnDrag = function(path){
 	NEditor.startPos = path.output.getPos();
 
 	svgManager.setCurveColor(path.path,false);
-	window.addEventListener("click",NEditor.onConnDragClick);
-	window.addEventListener("mousemove",NEditor.onConnDragMouseMove);
+	window.addEventListener("click", NEditor.onConnDragClick);
+	window.addEventListener("mousemove", NEditor.onConnDragMouseMove);
 };
 
 NEditor.endConnDrag = function(){
@@ -144,7 +150,17 @@ NEditor.onConnDragClick = function(e){
 
 NEditor.onConnDragMouseMove = function(e){
 	e.stopPropagation(); e.preventDefault();
-	if(NEditor.dragItem) svgManager.setQCurveD(NEditor.dragItem.path,NEditor.startPos.x,NEditor.startPos.y,e.pageX,e.pageY);
+	if (NEditor.dragItem) {
+    // Get positions of the 'node-graph-container'
+  const containerElement = document.getElementById('node-graph-container');
+  const containerRect = containerElement.getBoundingClientRect();
+
+    const x2 = e.pageX - containerRect.left;
+    const y2 = e.pageY - containerRect.top;
+    // const x2 = e.offsetX;
+    // const y2 = e.offsetY;
+    svgManager.setQCurveD(NEditor.dragItem.path, NEditor.startPos.x, NEditor.startPos.y, x2, y2);
+  };
 };
 
 /*--------------------------------------------------------
@@ -158,15 +174,25 @@ NEditor.onOutputClick = function(e){
 
 NEditor.onInputClick = function(e){
 	e.stopPropagation(); e.preventDefault();
-	var o = this.parentNode.ref;
+	var input = this.parentNode.ref;
 
 	switch(NEditor.dragMode){
-		case 2: //Path Drag
-		  o.finishCreateConnection(NEditor.dragItem);
+    case 2: //Path Drag
+      input.finishCreateConnection(NEditor.dragItem);
+      const connection = NEditor.dragItem;
+      const connectionData = {
+        name: '',
+        parentNodeIds: [connection.output.nodeId],
+        childNodes: [{
+          nodeId: input.nodeId,
+          input: connection.input.name
+        }]
+      }
+      createConnectionAction(connectionData);
 		  NEditor.endConnDrag();
 		  break;
 		case 0: //Not in drag mode
-		  var path = o.disconnectInput(); // todo wtf is path?
+		  var path = input.disconnectInput();
 		  if(path) {
         NEditor.beginConnDrag(path)
       };

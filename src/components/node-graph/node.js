@@ -4,14 +4,18 @@ import { Output } from './output';
 
 /* eslint-disable */
 export class Node {
-  constructor({ name, inputs = [], outputs = [], position = { x: 0, y: 0 } }) {
+  constructor({ name, inputs = [], outputs = [], position = { x: 0, y: 0 }, parentElementId, nodeId, connections }) {
+    this.connections = connections;
+    this.nodeId = nodeId;
     this.name = name;
     this.inputs = {};
     this.outputs = {};
   
     //.........................
     this.eRoot = document.createElement('div');
-    document.body.appendChild(this.eRoot);
+    const parentElement = document.getElementById(parentElementId);
+    // document.body.appendChild(this.eRoot);
+    parentElement.appendChild(this.eRoot);
     this.eRoot.className = 'NodeContainer';
     this.eRoot.ref = this;
   
@@ -48,7 +52,7 @@ export class Node {
     if (this.inputs[name]) {
       throw `'${name}' already exists as an input`;
     }
-    const o = new Input(inputListDiv, name, this.name);
+    const o = new Input(inputListDiv, name, this.name, this.nodeId, this.connections);
     this.inputs[name] = o;
   }
 
@@ -56,7 +60,7 @@ export class Node {
     if (this.outputs[name]) {
       throw `'${name}' already exists as an output`;
     }
-    const o = new Output(outputListDiv, name, this.name);
+    const o = new Output(outputListDiv, name, this.name, this.nodeId);
     this.outputs[name] = o;
   }
 
@@ -80,8 +84,8 @@ export class Node {
   }
 
   setPosition(x, y) {
-    this.eRoot.style.left = `${x }px`;
-    this.eRoot.style.top = `${y }px`;
+    this.eRoot.style.left = `${x}px`;
+    this.eRoot.style.top = `${y}px`;
   }
 
   destruct() {
