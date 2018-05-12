@@ -23,7 +23,7 @@ import * as C from '../components';
 //   )
 // }
 
-export const Synth = () => (
+const drawFirstColumns = () => (
   <div>
     {/* <TestButton/> */}
     <C.AllKnobs />
@@ -37,5 +37,22 @@ export const Synth = () => (
     <C.CustomVisualizers />
     <C.ModalWindow />
     <C.MessageModal />
+  </div>
+);
+
+export const Synth = () => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      borderStyle: 'solid',
+      borderWidth: '1px',
+      borderColor: 'grey'
+    }}
+  >
+    {drawFirstColumns()}
+    <div style={{ borderStyle: 'solid', borderWidth: '2px' }}>
+      <C.NodeGraph />
+    </div>
   </div>
 );
