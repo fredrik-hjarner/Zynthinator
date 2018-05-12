@@ -565,6 +565,30 @@ const _nodeTypeDefinitions = {
     output: true
   },
   /**
+   * Echo is based on AudioWorklet
+   * 
+   * Echo2 is based on Delay & Gain
+   */
+  Echo2: {
+    params: {
+      name: {
+        type: Types.string,
+        defaultValue: '',
+      },
+      seconds: {
+        type: Types.float,
+        defaultValue: 0.1,
+      },
+      echoGain: {
+        type: Types.float,
+        defaultValue: 0.1,
+      }
+    },
+    connectableInputs: ['input', 'seconds', 'bypass', 'echoGain'],
+    knobableInputs: ['input', 'seconds', 'bypass', 'echoGain'],
+    output: true
+  },
+  /**
    * 
    */
   Knob: {

@@ -51,8 +51,8 @@ class Connections {
         console.log('childNodeInput: ');
         console.dir(childNodeInput);
         console.log('');
-        console.log('childInput: ');
-        console.dir(childInput);
+        console.log('childNode[childNodeInput]: ');
+        console.dir(childNode[childNodeInput]);
         console.log('');
         debugger;
         throw ex;

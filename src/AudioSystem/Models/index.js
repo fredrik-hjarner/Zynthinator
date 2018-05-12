@@ -13,6 +13,7 @@ export * from './knob';
 export * from './schmitt-trigger';
 export * from './crossover-distortion';
 export * from './echo';
+export * from './echo2';
 
 export * from './waveforms/DcSignal';
 export * from './waveforms/Oscillator';

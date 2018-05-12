@@ -38,6 +38,7 @@ export const Create = () => (
         {nodeItem('CrossoverDistortion')}
       </MenuItem>
       {nodeItem('Echo')}
+      {nodeItem('Echo2')}
       <MenuItem caption="Filters">
         {nodeItem('BandPassFilter', 'Band-pass filter')}
         {nodeItem('HighPassFilter', 'High-pass filter')}
