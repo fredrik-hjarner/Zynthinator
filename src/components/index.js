@@ -10,6 +10,5 @@ export * from './Knobs';
 export * from './Connections';
 export * from './Nodes';
 export * from './Triggers';
-export * from './NodeTree';
 export * from './Node';
 export { NodeGraph } from './node-graph';

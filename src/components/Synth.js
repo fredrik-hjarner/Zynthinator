@@ -29,8 +29,7 @@ const drawFirstColumns = () => (
     <C.AllKnobs />
     <C.AllTriggers />
     {/* <C.Nodes /> */}
-    {/* <C.Connections /> */}
-    {/* <C.NodeTree /> */}
+    <C.Connections />
     { /* <C.ListOfGroups /> */ }
     <C.TimeDomainVisualizers />
     <C.FrequencyDomainVisualizers />
