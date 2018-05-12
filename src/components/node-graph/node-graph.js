@@ -18,6 +18,10 @@ const mapStateToProps = (state) => { // eslint-disable-line
 
 @connect(mapStateToProps)
 export class NodeGraph extends React.Component { // eslint-disable-line
+  state = {
+    ignoreOnce: false
+  }
+  
   graphNodes = {};
 
   deleteAll() {
@@ -33,26 +37,12 @@ export class NodeGraph extends React.Component { // eslint-disable-line
   renderNodeGraph(props) {
     this.deleteAll();
 
-    // let yAccum = 0;
-
     // Create all nodes
     Object.values(props.nodes).forEach(node => {
       const { nodeType } = node;
       const { output, connectableInputs, knobableInputs } = nodeTypeDefinitions[nodeType];
       const inputs = R.union(connectableInputs, knobableInputs);
       const position = props.positions[node.id];
-
-      // console.log('this.props.positions:');
-      // console.dir(props.positions);
-      // console.log('');
-
-      // console.log('node.id:');
-      // console.dir(node.id);
-      // console.log('');
-
-      // console.log('position:');
-      // console.dir(position);
-      // console.log('');
 
       this.graphNodes[node.id] = new Node({
         name: node.nodeType, // node.name
@@ -64,20 +54,13 @@ export class NodeGraph extends React.Component { // eslint-disable-line
         },
         parentElementId: 'node-graph-container',
         nodeId: node.id,
-        connections: props.connections // todo., shit hack. should not need to do this.
+        connections: props.connections, // todo., shit hack. should not need to do this.
+        nodeGraphComponent: this
       });
-
-      // const multi = inputs.length > 0 ? inputs.length : 1;
-      // yAccum += 40 + (multi * 31);
     });
-
-    // console.log('props.connections:');
-    // console.dir(props.connections);
-    // console.log('');
 
     // Create all connections
     props.connections.forEach(({ parentNodeId, childNodeId, childNodeInput }) => {
-      // n3.outputs['Output'].connect(n4.inputs['Input B']);
       const parentNode = this.graphNodes[parentNodeId];
       const childNode = this.graphNodes[childNodeId];
       parentNode.outputs.output.connect(childNode.inputs[childNodeInput]);
@@ -90,13 +73,19 @@ export class NodeGraph extends React.Component { // eslint-disable-line
   }
 
   componentWillReceiveProps(nextProps) {
-    this.renderNodeGraph(nextProps);
+    if (!this.state.ignoreOnce) {
+      this.renderNodeGraph(nextProps);
+    } else {
+      this.setState({ ignoreOnce: false });
+    }
   }
 
   render = () => { // eslint-disable-line
     return (
-      <div id='node-graph-container'>
-        <svg id="connsvg"/>
+      <div id='outer-container'>
+        <div id='node-graph-container'>
+          <svg id="connsvg"/>
+        </div>
       </div>
     );
   };

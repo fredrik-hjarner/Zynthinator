@@ -4,7 +4,8 @@ import { deleteConnectionAction } from 'redux/modules/connection';
 
 /* eslint-disable */
 export class Input {
-  constructor(pElm, name, nodeName, nodeId, connections){
+  constructor(pElm, name, nodeName, nodeId, connections, nodeGraphComponent){
+    this.nodeGraphComponent = nodeGraphComponent;
     this.connectionsFromRedux = connections;
     this.nodeId = nodeId;
     this.name   = name;
@@ -67,21 +68,7 @@ export class Input {
    *  }
    */
   finishCreateConnection(connection) {
-    //If moving a connection to here, tell previous input to clear itself.
-    // if (connection.input != null) {
-    //   console.log('finishCreateConnection: connection.input != null');
-    //   connection.input.disconnectInput();
-    // };
-
     connection.input = this;			//Saving this connection as the input reference
-
-    // redux action
-    // connectNodes({
-    //   parentNode: connection.output.nodeName,
-    //   parentInput: connection.output.name,
-    //   childNode: connection.input.nodeName,
-    //   childInput: connection.input.name
-    // });
 
     this.connections.push(connection);	//Saving the path reference to this object
     this.updateDotColor();		//Update the state on both sides of the connection, TODO some kind of event handling scheme would work better maybe
@@ -92,21 +79,6 @@ export class Input {
   }
 
   findConnectionId({ parentNodeId, childNodeId, childNodeInput }) {
-    // console.log('parentNodeId:');
-    // console.dir(parentNodeId);
-    // console.log('');
-
-    // console.log('childNodeId:');
-    // console.dir(childNodeId);
-    // console.log('');
-
-    // console.log('childNodeInput:');
-    // console.dir(childNodeInput);
-    // console.log('');
-
-    // console.log('this.connectionsFromRedux:');
-    // console.dir(this.connectionsFromRedux);
-    // console.log('');
     const connection = this.connectionsFromRedux.find(conn =>
       conn.parentNodeId === parentNodeId &&
       conn.childNodeId === childNodeId &&
@@ -131,7 +103,13 @@ export class Input {
         childNodeInput: pathWeAreGoingToMove.input.name
       }
       const id = this.findConnectionId(connectionData);
-      deleteConnectionAction([id]);
+
+      /**
+       * Ignore once is to make it so that React doesn not rerender everything
+       * it should not remove the path that we are now trying to retie to
+       * some other input.
+       */
+      this.nodeGraphComponent.setState({ ignoreOnce: true }, () => deleteConnectionAction([id]));
 
 
 

@@ -5,8 +5,9 @@ import { moveGraphNode } from 'redux/modules/node-graph';
 
 /* eslint-disable */
 export class Node {
-  constructor({ name, inputs = [], outputs = [], position = { x: 0, y: 0 }, parentElementId, nodeId, connections }) {
+  constructor({ name, inputs = [], outputs = [], position = { x: 0, y: 0 }, parentElementId, nodeId, connections, nodeGraphComponent }) {
     this.connections = connections;
+    this.nodeGraphComponent = nodeGraphComponent;
     this.nodeId = nodeId;
     this.name = name;
     this.inputs = {};
@@ -54,7 +55,7 @@ export class Node {
     if (this.inputs[name]) {
       throw `'${name}' already exists as an input`;
     }
-    const o = new Input(inputListDiv, name, this.name, this.nodeId, this.connections);
+    const o = new Input(inputListDiv, name, this.name, this.nodeId, this.connections, this.nodeGraphComponent);
     this.inputs[name] = o;
   }
 
@@ -96,12 +97,8 @@ export class Node {
 
     const { nodeId } = this;
 
-    console.log('this.eRoot');
-    console.dir(this.eRoot);
-    console.log('');
-
-    const x = boundingRect.left - containerRect.left;
-    const y = boundingRect.top - containerRect.top;
+    const x = boundingRect.left - containerRect.left + containerElement.scrollLeft;
+    const y = boundingRect.top - containerRect.top + containerElement.scrollTop;
 
     // redux action
     moveGraphNode(nodeId, x, y);

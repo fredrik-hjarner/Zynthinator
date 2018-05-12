@@ -43,15 +43,15 @@ NEditor.offsetY = 0;        //OffsetY for dragging nodes
 Global Function */
 
 // Gets the position of the middle of a DOM element.
-NEditor.getConnPos = function(elm){
+NEditor.getConnPos = (elm) => {
   // Get positions of the 'node-graph-container'
   const containerElement = document.getElementById('node-graph-container');
   const containerRect = containerElement.getBoundingClientRect();
 
   const boundingRect = elm.getBoundingClientRect();
 	const pos = {
-    x: boundingRect.left - containerRect.left,
-    y: boundingRect.top - containerRect.top
+    x: boundingRect.left - containerRect.left + containerElement.scrollLeft,
+    y: boundingRect.top - containerRect.top + containerElement.scrollTop
   };
 
 	pos.x += (elm.offsetWidth / 2) + 1.5; //Add some offset so its centers on the element
@@ -158,8 +158,10 @@ NEditor.onConnDragMouseMove = function(e){
   const containerElement = document.getElementById('node-graph-container');
   const containerRect = containerElement.getBoundingClientRect();
 
-    const x2 = e.pageX - containerRect.left;
-    const y2 = e.pageY - containerRect.top;
+    const htmlElement = document.documentElement;
+
+    const x2 = e.pageX - containerRect.left + containerElement.scrollLeft - htmlElement.scrollLeft;
+    const y2 = e.pageY - containerRect.top + containerElement.scrollTop - htmlElement.scrollTop;
     // const x2 = e.offsetX;
     // const y2 = e.offsetY;
     svgManager.setQCurveD(NEditor.dragItem.path, NEditor.startPos.x, NEditor.startPos.y, x2, y2);
