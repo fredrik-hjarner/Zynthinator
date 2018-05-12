@@ -11,7 +11,8 @@ import './styles/node-graph.sass';
 const mapStateToProps = (state) => { // eslint-disable-line
   return {
     nodes: stateQueries.getAllNodes(state),
-    connections: stateQueries.getAllConnectionValues(state)
+    connections: stateQueries.getAllConnectionValues(state),
+    positions: state.ui.nodeGraphPositions
   };
 };
 
@@ -32,26 +33,42 @@ export class NodeGraph extends React.Component { // eslint-disable-line
   renderNodeGraph(props) {
     this.deleteAll();
 
-    let yAccum = 0;
+    // let yAccum = 0;
 
     // Create all nodes
     Object.values(props.nodes).forEach(node => {
       const { nodeType } = node;
       const { output, connectableInputs, knobableInputs } = nodeTypeDefinitions[nodeType];
       const inputs = R.union(connectableInputs, knobableInputs);
+      const position = props.positions[node.id];
+
+      // console.log('this.props.positions:');
+      // console.dir(props.positions);
+      // console.log('');
+
+      // console.log('node.id:');
+      // console.dir(node.id);
+      // console.log('');
+
+      // console.log('position:');
+      // console.dir(position);
+      // console.log('');
 
       this.graphNodes[node.id] = new Node({
         name: node.nodeType, // node.name
         inputs,
         outputs: (output || nodeType === 'Knob') ? ['output'] : [],
-        position: { x: 0, y: yAccum },
+        position: {
+          x: position.x,
+          y: position.y
+        },
         parentElementId: 'node-graph-container',
         nodeId: node.id,
         connections: props.connections // todo., shit hack. should not need to do this.
       });
 
-      const multi = inputs.length > 0 ? inputs.length : 1;
-      yAccum += 40 + (multi * 31);
+      // const multi = inputs.length > 0 ? inputs.length : 1;
+      // yAccum += 40 + (multi * 31);
     });
 
     // console.log('props.connections:');

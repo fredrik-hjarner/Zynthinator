@@ -1,6 +1,7 @@
 import { NEditor } from './Neditor';
 import { Input } from './input';
 import { Output } from './output';
+import { moveGraphNode } from 'redux/modules/node-graph';
 
 /* eslint-disable */
 export class Node {
@@ -24,6 +25,7 @@ export class Node {
     this.eRoot.appendChild(eHeader);
     eHeader.innerHTML = this.name;
     eHeader.addEventListener('mousedown', this.onHeaderDown);
+    eHeader.addEventListener('mouseup', this.onHeaderUp);
   
     //.........................
     const inputAndOutputContainer = document.createElement('div');
@@ -78,9 +80,31 @@ export class Node {
   }
 
   //Handle the start node dragging functionality
-  onHeaderDown(e) {
+  onHeaderDown = (e) => {
     e.stopPropagation();
     NEditor.beginNodeDrag(e.target.parentNode, e.pageX, e.pageY);
+  }
+
+  onHeaderUp = (e) => {
+    // e.stopPropagation();
+    // NEditor.beginNodeDrag(e.target.parentNode, e.pageX, e.pageY);
+
+    const containerElement = document.getElementById('node-graph-container');
+    const containerRect = containerElement.getBoundingClientRect();
+
+    const boundingRect = this.eRoot.getBoundingClientRect();
+
+    const { nodeId } = this;
+
+    console.log('this.eRoot');
+    console.dir(this.eRoot);
+    console.log('');
+
+    const x = boundingRect.left - containerRect.left;
+    const y = boundingRect.top - containerRect.top;
+
+    // redux action
+    moveGraphNode(nodeId, x, y);
   }
 
   setPosition(x, y) {

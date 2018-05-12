@@ -1,5 +1,6 @@
 import { svgManager } from './svg';
 import { createConnectionAction } from 'redux/modules/connection';
+// import { moveGraphNode } from 'redux/modules/node-graph';
 
 /* eslint-disable */
 
@@ -32,7 +33,8 @@ export const NEditor = {};
  * 2: dragging connection
  */
 NEditor.dragMode = 0;
-NEditor.dragItem = null;    //reference to the dragging item
+NEditor.dragItem = null;    //reference to the dragging HTML Element
+NEditor.dragItemId = null;    //reference to node id
 NEditor.startPos = null;    //Used for starting position of dragging lines
 NEditor.offsetX = 0;        //OffsetX for dragging nodes
 NEditor.offsetY = 0;        //OffsetY for dragging nodes
@@ -97,7 +99,8 @@ NEditor.beginNodeDrag = function(n,x,y) {
 };
 
 NEditor.onNodeDragMouseUp = function(e){
-	e.stopPropagation(); e.preventDefault();
+  e.stopPropagation(); e.preventDefault();
+
 	NEditor.dragItem = null;
 	NEditor.dragMode = 0;
 

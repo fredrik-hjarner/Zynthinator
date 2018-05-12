@@ -28,13 +28,24 @@ export const createNodeReducer = (state, action) => {
       );
   }
 
-  return R.assocPath(
+  const stateBeforeAddingPositions = R.assocPath(
     ['nodeManagement', 'nodes', `${nodeId}`],
     {
       id: nodeId,
       ...params,
     },
     newState,
+  );
+
+  return R.assocPath(
+    ['ui', 'nodeGraphPositions', `${nodeId}`], // todo this is actually not like how I usually do it. nodeId??
+    {
+      // node: uuidv4() // todo
+      nodeId,
+      x: 0,
+      y: 0
+    },
+    stateBeforeAddingPositions,
   );
 };
   

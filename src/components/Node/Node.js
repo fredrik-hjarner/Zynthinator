@@ -37,13 +37,12 @@ class Node extends React.Component {
     open: false
   }
 
-  onEdit =
-    node => 
-      openModalAction('CreateNodeModal', {
-        nodeType:
-          node.nodeType,
-        node,
-      });
+  onEdit = node => 
+    openModalAction('CreateNodeModal', {
+      nodeType:
+        node.nodeType,
+      node,
+    });
 
   handleClose = () => {
     this.setState({ open: false });
@@ -53,18 +52,17 @@ class Node extends React.Component {
     this.setState({ open: true });
   }
 
-  render =
-    () => {
-      const { node, display, deleteNode } = this.props;
+  render = () => {
+    const { node, display, deleteNode } = this.props;
 
-      const backgroundColor =
-        nodeTypeDefinitions[node.nodeType].ui.color;
+    const backgroundColor =
+      nodeTypeDefinitions[node.nodeType].ui.color;
 
-      const div = (
-        <div style={{ display, backgroundColor }} className="node">
-          {`${stateQueries.getNodeInReadableFormat(node)}`}
-        </div>
-      );
+    const div = (
+      <div style={{ display, backgroundColor }} className="node">
+        {`${stateQueries.getNodeInReadableFormat(node)}`}
+      </div>
+    );
 
       /**
        * Simply displays node POJO.
@@ -85,45 +83,45 @@ class Node extends React.Component {
       /**
        * Trying to use my new ContextMenu class
        */
-      return (
-        <Popup
-          open={this.state.open}
-          onOpen={this.handleOpen}
-          onClose={this.handleClose}
-          className="context-menu"
-          basic
-          size="mini"
-          trigger={div}
-          content={(
-            <ContextMenu>
-              <TopContextMenuItem caption="Parameters" disabled="disabled">
-                <ContextMenuItem caption=".gain = 1.0">
-                  <ContextMenuItem caption="Create knob for this" />
-                  <ContextMenuItem caption="Create trigger for this" />
-                </ContextMenuItem>
-                <Divider />
-                <ContextMenuItem caption="Show node as raw json-data" />
-              </TopContextMenuItem>
-              <ContextMenuItem
-                caption="Edit"
-                onClick={() => {
+    return (
+      <Popup
+        open={this.state.open}
+        onOpen={this.handleOpen}
+        onClose={this.handleClose}
+        className="context-menu"
+        basic
+        size="mini"
+        trigger={div}
+        content={(
+          <ContextMenu>
+            <TopContextMenuItem caption="Parameters" disabled="disabled">
+              <ContextMenuItem caption=".gain = 1.0">
+                <ContextMenuItem caption="Create knob for this" />
+                <ContextMenuItem caption="Create trigger for this" />
+              </ContextMenuItem>
+              <Divider />
+              <ContextMenuItem caption="Show node as raw json-data" />
+            </TopContextMenuItem>
+            <ContextMenuItem
+              caption="Edit"
+              onClick={() => {
                   this.handleClose();
                   this.onEdit(node);
                 }}
-              />
-              <TopContextMenuItem caption="Connect" disabled="disabled">
-                <ContextMenuItem caption="Connect" />
-                <ContextMenuItem caption="Inject" />
-                <ContextMenuItem caption="Eject" />
-              </TopContextMenuItem>
-              <ContextMenuItem caption="Delete" onClick={deleteNode} />
-            </ContextMenu>
+            />
+            <TopContextMenuItem caption="Connect" disabled="disabled">
+              <ContextMenuItem caption="Connect" />
+              <ContextMenuItem caption="Inject" />
+              <ContextMenuItem caption="Eject" />
+            </TopContextMenuItem>
+            <ContextMenuItem caption="Delete" onClick={deleteNode} />
+          </ContextMenu>
           )}
-          position="bottom right"
-          on="click"
-        />
-      );
-    };
+        position="bottom right"
+        on="click"
+      />
+    );
+  };
 }
   
 

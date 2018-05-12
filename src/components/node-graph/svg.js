@@ -59,7 +59,12 @@ class SvgManager {
   }
 
   removePath(svgPathElement) {
-    this.svg.removeChild(svgPathElement);
+    // todo some damn hack
+    try {
+      this.svg.removeChild(svgPathElement);
+    } catch(exception) {
+
+    }
   }
 }
 

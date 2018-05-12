@@ -22,3 +22,4 @@ export * from './connection/connection';
 // todo this is ugly ->
 export { openMessageModalReducer } from 'redux/modules/ui';
 export { createKnobReducer, deleteKnobReducer, moveKnobReducer } from 'redux/modules/knob';
+export { moveGraphNodeReducer } from 'redux/modules/node-graph';
