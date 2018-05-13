@@ -164,8 +164,8 @@ export class NodeGraph extends React.Component { // eslint-disable-line
 
       const connection = new Connection(inputDot, outputDot, id); // eslint-disable-line
 
-      outputComponent.connections.push(connection);
-      inputComponent.connections.push(connection);
+      // outputComponent.connections.push(connection);
+      // inputComponent.connections.push(connection);
 
       // const outPos = NEditor.getConnPos(outputDot);
       // const inPos = NEditor.getConnPos(inputDot);
