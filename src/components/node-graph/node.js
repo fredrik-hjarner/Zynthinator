@@ -1,3 +1,4 @@
+// import React from 'react';
 import { NEditor } from './Neditor';
 import { Input } from './input';
 import { Output } from './output';
@@ -19,7 +20,11 @@ export class Node {
     // document.body.appendChild(this.eRoot);
     parentElement.appendChild(this.eRoot);
     this.eRoot.className = 'NodeContainer';
-    this.eRoot.ref = this;
+    /**
+     * todo. what the fuck is this? saving data in the DOM?
+     * Used in NEditor.onNodeDragMouseMove.
+     */
+    this.eRoot.ref = this; 
   
     //.........................
     const eHeader = document.createElement('header');

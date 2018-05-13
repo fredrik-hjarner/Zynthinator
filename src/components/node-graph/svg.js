@@ -14,14 +14,13 @@ class SvgManager {
   };
 
   //Creates an Quadratic Curve path in SVG
-  createQCurve(x, y) {
+  createQCurve(x, y, x2, y2) {
     var elm = document.createElementNS(this.svg.ns, "path");
     elm.setAttribute("fill", "none");
     elm.setAttribute("stroke", this.inactivePathColor);
     elm.setAttribute("stroke-width", this.pathWidth);
 
-    // Begins as a dot
-    this.setQCurveD(elm, x, y, x, y);
+    this.setQCurveD(elm, x, y, x2, y2);
     return elm;
   }
 
@@ -34,7 +33,7 @@ class SvgManager {
    * @param {*} x2 
    * @param {*} y2 
    */
-  setQCurveD(elm,x1,y1,x2,y2) {
+  setQCurveD(elm, x1, y1, x2, y2) {
     const straightness = 1.5;
     const dif = Math.abs(x1-x2) / straightness;
     

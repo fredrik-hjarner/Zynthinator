@@ -61,7 +61,7 @@ export class Output {
     const pos = NEditor.getConnPos(this.dot);
 
     const connection = {
-      path: svgManager.createQCurve(pos.x, pos.y),
+      path: svgManager.createQCurve(pos.x, pos.y, pos.x, pos.y),
       input: null,
       output: this
     };
