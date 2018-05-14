@@ -1,22 +1,23 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 // import * as R from 'ramda';
-// import { NEditor } from './new-NEditor';
+import { NEditor } from './new-NEditor';
 import { stateQueries } from 'redux/StateQueries';
 // import { Node } from './node';
 // import { nodeTypeDefinitions } from 'NodeTypeDefinitions';
 import { svgManager } from './svg';
 import { NodeComponent } from './node-component';
-import { Connection } from './connection';
+// import { Connection } from './connection';
+import { ConnectionManager } from './connection-manager';
+import { store } from 'redux/Store';
 import './styles/node-graph.sass';
 
-const mapStateToProps = (state) => { // eslint-disable-line
-  return {
-    nodes: stateQueries.getAllNodes(state),
-    connections: stateQueries.getAllConnectionValues(state),
-    positions: state.ui.nodeGraphPositions
-  };
-};
+const mapStateToProps = (state) => ({
+  nodes: stateQueries.getAllNodes(state),
+  connections: stateQueries.getAllConnectionValues(state),
+  positions: state.ui.nodeGraphPositions
+});
 
 @connect(mapStateToProps)
 export class NodeGraph extends React.Component { // eslint-disable-line
@@ -83,7 +84,7 @@ export class NodeGraph extends React.Component { // eslint-disable-line
     const { connections } = this.props;
 
     // reset
-    this.deleteAllPaths();
+    // this.deleteAllPaths();
 
     // create array out of this.dots object.
     const inputAndOutputComponents = [];
@@ -97,7 +98,9 @@ export class NodeGraph extends React.Component { // eslint-disable-line
     // clear
     inputAndOutputComponents.forEach(inOrOut => {
       inOrOut.connectionIds = []; // eslint-disable-line
-    });    
+    });
+
+    const dataToConnectionManager = {};
 
     connections.forEach(({ id, parentNodeId, childNodeId, childNodeInput }) => {
       const outputComponent = this.dots.nodes[parentNodeId].output;
@@ -109,18 +112,27 @@ export class NodeGraph extends React.Component { // eslint-disable-line
       const outputDot = outputComponent.dot;
       const inputDot = inputComponent.dot;
 
-      const connection = new Connection(inputDot, outputDot, id); // eslint-disable-line
+      // const connection = new Connection(inputDot, outputDot, id); // eslint-disable-line
 
       // outputComponent.connections.push(connection);
       // inputComponent.connections.push(connection);
 
-      // const outPos = NEditor.getConnPos(outputDot);
-      // const inPos = NEditor.getConnPos(inputDot);
+      const outPos = NEditor.getConnPos(outputDot);
+      const inPos = NEditor.getConnPos(inputDot);
 
       // const pathElement = svgManager.createQCurve(outPos.x, outPos.y, inPos.x, inPos.y);
       // pathElement.id = id;
       // svgManager.addPathToSvg(pathElement);
+
+      dataToConnectionManager[id] = {
+        x1: outPos.x,
+        y1: outPos.y,
+        x2: inPos.x,
+        y2: inPos.y 
+      };
     });
+
+    ReactDOM.render(<ConnectionManager store={store} data={dataToConnectionManager} />, this.svgElement);
   }
 
   /**

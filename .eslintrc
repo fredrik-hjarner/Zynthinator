@@ -51,7 +51,9 @@
     "arrow-parens": 0,
     "spaced-comment": 0,
     "react/sort-comp": 0,
-    "jsx-a11y/no-static-element-interactions": 0
+    "jsx-a11y/no-static-element-interactions": 0,
+    "no-multiple-empty-lines": 0,
+    "react/no-multi-comp": 0
   },
   "extends": ["airbnb"]
 }
