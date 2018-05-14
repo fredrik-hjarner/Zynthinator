@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import * as R from 'ramda';
 import { connect } from 'react-redux';
 import { NEditor } from './new-NEditor'; 
-import { Input } from './input'; // eslint-disable-line
-import { Output } from './output'; // eslint-disable-line
 import { nodeTypeDefinitions } from 'NodeTypeDefinitions';
 import { moveGraphNode } from 'redux/modules/node-graph';
 import { getNodeById } from 'redux/StateQueries/new-state-queries/nodes-queries';

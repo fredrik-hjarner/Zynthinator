@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 // import * as R from 'ramda';
-import { NEditor } from './new-NEditor'; // eslint-disable-line
-import { } from 'redux/modules/node-graph';
+// import { NEditor } from './new-NEditor';
 import { stateQueries } from 'redux/StateQueries';
 // import { Node } from './node';
 // import { nodeTypeDefinitions } from 'NodeTypeDefinitions';
@@ -33,54 +32,11 @@ export class NodeGraph extends React.Component { // eslint-disable-line
   dots = {
     nodes: {}
   }
-  
-  // graphNodes = {};
 
   deleteAllPaths = () => {
     const allSvgPaths = document.querySelectorAll('#connsvg *');
     Array.from(allSvgPaths).forEach(path => path.remove());
   }
-
-  // deleteAll() {
-  //   // delete all nodes
-  //   Object.values(this.graphNodes).forEach(node => node.destruct());
-  //   this.graphNodes = {};
-
-  //   this.deleteAllPaths();
-  // }
-
-  // renderNodeGraph(props) {
-  //   this.deleteAll();
-
-  //   // Create all nodes
-  //   Object.values(props.nodes).forEach(node => {
-  //     const { nodeType } = node;
-  //     const { output, connectableInputs, knobableInputs } = nodeTypeDefinitions[nodeType];
-  //     const inputs = R.union(connectableInputs, knobableInputs);
-  //     const position = props.positions[node.id];
-
-  //     this.graphNodes[node.id] = new Node({
-  //       name: node.nodeType, // node.name
-  //       inputs,
-  //       outputs: (output || nodeType === 'Knob') ? ['output'] : [],
-  //       position: {
-  //         x: position.x,
-  //         y: position.y
-  //       },
-  //       parentElementId: 'node-graph-container',
-  //       nodeId: node.id,
-  //       connections: props.connections, // todo., shit hack. should not need to do this.
-  //       nodeGraphComponent: this
-  //     });
-  //   });
-
-  //   // Create all connections
-  //   props.connections.forEach(({ parentNodeId, childNodeId, childNodeInput }) => {
-  //     const parentNode = this.graphNodes[parentNodeId];
-  //     const childNode = this.graphNodes[childNodeId];
-  //     parentNode.outputs.output.connect(childNode.inputs[childNodeInput]);
-  //   });
-  // }
 
   registerInputComponentRef = nodeId => inputName => ref => {
     if (this.dots.nodes[nodeId] === undefined) {
@@ -105,15 +61,6 @@ export class NodeGraph extends React.Component { // eslint-disable-line
     // this.renderNodeGraph(this.props);
     this.renderConnections();
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   console.log('NodeGraph.componentWillReceiveProps()');
-  //   if (!this.state.ignoreOnce) {
-  //     this.renderNodeGraph(nextProps);
-  //   } else {
-  //     this.setState({ ignoreOnce: false });
-  //   }
-  // }
 
   renderNodes = () => {
     const { nodes, positions, connections } = this.props; // eslint-disable-line

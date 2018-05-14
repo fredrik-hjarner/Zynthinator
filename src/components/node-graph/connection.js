@@ -1,11 +1,9 @@
-import * as R from 'ramda'; // eslint-disable-line
-import { NEditor } from './new-NEditor';  // eslint-disable-line
-import { Input } from './input'; // eslint-disable-line
-import { Output } from './output'; // eslint-disable-line
-import { nodeTypeDefinitions } from 'NodeTypeDefinitions'; // eslint-disable-line
-import { moveGraphNode } from 'redux/modules/node-graph'; // eslint-disable-line
-import { createConnectionAction, deleteConnectionAction } from 'redux/modules/connection'; // eslint-disable-line
-import { svgManager } from './svg'; // eslint-disable-line
+// import * as R from 'ramda';
+import { NEditor } from './new-NEditor'; 
+// import { nodeTypeDefinitions } from 'NodeTypeDefinitions';
+// import { moveGraphNode } from 'redux/modules/node-graph';
+// import { createConnectionAction, deleteConnectionAction } from 'redux/modules/connection';
+import { svgManager } from './svg';
 // import { getNodeById } from 'redux/StateQueries/new-state-queries/nodes-queries';
 // import { getNodeGraphPositioByNodeId } from 'redux/StateQueries/new-state-queries/ui';
 
