@@ -101,6 +101,7 @@ export class NodeComponent extends Component {
               this.inputs.push(ref);
               this.props.registerInputComponentRef(input)(ref);
             }}
+            onInputDotClick={this.props.onInputDotClick}
           />
         ))}
       </div>
@@ -119,6 +120,7 @@ export class NodeComponent extends Component {
           this.output = ref;
           this.props.registerOutputComponentRef(ref);
         }}
+        onOutputDotClick={this.props.onOutputDotClick}
       />
     );
   }

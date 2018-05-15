@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { NEditor } from './new-NEditor';
 // import { nodeTypeDefinitions } from 'NodeTypeDefinitions';
 // import { moveGraphNode } from 'redux/modules/node-graph';
-import { svgManager } from './svg';
+// import { svgManager } from './svg';
 // import { getNodeById } from 'redux/StateQueries/new-state-queries/nodes-queries';
 // import { getNodeGraphPositioByNodeId } from 'redux/StateQueries/new-state-queries/ui';
 
@@ -19,19 +19,22 @@ export class OutputComponent extends Component {
   // connectionIds = []
 
   onOutputClick = (e) => { // eslint-disable-line
+    const { nodeId } = this.props;
     e.stopPropagation(); e.preventDefault();
     const pos = NEditor.getConnPos(this.dot);
 
-    const connection = {
-      path: svgManager.createQCurve(pos.x, pos.y, pos.x, pos.y),
-      input: null,
-      output: this
-    };
+    // const connection = {
+    //   path: svgManager.createQCurve(pos.x, pos.y, pos.x, pos.y),
+    //   input: null,
+    //   output: this
+    // };
 
-    svgManager.addPathToSvg(connection.path);
-    this.connections.push(connection);
+    this.props.onOutputDotClick(nodeId, pos.x, pos.y);
 
-    NEditor.beginConnDrag(connection);
+    // svgManager.addPathToSvg(connection.path);
+    // this.connections.push(connection);
+
+    // NEditor.beginConnDrag(connection);
   }
 
   // Get the position of the connection ui element

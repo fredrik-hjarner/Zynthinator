@@ -122,8 +122,8 @@ NEditor.onConnDragMouseMove = function(e){
 	e.stopPropagation(); e.preventDefault();
 	if (NEditor.dragItem) {
     // Get positions of the 'node-graph-container'
-  const containerElement = document.getElementById('node-graph-container');
-  const containerRect = containerElement.getBoundingClientRect();
+    const containerElement = document.getElementById('node-graph-container');
+    const containerRect = containerElement.getBoundingClientRect();
 
     const htmlElement = document.documentElement;
 

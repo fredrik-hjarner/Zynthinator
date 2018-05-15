@@ -10,6 +10,7 @@ import { svgManager } from './svg';
 import { NodeComponent } from './node-component';
 // import { Connection } from './connection';
 import { ConnectionManager } from './connection-manager';
+import { createConnectionAction, deleteConnectionAction } from 'redux/modules/connection';  // eslint-disable-line
 import { store } from 'redux/Store';
 import './styles/node-graph.sass';
 
@@ -22,7 +23,17 @@ const mapStateToProps = (state) => ({
 @connect(mapStateToProps)
 export class NodeGraph extends React.Component { // eslint-disable-line
   state = {
-    ignoreOnce: false // eslint-disable-line
+    ignoreOnce: false, // eslint-disable-line
+    /**
+     * Keeps data for when we are dragging out a new connection path,
+     * that is before the connection is established.
+     * A theoretical connection.
+     */
+    theoreticalConnection: {
+      underConstruction: false,
+      outputNode: 0,
+      startPos: { x: 0, y: 0 }
+    }
   }
 
   /**
@@ -57,9 +68,53 @@ export class NodeGraph extends React.Component { // eslint-disable-line
     this.dots.nodes[nodeId].output = ref;
   }
 
+  onOutputDotClick = (nodeId, x, y) => {
+
+    // Can't connect an output to an output.
+    if (this.state.theoreticalConnection.underConstruction) {
+      return;
+    }
+
+    this.setState({
+      theoreticalConnection: {
+        underConstruction: true,
+        outputNode: nodeId,
+        startPos: { x, y }
+      }
+    });
+  }
+
+  onInputDotClick = (nodeId, input) => {
+    const { theoreticalConnection } = this.state;
+
+    if (theoreticalConnection.underConstruction) {
+      const { outputNode } = theoreticalConnection;
+
+      const connectionData = {
+        name: '',
+        parentNodeIds: [outputNode],
+        childNodes: [{
+          nodeId,
+          input
+        }]
+      };
+
+      createConnectionAction(connectionData);
+
+      // todo if one holds shift this line under should be disabled or something.
+      this.setState(prevState => ({
+        theoreticalConnection: {
+          ...prevState.theoreticalConnection,
+          underConstruction: false
+        }
+      }));
+    } else {
+      // disconnect
+    }
+  }
+
   componentDidMount() {
     svgManager.init('connsvg');
-    // this.renderNodeGraph(this.props);
     this.renderConnections();
   }
 
@@ -76,15 +131,14 @@ export class NodeGraph extends React.Component { // eslint-disable-line
         nodeId={node.id}
         registerInputComponentRef={this.registerInputComponentRef(node.id)}
         registerOutputComponentRef={this.registerOutputComponentRef(node.id)}
+        onOutputDotClick={this.onOutputDotClick}
+        onInputDotClick={this.onInputDotClick}
       />
     ));
   }
 
   renderConnections = () => {
     const { connections } = this.props;
-
-    // reset
-    // this.deleteAllPaths();
 
     // create array out of this.dots object.
     const inputAndOutputComponents = [];
@@ -132,7 +186,23 @@ export class NodeGraph extends React.Component { // eslint-disable-line
       };
     });
 
-    ReactDOM.render(<ConnectionManager store={store} data={dataToConnectionManager} />, this.svgElement);
+    const connectionUnderConstruction = {
+      exists: this.state.theoreticalConnection.underConstruction,
+      startPos: this.state.theoreticalConnection.startPos
+    };
+
+    console.log('connectionUnderConstruction:');
+    console.dir(connectionUnderConstruction);
+    console.log('');
+
+    ReactDOM.render(
+      (<ConnectionManager
+        store={store}
+        data={dataToConnectionManager}
+        connectionUnderConstruction={connectionUnderConstruction}
+      />),
+      this.svgElement
+    );
   }
 
   /**

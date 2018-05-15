@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-// import * as R from 'ramda';
 // import { connect } from 'react-redux';
 import { NEditor } from './new-NEditor'; 
 // import { nodeTypeDefinitions } from 'NodeTypeDefinitions';
 // import { moveGraphNode } from 'redux/modules/node-graph';
-import { createConnectionAction, deleteConnectionAction } from 'redux/modules/connection';
+import { deleteConnectionAction } from 'redux/modules/connection';
 import { svgManager } from './svg';
 // import { getNodeById } from 'redux/StateQueries/new-state-queries/nodes-queries';
 // import { getNodeGraphPositioByNodeId } from 'redux/StateQueries/new-state-queries/ui';
@@ -20,46 +19,49 @@ export class InputComponent extends Component {
   // connectionIds = []
 
   onInputClick = (e) => { // eslint-disable-line
+    const { nodeId, input } = this.props;
     e.stopPropagation(); e.preventDefault();
 
-    switch (NEditor.dragMode) {
+    this.props.onInputDotClick(nodeId, input);
 
-      // Path drag
-      case 2: // eslint-disable-line
-        this.finishCreateConnection(NEditor.dragItem);
-        const connection = NEditor.dragItem;
+    // switch (NEditor.dragMode) {
 
-        const parentNodeId = connection.output.props.nodeId;
-        const childNodeId = this.props.nodeId;
-        const { input } = this.props;
+    //   // Path drag
+    //   case 2: // eslint-disable-line
+    //     this.finishCreateConnection(NEditor.dragItem);
+    //     const connection = NEditor.dragItem;
 
-        const connectionData = {
-          name: '',
-          parentNodeIds: [parentNodeId],
-          childNodes: [{
-            nodeId: childNodeId,
-            input
-          }]
-        };
+    //     const parentNodeId = connection.output.props.nodeId;
+    //     const childNodeId = this.props.nodeId;
+    //     const { input } = this.props;
 
-        console.log('connectionData:');
-        console.dir(connectionData);
-        console.log('');
+    //     const connectionData = {
+    //       name: '',
+    //       parentNodeIds: [parentNodeId],
+    //       childNodes: [{
+    //         nodeId: childNodeId,
+    //         input
+    //       }]
+    //     };
 
-        createConnectionAction(connectionData);
-        NEditor.endConnDrag();
-        break;
+    //     console.log('connectionData:');
+    //     console.dir(connectionData);
+    //     console.log('');
 
-      //Not in drag mode
-      case 0: // eslint-disable-line
-        const path = this.disconnectInput();
-        if (path) {
-          NEditor.beginConnDrag(path);
-        }
-        break;
-      default:
-        throw 'default case';
-    }
+    //     createConnectionAction(connectionData);
+    //     NEditor.endConnDrag();
+    //     break;
+
+    //   //Not in drag mode
+    //   case 0: // eslint-disable-line
+    //     const path = this.disconnectInput();
+    //     if (path) {
+    //       NEditor.beginConnDrag(path);
+    //     }
+    //     break;
+    //   default:
+    //     throw 'default case';
+    // }
   }
 
   // This concretely establishes the connection.
