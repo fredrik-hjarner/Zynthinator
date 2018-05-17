@@ -26,7 +26,7 @@ import * as C from '../components';
 const drawFirstColumns = () => (
   <div>
     {/* <TestButton/> */}
-    <C.AllKnobs />
+    {/* <C.AllKnobs /> */}
     <C.AllTriggers />
     {/* <C.Nodes /> */}
     <C.Connections />

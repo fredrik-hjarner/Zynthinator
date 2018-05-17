@@ -4,7 +4,7 @@ import { NEditor } from './new-NEditor';
 // import { moveGraphNode } from 'redux/modules/node-graph';
 // import { createConnectionAction, deleteConnectionAction } from 'redux/modules/connection';
 import { svgManager } from './svg';
-// import { getNodeById } from 'redux/StateQueries/new-state-queries/nodes-queries';
+// import { getNodeById } from 'redux/StateQueries/new-state-queries/node-queries';
 // import { getNodeGraphPositioByNodeId } from 'redux/StateQueries/new-state-queries/ui';
 
 export class Connection {

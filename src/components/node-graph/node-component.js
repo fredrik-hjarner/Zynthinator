@@ -4,13 +4,16 @@ import { connect } from 'react-redux';
 import { NEditor } from './new-NEditor'; 
 import { nodeTypeDefinitions } from 'NodeTypeDefinitions';
 import { moveGraphNode } from 'redux/modules/node-graph';
-import { getNodeById } from 'redux/StateQueries/new-state-queries/nodes-queries';
+import { getNodeById } from 'redux/StateQueries/new-state-queries/node-queries';
 import { getNodeGraphPositioByNodeId } from 'redux/StateQueries/new-state-queries/ui';
 import { InputComponent } from './input-component';
 import { OutputComponent } from './output-component';
+import { getKnobByNodeId } from 'redux/StateQueries/new-state-queries/knob-queries';
+import { Knob } from 'components';
 
 const mapStateToProps = (state, ownProps) => ({
   node: getNodeById(state, ownProps.nodeId),
+  knob: getKnobByNodeId(state, ownProps.nodeId),
   position: getNodeGraphPositioByNodeId(state, ownProps.nodeId)
 });
 
@@ -126,9 +129,11 @@ export class NodeComponent extends Component {
   }
 
   render() {
-    const { node, position } = this.props;
+    const { node, position, knob } = this.props;
     const { output, connectableInputs, knobableInputs } = nodeTypeDefinitions[node.nodeType];
     const inputs = R.union(connectableInputs, knobableInputs);
+
+    const knobComponent = knob ? <Knob knob={knob} /> : null;
 
     // reset
     this.inputs = [];
@@ -150,6 +155,7 @@ export class NodeComponent extends Component {
           {this.renderInputs(inputs)}
           {this.renderOutput(output || node.nodeType === 'Knob')}
         </div>
+        {knobComponent}
       </div>
     );
   }
