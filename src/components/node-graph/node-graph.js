@@ -10,7 +10,8 @@ import { svgManager } from './svg';
 import { NodeComponent } from './node-component';
 // import { Connection } from './connection';
 import { ConnectionManager } from './connection-manager';
-import { createConnectionAction, deleteConnectionAction } from 'redux/modules/connection';  // eslint-disable-line
+import { getConnectionsByChildNodeIdAndChildNodeInput } from 'redux/StateQueries/new-state-queries/connection-queries';
+import { createConnectionAction, deleteConnectionAction } from 'redux/modules/connection';
 import { store } from 'redux/Store';
 import './styles/node-graph.sass';
 
@@ -110,6 +111,10 @@ export class NodeGraph extends React.Component { // eslint-disable-line
       }));
     } else {
       // disconnect
+      const connections = getConnectionsByChildNodeIdAndChildNodeInput(store.getState(), nodeId, input);
+      if (connections.length > 0) {
+        deleteConnectionAction([connections[0].id]);
+      }
     }
   }
 

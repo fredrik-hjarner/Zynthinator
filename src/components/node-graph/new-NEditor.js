@@ -44,6 +44,9 @@ Global Function */
 
 // Gets the position of the middle of a DOM element.
 NEditor.getConnPos = (elm) => {
+  if (!elm) {
+    debugger;
+  }
   // Get positions of the 'node-graph-container'
   const containerElement = document.getElementById('node-graph-container');
   const containerRect = containerElement.getBoundingClientRect();

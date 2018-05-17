@@ -335,3 +335,6 @@
     1. First replace input fields 'Node to control' & 'Parameter to control'
        to a combined 'Connect to'
          like in Create Connection etc.
+
+* should not be able create the same connection twice. That is if all arguments are the same
+    then dont create the connection.
