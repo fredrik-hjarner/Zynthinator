@@ -1,21 +1,25 @@
 import React from 'react';
+import _ from 'lodash';
 import { moveKnobAction } from 'redux/modules/knob';
 import { mathHelpers } from 'helpers';
 
-const Knob = props => (
-  <div>
-    <p>[{props.knob.id}] {props.knob.name}</p>
-    <p>range: {props.knob.minValue} to {props.knob.maxValue}</p>
-    <p>val: {props.displayValue}</p>
-    <input
-      type="range"
-      min={props.knob.minValue}
-      max={props.knob.maxValue}
-      step={props.knob.step}
-      onChange={event => props.onKnobMove(parseFloat(event.target.value))}
-    />
-  </div>
-);
+const Knob = props => {
+  const value = isNaN(props.displayValue) ? '' : _.round(props.displayValue, 2); // eslint-disable-line
+  return (
+    <div>
+      {/* <p>[{props.knob.id}] {props.knob.name}</p> */}
+      {/* <p>range: {props.knob.minValue} to {props.knob.maxValue}</p> */}
+      <p>{value}</p>
+      <input
+        type="range"
+        min={props.knob.minValue}
+        max={props.knob.maxValue}
+        step={props.knob.step}
+        onChange={event => props.onKnobMove(parseFloat(event.target.value))}
+      />
+    </div>
+  );
+};
 
 class KnobControlled extends React.Component {
   state = {
@@ -70,14 +74,5 @@ class KnobControlled extends React.Component {
     />
   )
 }
-
-/*
-  loudnessToGain =
-    loudness =>
-      10 ** (Math.log(loudness) / Math.log(2));
-  gainToLoudness =
-    gain =>
-      0.5 ** (Math.log(gain) / Math.log(0.1));
-*/
 
 export { KnobControlled as Knob };
