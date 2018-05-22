@@ -21,8 +21,7 @@ export class CreateKnobModal extends React.Component {
     super(props);
     this.state = {
       name: '',
-      connectedToWhichNode: undefined,
-      connectedToWhichParam: undefined,
+      func: 'linear',
       minValue: 0,
       maxValue: 100,
       step: 0.01,
@@ -31,12 +30,6 @@ export class CreateKnobModal extends React.Component {
 
   handlers = {
     onConfirm: () => createKnobAction(this.state),
-    onChildNodeIdChange: (e, { value: { nodeId, input } }) => {
-      this.setState({
-        connectedToWhichNode: nodeId,
-        connectedToWhichParam: input
-      });
-    },
     onNameChange: value => this.setState({ name: value }),
     onFormStringChange: (e, { name, value }) => this.setState({ [name]: value }),
     onFormFloatChange: (e) => {

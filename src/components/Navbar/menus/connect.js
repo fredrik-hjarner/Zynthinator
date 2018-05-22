@@ -7,10 +7,10 @@ import { openModalAction } from 'redux/modules/ui';
 
 export const Connect = () => (
   <TopMenuItem caption="Connect">
-    <MenuItem
+    {/* <MenuItem
       caption="Connect nodes"
       onClick={() => openModalAction('CreateConnectionModal')}
-    />
+    /> */}
     <MenuItem
       caption="Eject node"
       onClick={() => openModalAction('EjectNodeModal')}

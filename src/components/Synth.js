@@ -43,7 +43,7 @@ export const Synth = () => (
   <div
     style={{
       display: 'grid',
-      gridTemplateColumns: '50% 50%',
+      gridTemplateColumns: '500px 1fr',
       borderStyle: 'solid',
       borderWidth: '1px',
       borderColor: 'grey'

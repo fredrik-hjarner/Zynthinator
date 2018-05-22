@@ -1,4 +1,6 @@
-const _actionTypes = {
+import { unknownKeysThrowsExceptions } from 'helpers/unknownKeysThrowsExceptions';
+
+export const actionTypes = unknownKeysThrowsExceptions({
   CREATE_NODE: 'CREATE_NODE',
   CREATE_CONNECTION: 'CREATE_CONNECTION',
   DELETE_CONNECTION: 'DELETE_CONNECTION',
@@ -22,18 +24,4 @@ const _actionTypes = {
   CALCULATE_HIGHEST_NODE_ID: 'CALCULATE_HIGHEST_NODE_ID',
   CALCULATE_HIGHEST_UI_ID: 'CALCULATE_HIGHEST_UI_ID',
   MOVE_GRAPH_NODE: 'MOVE_GRAPH_NODE' // 'zynthinator:node-graph:move-node'
-};
-
-/**
- * Throw exception when trying to access a key that does not exist!
- */
-const handler = {
-  get(target, key) {
-    if (key in target) {
-      return target[key];
-    }
-    throw `Exception: '${key}' is not a valid name for a redux action.`;
-  },
-};
-
-export const actionTypes = new Proxy(_actionTypes, handler);
+});

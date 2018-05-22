@@ -1,8 +1,6 @@
 // import _ from 'lodash';
 import * as R from 'ramda';
-import {
-  createSelector,
-} from 'reselect';
+import { createSelector } from 'reselect';
 import { stateQueries } from './stateQueries';
 import {
   ramdaHelpers as RH,

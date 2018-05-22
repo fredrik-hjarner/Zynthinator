@@ -10,10 +10,10 @@ import { stateQueries } from 'redux/StateQueries';
 // Actions
 // -------------------
 
-export const createKnobAction = (params) => {
+export const createKnobAction = ({ maxValue, minValue, name, step, func }) => {
   store.dispatch({
     type: actionTypes.CREATE_KNOB,
-    ...params,
+    payload: { maxValue, minValue, name, step, func },
   });
 };
 
@@ -38,42 +38,27 @@ export const moveKnobAction = (id, value) => {
 // Reducers
 // --------------------------------
 
-export const createKnobReducer = (_state, action) => {
+export const createKnobReducer = (_state, { payload: { maxValue, minValue, name, step, func } }) => {
   /**
    * Create the Knob-node.
    * Then connect the Knob-node to whatever the
    * knob should be connected to.
    */
-  const Function = action.function;
-  const { connectedToWhichNode, connectedToWhichParam, maxValue, minValue, name, step } = action;
 
-  // wtf is going on here?
   const fakeAction = {
     nodeType: 'Knob',
-    value: minValue // dunno // what? is this a default value?
+    value: minValue // setting minValue as default.
   };
-  let newState = createNodeReducer(_state, fakeAction);
+  const newState = createNodeReducer(_state, fakeAction);
   // grab the id in the most ugly way possible. todo.
   const parentNodeId = newState.nodeManagement.highestNodeIdYet;
-
-  // So now make the connection.
-  const connAction = {
-    parentNodeIds: [parentNodeId],
-    childNodes: [{
-      nodeId: connectedToWhichNode,
-      input: connectedToWhichParam
-    }]
-  };
-  newState = createConnectionReducer(newState, connAction);
 
   const knobId = newState.nodeManagement.highestKnobIdYet + 1;
 
   const knob = {
     id: knobId,
     knobNodeId: parentNodeId,
-    connectedToWhichNode,
-    connectedToWhichParam,
-    'function': Function, // eslint-disable-line
+    'function': func, // eslint-disable-line
     maxValue,
     minValue,
     name,

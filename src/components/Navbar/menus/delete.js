@@ -7,10 +7,10 @@ import { openModalAction } from 'redux/modules/ui';
 
 export const Delete = () => (
   <TopMenuItem caption="Delete">
-    <MenuItem
+    {/* <MenuItem
       caption="Connection"
       onClick={() => openModalAction('DeleteConnectionModal')}
-    />
+    /> */}
     <MenuItem
       caption="Node"
       onClick={() => openModalAction('DeleteNodeModal')}

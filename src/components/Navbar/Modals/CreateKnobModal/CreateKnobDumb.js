@@ -5,14 +5,9 @@ import { CommonModal } from 'components/Navbar/Modals/CommonModal';
 export const CreateKnobDumb = (props) => {
   const formFields = (
     <div>
-      <Form.Select
-        label='Connect to'
-        onChange={props.onChildNodeIdChange}
-        options={props.nodesThatHaveInputs}
-      />
       <Form.Group widths="equal">
         <Form.Select
-          name="function"
+          name="func"
           label="Function"
           onChange={props.onFormStringChange}
           options={props.functionOptions}

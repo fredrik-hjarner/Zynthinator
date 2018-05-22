@@ -2,6 +2,7 @@ import _ from 'lodash';
 import * as R from 'ramda';
 import { ramdaHelpers as RH } from 'helpers';
 import { stateQueries } from 'redux/StateQueries';
+import { connectionExists } from 'redux/StateQueries/new-state-queries/connection-queries';
 
 // ----------------
 // Reducers
@@ -49,6 +50,11 @@ export const createConnectionReducer = (state, { parentNodeIds, childNodes }) =>
     // connect each parent node to this child node.
     parentNodeIds.forEach((parentNodeId) => {
       // create a Connection
+      // but not if it already exists
+      if (connectionExists(state, parentNodeId, childNode.nodeId, childNode.input)) {
+        return; // todo. this should work right?
+      }
+
       connectionsValues.push({
         id: ++connectionId,
         parentNodeId,

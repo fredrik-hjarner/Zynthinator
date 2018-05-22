@@ -331,10 +331,4 @@
     because I had a bug in 'bypass' because it had no
     destruct method.
 
-* One Knob should be able to connect/control to several things.
-    1. First replace input fields 'Node to control' & 'Parameter to control'
-       to a combined 'Connect to'
-         like in Create Connection etc.
-
-* should not be able create the same connection twice. That is if all arguments are the same
-    then dont create the connection.
+* Add context menu when right-clicking a NodeGraphNode.
