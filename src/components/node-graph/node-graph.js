@@ -8,6 +8,7 @@ import { stateQueries } from 'redux/StateQueries';
 // import { nodeTypeDefinitions } from 'NodeTypeDefinitions';
 import { svgManager } from './svg';
 import { NodeComponent } from './node-component';
+import { getAllNodes } from 'redux/StateQueries/new-state-queries/node-queries';
 // import { Connection } from './connection';
 import { ConnectionManager } from './connection-manager';
 import { getConnectionsByChildNodeIdAndChildNodeInput } from 'redux/StateQueries/new-state-queries/connection-queries';
@@ -16,7 +17,7 @@ import { store } from 'redux/Store';
 import './styles/node-graph.sass';
 
 const mapStateToProps = (state) => ({
-  nodes: stateQueries.getAllNodes(state),
+  nodes: getAllNodes(state),
   connections: stateQueries.getAllConnectionValues(state),
   positions: state.ui.nodeGraphPositions
 });

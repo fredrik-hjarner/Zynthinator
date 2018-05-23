@@ -5,6 +5,7 @@ import { stateQueries } from './stateQueries';
 import {
   ramdaHelpers as RH,
 } from '../../helpers';
+import { getAllNodes } from './new-state-queries/node-queries';
 
 /**
  * Private helpers
@@ -16,7 +17,7 @@ class MemoizedStateQueries {
   */
   getNodesThatHaveOutputs =
     createSelector(
-      [stateQueries.getAllNodes],
+      [getAllNodes],
       R.filter(stateQueries.getOutputOfNode),
     )
 
@@ -26,13 +27,13 @@ class MemoizedStateQueries {
    */
   getNodesThatHaveConnectableInputs =
     createSelector(
-      [stateQueries.getAllNodes],
+      [getAllNodes],
       R.pickBy(stateQueries.nodeHasConnectableInputs),
     )
 
   getNodesThatHaveTriggerableInputs =
     createSelector(
-      [stateQueries.getAllNodes],
+      [getAllNodes],
       R.pickBy(stateQueries.nodeHasTriggerableInputs),
     )
 
@@ -52,7 +53,7 @@ class MemoizedStateQueries {
     // R.uncurryN(
     //  2,
       createSelector(
-        [stateQueries.getAllNodes],
+        [getAllNodes],
         nodes =>
           R.memoizeWith(
             R.identity,
@@ -69,7 +70,7 @@ class MemoizedStateQueries {
    */
   getAllNodesInReadableFormat =
     createSelector(
-      [stateQueries.getAllNodes],
+      [getAllNodes],
       R.map(stateQueries.getNodeInReadableFormat),
     )
 
@@ -79,7 +80,7 @@ class MemoizedStateQueries {
    */
   _getConnectionInReadableFormat =
     createSelector(
-      [stateQueries.getAllNodes, stateQueries.getAllConnections],
+      [getAllNodes, stateQueries.getAllConnections],
       (nodes, connections) => (connectionId) => {
         const conn = connections[connectionId];
         const parentNodeAsString =
@@ -109,7 +110,7 @@ class MemoizedStateQueries {
    */
   getConnectionsInReadableFormat =
     createSelector(
-      [stateQueries.getAllNodes, stateQueries.getAllConnections],
+      [getAllNodes, stateQueries.getAllConnections],
       (nodes, connections) =>
         Object.values(connections).map((conn) => {
           const parentNodeAsString =
@@ -144,7 +145,7 @@ class MemoizedStateQueries {
 
   getAllUngroupedNodes =
     createSelector(
-      [stateQueries.getAllNodes, this.getAllGroupedNodes],
+      [getAllNodes, this.getAllGroupedNodes],
       (nodes, groupedNodes) =>
         R.difference(R.values(nodes), groupedNodes),
     )

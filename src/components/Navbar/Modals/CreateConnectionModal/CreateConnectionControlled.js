@@ -6,9 +6,10 @@ import {
   memoizedStateQueries,
   stateQueries
 } from 'redux/StateQueries';
+import { getAllNodes } from 'redux/StateQueries/new-state-queries/node-queries';
 
 const mapStateToProps = (state, ownProps) => ({
-  nodes: stateQueries.getAllNodes(state),
+  nodes: getAllNodes(state),
   nodesThatHaveOutputs:
     Object.values(memoizedStateQueries.getNodesThatHaveOutputs(state))
       .map(node => ({

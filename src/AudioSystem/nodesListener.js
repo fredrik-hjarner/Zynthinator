@@ -1,6 +1,4 @@
-import {
-  stateQueries,
-} from 'redux/StateQueries';
+import { getAllNodes } from 'redux/StateQueries/new-state-queries/node-queries';
 import _ from 'lodash';
 import * as R from 'ramda';
 import { nodes } from './nodes';
@@ -17,7 +15,7 @@ class NodesListener {
   onActionWasDispatched =
     (newState) => {
       const newNodes =
-        stateQueries.getAllNodes(newState);
+        getAllNodes(newState);
       /**
        * Check if the state is EXATLY the same as before.
        */

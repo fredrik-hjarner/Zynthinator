@@ -1,3 +1,1 @@
-export {
-  DeleteKnobRedux as DeleteKnobModal,
-} from './DeleteKnobRedux';
+export { DeleteKnobModal } from './DeleteKnobControlled';

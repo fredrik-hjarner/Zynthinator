@@ -1,3 +1,1 @@
-export {
-  DeleteConnectionRedux as DeleteConnectionModal,
-} from './DeleteConnectionRedux';
+export { DeleteConnectionModal } from './DeleteConnectionControlled';

@@ -60,7 +60,7 @@ const state1 = {
 
 describe('stateQueries', function() { // eslint-disable-line
   it('getAllNodes.', function() { // eslint-disable-line
-    const returnValue = stateQueries.getAllNodes(state1);
+    const returnValue = getAllNodes(state1);
     assert.strictEqual(
       returnValue, 
       state1.nodeManagement.nodes,

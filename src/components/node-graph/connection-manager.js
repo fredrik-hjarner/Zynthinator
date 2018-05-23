@@ -42,7 +42,7 @@ class SvgComponent extends Component { // eslint-disable-line
  *********************/
 
 // const mapStateToProps = (state) => ({
-//   nodes: stateQueries.getAllNodes(state),
+//   nodes: getAllNodes(state),
 //   connections: stateQueries.getAllConnectionValues(state),
 //   positions: state.ui.nodeGraphPositions
 // });

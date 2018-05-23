@@ -303,9 +303,6 @@
 
 * All 'params' in nodeTypeDefinitons should have a description property.
 
-* Knobs should get a defaultName like 'timeQuantizer.milliseconds'
-    i.e. node dot param.
-
 * Rervert the ChangeRange so that it uses a GAIN and a CONSTANT_SOURCE,
     and AudioWorklet only where it's needed.
 
@@ -332,3 +329,6 @@
     destruct method.
 
 * Add context menu when right-clicking a NodeGraphNode.
+
+* Be explicit about arguments in redux-ACTIONS and component-PROPS.
+    It is a mess as it is now.

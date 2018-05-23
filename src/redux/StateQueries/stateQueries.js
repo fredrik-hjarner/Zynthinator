@@ -2,6 +2,7 @@ import * as R from 'ramda';
 import { createSelector } from 'reselect';
 import { initialState } from '../InitialState';
 import { nodeTypeDefinitions } from '../../NodeTypeDefinitions'; // todo. cheating. I dont take it from state.
+import { getAllNodes } from './new-state-queries/node-queries';
 
 class StateQueries {
   /**
@@ -10,20 +11,9 @@ class StateQueries {
   getKnobsByIds = (state, ids) =>
     R.pick(ids, state.nodeManagement.knobs)
 
-  getAllNodes =
-    (state) => {
-      if (state === undefined
-      || state === null
-      || state.nodeManagement === undefined
-      || state.nodeManagement === null) {
-        debugger;
-      }
-      return state.nodeManagement.nodes;
-    }
-
   getAllNodeValues =
     createSelector(
-      [this.getAllNodes],
+      [getAllNodes],
       R.values,
     )
 

@@ -1,1 +1,1 @@
-export { CreateGroupRedux as CreateGroupModal } from './CreateGroupRedux';
+export { CreateGroupModal } from './CreateGroupControlled';

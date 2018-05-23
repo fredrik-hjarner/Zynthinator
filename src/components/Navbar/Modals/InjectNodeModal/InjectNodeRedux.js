@@ -1,13 +1,7 @@
-import {
-  connect,
-} from 'react-redux';
-import {
-  InjectNodeControlled,
-} from './InjectNodeControlled';
-import {
-  memoizedStateQueries,
-  stateQueries,
-} from 'redux/StateQueries';
+import { connect } from 'react-redux';
+import { InjectNodeControlled } from './InjectNodeControlled';
+import { memoizedStateQueries } from 'redux/StateQueries';
+import { getAllNodes } from 'redux/StateQueries/new-state-queries/node-queries';
 
 const mapStateToProps =
   (state, ownProps) => ({
@@ -16,7 +10,7 @@ const mapStateToProps =
     allNodesInReadableFormat:
       memoizedStateQueries.getAllNodesInReadableFormat(state),
     nodes:
-      stateQueries.getAllNodes(state),
+      getAllNodes(state),
     ...ownProps, // todo. this actually does nothing I believe.
   });
 

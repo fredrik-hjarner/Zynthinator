@@ -2,8 +2,18 @@ import React from 'react';
 import * as R from 'ramda';
 import { DeleteKnobDumb } from './DeleteKnobDumb';
 import { deleteKnobAction } from 'redux/modules/knob';
+import { connect } from 'react-redux';
 
-export class DeleteKnobControlled extends React.Component {
+const mapStateToProps = (state, ownProps) => {
+  const { knobs } = state.nodeManagement;
+  return {
+    knobs,
+    ...ownProps,
+  };
+};
+
+@connect(mapStateToProps)
+export class DeleteKnobModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,33 +22,25 @@ export class DeleteKnobControlled extends React.Component {
   }
 
   handlers = {
-    onConfirm:
-      () =>
-        deleteKnobAction(this.state.knobIds),
-    onKnobIdChange:
-      (e, { value }) => {
-        this.setState({ knobIds: R.map(parseInt, value) });
-      },
+    onConfirm: () => deleteKnobAction(this.state.knobIds),
+    onKnobIdChange: (e, { value }) => {
+      this.setState({ knobIds: R.map(parseInt, value) });
+    },
   }
 
-  render =
-    () => {
-      const {
-        knobs,
-      } = this.props;
-      const options =
-        Object.keys(knobs)
-          .map(id => ({
-            key: id,
-            text: id,
-            value: id,
-          }));
+  render = () => {
+    const { knobs } = this.props;
+    const options = Object.keys(knobs).map(id => ({
+      key: id,
+      text: id,
+      value: id,
+    }));
 
-      return (
-        <DeleteKnobDumb
-          {...this.handlers}
-          options={options}
-        />
-      );
-    };
+    return (
+      <DeleteKnobDumb
+        {...this.handlers}
+        options={options}
+      />
+    );
+  };
 }
