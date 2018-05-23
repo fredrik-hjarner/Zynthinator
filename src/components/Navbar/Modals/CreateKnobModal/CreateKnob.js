@@ -1,17 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createKnobAction } from 'redux/modules/knob';
-import {
-  memoizedStateQueries
-} from 'redux/StateQueries';
 import { CreateKnobDumb } from './CreateKnobDumb';
 
 const mapStateToProps = (state) => {
   const { nodes } = state.nodeManagement;
-  const nodesThatHaveInputs = memoizedStateQueries.getChildNodesForCreateKnobModal(state);
   return {
-    nodes,
-    nodesThatHaveInputs,
+    nodes
   };
 };
 

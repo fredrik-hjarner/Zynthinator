@@ -21,15 +21,6 @@ class MemoizedStateQueries {
     )
 
   /**
-  * @param state
-  */
-  getNodesThatHaveKnobableInputs =
-    createSelector(
-      [stateQueries.getAllNodes],
-      R.pickBy(stateQueries.nodeHasKnobableInputs),
-    )
-
-  /**
    * Returns an object.
    * @param state
    */
@@ -170,39 +161,6 @@ class MemoizedStateQueries {
     )
 
   /**
-   * Returns an array of all nodes that are not children,
-   * i.e. that are 'root nodes'.
-   */
-  getAllNodesWithoutParents =
-    createSelector(
-      [stateQueries.getAllNodeIds, this.getAllNodesThatAreChildren], 
-      R.difference,
-    )
-
-  /**
-   * Returns arrays of id:s.
-   */
-  getAllChains =
-    createSelector(
-      [stateQueries.getAllNodes, stateQueries.getAllConnections, this.getAllNodesWithoutParents],
-      (nodes, connections, topNodes) => {
-        const chainsAccum = [];
-        topNodes.forEach((nodeId) => {
-          stateQueries.getAllChainsHelper({
-            // nodes,
-            connections,
-            nodeIdToExamine:
-              nodeId,
-            parentIdChain:
-              [],
-            chainsAccum,
-          });
-        });
-        return chainsAccum;
-      },
-    )
-
-  /**
    * So, the goal is to first have a func memoized for getAllNodes.
    * If getAllNodes is equal then it will return the same FUNCTION
    * that is memoized for type,
@@ -260,37 +218,6 @@ class MemoizedStateQueries {
     
     // get the params of them all.
     const inputsForEachNode = nodes.map(stateQueries.getConnectableInputsOfNode);
-    
-    // combine them all
-    const output = [];
-    nodes.forEach((node, i) => {
-      inputsForEachNode[i].forEach((input) => {
-        output.push({
-          key: `${node.id}${input}`,
-          value: { nodeId: node.id, input },
-          text: `${nodesInReadableFormat[i]}.${input}`,
-        });
-      });
-    });
-
-    return output;
-  }
-
-  /**
-   * Exactly as the previous function except
-   * getKnobableInputsOfNode
-   * instead of
-   * getConnectableInputsOfNode
-   */
-  getChildNodesForCreateKnobModal = (state) => {
-    // get all nodes with inputs
-    const nodes = Object.values(this.getNodesThatHaveKnobableInputs(state));
-
-    // in readable format
-    const nodesInReadableFormat = nodes.map(stateQueries.getNodeInReadableFormat);
-    
-    // get the params of them all.
-    const inputsForEachNode = nodes.map(stateQueries.getKnobableInputsOfNode);
     
     // combine them all
     const output = [];

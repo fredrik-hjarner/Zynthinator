@@ -1,11 +1,6 @@
-import _ from 'lodash';
 import * as R from 'ramda';
-import {
-  createSelector,
-} from 'reselect';
-import {
-  initialState,
-} from '../InitialState';
+import { createSelector } from 'reselect';
+import { initialState } from '../InitialState';
 import { nodeTypeDefinitions } from '../../NodeTypeDefinitions'; // todo. cheating. I dont take it from state.
 
 class StateQueries {
@@ -218,35 +213,6 @@ class StateQueries {
       // else
       return connections[connectionId];
     };
-
-  getAllChainsHelper =
-    ({
-      // nodes,
-      connections,
-      nodeIdToExamine,
-      parentIdChain, // parents chain of nodeToExamine.
-      chainsAccum, // chains that have been completely examined until bottom.
-    }) => {
-      parentIdChain.push(nodeIdToExamine);
-      const childrenIds =
-        this.getChildrenIdsOfNodeWithId(connections, nodeIdToExamine);
-      if (childrenIds.length === 0) {
-        // chain has reached the bottom.
-        chainsAccum.push(parentIdChain);
-        return;
-      }
-      childrenIds.forEach((nodeId) => {
-        this.getAllChainsHelper({
-          // nodes,
-          connections,
-          nodeIdToExamine:
-            nodeId,
-          parentIdChain:
-            _.cloneDeep(parentIdChain),
-          chainsAccum,
-        });
-      });
-    }
 
   /**
    * Returns an array.
