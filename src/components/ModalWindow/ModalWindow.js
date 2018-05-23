@@ -20,10 +20,7 @@ const ModalWindow = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const {
-    modal,
-    propsToModal,
-  } = state;
+  const { modal, propsToModal } = state;
   return {
     modal,
     propsToModal,

@@ -6,6 +6,7 @@ import {
   ramdaHelpers as RH,
 } from '../../helpers';
 import { getAllNodes } from './new-state-queries/node-queries';
+import { getAllConnections } from 'redux/StateQueries/new-state-queries/connection-queries';
 
 /**
  * Private helpers
@@ -38,32 +39,6 @@ class MemoizedStateQueries {
     )
 
   /**
-   * So, the goal is to first have a func memoized for getAllNodes.
-   * If getAllNodes is equal then it will return the same FUNCTION
-   * that is memoized for type,
-   *
-   * If getAllNodes is not equal then it will return the ANOTHER function
-   * that is memoized for type,
-   */
-  getNodesByType = // todo this looks so ugly :'|
-    (state, type) =>
-      this._getNodesByType(state)(type)
-
-  _getNodesByType =
-    // R.uncurryN(
-    //  2,
-      createSelector(
-        [getAllNodes],
-        nodes =>
-          R.memoizeWith(
-            R.identity,
-            type =>
-              R.filter(R.propEq('nodeType', type), nodes),
-          ),
-      ) // ,
-  // )
-
-  /**
    * Returns an object.
    * Each string is key:ed by the node:s id.
    * @param state
@@ -80,7 +55,7 @@ class MemoizedStateQueries {
    */
   _getConnectionInReadableFormat =
     createSelector(
-      [getAllNodes, stateQueries.getAllConnections],
+      [getAllNodes, getAllConnections],
       (nodes, connections) => (connectionId) => {
         const conn = connections[connectionId];
         const parentNodeAsString =
@@ -110,7 +85,7 @@ class MemoizedStateQueries {
    */
   getConnectionsInReadableFormat =
     createSelector(
-      [getAllNodes, stateQueries.getAllConnections],
+      [getAllNodes, getAllConnections],
       (nodes, connections) =>
         Object.values(connections).map((conn) => {
           const parentNodeAsString =
@@ -148,17 +123,6 @@ class MemoizedStateQueries {
       [getAllNodes, this.getAllGroupedNodes],
       (nodes, groupedNodes) =>
         R.difference(R.values(nodes), groupedNodes),
-    )
-
-  getAllNodesThatAreChildren =
-    createSelector(
-      [stateQueries.getAllConnections],
-      R.compose(
-        R.uniq,
-        R.flatten,
-        R.map(R.prop('childNodeId')),
-        R.values,
-      ),
     )
 
   /**

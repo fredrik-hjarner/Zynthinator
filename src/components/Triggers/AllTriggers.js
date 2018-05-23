@@ -1,5 +1,5 @@
 import React from 'react';
-import { SimpleWindowRedux } from 'components/SimpleWindow';
+import { SimpleWindow } from 'components/SimpleWindow';
 import { Trigger } from './Trigger';
 import * as R from 'ramda';
 import { connect } from 'react-redux';
@@ -15,9 +15,9 @@ const AllTriggers =
     }
 
     return (
-      <SimpleWindowRedux title="Triggers">
+      <SimpleWindow title="Triggers">
         {triggerElements}
-      </SimpleWindowRedux>
+      </SimpleWindow>
     );
   };
 

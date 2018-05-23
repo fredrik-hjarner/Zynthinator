@@ -1,1 +1,1 @@
-export * from './SimpleWindowRedux';
+export * from './SimpleWindowControlled';

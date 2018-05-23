@@ -10,7 +10,7 @@ import {
 import {
   uiFdAnalyserChangeParamsAction,
 } from 'redux/modules/ui';
-import { SimpleWindowRedux } from 'components/SimpleWindow';
+import { SimpleWindow } from 'components/SimpleWindow';
 import {
   FrequencyDomainVisualizerSettingsDumb,
 } from './FrequencyDomainVisualizerSettingsDumb';
@@ -140,7 +140,7 @@ export class FrequencyDomainVisualizerControlled extends React.Component {
         ); */
 
       return (
-        <SimpleWindowRedux title={`id${this.props.uiComponent.nodeId}`}>
+        <SimpleWindow title={`id${this.props.uiComponent.nodeId}`}>
           <CanvasContainer
             id={this.frequencyDomainCanvasId}
             width={this.props.uiComponent.canvasWidth}
@@ -150,7 +150,7 @@ export class FrequencyDomainVisualizerControlled extends React.Component {
             {...this.handlers}
             {...settingsProps}
           />
-        </SimpleWindowRedux>
+        </SimpleWindow>
       );
     }
 }

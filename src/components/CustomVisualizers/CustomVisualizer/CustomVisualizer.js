@@ -7,7 +7,7 @@ import {
   InfiniteCustomVisualizer,
   audioContext
 } from 'AudioSystem';
-import { SimpleWindowRedux } from '../../SimpleWindow';
+import { SimpleWindow } from '../../SimpleWindow';
 import { CustomVisualizerSettings } from './CustomVisualizerSettings';
 import { CanvasContainer } from './CanvasContainer';
 import { connect } from 'react-redux';
@@ -15,8 +15,7 @@ import { stateQueries } from 'redux/StateQueries';
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.uiComponentId;
-  const uiComponent =
-    stateQueries.getAllUiComponents(state)[id];
+  const uiComponent = stateQueries.getAllUiComponents(state)[id];
   return { uiComponent };
 };
 
@@ -130,7 +129,7 @@ export class CustomVisualizer extends React.Component {
         );
 
       return (
-        <SimpleWindowRedux title={`id${this.props.uiComponent.nodeId}`}>
+        <SimpleWindow title={`id${this.props.uiComponent.nodeId}`}>
           <CanvasContainer
             id={this.canvasId}
             width={this.props.uiComponent.canvasWidth}
@@ -140,7 +139,7 @@ export class CustomVisualizer extends React.Component {
             {...this.handlers}
             {...settingsProps}
           />
-        </SimpleWindowRedux>
+        </SimpleWindow>
       );
     }
 }

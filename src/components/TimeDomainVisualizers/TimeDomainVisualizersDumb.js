@@ -3,7 +3,7 @@ import {
   TimeDomainVisualiser,
 } from './TimeDomainVisualiser';
 import {
-  SimpleWindowRedux,
+  SimpleWindow,
 } from '../SimpleWindow';
 
 export const TimeDomainVisualizersDumb =
@@ -20,8 +20,8 @@ export const TimeDomainVisualizersDumb =
     }
       
     return (
-      <SimpleWindowRedux title="Time-Domain Analysers">
+      <SimpleWindow title="Time-Domain Analysers">
         {analysers}
-      </SimpleWindowRedux>
+      </SimpleWindow>
     );
   };

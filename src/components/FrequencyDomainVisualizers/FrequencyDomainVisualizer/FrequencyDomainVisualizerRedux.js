@@ -7,12 +7,10 @@ import { FrequencyDomainVisualizerControlled } from './FrequencyDomainVisualizer
 const mapStateToProps =
   (state, ownProps) => {
     const id = ownProps.uiComponentId;
-    const uiComponent =
-      stateQueries.getAllUiComponents(state)[id];
+    const uiComponent = stateQueries.getAllUiComponents(state)[id];
     return {
       uiComponent,
     };
   };
 
-export const FrequencyDomainVisualizerRedux =
-  connect(mapStateToProps)(FrequencyDomainVisualizerControlled);
+export const FrequencyDomainVisualizerRedux = connect(mapStateToProps)(FrequencyDomainVisualizerControlled);

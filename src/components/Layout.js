@@ -1,9 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Synth } from './Synth';
-import {
-  NavbarContainer,
-} from './Navbar';
+import { Navbar } from './Navbar';
 
 const containerStyle = {
   marginTop: '20px',
@@ -11,7 +9,7 @@ const containerStyle = {
 
 export const Layout = () => (
   <React.Fragment>
-    <NavbarContainer key="navbar-container" />
+    <Navbar key="navbar-container" />
     <div key="switch-container" style={containerStyle}>
       <Switch>
         <Route path="*" component={Synth} />

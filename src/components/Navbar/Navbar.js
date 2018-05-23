@@ -1,6 +1,5 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { DropDownMenu } from 'components/semantic++';
 import {
   File,
@@ -37,12 +36,6 @@ export class Navbar extends React.Component { // eslint-disable-line
     </DropDownMenu>
   );
 }
-
-export const NavbarContainer =
-  connect(
-    null,
-    null,
-  )(Navbar);
 
 /* Navbar.propTypes = {
   path: PropTypes.string.isRequired,

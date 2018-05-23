@@ -1,9 +1,19 @@
 import React from 'react';
-import {
-  SimpleWindowDumb,
-} from './SimpleWindowDumb';
+import { SimpleWindowDumb } from './SimpleWindowDumb';
 
-export class SimpleWindowControlled extends React.Component {
+import { connect } from 'react-redux';
+
+const mapStateToProps = (state, ownProps) => {
+  const { nodes } = state.nodeManagement;
+
+  return {
+    nodes,
+    ...ownProps,
+  };
+};
+
+@connect(mapStateToProps)
+export class SimpleWindow extends React.Component {
   state = {
     minimized: false, // eslint-disable-line
     settingsminimized: true, // eslint-disable-line

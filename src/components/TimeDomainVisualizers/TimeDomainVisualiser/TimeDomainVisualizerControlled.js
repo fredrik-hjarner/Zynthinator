@@ -7,7 +7,7 @@ import {
   InfiniteTimeDomainVisualizer,
   audioContext
 } from '../../../AudioSystem';
-import { SimpleWindowRedux } from '../../SimpleWindow';
+import { SimpleWindow } from '../../SimpleWindow';
 import { TimeDomainVisualizerSettingsDumb } from './TimeDomainVisualizerSettingsDumb';
 import { CanvasContainer } from './CanvasContainer';
 
@@ -120,7 +120,7 @@ export class TimeDomainVisualizerControlled extends React.Component {
         );
 
       return (
-        <SimpleWindowRedux title={`id${this.props.uiComponent.nodeId}`}>
+        <SimpleWindow title={`id${this.props.uiComponent.nodeId}`}>
           <CanvasContainer
             id={this.timeDomainCanvasId}
             width={this.props.uiComponent.canvasWidth}
@@ -130,7 +130,7 @@ export class TimeDomainVisualizerControlled extends React.Component {
             {...this.handlers}
             {...settingsProps}
           />
-        </SimpleWindowRedux>
+        </SimpleWindow>
       );
     }
 }

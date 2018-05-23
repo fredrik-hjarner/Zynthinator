@@ -1,6 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux'; // eslint-disable-line
-import { stateQueries } from 'redux/StateQueries'; // eslint-disable-line
 import './styles/node-graph.sass';
 
 /*********************

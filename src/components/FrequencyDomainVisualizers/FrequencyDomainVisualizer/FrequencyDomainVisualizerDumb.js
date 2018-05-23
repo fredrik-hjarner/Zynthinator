@@ -7,7 +7,7 @@ import {
   calculateFrequencyInNthBin, // eslint-disable-line
   InfiniteFrequencyDomainVizualizer,
 } from 'AudioSystem';
-import { SimpleWindowRedux } from '../SimpleWindow';
+import { SimpleWindow } from '../SimpleWindow';
 import {
   FrequencyDomainVisualizerSettingsDumb,
 } from './FrequencyDomainVisualizerSettingsDumb';
@@ -41,7 +41,7 @@ export class FrequencyDomainVisualizerDumb extends React.Component {
     
 
     return (
-      <SimpleWindowRedux title={`id${this.props.analyserNode.webAudioNode.id}`}>
+      <SimpleWindow title={`id${this.props.analyserNode.webAudioNode.id}`}>
         <canvas
           style={{ display: 'block' }}
           id={this.frequencyDomainCanvasId}
@@ -53,7 +53,7 @@ export class FrequencyDomainVisualizerDumb extends React.Component {
           {...this.handlers}
           millisecondsBetweenRedraws={this.props.millisecondsBetweenRedraws}
         />
-      </SimpleWindowRedux>
+      </SimpleWindow>
     );
   }
 }

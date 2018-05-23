@@ -1,6 +1,6 @@
 import React from 'react';
 import { FrequencyDomainVisualizer } from './FrequencyDomainVisualizer';
-import { SimpleWindowRedux } from 'components/SimpleWindow';
+import { SimpleWindow } from 'components/SimpleWindow';
 import { connect } from 'react-redux';
 import { memoizedStateQueries } from 'redux/StateQueries';
 
@@ -17,9 +17,9 @@ const FrequencyDomainVisualizers = (props) => {
   }
 
   return (
-    <SimpleWindowRedux title="Frequency-Domain Analysers">
+    <SimpleWindow title="Frequency-Domain Analysers">
       {analysers}
-    </SimpleWindowRedux>
+    </SimpleWindow>
   );
 };
 
@@ -27,8 +27,7 @@ const mapStateToProps = (state) => {
   /**
    * get state.ui.components by type
    */
-  const uiComponentIds =
-    memoizedStateQueries.getUiComponentIdsByType(state, 'FrequencyDomainAnalyser');
+  const uiComponentIds = memoizedStateQueries.getUiComponentIdsByType(state, 'FrequencyDomainAnalyser');
   return {
     /**
      * Get all FrequencyDomainAnalyser node ids.
@@ -37,9 +36,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const FrequencyDomainVisualizersRedux = connect(
-  mapStateToProps,
-  {},
-)(FrequencyDomainVisualizers);
+const FrequencyDomainVisualizersRedux = connect(mapStateToProps)(FrequencyDomainVisualizers);
 
 export { FrequencyDomainVisualizersRedux as FrequencyDomainVisualizers };

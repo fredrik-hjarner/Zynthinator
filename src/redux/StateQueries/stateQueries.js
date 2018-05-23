@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import { createSelector } from 'reselect';
 import { initialState } from '../InitialState';
 import { nodeTypeDefinitions } from '../../NodeTypeDefinitions'; // todo. cheating. I dont take it from state.
-import { getAllNodes } from './new-state-queries/node-queries';
+import { getAllConnections } from 'redux/StateQueries/new-state-queries/connection-queries';
 
 class StateQueries {
   /**
@@ -11,25 +11,9 @@ class StateQueries {
   getKnobsByIds = (state, ids) =>
     R.pick(ids, state.nodeManagement.knobs)
 
-  getAllNodeValues =
-    createSelector(
-      [getAllNodes],
-      R.values,
-    )
-
-  getAllNodeIds =
-    createSelector(
-      [this.getAllNodeValues],
-      R.map(R.prop('id')),
-    )
-
-  getAllConnections =
-    state =>
-      state.nodeManagement.connections
-
   getAllConnectionValues =
     createSelector(
-      [this.getAllConnections],
+      [getAllConnections],
       R.values,
     )
 
@@ -130,12 +114,7 @@ class StateQueries {
       R.flip(R.prop)
     )
 
-  doesNodeWithIdExist =
-    ({
-      nodes,
-      nodeId,
-    }) =>
-      nodeId in nodes;
+  doesNodeWithIdExist = ({ nodes, nodeId }) => nodeId in nodes;
 
   /**
    * Todo. I don't like this interface.
@@ -153,23 +132,6 @@ class StateQueries {
         this.getConnectableInputsOfNode(node);
       return inputs.includes(inputName);
     };
-
-  /**
-   * Return an array of parentNodeIds.
-   */
-  getParentsOfNode =
-    (connections, nodeId) =>
-      R.map(
-        R.prop('parentNodeId'),
-        R.filter(R.propEq('childNodeId', nodeId), R.values(connections)),
-      )
-
-  getChildrenIdsOfNodeWithId =
-    (connections, nodeId) =>
-      R.map(
-        R.prop('childNodeId'),
-        R.filter(R.propEq('parentNodeId', nodeId), R.values(connections)),
-      )
 
   /**
    * Return an array of connections.
@@ -251,9 +213,7 @@ class StateQueries {
    * Checks if default state but
    * ignores 'router-state' and 'history'.
    */
-  isDefaultState =
-    state =>
-      R.equals(state.nodeManagement, initialState.nodeManagement)
+  isDefaultState = state => R.equals(state.nodeManagement, initialState.nodeManagement)
 }
 
 export const stateQueries = new StateQueries();

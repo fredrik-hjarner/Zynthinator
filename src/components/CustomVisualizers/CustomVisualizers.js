@@ -2,14 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { memoizedStateQueries } from 'redux/StateQueries';
 import { CustomVisualizer } from './CustomVisualizer';
-import { SimpleWindowRedux } from '../SimpleWindow';
+import { SimpleWindow } from '../SimpleWindow';
 
 const mapStateToProps = (state) => {
   /**
    * get state.ui.components by type
    */
-  const uiComponentIds =
-    memoizedStateQueries.getUiComponentIdsByType(state, 'CustomAnalyser');
+  const uiComponentIds = memoizedStateQueries.getUiComponentIdsByType(state, 'CustomAnalyser');
   return {
     /**
      * Get all CustomAnalyser node ids.
@@ -34,9 +33,9 @@ export class CustomVisualizers extends React.Component {
     }
       
     return (
-      <SimpleWindowRedux title="Time-Domain Analysers">
+      <SimpleWindow title="Time-Domain Analysers">
         {analysers}
-      </SimpleWindowRedux>
+      </SimpleWindow>
     );
   }
 }
