@@ -10,6 +10,9 @@ const ModalWindow = (props) => {
     return null;
   }
   const cls = Modals[props.modal];
+  if (cls === undefined) {
+    debugger;
+  }
   return React.createElement(
     cls,
     props.propsToModal,

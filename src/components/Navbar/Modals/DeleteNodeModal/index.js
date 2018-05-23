@@ -1,3 +1,1 @@
-export {
-  DeleteNodeRedux as DeleteNodeModal,
-} from './DeleteNodeRedux';
+export { DeleteNodeModal } from './DeleteNodeControlled';

@@ -1,3 +1,1 @@
-export {
-  DeleteTriggerRedux as DeleteTriggerModal,
-} from './DeleteTriggerRedux';
+export { DeleteTriggerModal } from './DeleteTriggerControlled';

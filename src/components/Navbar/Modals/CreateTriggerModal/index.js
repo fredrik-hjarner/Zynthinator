@@ -1,1 +1,1 @@
-export { CreateTriggerRedux as CreateTriggerModal } from './CreateTriggerRedux';
+export { CreateTriggerModal } from './CreateTriggerControlled';

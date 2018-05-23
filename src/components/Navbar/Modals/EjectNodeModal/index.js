@@ -1,3 +1,1 @@
-export {
-  EjectNodeRedux as EjectNodeModal,
-} from './EjectNodeRedux';
+export { EjectNodeModal } from './EjectNodeControlled';

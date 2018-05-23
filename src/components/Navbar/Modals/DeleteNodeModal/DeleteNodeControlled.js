@@ -1,8 +1,16 @@
 import React from 'react';
 import { DeleteNodeDumb } from './DeleteNodeDumb';
 import { deleteNodeAction } from 'redux/modules/node';
+import { connect } from 'react-redux';
+import { memoizedStateQueries } from 'redux/StateQueries';
 
-export class DeleteNodeControlled extends React.Component {
+const mapStateToProps = (state, ownProps) => ({
+  allNodesInReadableFormat: memoizedStateQueries.getAllNodesInReadableFormat(state),
+  ...ownProps,
+});
+
+@connect(mapStateToProps)
+export class DeleteNodeModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

@@ -1,3 +1,1 @@
-export {
-  InjectNodeRedux as InjectNodeModal,
-} from './InjectNodeRedux';
+export { InjectNodeModal } from './InjectNodeControlled';

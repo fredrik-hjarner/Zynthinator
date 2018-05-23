@@ -1,1 +1,1 @@
-export { EditNodeRedux as EditNodeModal } from './EditNodeRedux';
+export { EditNodeModal } from './EditNodeControlled';
