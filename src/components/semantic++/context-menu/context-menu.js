@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class ContextMenu extends React.Component {
   componentDidMount = () => {
@@ -14,12 +15,21 @@ export class ContextMenu extends React.Component {
   }
 
   render = () => {
-    const { children } = this.props;
+    const { children, left, top } = this.props;
     
     return (
-      <div className="ui tiny compact vertical menu">
-        {children}
+      <div style={{ display: 'inline-block', position: 'fixed', left, top, zIndex: 2 }}>
+        <div className="ui tiny compact vertical menu">
+          {children}
+        </div>
       </div>
     );
   }
 }
+
+ContextMenu.propTypes = {
+  // left position of the context menu
+  left: PropTypes.number.isRequired,
+  // top position of the context menu
+  top: PropTypes.number.isRequired
+};

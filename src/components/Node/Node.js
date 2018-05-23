@@ -7,19 +7,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  Popup,
-  Divider
-} from 'semantic-ui-react';
-import {
-  deleteNodeAction,
-} from 'redux/modules/node';
-import {
-  openModalAction
-} from 'redux/modules/ui';
-import {
-  stateQueries,
-} from 'redux/StateQueries';
+import { Popup, Divider } from 'semantic-ui-react';
+import { deleteNodeAction } from 'redux/modules/node';
+import { openModalAction } from 'redux/modules/ui';
+import { stateQueries } from 'redux/StateQueries';
 import {
   ContextMenu,
   ContextMenuItem,
@@ -65,22 +56,6 @@ class Node extends React.Component {
     );
 
       /**
-       * Simply displays node POJO.
-       */
-      // return (
-      //   <Popup
-      //     size="tiny"
-      //     trigger={div}
-      //     content={(
-      //       <pre>{JSON.stringify(node, null, 2).slice(2, -2)}</pre>
-      //     )}
-      //     position="top center"
-      //     on="click"
-      //     hoverable="false"
-      //   />
-      // );
-
-      /**
        * Trying to use my new ContextMenu class
        */
     return (
@@ -94,7 +69,7 @@ class Node extends React.Component {
         trigger={div}
         content={(
           <ContextMenu>
-            <TopContextMenuItem caption="Parameters" disabled="disabled">
+            <TopContextMenuItem caption="Parameters">
               <ContextMenuItem caption=".gain = 1.0">
                 <ContextMenuItem caption="Create knob for this" />
                 <ContextMenuItem caption="Create trigger for this" />
@@ -123,7 +98,6 @@ class Node extends React.Component {
     );
   };
 }
-  
 
 Node.propTypes = {
   node: PropTypes.object.isRequired,
@@ -135,22 +109,15 @@ Node.propTypes = {
 // NodeContainer
 // ----------------------------------
 
-const mapStateToProps =
-  (state, { nodeId }) => ({
-    node:
-      stateQueries.getAllNodes(state)[nodeId]
-  });
+const mapStateToProps = (state, { nodeId }) => ({
+  node: stateQueries.getAllNodes(state)[nodeId]
+});
 
-const mapDispatchToProps =
-  (dispatch, { nodeId }) => ({
-    deleteNode: () => deleteNodeAction([nodeId])
-  });
+const mapDispatchToProps = (dispatch, { nodeId }) => ({
+  deleteNode: () => deleteNodeAction([nodeId])
+});
 
-const NodeContainer =
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Node);
+const NodeContainer = connect(mapStateToProps, mapDispatchToProps)(Node);
 
 NodeContainer.propTypes = {
   nodeId: PropTypes.number.isRequired,

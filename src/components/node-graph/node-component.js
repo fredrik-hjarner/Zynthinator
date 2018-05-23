@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import * as R from 'ramda';
 import { connect } from 'react-redux';
 import { NEditor } from './new-NEditor'; 
@@ -6,6 +6,10 @@ import { nodeTypeDefinitions } from 'NodeTypeDefinitions';
 import { moveGraphNode } from 'redux/modules/node-graph';
 import { getNodeById } from 'redux/StateQueries/new-state-queries/node-queries';
 import { getNodeGraphPositioByNodeId } from 'redux/StateQueries/new-state-queries/ui';
+import {
+  ContextMenu,
+  ContextMenuItem,
+} from 'components/semantic++';
 import { InputComponent } from './input-component';
 import { OutputComponent } from './output-component';
 import { getKnobByNodeId } from 'redux/StateQueries/new-state-queries/knob-queries';
@@ -19,6 +23,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 @connect(mapStateToProps)
 export class NodeComponent extends Component {
+  state = { contextMenu: { visible: false, left: 0, top: 0 } }
+
   /**
    * refs to components!
    */
@@ -128,6 +134,39 @@ export class NodeComponent extends Component {
     );
   }
 
+  onContextMenu = (e => { // eslint-disable-line
+    e.preventDefault();
+    
+    // grab global fixed x and y position of mouse.
+    const { target } = e;
+    const boundingClientRect = target.getBoundingClientRect();
+    const { left, top } = boundingClientRect;
+
+    // display ContextMenu at that position.
+    this.setState({ contextMenu: { visible: true, left, top } });
+  })
+
+  renderContextMenu = () => {
+    const { visible, left, top } = this.state.contextMenu;
+
+    if (!visible) {
+      return null;
+    }
+
+    return (
+      <ContextMenu top={top} left={left}>
+        <ContextMenuItem
+          caption="Edit"
+          onClick={() => {
+              this.handleClose();
+              // this.onEdit(node);
+            }}
+        />
+        <ContextMenuItem caption="Delete" />
+      </ContextMenu>
+    );
+  }
+
   render() {
     const { node, position, knob } = this.props;
     const { output, connectableInputs, knobableInputs } = nodeTypeDefinitions[node.nodeType];
@@ -140,23 +179,28 @@ export class NodeComponent extends Component {
     this.output = null;
 
     return (
-      <div
-        ref={ref => this.rootElement = ref} // eslint-disable-line
-        className='NodeContainer'
-        style={{ left: `${position.x}px`, top: `${position.y}px` }}
-      >
-        <header
-          onMouseDown={this.onHeaderDown}
-          onMouseUp={this.onHeaderUp}
+      <Fragment>
+        <div
+          ref={ref => this.rootElement = ref} // eslint-disable-line
+          className='NodeContainer'
+          style={{ left: `${position.x}px`, top: `${position.y}px` }}
+          onContextMenu={this.onContextMenu}
         >
-          {node.nodeType}
-        </header>
-        <div className='inputAndOutputContainer'>
-          {this.renderInputs(inputs)}
-          {this.renderOutput(output || node.nodeType === 'Knob')}
+          <header
+            onMouseDown={this.onHeaderDown}
+            onMouseUp={this.onHeaderUp}
+          >
+            {node.nodeType}
+          </header>
+          <div className='inputAndOutputContainer'>
+            {this.renderInputs(inputs)}
+            {this.renderOutput(output || node.nodeType === 'Knob')}
+          </div>
+          {knobComponent}
         </div>
-        {knobComponent}
-      </div>
+        {this.renderContextMenu()}
+      </Fragment>
+      
     );
   }
 }

@@ -58,8 +58,6 @@ export class ConnectionManager extends Component { // eslint-disable-line
   }
 
   updateMousePosition = (e) => {
-    console.log('updateMousePosition()');
-
     const containerElement = document.getElementById('node-graph-container');
     const containerRect = containerElement.getBoundingClientRect();
 

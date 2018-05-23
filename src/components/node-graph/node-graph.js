@@ -131,15 +131,20 @@ export class NodeGraph extends React.Component { // eslint-disable-line
       nodes: {}
     };
 
-    return Object.values(nodes).map(node => (
-      <NodeComponent
-        nodeId={node.id}
-        registerInputComponentRef={this.registerInputComponentRef(node.id)}
-        registerOutputComponentRef={this.registerOutputComponentRef(node.id)}
-        onOutputDotClick={this.onOutputDotClick}
-        onInputDotClick={this.onInputDotClick}
-      />
-    ));
+    return Object.values(nodes).map(node => {
+      const nodeComponent = (
+        <NodeComponent
+          nodeId={node.id}
+          registerInputComponentRef={this.registerInputComponentRef(node.id)}
+          registerOutputComponentRef={this.registerOutputComponentRef(node.id)}
+          onOutputDotClick={this.onOutputDotClick}
+          onInputDotClick={this.onInputDotClick}
+        />
+      );
+
+
+      return nodeComponent;
+    });
   }
 
   renderConnections = () => {
@@ -196,10 +201,6 @@ export class NodeGraph extends React.Component { // eslint-disable-line
       startPos: this.state.theoreticalConnection.startPos
     };
 
-    console.log('connectionUnderConstruction:');
-    console.dir(connectionUnderConstruction);
-    console.log('');
-
     ReactDOM.render(
       (<ConnectionManager
         store={store}
@@ -217,18 +218,15 @@ export class NodeGraph extends React.Component { // eslint-disable-line
     this.renderConnections();
   }
 
-  render = () => { // eslint-disable-line
-    console.log('NodeGraph.render()');
-    return (
-      <div id='outer-container'>
-        <div id='node-graph-container'>
-          <svg
-            ref={ref => this.svgElement = ref} // eslint-disable-line
-            id="connsvg"
-          />
-          {this.renderNodes()}
-        </div>
+  render = () => (
+    <div id='outer-container'>
+      <div id='node-graph-container'>
+        <svg
+          ref={ref => this.svgElement = ref} // eslint-disable-line
+          id="connsvg"
+        />
+        {this.renderNodes()}
       </div>
-    );
-  };
+    </div>
+  )
 }
