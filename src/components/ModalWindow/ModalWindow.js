@@ -11,7 +11,8 @@ const ModalWindow = (props) => {
   }
   const cls = Modals[props.modal];
   if (cls === undefined) {
-    debugger;
+    console.warn(`Warning! '${props.modal}' is not a known Modal type.`);
+    return null;
   }
   return React.createElement(
     cls,
