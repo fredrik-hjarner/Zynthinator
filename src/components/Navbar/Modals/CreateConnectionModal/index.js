@@ -1,1 +1,0 @@
-export { CreateConnectionModal } from './CreateConnectionControlled';

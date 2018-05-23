@@ -11,10 +11,10 @@ export const Delete = () => (
       caption="Connection"
       onClick={() => openModalAction('DeleteConnectionModal')}
     /> */}
-    <MenuItem
+    {/* <MenuItem
       caption="Node"
       onClick={() => openModalAction('DeleteNodeModal')}
-    />
+    /> */}
     <MenuItem
       caption="Knob"
       onClick={() => openModalAction('DeleteKnobModal')}

@@ -1,1 +1,0 @@
-export { DeleteNodeModal } from './DeleteNodeControlled';

@@ -201,40 +201,6 @@ class MemoizedStateQueries {
   getUiComponentIdsByType =
     RH.valEqArrayReturnsEqArray(this._getUiComponentIdsByType)
 
-  /**
-   *  [
-   *    {
-   *      key: `${nodeId}${input}`,
-   *      value: { nodeId :int, input :str },
-   *      text: nodeInReadableFormat + input,
-   *    },
-   *  ]
-   */
-  getChildNodesForCreateConnectionModal = (state) => {
-    // get all nodes with inputs
-    const nodes = Object.values(this.getNodesThatHaveConnectableInputs(state));
-
-    // in readable format
-    const nodesInReadableFormat = nodes.map(stateQueries.getNodeInReadableFormat);
-    
-    // get the params of them all.
-    const inputsForEachNode = nodes.map(stateQueries.getConnectableInputsOfNode);
-    
-    // combine them all
-    const output = [];
-    nodes.forEach((node, i) => {
-      inputsForEachNode[i].forEach((input) => {
-        output.push({
-          key: `${node.id}${input}`,
-          value: { nodeId: node.id, input },
-          text: `${nodesInReadableFormat[i]}.${input}`,
-        });
-      });
-    });
-
-    return output;
-  }
-
     /**
      *  [
      *    {

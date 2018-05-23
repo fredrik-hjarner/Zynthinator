@@ -332,3 +332,5 @@
 
 * Be explicit about arguments in redux-ACTIONS and component-PROPS.
     It is a mess as it is now.
+
+* Delete DeleteNodeModal as soon as I can delete a node via ContextMenu!
