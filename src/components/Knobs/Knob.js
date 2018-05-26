@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import { moveKnobAction } from 'redux/modules/knob';
-import { mathHelpers } from 'helpers';
+import { linearToExponential, linearToLogarithmic } from 'helpers/mathHelpers';
 
 const Knob = props => {
   const value = isNaN(props.displayValue) ? '' : _.round(props.displayValue, 2); // eslint-disable-line
@@ -39,7 +39,7 @@ class KnobControlled extends React.Component {
         case 'exponential':
           // convert value to exponential range.
           displayValue =
-            mathHelpers.linearToExponential(
+            linearToExponential(
               this.props.knob.minValue,
               this.props.knob.maxValue,
               value,
@@ -47,7 +47,7 @@ class KnobControlled extends React.Component {
           break;
         case 'logarithmic':
           // convert value to exponential range.
-          displayValue = mathHelpers.linearToLogarithmic(
+          displayValue = linearToLogarithmic(
             this.props.knob.minValue,
             this.props.knob.maxValue,
             value,

@@ -1,7 +1,5 @@
 import * as R from 'ramda';
-import {
-  mathHelpers,
-} from 'helpers';
+import { convertRange } from 'helpers/mathHelpers';
 
 /**
  * Vizualizer class
@@ -32,7 +30,7 @@ export class FiniteTimeDomainVisualizer {
 
   toRightRange =
     value =>
-      mathHelpers.convertRange([this.minValue, this.maxValue], [-1, 1], value)
+      convertRange([this.minValue, this.maxValue], [-1, 1], value)
 
   /**
    * The y-value is adjusted according to the

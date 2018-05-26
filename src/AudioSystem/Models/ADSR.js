@@ -1,4 +1,4 @@
-import { mathHelpers } from 'helpers';
+import { linearToExponential } from 'helpers/mathHelpers';
 // import * as Ra from 'ramda';
 import { audioContext } from './audioContext';
 import { AudioNode } from './BaseClasses';
@@ -9,7 +9,7 @@ const processorPromise = audioContext.audioWorklet.addModule('./audio-worklet-pr
 /**
  * Just a local helper function.
  */
-const linToExp = value => mathHelpers.linearToExponential(0, 1, value);
+const linToExp = value => linearToExponential(0, 1, value);
 
 const createAdsrBufferNode = (A, D, S, R, sampleRate) => {
   // create the ADSR sample per sample
