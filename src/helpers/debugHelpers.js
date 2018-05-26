@@ -1,7 +1,5 @@
 import * as R from 'ramda';
-import {
-  ramdaHelpers as RH,
-} from './ramdaHelpers';
+import { allDeepEqual } from './ramdaHelpers';
 
 class DebugHelpers {
   /**
@@ -17,7 +15,7 @@ class DebugHelpers {
       (...args) => {      // returns a function that masquerades as the original function.
         const outputsArray =
           funcArray.map(func => func(...args));
-        if (!RH.allDeepEqual(outputsArray)) {
+        if (allDeepEqual(outputsArray)) {
           alert('Error: All the outputs are not equal.');
           debugger;
           throw 'error';

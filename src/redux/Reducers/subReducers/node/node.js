@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import * as R from 'ramda';
-import { ramdaHelpers as RH } from 'helpers';
+import { propInArray } from 'helpers/ramdaHelpers';
 import { initialState } from 'redux/InitialState';
 
 // -----------------------
@@ -65,7 +65,7 @@ export const deleteNodeReducer = (state, action) => {
 
   const propInNodes =
     prop =>
-      RH.propInArray(prop, nodesAsInts);
+      propInArray(prop, nodesAsInts);
 
   return R.evolve({
     nodeManagement: {

@@ -1,7 +1,7 @@
 import { store } from 'redux/Store';
 import { actionTypes } from 'redux/Constants';
 import * as R from 'ramda';
-import { ramdaHelpers as RH } from 'helpers';
+import { evolvePaths, propInArray } from 'helpers/ramdaHelpers';
 import { createNodeReducer, deleteNodeReducer } from 'redux/Reducers/subReducers/node/node';
 import { createConnectionReducer } from 'redux/Reducers/subReducers/connection/connection'; // eslint-disable-line
 import { stateQueries } from 'redux/StateQueries';
@@ -86,8 +86,8 @@ export const deleteKnobReducer = (state, { payload: { ids } }) => {
   const nodeIds = knobs.map(R.prop('knobNodeId'));
   const newState = deleteNodeReducer(state, { nodes: nodeIds });
   // then delete the knob objects.
-  return RH.evolvePaths(
-    { 'nodeManagement.knobs': R.reject(RH.propInArray('id', ids)) },
+  return evolvePaths(
+    { 'nodeManagement.knobs': R.reject(propInArray('id', ids)) },
     newState,
   );
 };

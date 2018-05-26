@@ -1,16 +1,23 @@
+/**
+
+2017-05-26
+
+Feature that I want to have:
+* public instance class fields
+* Array.prototype.flatten     (needs core.js)
+* Array.prototype.flatMap     (needs core.js)
+* public static class fields
+* Math.clamp                  (needs core.js)
+
+*/
+
 {
-  "presets": [
-    "env",
-    "react",
-    "stage-0"
-  ],
-  "only": [
-    "/src"
-  ],
+  "only": ["/src"],
   "plugins": [
-    "transform-decorators-legacy"
+    "syntax-object-rest-spread", // understand { x, ...rest }
+    "transform-decorators-legacy",
+    "transform-class-properties", // transform and understand class different types of class properties. only the syntax version didn't work
+    "transform-react-jsx" // transform and understand JSX
   ],
-  "ignore": [
-    "/node_modules"
-  ]
+  "ignore": ["/node_modules"]
 }

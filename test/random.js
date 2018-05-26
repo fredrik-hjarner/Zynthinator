@@ -1,9 +1,9 @@
 import { describe, it } from 'mocha';
 import { assert } from 'chai'; // eslint-disable-line
 import * as R from 'ramda';
-import {
-  ramdaHelpers, // eslint-disable-line
-} from '../src/helpers';
+// import {
+//   ramdaHelpers, // eslint-disable-line
+// } from '../src/helpers';
 
 describe('Stack Overflow.', function() { // eslint-disable-line
   it('Stack Overflow 1', function() { // eslint-disable-line
@@ -74,13 +74,13 @@ describe('Stack Overflow.', function() { // eslint-disable-line
 
   it('Stack Overflow 2.1', function() { // eslint-disable-line
 
-    const example =
+    const example = // eslint-disable-line
       // getChapter =>
       //  ownProps =>
 
           R.compose(
             R.filter(R.where({
-              sectionId: R.equals(R.prop('section', ownProps)),
+              sectionId: R.equals(R.prop('section', ownProps)), // eslint-disable-line
               subsectionId: R.isNil,
               sub2sectionId: R.isNil,
               sub3sectionId: R.isNil,

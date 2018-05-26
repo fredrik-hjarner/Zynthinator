@@ -1,9 +1,7 @@
 import { describe, it } from 'mocha';
 import { assert } from 'chai';
 import * as R from 'ramda';
-import {
-  ramdaHelpers,
-} from '../src/helpers';
+import { valEqArrayReturnsEqArray } from '../src/helpers/ramdaHelpers';
 
 describe('Ramda tests.', function() { // eslint-disable-line
   it('rejectPath pipeline', function() { // eslint-disable-line
@@ -191,7 +189,7 @@ describe('Ramda tests.', function() { // eslint-disable-line
    * 
    */
   it('valEqArrayReturnsEqArray 1', function() { // eslint-disable-line
-    const func1 = ramdaHelpers.valEqArrayReturnsEqArray(R.identity);
+    const func1 = valEqArrayReturnsEqArray(R.identity);
     const arr1 = [1, 2, 3];
 
     assert.strictEqual(
@@ -201,7 +199,7 @@ describe('Ramda tests.', function() { // eslint-disable-line
   });
 
   it('valEqArrayReturnsEqArray 2', function() { // eslint-disable-line
-    const func1 = ramdaHelpers.valEqArrayReturnsEqArray(R.identity);
+    const func1 = valEqArrayReturnsEqArray(R.identity);
 
     assert.strictEqual(
       func1([1, 2, 3]),
@@ -210,7 +208,7 @@ describe('Ramda tests.', function() { // eslint-disable-line
   });
 
   it('valEqArrayReturnsEqArray 3', function() { // eslint-disable-line
-    const func1 = ramdaHelpers.valEqArrayReturnsEqArray(R.identity);
+    const func1 = valEqArrayReturnsEqArray(R.identity);
 
     assert.notStrictEqual(
       func1([1, 2, 3]),

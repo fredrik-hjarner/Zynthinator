@@ -1,7 +1,5 @@
 import * as R from 'ramda';
-import {
-  ramdaHelpers as RH,
-} from '../../../helpers';
+import { propInArray } from 'helpers/ramdaHelpers';
 
 export const deleteTriggerReducer =
   (state, { payload: { ids } }) =>
@@ -9,7 +7,7 @@ export const deleteTriggerReducer =
       {
         nodeManagement: {
           triggers:
-            R.reject(RH.propInArray('id', ids)),
+            R.reject(propInArray('id', ids)),
           triggeredTriggers:
             R.reject(R.contains(R.__, ids)),
         },

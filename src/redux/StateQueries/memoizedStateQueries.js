@@ -1,10 +1,7 @@
-// import _ from 'lodash';
-import * as R from 'ramda';
+import { filter, pickBy, map, compose, uniq, flatten, values, difference, memoizeWith, identity, propEq } from 'ramda';
 import { createSelector } from 'reselect';
 import { stateQueries } from './stateQueries';
-import {
-  ramdaHelpers as RH,
-} from '../../helpers';
+import { valEqArrayReturnsEqArray } from 'helpers/ramdaHelpers';
 import { getAllNodes } from './new-state-queries/node-queries';
 import { getAllConnections } from 'redux/StateQueries/new-state-queries/connection-queries';
 
@@ -19,7 +16,7 @@ class MemoizedStateQueries {
   getNodesThatHaveOutputs =
     createSelector(
       [getAllNodes],
-      R.filter(stateQueries.getOutputOfNode),
+      filter(stateQueries.getOutputOfNode),
     )
 
   /**
@@ -29,13 +26,13 @@ class MemoizedStateQueries {
   getNodesThatHaveConnectableInputs =
     createSelector(
       [getAllNodes],
-      R.pickBy(stateQueries.nodeHasConnectableInputs),
+      pickBy(stateQueries.nodeHasConnectableInputs),
     )
 
   getNodesThatHaveTriggerableInputs =
     createSelector(
       [getAllNodes],
-      R.pickBy(stateQueries.nodeHasTriggerableInputs),
+      pickBy(stateQueries.nodeHasTriggerableInputs),
     )
 
   /**
@@ -46,7 +43,7 @@ class MemoizedStateQueries {
   getAllNodesInReadableFormat =
     createSelector(
       [getAllNodes],
-      R.map(stateQueries.getNodeInReadableFormat),
+      map(stateQueries.getNodeInReadableFormat),
     )
 
   /**
@@ -110,11 +107,11 @@ class MemoizedStateQueries {
   getAllGroupedNodes =
     createSelector(
       [stateQueries.getAllGroups],
-      R.compose(
-        R.uniq,
-        R.flatten,
-        R.map(stateQueries.getAllNodeIdsInGroup),
-        R.values,
+      compose(
+        uniq,
+        flatten,
+        map(stateQueries.getAllNodeIdsInGroup),
+        values,
       ),
     )
 
@@ -122,7 +119,7 @@ class MemoizedStateQueries {
     createSelector(
       [getAllNodes, this.getAllGroupedNodes],
       (nodes, groupedNodes) =>
-        R.difference(R.values(nodes), groupedNodes),
+        difference(values(nodes), groupedNodes),
     )
 
   /**
@@ -141,10 +138,10 @@ class MemoizedStateQueries {
     createSelector(
       [stateQueries.getAllUiComponents],
       uiComponents =>
-        R.memoizeWith(
-          R.identity,
+        memoizeWith(
+          identity,
           type =>
-            R.filter(R.propEq('type', type), uiComponents),
+            filter(propEq('type', type), uiComponents),
         ),
     )
 
@@ -163,7 +160,7 @@ class MemoizedStateQueries {
    * @param type
    */
   getUiComponentIdsByType =
-    RH.valEqArrayReturnsEqArray(this._getUiComponentIdsByType)
+    valEqArrayReturnsEqArray(this._getUiComponentIdsByType) // todo. what the hell is 'valEqArrayReturnsEqArray'?
 
     /**
      *  [

@@ -1,4 +1,5 @@
-import * as R from 'ramda';
+import { filter, map, compose, values, identity, propEq, pick, path,
+  useWith, props, flip, prop, either, defaultTo, equals } from 'ramda';
 import { createSelector } from 'reselect';
 import { initialState } from '../InitialState';
 import { nodeTypeDefinitions } from '../../NodeTypeDefinitions'; // todo. cheating. I dont take it from state.
@@ -9,12 +10,12 @@ class StateQueries {
    * @param ids An array of ids.
    */
   getKnobsByIds = (state, ids) =>
-    R.pick(ids, state.nodeManagement.knobs)
+    pick(ids, state.nodeManagement.knobs)
 
   getAllConnectionValues =
     createSelector(
       [getAllConnections],
-      R.values,
+      values,
     )
 
   getAllGroups =
@@ -24,7 +25,7 @@ class StateQueries {
   getAllGroupValues =
     createSelector(
       [this.getAllGroups],
-      R.values,
+      values,
     )
 
   getAllUiComponents =
@@ -35,17 +36,17 @@ class StateQueries {
    * Returns an array of triggered trigger id:s
    */
   getAllTriggeredTriggerIds =
-    R.path(['nodeManagement', 'triggeredTriggers'])
+    path(['nodeManagement', 'triggeredTriggers'])
 
   getAllTriggers =
-    R.path(['nodeManagement', 'triggers'])
+    path(['nodeManagement', 'triggers'])
 
   getAllTriggeredTriggers =
     createSelector(
       [this.getAllTriggeredTriggerIds, this.getAllTriggers],
-      R.useWith(
-        R.props,
-        [R.map(R.toString), R.identity],
+      useWith(
+        props,
+        [map(toString), identity],
       ),
     )
 
@@ -53,7 +54,7 @@ class StateQueries {
    * 
    */
   /* nodeHasInputs =
-    R.pathSatisfies(R.gt(R.__, 0), ['inputs', 'length']); */
+    pathSatisfies(gt(__, 0), ['inputs', 'length']); */
   nodeHasConnectableInputs =
     (node) => {
       const inputs =
@@ -79,7 +80,7 @@ class StateQueries {
    * @param group
    */
   getAllNodeIdsInGroup =
-    R.props(['inputNode', 'outputNode', 'otherNodes'])
+    props(['inputNode', 'outputNode', 'otherNodes'])
 
   /**
    * node not nodeId!
@@ -109,9 +110,9 @@ class StateQueries {
    * @param nodeId
    */
   getNodeByIdInReadableFormat =
-    R.compose(
+    compose(
       this.getNodeInReadableFormat,
-      R.flip(R.prop)
+      flip(prop)
     )
 
   doesNodeWithIdExist = ({ nodes, nodeId }) => nodeId in nodes;
@@ -138,12 +139,12 @@ class StateQueries {
    */
   getConnectionsByNodeId =
     (connections, nodeId) =>
-      R.filter(
-        R.either(
-          R.propEq('parentNodeId', nodeId),
-          R.propEq('childNodeId', nodeId),
+      filter(
+        either(
+          propEq('parentNodeId', nodeId),
+          propEq('childNodeId', nodeId),
         ),
-        R.values(connections),
+        values(connections),
       )
 
   doesConnectionWithIdExist =
@@ -194,7 +195,7 @@ class StateQueries {
    */
   getKnobableInputsOfNodeType =
     nodeType =>
-      R.defaultTo([], nodeTypeDefinitions[nodeType].knobableInputs)
+      defaultTo([], nodeTypeDefinitions[nodeType].knobableInputs)
   getKnobableInputsOfNode =
     node =>
       this.getKnobableInputsOfNodeType(node.nodeType)
@@ -204,7 +205,7 @@ class StateQueries {
    */
   getTriggerableInputsOfNodeType =
     nodeType =>
-      R.defaultTo([], nodeTypeDefinitions[nodeType].triggers)
+      defaultTo([], nodeTypeDefinitions[nodeType].triggers)
   getTriggerableInputsOfNode =
     node =>
       this.getTriggerableInputsOfNodeType(node.nodeType)
@@ -213,7 +214,7 @@ class StateQueries {
    * Checks if default state but
    * ignores 'router-state' and 'history'.
    */
-  isDefaultState = state => R.equals(state.nodeManagement, initialState.nodeManagement)
+  isDefaultState = state => equals(state.nodeManagement, initialState.nodeManagement)
 }
 
 export const stateQueries = new StateQueries();

@@ -20,6 +20,7 @@ const CopyWebpackPluginConfig = new CopyWebpackPlugin([
 ]);
 
 module.exports = {
+  mode: 'development',
   // context: contextPath,
   devtool: 'source-map',
   devServer: {

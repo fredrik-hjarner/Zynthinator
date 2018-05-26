@@ -4,7 +4,7 @@ import * as R from 'ramda';
 export const createGroupReducer =
   (state, action) => {
     const params =
-      _.omit(action, 'type');
+    _.omit(action, 'type');
 
     const groupId =
       state.nodeManagement.highestGroupIdYet + 1;

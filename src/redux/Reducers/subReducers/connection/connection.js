@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import * as R from 'ramda';
-import { ramdaHelpers as RH } from 'helpers';
+import { evolvePaths, propInArray } from 'helpers/ramdaHelpers';
 import { stateQueries } from 'redux/StateQueries';
 import { connectionExists } from 'redux/StateQueries/new-state-queries/connection-queries';
 
@@ -76,8 +76,8 @@ export const createConnectionReducer = (state, { parentNodeIds, childNodes }) =>
 };
 
 export const deleteConnectionReducer = (state, { payload: { ids } }) =>
-  RH.evolvePaths(
-    { 'nodeManagement.connections': R.reject(RH.propInArray('id', ids)) },
+  evolvePaths(
+    { 'nodeManagement.connections': R.reject(propInArray('id', ids)) },
     state,
   );
 

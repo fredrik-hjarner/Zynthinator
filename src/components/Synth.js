@@ -1,38 +1,46 @@
 import React from 'react';
-import * as C from '../components';
+import {
+  AllTriggers,
+  TimeDomainVisualizers,
+  FrequencyDomainVisualizers,
+  CustomVisualizers,
+  ModalWindow,
+  MessageModal,
+  NodeGraph
+} from '../components';
 
 /**
  * For testin'
  */
-// import { Button } from 'semantic-ui-react';
-// import { openMessageModalAction } from 'redux/modules/ui';
+import { Button } from 'semantic-ui-react';
+import { openMessageModalAction } from 'redux/modules/ui';
 
 
 /**
  * Just to test MessageModal.
  */
-// class TestButton extends React.Component {
-//   onClick = () => openMessageModalAction({
-//     header: 'sample header',
-//     content: 'sample message',
-//     icon: 'info circle',
-//     color: 'blue'
-//   })
-//   render = () => (
-//     <Button onClick={this.onClick}>Test</Button>
-//   )
-// }
+class TestButton extends React.Component {
+  onClick = () => openMessageModalAction({
+    header: 'sample header',
+    content: 'sample message',
+    icon: 'info circle',
+    color: 'blue'
+  })
+  render = () => (
+    <Button onClick={this.onClick}>Test</Button>
+  )
+}
 
 const drawFirstColumns = () => (
   <div>
-    {/* <TestButton/> */}
-    <C.AllTriggers />
-    { /* <C.ListOfGroups /> */ }
-    <C.TimeDomainVisualizers />
-    <C.FrequencyDomainVisualizers />
-    <C.CustomVisualizers />
-    <C.ModalWindow />
-    <C.MessageModal />
+    <TestButton/>
+    <AllTriggers />
+    { /* <ListOfGroups /> */ }
+    <TimeDomainVisualizers />
+    <FrequencyDomainVisualizers />
+    <CustomVisualizers />
+    <ModalWindow />
+    <MessageModal />
   </div>
 );
 
@@ -47,6 +55,6 @@ export const Synth = () => (
     }}
   >
     {drawFirstColumns()}
-    <C.NodeGraph />
+    <NodeGraph />
   </div>
 );
