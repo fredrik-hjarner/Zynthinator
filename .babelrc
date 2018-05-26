@@ -14,7 +14,7 @@ Feature that I want to have:
 {
   "only": ["/src"],
   "plugins": [
-    "lodash", // lodash tree shaking plugin
+    // "lodash", // lodash tree shaking plugin
     "syntax-object-rest-spread", // understand { x, ...rest }
     "transform-decorators-legacy",
     "transform-class-properties", // transform and understand class different types of class properties. only the syntax version didn't work

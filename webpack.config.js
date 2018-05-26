@@ -2,6 +2,9 @@
 // const webpack = require('webpack');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+// const webpack = require('webpack');
+
+const nodeModules = path.resolve(__dirname, 'node_modules');
 
 /**
  * Just used to output some text in the console when building.
@@ -13,7 +16,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const CopyWebpackPluginConfig = new CopyWebpackPlugin([
   // { from: './src/assets', to: 'assets' },
-  { from: './semantic/dist', to: './semantic' }, // relativa till output path !!!!
+  // { from: './semantic/dist', to: './semantic' }, // relativa till output path !!!!
+  { from: './node_modules/semantic-ui-css', to: './semantic' }, // relativa till output path !!!!
   { from: './audio-worklet-processors', to: './audio-worklet-processors' }, // relativa till output path !!!!
   { from: './src/index.html', to: './' }, // relativa till output path !!!!
   { from: './src/splash.html', to: './' }, // relativa till output path !!!!
@@ -27,7 +31,7 @@ module.exports = {
     historyApiFallback: true,
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.sass'],
+    extensions: ['.js', '.sass'],
     modules: [
       'node_modules',
       'src'
@@ -40,13 +44,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
+        test: /\.js$/,
+        exclude: nodeModules,
         loader: 'babel-loader',
       },
       // for SASS
       {
         test: /\.sass$/,
+        exclude: nodeModules,
         use: [
           { loader: 'style-loader' }, 
           { loader: 'css-loader' },
@@ -60,14 +65,15 @@ module.exports = {
       // for CSS
       {
         test: /\.css$/,
+        exclude: nodeModules,
         use: [
           { loader: 'style-loader' },
           { loader: 'css-loader' }
         ],
       },
       {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
+        test: /\.js$/,
+        exclude: nodeModules,
         loader: 'eslint-loader',
       },
     ],
@@ -83,12 +89,7 @@ module.exports = {
     //   template: path.join(__dirname, 'src/index.html')
     // }),
     CopyWebpackPluginConfig,
-    // new (require('circular-dependency-plugin'))({
-    //   // exclude detection of files based on a RegExp
-    //   exclude: /node_modules/,
-    //   // add errors to webpack instead of warnings
-    //   failOnError: true,
-    // }),
+    // new webpack.optimize.ModuleConcatenationPlugin(), // makes build smaller!
     // new webpack.optimize.UglifyJsPlugin({ sourceMap: false }),
   ],
 };
