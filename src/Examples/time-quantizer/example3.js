@@ -116,7 +116,7 @@ history =
     minValue: 0,
     maxValue: 1000,
     step: 0.01,
-    function: 'linear'
+    func: 'linear'
   },
   {
     type: 'MOVE_KNOB',

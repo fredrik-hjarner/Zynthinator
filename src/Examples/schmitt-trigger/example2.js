@@ -195,13 +195,15 @@ history =
   },
   {
     type: 'CREATE_KNOB',
-    name: 'sine-gain',
-    connectedToWhichNode: 4,
-    connectedToWhichParam: 'gain',
-    minValue: 0,
-    maxValue: 1,
-    function: 'linear',
-    step: 0.01
+    payload: {
+      name: 'sine-gain',
+      connectedToWhichNode: 4,
+      connectedToWhichParam: 'gain',
+      minValue: 0,
+      maxValue: 1,
+      func: 'linear',
+      step: 0.01
+    }
   },
   {
     type: 'MOVE_KNOB',
@@ -217,12 +219,14 @@ history =
   },
   {
     type: 'CREATE_KNOB',
-    name: 'schmitt-trigger-threshold',
-    connectedToWhichNode: 5,
-    connectedToWhichParam: 'threshold',
-    minValue: 0,
-    maxValue: 0.5,
-    function: 'linear',
-    step: 0.01
+    payload: {
+      name: 'schmitt-trigger-threshold',
+      connectedToWhichNode: 5,
+      connectedToWhichParam: 'threshold',
+      minValue: 0,
+      maxValue: 0.5,
+      func: 'linear',
+      step: 0.01
+    }
   }
 ];

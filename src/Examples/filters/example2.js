@@ -122,7 +122,7 @@ history =
     minValue: 0,
     maxValue: 10000,
     step: 1,
-    function: 'linear'
+    func: 'linear'
   },
   {
     type: 'MOVE_KNOB',
@@ -144,7 +144,7 @@ history =
     minValue: 0,
     maxValue: 100,
     step: 0.01,
-    function: 'exponential'
+    func: 'exponential'
   },
   {
     type: '@@router/LOCATION_CHANGE',
@@ -205,7 +205,7 @@ history =
     minValue: 0,
     maxValue: 1,
     step: 1,
-    function: 'linear'
+    func: 'linear'
   },
   {
     type: 'MOVE_KNOB',

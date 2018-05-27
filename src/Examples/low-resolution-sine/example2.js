@@ -158,7 +158,7 @@ history =
     connectedToWhichParam: 'playbackRate',
     minValue: 0,
     maxValue: 10,
-    function: 'exponential',
+    func: 'exponential',
     step: 0.01
   },
   {
@@ -175,7 +175,7 @@ history =
     connectedToWhichParam: 'gain',
     minValue: 0,
     maxValue: 4,
-    function: 'linear',
+    func: 'linear',
     step: 0.01
   },
   {

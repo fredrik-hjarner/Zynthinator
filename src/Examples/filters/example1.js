@@ -116,13 +116,15 @@ history =
   },
   {
     type: 'CREATE_KNOB',
-    name: 'frequency',
-    connectedToWhichNode: 6,
-    connectedToWhichParam: 'frequency',
-    minValue: 0,
-    maxValue: 10000,
-    step: 1,
-    function: 'linear'
+    payload: {
+      name: 'frequency',
+      connectedToWhichNode: 6,
+      connectedToWhichParam: 'frequency',
+      minValue: 0,
+      maxValue: 10000,
+      step: 1,
+      func: 'linear'
+    }
   },
   {
     type: 'MOVE_KNOB',
@@ -138,13 +140,15 @@ history =
   },
   {
     type: 'CREATE_KNOB',
-    name: 'Q',
-    connectedToWhichNode: 6,
-    connectedToWhichParam: 'Q',
-    minValue: 0,
-    maxValue: 100,
-    step: 0.01,
-    function: 'exponential'
+    payload: {
+      name: 'Q',
+      connectedToWhichNode: 6,
+      connectedToWhichParam: 'Q',
+      minValue: 0,
+      maxValue: 100,
+      step: 0.01,
+      func: 'exponential'
+    }
   },
   {
     type: '@@router/LOCATION_CHANGE',
@@ -199,13 +203,15 @@ history =
   },
   {
     type: 'CREATE_KNOB',
-    name: 'bypass filter',
-    connectedToWhichNode: 6,
-    connectedToWhichParam: 'bypass',
-    minValue: 0,
-    maxValue: 1,
-    step: 1,
-    function: 'linear'
+    payload: {
+      name: 'bypass filter',
+      connectedToWhichNode: 6,
+      connectedToWhichParam: 'bypass',
+      minValue: 0,
+      maxValue: 1,
+      step: 1,
+      func: 'linear'
+    }
   },
   {
     type: 'MOVE_KNOB',

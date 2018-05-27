@@ -117,7 +117,7 @@ history =
     minValue: 0,
     maxValue: 30,
     step: 0.01,
-    function: 'exponential'
+    func: 'exponential'
   },
   {
     type: 'MOVE_KNOB',

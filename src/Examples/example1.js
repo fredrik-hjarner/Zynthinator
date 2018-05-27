@@ -120,7 +120,7 @@ history =
     connectedToWhichParam: 'maxValue',
     minValue: 0,
     maxValue: 1,
-    function: 'linear',
+    func: 'linear',
     step: 0.01
   },
   {
@@ -130,7 +130,7 @@ history =
     connectedToWhichParam: 'minValue',
     minValue: 0,
     maxValue: 1,
-    function: 'linear',
+    func: 'linear',
     step: 0.01
   },
   {
@@ -158,7 +158,7 @@ history =
     connectedToWhichParam: 'frequency',
     minValue: 0,
     maxValue: 10,
-    function: 'linear',
+    func: 'linear',
     step: 0.01
   },
   {

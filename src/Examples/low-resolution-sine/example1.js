@@ -118,7 +118,7 @@ history =
     connectedToWhichParam: 'playbackRate',
     minValue: 0,
     maxValue: 20,
-    function: 'exponential',
+    func: 'exponential',
     step: 0.01
   }
 ];
