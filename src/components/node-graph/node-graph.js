@@ -158,7 +158,7 @@ export class NodeGraph extends React.Component { // eslint-disable-line
 
     // clear
     inputAndOutputComponents.forEach(inOrOut => {
-      inOrOut.connectionIds = []; // eslint-disable-line
+      inOrOut && (inOrOut.connectionIds = []); // eslint-disable-line
     });
 
     const dataToConnectionManager = {};
