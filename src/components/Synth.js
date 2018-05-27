@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   AllTriggers,
-  TimeDomainVisualizers,
+  // TimeDomainVisualizers,
   FrequencyDomainVisualizers,
   CustomVisualizers,
   ModalWindow,
@@ -36,7 +36,7 @@ const drawFirstColumns = () => (
     <TestButton/>
     <AllTriggers />
     { /* <ListOfGroups /> */ }
-    <TimeDomainVisualizers />
+    {/* <TimeDomainVisualizers /> */}
     <FrequencyDomainVisualizers />
     <CustomVisualizers />
     <ModalWindow />

@@ -61,10 +61,10 @@ export class TimeDomainVisualizerSettingsDumb extends Component {
     </div>
   )
 
-  render = () => {
-    if (!this.props.settingsminimized) {
-      return null;
-    }
+  render = () => { // eslint-disable-line
+    // if (!this.props.settingsminimized) {
+    //   return null;
+    // }
 
     return (
       <div>

@@ -57,14 +57,14 @@ class SvgManager {
     this.svg.appendChild(svgPathElement);
   }
 
-  removePath(svgPathElement) {
-    // todo some damn hack
-    try {
-      this.svg.removeChild(svgPathElement);
-    } catch(exception) {
+  // removePath(svgPathElement) {
+  //   // todo some damn hack
+  //   try {
+  //     this.svg.removeChild(svgPathElement);
+  //   } catch(exception) {
 
-    }
-  }
+  //   }
+  // }
 }
 
 export const svgManager = new SvgManager();

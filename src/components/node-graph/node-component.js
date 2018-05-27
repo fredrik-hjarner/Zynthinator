@@ -5,7 +5,6 @@ import { NEditor } from './new-NEditor';
 import { nodeTypeDefinitions } from 'NodeTypeDefinitions';
 import { moveGraphNode } from 'redux/modules/node-graph';
 import { getNodeById } from 'redux/StateQueries/new-state-queries/node-queries';
-import { getNodeGraphPositioByNodeId } from 'redux/StateQueries/new-state-queries/ui';
 import {
   ContextMenu,
   ContextMenuItem,
@@ -13,12 +12,17 @@ import {
 import { InputComponent } from './input-component';
 import { OutputComponent } from './output-component';
 import { getKnobByNodeId } from 'redux/StateQueries/new-state-queries/knob-queries';
-import { Knob } from 'components';
+import {
+  getNodeGraphPositioByNodeId,
+  getUiComponentByNodeId
+} from 'redux/StateQueries/new-state-queries/ui-queries';
+import { Knob, TimeDomainVisualizer } from 'components';
 
 const mapStateToProps = (state, ownProps) => ({
   node: getNodeById(state, ownProps.nodeId),
+  position: getNodeGraphPositioByNodeId(state, ownProps.nodeId),
   knob: getKnobByNodeId(state, ownProps.nodeId),
-  position: getNodeGraphPositioByNodeId(state, ownProps.nodeId)
+  uiComponent: getUiComponentByNodeId(state, ownProps.nodeId)
 });
 
 @connect(mapStateToProps)
@@ -168,11 +172,27 @@ export class NodeComponent extends Component {
   }
 
   render() {
-    const { node, position, knob } = this.props;
+    const { node, position, knob, uiComponent } = this.props;
     const { output, connectableInputs, knobableInputs } = nodeTypeDefinitions[node.nodeType];
     const inputs = R.union(connectableInputs, knobableInputs);
 
     const knobComponent = knob ? <Knob knob={knob} /> : null;
+    let uiComponentComponent = null;
+    if (uiComponent) {
+      switch (uiComponent.type) {
+        case 'TimeDomainAnalyser':
+          uiComponentComponent = <TimeDomainVisualizer uiComponentId={uiComponent.id}/>;
+          break;
+        case 'FrequencyDomainAnalyser':
+          uiComponentComponent = null;
+          break;
+        case 'CustomAnalyser':
+          uiComponentComponent = null;
+          break;
+        default:
+          throw `Error! ${uiComponent.type} is an unknown component type.`;
+      }
+    }
 
     // reset
     this.inputs = [];
@@ -197,6 +217,7 @@ export class NodeComponent extends Component {
             {this.renderOutput(output || node.nodeType === 'Knob')}
           </div>
           {knobComponent}
+          {uiComponentComponent}
         </div>
         {this.renderContextMenu()}
       </Fragment>

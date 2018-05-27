@@ -1,15 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-// import * as R from 'ramda';
 import { NEditor } from './new-NEditor';
 import { stateQueries } from 'redux/StateQueries';
-// import { Node } from './node';
-// import { nodeTypeDefinitions } from 'NodeTypeDefinitions';
 import { svgManager } from './svg';
 import { NodeComponent } from './node-component';
 import { getAllNodes } from 'redux/StateQueries/new-state-queries/node-queries';
-// import { Connection } from './connection';
 import { ConnectionManager } from './connection-manager';
 import { getConnectionsByChildNodeIdAndChildNodeInput } from 'redux/StateQueries/new-state-queries/connection-queries';
 import { createConnectionAction, deleteConnectionAction } from 'redux/modules/connection';

@@ -6,8 +6,8 @@ import {
   nodes,
   InfiniteTimeDomainVisualizer,
   audioContext
-} from '../../../AudioSystem';
-import { SimpleWindow } from '../../SimpleWindow';
+} from 'AudioSystem';
+// import { SimpleWindow } from '../../SimpleWindow';
 import { TimeDomainVisualizerSettingsDumb } from './TimeDomainVisualizerSettingsDumb';
 import { CanvasContainer } from './CanvasContainer';
 import { connect } from 'react-redux';
@@ -61,28 +61,25 @@ export class TimeDomainVisualizer extends React.Component {
     /**
      * Update the visualiser settings.
      */
-    const settings =
-      R.pick(
-        ['millisecondsBetweenUpdates', 'maxValue', 'minValue', 'bitsToRecord'],
-        uiComponent,
-      );
-    this.visualizer
-      .updateSettings(settings);
+    const settings = R.pick(
+      ['millisecondsBetweenUpdates', 'maxValue', 'minValue', 'bitsToRecord'],
+      uiComponent,
+    );
+    this.visualizer.updateSettings(settings);
   }
 
   timeDomainCanvasId = `timeDomainCanvas${this.props.uiComponent.id}`;
 
   handlers = {
-    handleChange:
-      (e, semantic) => {
-        let _name = e.target.name;
-        let _value = e.target.value;
-        if (_name === undefined) {
-          _name = semantic.name;
-          _value = semantic.value;
-        }
-        uiTdAnalyserChangeParamsAction(this.props.uiComponent.id, _name, _value);
-      },
+    handleChange: (e, semantic) => {
+      let _name = e.target.name;
+      let _value = e.target.value;
+      if (_name === undefined) {
+        _name = semantic.name;
+        _value = semantic.value;
+      }
+      uiTdAnalyserChangeParamsAction(this.props.uiComponent.id, _name, _value);
+    }
   }
 
   render = () => { // eslint-disable-line
@@ -121,7 +118,7 @@ export class TimeDomainVisualizer extends React.Component {
     );
 
     return (
-      <SimpleWindow title={`id${this.props.uiComponent.nodeId}`}>
+      <div>
         <CanvasContainer
           id={this.timeDomainCanvasId}
           width={this.props.uiComponent.canvasWidth}
@@ -131,7 +128,7 @@ export class TimeDomainVisualizer extends React.Component {
           {...this.handlers}
           {...settingsProps}
         />
-      </SimpleWindow>
+      </div>
     );
   }
 }
