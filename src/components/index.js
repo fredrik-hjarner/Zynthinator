@@ -1,8 +1,8 @@
 export * from './Navbar';
 export * from './SimpleWindow';
-export * from './FrequencyDomainVisualizers';
+export * from './FrequencyDomainVisualizer';
 export * from './TimeDomainVisualizer';
-export * from './CustomVisualizers';
+export * from './CustomVisualizer';
 // export * from './ListOfGroups';
 export * from './ModalWindow';
 export * from './modals/message-modal';

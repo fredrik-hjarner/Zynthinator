@@ -334,3 +334,6 @@
     It is a mess as it is now.
 
 * Delete DeleteNodeModal as soon as I can delete a node via ContextMenu!
+
+* CustomAnalyser.trigger does not seem to work correctly (with Knob for example).
+    Is there a way to disable the trigger?

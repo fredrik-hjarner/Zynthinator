@@ -7,7 +7,7 @@ import {
   InfiniteCustomVisualizer,
   audioContext
 } from 'AudioSystem';
-import { SimpleWindow } from '../../SimpleWindow';
+// import { SimpleWindow } from '../../SimpleWindow';
 import { CustomVisualizerSettings } from './CustomVisualizerSettings';
 import { CanvasContainer } from './CanvasContainer';
 import { connect } from 'react-redux';
@@ -49,31 +49,27 @@ export class CustomVisualizer extends React.Component {
     this.updateSettings(this.props.uiComponent);
   }
 
-  componentWillReceiveProps =
-    nextProps =>
-      this.updateSettings(nextProps.uiComponent)
+  componentWillReceiveProps = nextProps =>
+    this.updateSettings(nextProps.uiComponent)
 
-  componentWillUnmount =
-    () => {
-      this.visualizer.destructor();
-    }
+  componentWillUnmount = () => {
+    this.visualizer.destructor();
+  }
 
-  updateSettings =
-    (uiComponent) => {
-      /**
-       * Update the visualiser settings.
-       */
-      const settings =
-        R.pick(
-          ['millisecondsBetweenUpdates', 'maxValue', 'minValue', 'bitsToRecord'],
-          uiComponent,
-        );
-      this.visualizer
-        .updateSettings(settings);
-    }
+  updateSettings = (uiComponent) => {
+    /**
+     * Update the visualiser settings.
+     */
+    const settings =
+      R.pick(
+        ['millisecondsBetweenUpdates', 'maxValue', 'minValue', 'bitsToRecord'],
+        uiComponent,
+      );
+    this.visualizer
+      .updateSettings(settings);
+  }
 
-  canvasId =
-    `canvas${this.props.uiComponent.id}`;
+  canvasId = `canvas${this.props.uiComponent.id}`;
 
   handlers = {
     handleChange:
@@ -129,7 +125,7 @@ export class CustomVisualizer extends React.Component {
         );
 
       return (
-        <SimpleWindow title={`id${this.props.uiComponent.nodeId}`}>
+        <div>
           <CanvasContainer
             id={this.canvasId}
             width={this.props.uiComponent.canvasWidth}
@@ -139,7 +135,7 @@ export class CustomVisualizer extends React.Component {
             {...this.handlers}
             {...settingsProps}
           />
-        </SimpleWindow>
+        </div>
       );
     }
 }

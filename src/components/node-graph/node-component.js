@@ -16,7 +16,7 @@ import {
   getNodeGraphPositioByNodeId,
   getUiComponentByNodeId
 } from 'redux/StateQueries/new-state-queries/ui-queries';
-import { Knob, TimeDomainVisualizer } from 'components';
+import { Knob, TimeDomainVisualizer, FrequencyDomainVisualizer, CustomVisualizer } from 'components';
 
 const mapStateToProps = (state, ownProps) => ({
   node: getNodeById(state, ownProps.nodeId),
@@ -184,10 +184,10 @@ export class NodeComponent extends Component {
           uiComponentComponent = <TimeDomainVisualizer uiComponentId={uiComponent.id}/>;
           break;
         case 'FrequencyDomainAnalyser':
-          uiComponentComponent = null;
+          uiComponentComponent = <FrequencyDomainVisualizer uiComponentId={uiComponent.id}/>;
           break;
         case 'CustomAnalyser':
-          uiComponentComponent = null;
+          uiComponentComponent = <CustomVisualizer uiComponentId={uiComponent.id}/>;
           break;
         default:
           throw `Error! ${uiComponent.type} is an unknown component type.`;

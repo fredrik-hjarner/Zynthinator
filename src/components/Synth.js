@@ -1,9 +1,6 @@
 import React from 'react';
 import {
-  AllTriggers,
-  // TimeDomainVisualizers,
-  FrequencyDomainVisualizers,
-  CustomVisualizers,
+  // AllTriggers,
   ModalWindow,
   MessageModal,
   NodeGraph
@@ -34,11 +31,8 @@ class TestButton extends React.Component {
 const drawFirstColumns = () => (
   <div>
     <TestButton/>
-    <AllTriggers />
+    {/* <AllTriggers /> */}
     { /* <ListOfGroups /> */ }
-    {/* <TimeDomainVisualizers /> */}
-    <FrequencyDomainVisualizers />
-    <CustomVisualizers />
     <ModalWindow />
     <MessageModal />
   </div>
@@ -48,10 +42,10 @@ export const Synth = () => (
   <div
     style={{
       display: 'grid',
-      gridTemplateColumns: '500px 1fr',
-      borderStyle: 'solid',
-      borderWidth: '1px',
-      borderColor: 'grey'
+      gridTemplateColumns: '100px 1fr'
+      // borderStyle: 'solid',
+      // borderWidth: '1px',
+      // borderColor: 'grey'
     }}
   >
     {drawFirstColumns()}
