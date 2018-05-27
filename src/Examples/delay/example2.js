@@ -243,13 +243,15 @@ history =
   },
   {
     type: 'CREATE_KNOB',
-    name: 'maximal-phase-shift',
-    connectedToWhichNode: 7,
-    connectedToWhichParam: 'delayTime',
-    minValue: 0,
-    maxValue: 1,
-    function: 'linear',
-    step: 0.01
+    payload: {
+      name: 'maximal-phase-shift',
+      connectedToWhichNode: 7,
+      connectedToWhichParam: 'delayTime',
+      minValue: 0,
+      maxValue: 1,
+      func: 'linear',
+      step: 0.01
+    }
   },
   {
     type: 'OPEN_MODAL',
@@ -261,12 +263,14 @@ history =
   {
     type: 'CREATE_KNOB',
     name: 'delay-modulator-frequency',
-    connectedToWhichNode: 8,
-    connectedToWhichParam: 'frequency',
-    minValue: 0,
-    maxValue: 100,
-    function: 'exponential',
-    step: 0.01
+    payload: {
+      connectedToWhichNode: 8,
+      connectedToWhichParam: 'frequency',
+      minValue: 0,
+      maxValue: 100,
+      func: 'exponential',
+      step: 0.01
+    }
   },
   {
     type: 'MOVE_KNOB',

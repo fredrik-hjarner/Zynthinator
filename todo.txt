@@ -38,11 +38,6 @@
 
 * Implementera "Spectogram".
 
-* Byt ut alla
-  handleX()
-  mot
-  onX()
-
 * När jag tar bort en node, så ska också de grupper den ingår i tas bort.
 
 * Efter en memoized reselect så ska det inte finnas någon .map
@@ -58,8 +53,6 @@
 
 * CreateConnectionsRedux 
   & CreateGroupRedux
-  & FrequencyDomainVisualizersRedux
-  & TimeDomainVisualizersRedux
     are unoptimized because it does map after memoizedStateQueries.
 
 * Viss kod anropar .webAudioNode direkt, vilket suger eftersom den inte
@@ -80,6 +73,7 @@
 
     looks like shit.
     Should be only one: 'highestIdYet'
+    No should be uuid.
 
 * AudioSystem borde vara uppdelat i delar som var för sig lyssnar
     på den del av state som de är intresserade av.
@@ -138,7 +132,7 @@
       - SelectConnectionInput
       - etc.
 
-* Use redux-forms! Maybe...
+* Use redux-forms!
 
 * Top menu is not wholly visible on low-res.
     Do something with menu in low-res.
@@ -147,6 +141,7 @@
     so it should not be under /components.
 
 * ESLint should force me to make PropTypes!
+    Or maybe I should use Flow and NOT PropTypes.
 
 * getConnectionInReadableFormat is right generates "semantic options"
     which is not ideal, and not as reusble.
@@ -157,8 +152,6 @@
       this.getNodeInReadableFormat,
       R.flip(R.prop)
     )
-
-* Don't use lodash, use lodash/fp.
 
 * Add pink noise. rename noise to white noise.
 
@@ -261,9 +254,6 @@
     What this does it that it creates a UnityGaiNode and
     connects all those nodes to that UnityGaiNode etc.
 
-* Resizable Analyser windows. Is simple as shit with css
-    and a JS-event-listener.
-
 * Zoom-in zoom-out on scroll when oscillator is focused!
 
 * ValueAnalyser node. Simply displays the value of a signal as a float.
@@ -337,3 +327,5 @@
 
 * CustomAnalyser.trigger does not seem to work correctly (with Knob for example).
     Is there a way to disable the trigger?
+
+* Fix resizing for CustomAnalyser and FrequencyDomainVisualizer.

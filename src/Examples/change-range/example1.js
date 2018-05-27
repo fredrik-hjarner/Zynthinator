@@ -179,12 +179,14 @@ history =
   {
     type: 'CREATE_KNOB',
     name: 'max-value',
-    connectedToWhichNode: 5,
-    connectedToWhichParam: 'highestOutput',
-    minValue: -1,
-    maxValue: 1,
-    function: 'linear',
-    step: 0.01
+    payload: {
+      connectedToWhichNode: 5,
+      connectedToWhichParam: 'highestOutput',
+      minValue: -1,
+      maxValue: 1,
+      func: 'linear',
+      step: 0.01
+    }
   },
   {
     type: 'MOVE_KNOB',

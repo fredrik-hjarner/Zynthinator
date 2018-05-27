@@ -185,12 +185,14 @@ history =
   {
     type: 'CREATE_KNOB',
     name: 'ADSR.play',
-    connectedToWhichNode: 5,
-    connectedToWhichParam: 'play',
-    minValue: 0,
-    maxValue: 1,
-    function: 'linear',
-    step: 0.01
+    payload: {
+      connectedToWhichNode: 5,
+      connectedToWhichParam: 'play',
+      minValue: 0,
+      maxValue: 1,
+      func: 'linear',
+      step: 0.01
+    }
   },
   {
     type: 'MOVE_KNOB',
