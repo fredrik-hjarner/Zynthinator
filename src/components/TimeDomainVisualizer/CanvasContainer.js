@@ -1,34 +1,27 @@
 import React from 'react';
+import { getScrollbarHeight } from 'helpers/scrollbar';
 
 export class CanvasContainer extends React.PureComponent {
-  // state = {
-  //   ref: null // eslint-disable-line
-  // }
-
-  // setRef = ref => this.setState({ ref })  // eslint-disable-line
-
   componentDidMount = () => {
     this.observer = new MutationObserver(this.onResize);
-    this.observer.observe(this.ref, { attributes: true });
+    this.observer.observe(this.div, { attributes: true });
   }
 
   onResize = (mutations) => {
     const latestMutation = mutations[mutations.length - 1];
     const { width, height } = latestMutation.target.style;
 
-    this.canvas.style.width = width;
-    this.canvas.style.height = height;
-  }
+    const scrollbarHeight = getScrollbarHeight(this.div);
 
-  // get scrollbarWidth() {
-  //   return this.state.ref ?  : 0;
-  // }
+    this.canvas.style.width = width;
+    this.canvas.style.height = `${parseFloat(height.slice(0, -2)) - scrollbarHeight}px`;
+  }
 
   render = () => (
     <div
-      ref={ref => this.ref = ref} // eslint-disable-line
+      ref={ref => this.div = ref} // eslint-disable-line
       style={{
-        display: 'block', resize: 'both', overflow: 'auto', width: this.props.width + 5, height: this.props.height + 5
+        display: 'block', resize: 'both', overflowX: 'scroll', overflowY: 'hidden', width: this.props.width, height: this.props.height
       }}
     >
       <canvas
