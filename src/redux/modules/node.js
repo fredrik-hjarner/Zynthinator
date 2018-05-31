@@ -1,5 +1,12 @@
 import { store } from 'redux/Store';
-import { actionTypes } from 'redux/Constants';
+
+// -------------------
+// Consts
+// -------------------
+
+const CREATE_NODE = 'CREATE_NODE';
+const DELETE_NODE = 'DELETE_NODE';
+const DELETE_ALL_NODES = 'DELETE_ALL_NODES';
 
 // -------------------
 // Actions
@@ -7,14 +14,14 @@ import { actionTypes } from 'redux/Constants';
 
 export const createNodeAction = (params) => {
   store.dispatch({
-    type: actionTypes.CREATE_NODE,
+    type: CREATE_NODE,
     ...params,
   });
 };
 
 export const deleteAllNodesAction = () => {
   store.dispatch({
-    type: actionTypes.DELETE_ALL_NODES,
+    type: DELETE_ALL_NODES,
   });
 };
 
@@ -23,7 +30,7 @@ export const deleteAllNodesAction = () => {
  */
 export const deleteNodeAction = (nodes) => {
   store.dispatch({
-    type: actionTypes.DELETE_NODE,
+    type: DELETE_NODE,
     nodes,
   });
 };

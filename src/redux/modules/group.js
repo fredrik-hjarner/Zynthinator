@@ -1,10 +1,18 @@
 import { store } from 'redux/Store';
-import { actionTypes } from 'redux/Constants';
 
-export const createGroupAction =
-  (params) => {
-    store.dispatch({
-      type: actionTypes.CREATE_GROUP,
-      ...params,
-    });
-  };
+// -------------------
+// Consts
+// -------------------
+
+const CREATE_GROUP = 'CREATE_GROUP';
+
+// -------------------
+// Actions
+// -------------------
+
+export const createGroupAction = (params) => {
+  store.dispatch({
+    type: CREATE_GROUP,
+    ...params,
+  });
+};

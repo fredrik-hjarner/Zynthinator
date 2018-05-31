@@ -1,36 +1,44 @@
 import { store } from 'redux/Store';
-import { actionTypes } from 'redux/Constants';
 
-export const clickTriggerAction =
-  (id) => {
-    store.dispatch({
-      type: actionTypes.CLICK_TRIGGER,
-      id,
-    });
-  };
+// -------------------
+// Consts
+// -------------------
 
-export const createTriggerAction =
-  (params) => {
-    store.dispatch({
-      type: actionTypes.CREATE_TRIGGER,
-      ...params,
-    });
-  };
+const CREATE_TRIGGER = 'CREATE_TRIGGER';
+const DELETE_TRIGGER = 'DELETE_TRIGGER';
+const CLICK_TRIGGER = 'CLICK_TRIGGER';
+const TRIGGER_HANDLED = 'TRIGGER_HANDLED';
 
-export const deleteTriggerAction =
-  (ids) => {
-    store.dispatch({
-      type: actionTypes.DELETE_TRIGGER,
-      payload: {
-        ids,
-      },
-    });
-  };
+// -------------------
+// Actions
+// -------------------
 
-export const triggerHandledAction =
-  (id) => {
-    store.dispatch({
-      type: actionTypes.TRIGGER_HANDLED,
-      id,
-    });
-  };
+export const clickTriggerAction = (id) => {
+  store.dispatch({
+    type: CLICK_TRIGGER,
+    id,
+  });
+};
+
+export const createTriggerAction = (params) => {
+  store.dispatch({
+    type: CREATE_TRIGGER,
+    ...params,
+  });
+};
+
+export const deleteTriggerAction = (ids) => {
+  store.dispatch({
+    type: DELETE_TRIGGER,
+    payload: {
+      ids,
+    },
+  });
+};
+
+export const triggerHandledAction = (id) => {
+  store.dispatch({
+    type: TRIGGER_HANDLED,
+    id,
+  });
+};

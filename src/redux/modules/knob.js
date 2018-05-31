@@ -1,5 +1,4 @@
 import { store } from 'redux/Store';
-import { actionTypes } from 'redux/Constants';
 import * as R from 'ramda';
 import { evolvePaths, propInArray } from 'helpers/ramdaHelpers';
 import { createNodeReducer, deleteNodeReducer } from 'redux/Reducers/subReducers/node/node';
@@ -7,19 +6,27 @@ import { createConnectionReducer } from 'redux/Reducers/subReducers/connection/c
 import { stateQueries } from 'redux/StateQueries';
 
 // -------------------
+// Consts
+// -------------------
+
+const CREATE_KNOB = 'CREATE_KNOB';
+const MOVE_KNOB = 'MOVE_KNOB';
+const DELETE_KNOB = 'DELETE_KNOB';
+
+// -------------------
 // Actions
 // -------------------
 
 export const createKnobAction = ({ maxValue, minValue, name, step, func }) => {
   store.dispatch({
-    type: actionTypes.CREATE_KNOB,
+    type: CREATE_KNOB,
     payload: { maxValue, minValue, name, step, func },
   });
 };
 
 export const deleteKnobAction = (ids) => {
   store.dispatch({
-    type: actionTypes.DELETE_KNOB,
+    type: DELETE_KNOB,
     payload: {
       ids,
     },
@@ -28,7 +35,7 @@ export const deleteKnobAction = (ids) => {
 
 export const moveKnobAction = (id, value) => {
   store.dispatch({
-    type: actionTypes.MOVE_KNOB,
+    type: MOVE_KNOB,
     id,
     value,
   });

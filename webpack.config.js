@@ -31,11 +31,8 @@ module.exports = {
     historyApiFallback: true,
   },
   resolve: {
-    extensions: ['.js', '.sass'],
-    modules: [
-      'node_modules',
-      'src'
-    ],
+    extensions: ['.js', '.sass'], // todo what effect does this have ???
+    modules: ['node_modules', 'src']
   },
   entry: {
     app: path.join(__dirname, 'src/app.js'),
@@ -44,42 +41,23 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        include: x => x.endsWith('.js'),
         exclude: nodeModules,
-        loader: 'babel-loader',
-      },
-      // for SASS
-      {
-        test: /\.sass$/,
-        exclude: nodeModules,
-        use: [
-          { loader: 'style-loader' }, 
-          { loader: 'css-loader' },
-          {
-            loader: 'sass-loader',
-            options:
-              { includePaths: [path.join(__dirname, 'src')] },
-          }
-        ],
-      },
-      // for CSS
-      {
-        test: /\.css$/,
-        exclude: nodeModules,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' }
-        ],
+        loader: ['babel-loader', 'eslint-loader']
       },
       {
-        test: /\.js$/,
+        include: x => x.endsWith('.sass'),
         exclude: nodeModules,
-        loader: 'eslint-loader',
+        use: ['style-loader', 'css-loader', 'sass-loader']
       },
-    ],
+      {
+        include: x => x.endsWith('.css'),
+        exclude: nodeModules,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
   },
   output: {
-    // path: __dirname + '/src/',
     path: outputPath,
     filename: '[name].js',
     publicPath: '/',

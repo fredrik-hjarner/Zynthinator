@@ -1,15 +1,28 @@
 import { v4 as uuidv4 } from 'uuid'; // eslint-disable-line
 import { store } from 'redux/Store';
 import * as R from 'ramda';
-import { actionTypes } from 'redux/Constants';
 
 /************************************
  * Constants
  ************************************/
 
-// const CREATE_NODE = 'zynthinator:node-graph:create-node';
-// const MOVE_NODE = 'zynthinator:node-graph:move-node';
-// const CONNECT_NODES = 'zynthinator:node-graph:connect-nodes';
+const MOVE_GRAPH_NODE = 'MOVE_GRAPH_NODE'; // 'zynthinator:node-graph:move-node'
+
+/************************************
+ * Actions
+ ************************************/
+
+/**
+ * Called on mouse-up when dragging is completed.
+ * So it is not updated on every mouse-move event.
+ */
+export function moveGraphNode(nodeId, x, y) {
+  const action = {
+    type: MOVE_GRAPH_NODE,
+    payload: { nodeId, x, y }
+  };
+  store.dispatch(action);
+}
 
 /************************************
  * Reducers
@@ -33,7 +46,7 @@ export function moveGraphNodeReducer(state, action) {
   const { type, payload } = action; // eslint-disable-line
 
   switch (type) {
-    case actionTypes.MOVE_GRAPH_NODE:
+    case MOVE_GRAPH_NODE:
       return R.assocPath(
         ['ui', 'nodeGraphPositions', `${payload.nodeId}`],
         {
@@ -48,20 +61,4 @@ export function moveGraphNodeReducer(state, action) {
     default:
       throw 'default case';
   }
-}
-
-/************************************
- * Actions
- ************************************/
-
-/**
- * Called on mouse-up when dragging is completed.
- * So it is not updated on every mouse-move event.
- */
-export function moveGraphNode(nodeId, x, y) {
-  const action = {
-    type: actionTypes.MOVE_GRAPH_NODE,
-    payload: { nodeId, x, y }
-  };
-  store.dispatch(action);
 }
