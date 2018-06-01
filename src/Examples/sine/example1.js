@@ -10,36 +10,6 @@ export const example1 =
 history =
 [
   {
-    type: '@@INIT'
-  },
-  {
-    type: '@@router/LOCATION_CHANGE',
-    payload: {
-      pathname: '/',
-      search: '',
-      hash: ''
-    }
-  },
-  {
-    type: '@@router/LOCATION_CHANGE',
-    payload: {
-      pathname: '/synth',
-      search: '',
-      hash: '',
-      key: 'cerari'
-    }
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateNodeModal',
-    props: {
-      nodeType: 'Oscillator'
-    }
-  },
-  {
-    type: 'CLOSE_MODAL'
-  },
-  {
     type: 'CREATE_NODE',
     name: 'sine',
     frequency: 440,
@@ -55,13 +25,6 @@ history =
     value: 0.13306486449007918
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateConnectionModal'
-  },
-  {
-    type: 'CLOSE_MODAL'
-  },
-  {
     type: 'CREATE_CONNECTION',
     name: '',
     parentNodeIds: [
@@ -73,13 +36,6 @@ history =
         input: 'input'
       }
     ]
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateConnectionModal'
-  },
-  {
-    type: 'CLOSE_MODAL'
   },
   {
     type: 'CREATE_CONNECTION',
@@ -100,26 +56,6 @@ history =
     value: 0.12242500570857913
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateNodeModal',
-    props: {
-      nodeType: 'Oscillator',
-      node: {
-        id: 4,
-        name: 'sine',
-        frequency: 440,
-        detune: 0,
-        oscillatorType: 'sine',
-        minValue: -1,
-        maxValue: 1,
-        nodeType: 'Oscillator'
-      }
-    }
-  },
-  {
-    type: 'CLOSE_MODAL'
-  },
-  {
     type: 'MOVE_KNOB',
     id: 1,
     value: 0.11232252824720639
@@ -135,5 +71,69 @@ history =
     id: 1,
     param: 'millisecondsBetweenUpdates',
     value: '50'
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 4,
+      x: 551,
+      y: 274
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 2,
+      x: 806,
+      y: 260
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 1,
+      x: 1255,
+      y: 167
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 3,
+      x: 1186,
+      y: 338
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 4,
+      x: 41,
+      y: 189
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 2,
+      x: 245,
+      y: 193
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 1,
+      x: 881,
+      y: 208
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 3,
+      x: 684,
+      y: 289
+    }
   }
 ];
