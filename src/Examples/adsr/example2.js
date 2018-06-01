@@ -10,36 +10,6 @@ export const example2 =
 history =
 [
   {
-    type: '@@INIT'
-  },
-  {
-    type: '@@router/LOCATION_CHANGE',
-    payload: {
-      pathname: '/',
-      search: '',
-      hash: ''
-    }
-  },
-  {
-    type: '@@router/LOCATION_CHANGE',
-    payload: {
-      pathname: '/synth',
-      search: '',
-      hash: '',
-      key: 'cerari'
-    }
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateNodeModal',
-    props: {
-      nodeType: 'Oscillator'
-    }
-  },
-  {
-    type: 'CLOSE_MODAL'
-  },
-  {
     type: 'CREATE_NODE',
     name: 'sine',
     frequency: 440,
@@ -55,13 +25,6 @@ history =
     value: 0.13306486449007918
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateConnectionModal'
-  },
-  {
-    type: 'CLOSE_MODAL'
-  },
-  {
     type: 'CREATE_CONNECTION',
     name: '',
     parentNodeIds: [
@@ -73,13 +36,6 @@ history =
         input: 'input'
       }
     ]
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateConnectionModal'
-  },
-  {
-    type: 'CLOSE_MODAL'
   },
   {
     type: 'CREATE_CONNECTION',
@@ -100,26 +56,6 @@ history =
     value: 0.12242500570857913
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateNodeModal',
-    props: {
-      nodeType: 'Oscillator',
-      node: {
-        id: 4,
-        name: 'sine',
-        frequency: 440,
-        detune: 0,
-        oscillatorType: 'sine',
-        minValue: -1,
-        maxValue: 1,
-        nodeType: 'Oscillator'
-      }
-    }
-  },
-  {
-    type: 'CLOSE_MODAL'
-  },
-  {
     type: 'MOVE_KNOB',
     id: 1,
     value: 0.11232252824720639
@@ -137,16 +73,6 @@ history =
     value: '50'
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateNodeModal',
-    props: {
-      nodeType: 'ADSR'
-    }
-  },
-  {
-    type: 'CLOSE_MODAL'
-  },
-  {
     type: 'CREATE_NODE',
     name: '',
     A: 0.05,
@@ -154,13 +80,6 @@ history =
     S: 1,
     R: 0.9,
     nodeType: 'ADSR'
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateConnectionModal'
-  },
-  {
-    type: 'CLOSE_MODAL'
   },
   {
     type: 'CREATE_CONNECTION',
@@ -174,13 +93,6 @@ history =
         input: 'gain'
       }
     ]
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateKnobModal'
-  },
-  {
-    type: 'CLOSE_MODAL'
   },
   {
     type: 'CREATE_KNOB',
@@ -198,5 +110,207 @@ history =
     type: 'MOVE_KNOB',
     id: 2,
     value: 1
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 6,
+      x: 657,
+      y: 194
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 5,
+      x: 657,
+      y: 46
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 4,
+      x: 588,
+      y: 370
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 2,
+      x: 911,
+      y: 329
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 3,
+      x: 189,
+      y: 460
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 1,
+      x: 1293,
+      y: 87
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 4,
+      x: 414,
+      y: 236
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 5,
+      x: 25,
+      y: 127
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 4,
+      x: 182,
+      y: 70
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 5,
+      x: 19,
+      y: 122
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 3,
+      x: 1027,
+      y: 109
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 6,
+      x: 205,
+      y: 393
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 4,
+      x: 299,
+      y: 69
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 5,
+      x: 143,
+      y: 122
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 6,
+      x: -4,
+      y: 124
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 4,
+      x: 352,
+      y: 70
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 5,
+      x: 182,
+      y: 122
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 6,
+      x: 15,
+      y: 120
+    }
+  },
+  {
+    type: 'CREATE_CONNECTION',
+    name: '',
+    parentNodeIds: [
+      6
+    ],
+    childNodes: [
+      {
+        nodeId: 5,
+        input: 'play'
+      }
+    ]
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 6,
+      x: 16,
+      y: 121
+    }
+  },
+  {
+    type: 'MOVE_KNOB',
+    id: 2,
+    value: 1
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 2,
+      x: 564,
+      y: 71
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 3,
+      x: 887,
+      y: 368
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 1,
+      x: 994,
+      y: 70
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 3,
+      x: 846,
+      y: 358
+    }
   }
 ];
