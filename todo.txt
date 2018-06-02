@@ -329,3 +329,5 @@
     Is there a way to disable the trigger?
 
 * Fix resizing for CustomAnalyser and FrequencyDomainVisualizer.
+
+* Sometimes I have reducers calling/using other reducers. This could be handled with redux-observables instead.

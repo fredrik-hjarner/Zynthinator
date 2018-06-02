@@ -6,6 +6,7 @@ import { initialState } from '../InitialState';
 import * as Reducers from './subReducers';
 // import { openMessageModalReducer } from 'redux/modules/ui'; // eslint-disable-line
 import { stateQueries } from '../StateQueries';
+import { connectionReducer } from '../modules/connection';
 
 /**
  * string -> string
@@ -24,8 +25,7 @@ const checkStateConstistency = (state) => { // todo, should receive latest actio
   // Connections
   // -------------------------------
 
-  const connections =
-    stateQueries.getAllConnectionValues(state);
+  const connections = stateQueries.getAllConnectionValues(state);
   /**
    * All connections should have an 'id' prop.
    */
@@ -65,15 +65,21 @@ const checkStateConstistency = (state) => { // todo, should receive latest actio
 const _rootReducer = (_state, action) => {
   const state = {
     ..._state,
-    router:
-      routerReducer(_state.router, action),
+    router: routerReducer(_state.router, action),
   };
-  const {
-    type,
-  } = action;
+  const { type } = action;
 
   if (type.startsWith('@@')) {
     return state;
+  }
+
+  switch (type) {
+    case 'CREATE_CONNECTION':
+    case 'DELETE_CONNECTION':
+    case 'EJECT_NODE':
+    case 'INJECT_NODE':
+      return connectionReducer(state, action);
+    default:
   }
   
   /**

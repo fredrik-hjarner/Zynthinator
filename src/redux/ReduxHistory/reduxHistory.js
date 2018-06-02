@@ -1,7 +1,5 @@
 import { saveAs } from 'file-saver';
-import {
-  filterHistory,
-} from './filterHistory';
+import { filterHistory } from './filterHistory';
 
 class ReduxHistory {
   constructor() {
@@ -34,14 +32,10 @@ class ReduxHistory {
      * todo. make it so that this can be enabled and disabled
      */
     const history = filterHistory(_history);
-    const serialized =
-      JSON.stringify(history, null, 2);
-    const blob =
-      new Blob([serialized], { type: 'text/plain;charset=utf-8' });
+    const serialized = JSON.stringify(history, null, 2);
+    const blob = new Blob([serialized], { type: 'text/plain;charset=utf-8' });
     saveAs(blob, 'history.json');
   }
 }
 
-export const reduxHistory =
-  new ReduxHistory();
-
+export const reduxHistory = new ReduxHistory();
