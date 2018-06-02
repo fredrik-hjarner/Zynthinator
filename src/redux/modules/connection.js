@@ -1,4 +1,9 @@
 import { store } from 'redux/Store';
+import _ from 'lodash';
+import * as R from 'ramda';
+import { evolvePaths, propInArray } from 'helpers/ramdaHelpers';
+import { stateQueries } from 'redux/StateQueries';
+import { connectionExists } from 'redux/StateQueries/new-state-queries/connection-queries';
 
 // -------------------
 // Consts
@@ -44,29 +49,19 @@ export const injectNodeAction = (nodeId, connectionId) => {
   });
 };
 
-// -------------------
-// Reducers
-// -------------------
-
-import _ from 'lodash';
-import * as R from 'ramda';
-import { evolvePaths, propInArray } from 'helpers/ramdaHelpers';
-import { stateQueries } from 'redux/StateQueries';
-import { connectionExists } from 'redux/StateQueries/new-state-queries/connection-queries';
-
 // ----------------
 // Reducers
 // ----------------
 
 export const connectionReducer = (state, action) => {
   switch (action.type) {
-    case 'CREATE_CONNECTION':
+    case CREATE_CONNECTION:
       return createConnectionReducer(state, action); // eslint-disable-line
-    case 'DELETE_CONNECTION':
+    case DELETE_CONNECTION:
       return deleteConnectionReducer(state, action); // eslint-disable-line
-    case 'EJECT_NODE':
+    case EJECT_NODE:
       return ejectNodeReducer(state, action); // eslint-disable-line
-    case 'INJECT_NODE':
+    case INJECT_NODE:
       return injectNodeReducer(state, action); // eslint-disable-line
     default:
       return state;

@@ -1,7 +1,7 @@
 import { store } from 'redux/Store';
 import * as R from 'ramda';
 import { evolvePaths, propInArray } from 'helpers/ramdaHelpers';
-import { createNodeReducer, deleteNodeReducer } from 'redux/Reducers/subReducers/node/node';
+import { createNodeReducer, deleteNodeReducer } from 'redux/modules/node';
 import { stateQueries } from 'redux/StateQueries';
 
 // -------------------

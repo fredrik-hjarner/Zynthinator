@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import { createNodeReducer } from './node/node';
+import { createNodeReducer } from 'redux/modules/node';
 
 export const createTimeDomainAnalyserReducer = (state, action) => {
   /**

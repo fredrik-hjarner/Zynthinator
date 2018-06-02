@@ -7,6 +7,7 @@ import * as Reducers from './subReducers';
 // import { openMessageModalReducer } from 'redux/modules/ui'; // eslint-disable-line
 import { stateQueries } from '../StateQueries';
 import { connectionReducer } from '../modules/connection';
+import { nodeReducer } from '../modules/node';
 
 /**
  * string -> string
@@ -74,6 +75,10 @@ const _rootReducer = (_state, action) => {
   }
 
   switch (type) {
+    case 'CREATE_NODE': // these strings should really be imported consts
+    case 'DELETE_NODE':
+    case 'DELETE_ALL_NODES':
+      return nodeReducer(state, action);
     case 'CREATE_CONNECTION':
     case 'DELETE_CONNECTION':
     case 'EJECT_NODE':

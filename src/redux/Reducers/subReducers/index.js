@@ -14,7 +14,6 @@ export * from './addPreviousStateReducer';
 export * from './calculateHighestNodeIdReducer';
 export * from './calculateHighestUiIdReducer';
 
-export * from './node/node';
 export * from './ui/ui';
 
 // todo this is ugly ->
