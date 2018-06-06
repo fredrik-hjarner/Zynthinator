@@ -11,8 +11,6 @@ export * from './createTimeDomainAnalyserReducer';
 export * from './createFrequencyDomainAnalyserReducer';
 export * from './createCustomAnalyserReducer';
 export * from './addPreviousStateReducer';
-export * from './calculateHighestNodeIdReducer';
-export * from './calculateHighestUiIdReducer';
 
 export * from './ui/ui';
 

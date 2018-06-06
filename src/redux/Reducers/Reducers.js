@@ -74,6 +74,18 @@ const _rootReducer = (_state, action) => {
     return state;
   }
 
+  /**
+   * Specifically handle Analysers, because
+   * some state.ui need to also be added.
+   */
+  if (type === 'CREATE_NODE' && action.nodeType === 'TimeDomainAnalyser') {
+    return Reducers.createTimeDomainAnalyserReducer(state, action);
+  } else if (type === 'CREATE_NODE' && action.nodeType === 'FrequencyDomainAnalyser') {
+    return Reducers.createFrequencyDomainAnalyserReducer(state, action);
+  } else if (type === 'CREATE_NODE' && action.nodeType === 'CustomAnalyser') {
+    return Reducers.createCustomAnalyserReducer(state, action);
+  }
+
   switch (type) {
     case 'CREATE_NODE': // these strings should really be imported consts
     case 'DELETE_NODE':
@@ -85,18 +97,6 @@ const _rootReducer = (_state, action) => {
     case 'INJECT_NODE':
       return connectionReducer(state, action);
     default:
-  }
-  
-  /**
-   * Specifically handle Analysers, because
-   * some state.ui need to also be added.
-   */
-  if (type === 'CREATE_NODE' && action.nodeType === 'TimeDomainAnalyser') {
-    return Reducers.createTimeDomainAnalyserReducer(state, action);
-  } else if (type === 'CREATE_NODE' && action.nodeType === 'FrequencyDomainAnalyser') {
-    return Reducers.createFrequencyDomainAnalyserReducer(state, action);
-  } else if (type === 'CREATE_NODE' && action.nodeType === 'CustomAnalyser') {
-    return Reducers.createCustomAnalyserReducer(state, action);
   }
 
   // reducers have to follow format of the corresponding action

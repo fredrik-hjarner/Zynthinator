@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import * as R from 'ramda';
 import { connect } from 'react-redux';
+import { deleteNodeAction } from 'redux/modules/node';
 import { NEditor } from './new-NEditor'; 
 import { nodeTypeDefinitions } from 'NodeTypeDefinitions';
 import { moveGraphNode } from 'redux/modules/node-graph';
@@ -150,6 +151,10 @@ export class NodeComponent extends Component {
     this.setState({ contextMenu: { visible: true, left, top } });
   })
 
+  onDelete = () => {
+    deleteNodeAction([this.props.node.id]);
+  }
+
   renderContextMenu = () => {
     const { visible, left, top } = this.state.contextMenu;
 
@@ -166,7 +171,7 @@ export class NodeComponent extends Component {
               // this.onEdit(node);
             }}
         />
-        <ContextMenuItem caption="Delete" />
+        <ContextMenuItem caption="Delete" onClick={this.onDelete} />
       </ContextMenu>
     );
   }
@@ -192,7 +197,9 @@ export class NodeComponent extends Component {
         default:
           throw `Error! ${uiComponent.type} is an unknown component type.`;
       }
-    }
+    } /* else if (node.nodeType === 'CustomAnalyser') {
+      uiComponentComponent = <CustomVisualizer uiComponentId={uiComponent.id}/>;
+    } */
 
     // reset
     this.inputs = [];
@@ -217,6 +224,7 @@ export class NodeComponent extends Component {
             {this.renderOutput(output || node.nodeType === 'Knob')}
           </div>
           {knobComponent}
+          {/* <p>uiComponent: {JSON.stringify(uiComponent, null, 2)}</p> */}
           {uiComponentComponent}
         </div>
         {this.renderContextMenu()}
