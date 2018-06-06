@@ -84,18 +84,18 @@ export const initialState = {
     nodeGraphPositions: {
       1: {
         nodeId: 1,
-        x: 0,
-        y: 0
+        x: 550,
+        y: 100
       },
       2: {
         nodeId: 2,
-        x: 0,
-        y: 100
+        x: 80,
+        y: 15
       },
       3: {
         nodeId: 3,
-        x: 0,
-        y: 170
+        x: 400,
+        y: 270
       }
     }
   },
