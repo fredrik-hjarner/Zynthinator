@@ -7,9 +7,6 @@ export * from './clickTriggerReducer';
 export * from './triggerHandledReducer';
 export * from './deleteTriggerReducer';
 
-export * from './createTimeDomainAnalyserReducer';
-export * from './createFrequencyDomainAnalyserReducer';
-export * from './createCustomAnalyserReducer';
 export * from './addPreviousStateReducer';
 
 export * from './ui/ui';

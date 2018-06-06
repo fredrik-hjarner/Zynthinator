@@ -8,6 +8,11 @@ import * as Reducers from './subReducers';
 import { stateQueries } from '../StateQueries';
 import { connectionReducer } from '../modules/connection';
 import { nodeReducer } from '../modules/node';
+import {
+  createTimeDomainAnalyserReducer,
+  createFrequencyDomainAnalyserReducer,
+  createCustomAnalyserReducer
+} from '../modules/ui';
 
 /**
  * string -> string
@@ -79,11 +84,11 @@ const _rootReducer = (_state, action) => {
    * some state.ui need to also be added.
    */
   if (type === 'CREATE_NODE' && action.nodeType === 'TimeDomainAnalyser') {
-    return Reducers.createTimeDomainAnalyserReducer(state, action);
+    return createTimeDomainAnalyserReducer(state, action);
   } else if (type === 'CREATE_NODE' && action.nodeType === 'FrequencyDomainAnalyser') {
-    return Reducers.createFrequencyDomainAnalyserReducer(state, action);
+    return createFrequencyDomainAnalyserReducer(state, action);
   } else if (type === 'CREATE_NODE' && action.nodeType === 'CustomAnalyser') {
-    return Reducers.createCustomAnalyserReducer(state, action);
+    return createCustomAnalyserReducer(state, action);
   }
 
   switch (type) {
