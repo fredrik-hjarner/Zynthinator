@@ -3,7 +3,8 @@ import { AudioNode } from './BaseClasses';
 import { bypass } from './decorators';
 import { safeDisconnect } from './utils';
 
-const processorPromise = audioContext.audioWorklet.addModule('./audio-worklet-processors/crossover-distortion.js');
+const processorPromise =
+  audioContext.audioWorklet.addModule('./audio-worklet-processors/crossover-distortion.js');
 
 @bypass
 export class CrossoverDistortion extends AudioNode {

@@ -42,7 +42,11 @@ export class FrequencyDomainVisualizerControlled extends React.Component {
     this.visualizer = new InfiniteFrequencyDomainVisualizer();
     this.visualizer.init(
       webAudioNode.webAudioNode,
-      this.frequencyDomainCanvasId, // todo. should not have a static Id that makes it IMPOSSIBLE to instantiate several FrequencyDomainVisualizer:s.
+      /**
+       * todo.
+       * should not have static Id that makes it IMPOSSIBLE to instantiate many FrequencyDomainVisualizer:s.
+       */
+      this.frequencyDomainCanvasId,
     );
 
     this.updateSettings(this.props.uiComponent);

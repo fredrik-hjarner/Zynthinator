@@ -1,4 +1,6 @@
-import { filter, pickBy, map, compose, uniq, flatten, values, difference, memoizeWith, identity, propEq } from 'ramda';
+import {
+  filter, pickBy, map, compose, uniq, flatten, values, difference, memoizeWith, identity, propEq
+} from 'ramda';
 import { createSelector } from 'reselect';
 import { stateQueries } from './stateQueries';
 import { valEqArrayReturnsEqArray } from 'helpers/ramdaHelpers';
@@ -159,8 +161,9 @@ class MemoizedStateQueries {
    * @param state
    * @param type
    */
+  // todo. what the hell is 'valEqArrayReturnsEqArray'?
   getUiComponentIdsByType =
-    valEqArrayReturnsEqArray(this._getUiComponentIdsByType) // todo. what the hell is 'valEqArrayReturnsEqArray'?
+    valEqArrayReturnsEqArray(this._getUiComponentIdsByType)
 
     /**
      *  [

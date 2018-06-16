@@ -9,47 +9,9 @@ export const example1 = () => {
 history =
 [
   {
-    type: '@@INIT'
-  },
-  {
-    type: '@@router/LOCATION_CHANGE',
-    payload: {
-      pathname: '/',
-      search: '',
-      hash: '',
-      key: '3znucs'
-    }
-  },
-  {
-    type: '@@router/LOCATION_CHANGE',
-    payload: {
-      pathname: '/synth',
-      search: '',
-      hash: '',
-      key: 'bfqvd4'
-    }
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateNodeModal',
-    props: {
-      nodeType: 'TwowaySwitch'
-    }
-  },
-  {
-    type: 'CLOSE_MODAL'
-  },
-  {
     type: 'CREATE_NODE',
     name: '',
     nodeType: 'TwowaySwitch'
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateConnectionModal'
-  },
-  {
-    type: 'CLOSE_MODAL'
   },
   {
     type: 'CREATE_CONNECTION',
@@ -69,16 +31,6 @@ history =
     ]
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateNodeModal',
-    props: {
-      nodeType: 'Oscillator'
-    }
-  },
-  {
-    type: 'CLOSE_MODAL'
-  },
-  {
     type: 'CREATE_NODE',
     name: '',
     frequency: 440,
@@ -87,13 +39,6 @@ history =
     minValue: -1,
     maxValue: 1,
     nodeType: 'Oscillator'
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateConnectionModal'
-  },
-  {
-    type: 'CLOSE_MODAL'
   },
   {
     type: 'CREATE_CONNECTION',
@@ -109,16 +54,6 @@ history =
     ]
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateNodeModal',
-    props: {
-      nodeType: 'Oscillator'
-    }
-  },
-  {
-    type: 'CLOSE_MODAL'
-  },
-  {
     type: 'CREATE_NODE',
     name: '',
     frequency: 1,
@@ -127,13 +62,6 @@ history =
     minValue: 0,
     maxValue: 1,
     nodeType: 'Oscillator'
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateConnectionModal'
-  },
-  {
-    type: 'CLOSE_MODAL'
   },
   {
     type: 'CREATE_CONNECTION',
@@ -154,16 +82,6 @@ history =
     value: 0.49658524712551455
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateNodeModal',
-    props: {
-      nodeType: 'Oscillator'
-    }
-  },
-  {
-    type: 'CLOSE_MODAL'
-  },
-  {
     type: 'CREATE_NODE',
     name: '',
     frequency: 440,
@@ -172,13 +90,6 @@ history =
     minValue: -1,
     maxValue: 1,
     nodeType: 'Oscillator'
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateConnectionModal'
-  },
-  {
-    type: 'CLOSE_MODAL'
   },
   {
     type: 'CREATE_CONNECTION',
@@ -198,5 +109,133 @@ history =
     id: 1,
     param: 'bitsToRecord',
     value: '8'
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 1,
+      x: 842,
+      y: 263
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 3,
+      x: 655,
+      y: 390
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 2,
+      x: 197,
+      y: 559
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 4,
+      x: 432,
+      y: 158
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 7,
+      x: 119,
+      y: 164
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 6,
+      x: 64,
+      y: 284
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 5,
+      x: 12,
+      y: 12
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 4,
+      x: 434,
+      y: 127
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 7,
+      x: 4,
+      y: 190
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 6,
+      x: 17,
+      y: 371
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 7,
+      x: 16,
+      y: 191
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 5,
+      x: 16,
+      y: 11
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 4,
+      x: 288,
+      y: 12
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 1,
+      x: 642,
+      y: 11
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 3,
+      x: 582,
+      y: 152
+    }
+  },
+  {
+    type: 'MOVE_GRAPH_NODE',
+    payload: {
+      nodeId: 2,
+      x: 513,
+      y: 323
+    }
   }
 ];

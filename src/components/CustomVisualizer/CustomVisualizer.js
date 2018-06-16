@@ -43,7 +43,11 @@ export class CustomVisualizer extends React.Component {
     this.visualizer = new InfiniteCustomVisualizer();
     this.visualizer.init(
       webAudioNode,
-      this.canvasId // todo. should not have a static Id that makes it IMPOSSIBLE to instantiate several CustomVisualizer:s.
+      /**
+       * todo.
+       * should not have a static Id that makes it IMPOSSIBLE to instantiate several CustomVisualizer:s.
+       */
+      this.canvasId
     );
 
     this.updateSettings(this.props.uiComponent);

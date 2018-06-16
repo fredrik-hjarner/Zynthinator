@@ -44,7 +44,11 @@ export class TimeDomainVisualizer extends React.Component {
     this.visualizer = new InfiniteTimeDomainVisualizer();
     this.visualizer.init(
       webAudioNode.webAudioNode,
-      this.timeDomainCanvasId, // todo. should not have a static Id that makes it IMPOSSIBLE to instantiate several TimeDomainVisualizer:s.
+      /**
+       * todo.
+       * should not have a static Id that makes it IMPOSSIBLE to instantiate several TimeDomainVisualizer:s.
+       */
+      this.timeDomainCanvasId,
     );
 
     this.updateSettings(this.props.uiComponent);

@@ -10,7 +10,7 @@
     "node": true
   },
   "rules": {
-    "max-len": [1, 120, 2, {"ignoreComments": true}],
+    "max-len": [1, 110, 2, {"ignoreComments": false}],
     "jsx-a11y/click-events-have-key-events": 0,
     "no-alert": 0,
     "react/prop-types": 0,
@@ -53,7 +53,8 @@
     "react/sort-comp": 0,
     "jsx-a11y/no-static-element-interactions": 0,
     "no-multiple-empty-lines": 0,
-    "react/no-multi-comp": 0
+    "react/no-multi-comp": 0,
+    "jsx-a11y/mouse-events-have-key-events": 0
   },
   "extends": ["airbnb"]
 }

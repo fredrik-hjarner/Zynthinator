@@ -23,7 +23,7 @@ window.onerror = (message, source, lineno, colno, error) => { // eslint-disable-
   }
 };
 
-store.subscribe(() => saveState(store.getState())); // todo this code does not belong here. It looks like shit.
+store.subscribe(() => saveState(store.getState())); // todo this code does not belong here. Looks like shit.
 store.subscribe(() => nodesListener.onActionWasDispatched(store.getState()));
 store.subscribe(() => connectionsListener.onActionWasDispatched(store.getState()));
 store.subscribe(() => triggeredTriggersListener.onActionWasDispatched(store.getState()));

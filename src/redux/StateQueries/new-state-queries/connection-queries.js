@@ -11,8 +11,8 @@ export const getAllConnections = (state) => state.nodeManagement.connections;
  */
 const _getConnectionByChildNodeIdAndChildNodeInput = createSelector(
   [getAllConnections],
-  connections => memoize((childNodeId, childNodeInput) =>
-    Object.values(connections).filter(c => c.childNodeId === childNodeId && c.childNodeInput === childNodeInput))
+  connections => memoize((childId, childInput) =>
+    Object.values(connections).filter(c => c.childNodeId === childId && c.childNodeInput === childInput))
 );
 
 /**
@@ -26,9 +26,9 @@ export const getConnectionsByChildNodeIdAndChildNodeInput = (state, childNodeId,
  */
 const _connectionExists = createSelector(
   [getAllConnections],
-  connections => memoize((parentNodeId, childNodeId, childNodeInput) =>
+  connections => memoize((parentNodeId, childId, childInput) =>
     !!Object.values(connections).find(c => 
-      c.parentNodeId === parentNodeId && c.childNodeId === childNodeId && c.childNodeInput === childNodeInput))
+      c.parentNodeId === parentNodeId && c.childNodeId === childId && c.childNodeInput === childInput))
 );
 
 /**

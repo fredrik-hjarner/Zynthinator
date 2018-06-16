@@ -68,7 +68,8 @@ export class ConnectionManager extends Component { // eslint-disable-line
   }
 
   componentDidMount() {
-    window.addEventListener('mousemove', this.updateMousePosition); // todo must detach on unmount. or must I???
+    // todo must detach on unmount. or must I???
+    window.addEventListener('mousemove', this.updateMousePosition);
   }
 
   render = () => { // eslint-disable-line
@@ -77,7 +78,9 @@ export class ConnectionManager extends Component { // eslint-disable-line
 
     return (
       <Fragment>
-        {exists && <SvgComponent key='drag' x1={startPos.x} y1={startPos.y} x2={mouseX} y2={mouseY} color='#999999'/>}
+        {exists &&
+          <SvgComponent key='drag' x1={startPos.x} y1={startPos.y} x2={mouseX} y2={mouseY} color='#999999'/>
+        }
         {Object.entries(data).map(([connectionId, { x1, y1, x2, y2 }]) => (
           <SvgComponent key={connectionId} x1={x1} y1={y1} x2={x2} y2={y2} color='#86d530'/>
         ))}

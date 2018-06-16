@@ -17,12 +17,11 @@ export const closeModalReducer =
     }
   });
 
-export const openModalReducer =
-  (state, action) => ({
-    ...state,
-    modal: action.modal,
-    propsToModal: action.props
-  });
+export const openModalReducer = (state, action) => ({
+  ...state,
+  modal: action.modal,
+  propsToModal: action.props
+});
 
 /**
  * Makes sure that the value is within bounds.

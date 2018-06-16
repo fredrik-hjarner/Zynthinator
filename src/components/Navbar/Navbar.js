@@ -5,8 +5,8 @@ import {
   File,
   Create,
   Connect,
-  Modify,
-  Delete,
+  Tests,
+  // Delete,
   Examples as ExamplesMenu,
   History
 } from './menus';
@@ -29,10 +29,10 @@ export class Navbar extends React.Component { // eslint-disable-line
       <File />
       <Create />
       <Connect />
-      <Modify />
-      <Delete />
+      {/* <Delete /> */}
       <ExamplesMenu />
       <History />
+      <Tests />
     </DropDownMenu>
   );
 }

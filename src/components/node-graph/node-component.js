@@ -6,6 +6,7 @@ import { NEditor } from './new-NEditor';
 import { nodeTypeDefinitions } from 'NodeTypeDefinitions';
 import { moveGraphNode } from 'redux/modules/node-graph';
 import { getNodeById } from 'redux/StateQueries/new-state-queries/node-queries';
+import { openModalAction } from 'redux/modules/ui';
 import {
   ContextMenu,
   ContextMenuItem,
@@ -38,6 +39,10 @@ export class NodeComponent extends Component {
 
   onHeaderUp = () => {
     this.dispatchMoveAction();
+  }
+
+  hideContextMenu = () => {
+    this.setState({ contextMenu: { visible: false } });
   }
 
   dispatchMoveAction = () => {
@@ -139,19 +144,28 @@ export class NodeComponent extends Component {
     );
   }
 
-  onContextMenu = (e => { // eslint-disable-line
+  onContextMenu = (e => {
     e.preventDefault();
     
     // grab global fixed x and y position of mouse.
-    const { target } = e;
-    const boundingClientRect = target.getBoundingClientRect();
-    const { left, top } = boundingClientRect;
+    const mouseX = e.pageX;
+    const mouseY = e.pageY;
 
     // display ContextMenu at that position.
-    this.setState({ contextMenu: { visible: true, left, top } });
+    this.setState({ contextMenu: { visible: true, left: mouseX, top: mouseY } });
   })
 
+  onEdit = () => {
+    const { node } = this.props;
+    this.hideContextMenu();
+    openModalAction('CreateNodeModal', {
+      nodeType: node.nodeType,
+      node,
+    });
+  }
+
   onDelete = () => {
+    this.hideContextMenu();
     deleteNodeAction([this.props.node.id]);
   }
 
@@ -163,14 +177,8 @@ export class NodeComponent extends Component {
     }
 
     return (
-      <ContextMenu top={top} left={left}>
-        <ContextMenuItem
-          caption="Edit"
-          onClick={() => {
-              this.handleClose();
-              // this.onEdit(node);
-            }}
-        />
+      <ContextMenu top={top} left={left} hide={this.hideContextMenu}>
+        <ContextMenuItem caption="Edit" onClick={this.onEdit} />
         <ContextMenuItem caption="Delete" onClick={this.onDelete} />
       </ContextMenu>
     );

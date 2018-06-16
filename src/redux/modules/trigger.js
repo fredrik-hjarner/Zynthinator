@@ -1,4 +1,7 @@
 import { store } from 'redux/Store';
+import * as R from 'ramda';
+import _ from 'lodash';
+import { propInArray } from 'helpers/ramdaHelpers';
 
 // -------------------
 // Consts
@@ -42,3 +45,67 @@ export const triggerHandledAction = (id) => {
     id,
   });
 };
+
+// -------------------
+// Reducers
+// -------------------
+
+export const clickTriggerReducer = (state, action) => {
+  const { id } = action;
+
+  return R.evolve(
+    {
+      nodeManagement: {
+        triggeredTriggers: R.unless(R.contains(id), R.append(id))
+      }
+    },
+    state
+  );
+};
+
+export const triggerHandledReducer = (state, action) => {
+  const { id } = action;
+
+  return R.evolve(
+    {
+      nodeManagement: {
+        triggeredTriggers: R.reject(R.equals(id))
+      },
+    },
+    state
+  );
+};
+
+export const createTriggerReducer = (state, action) => {
+  const { connectedToWhichNodes } = action;
+  
+  let triggerId = state.nodeManagement.highestTriggerIdYet;
+
+  const triggerValues = [];
+  connectedToWhichNodes.forEach((node) => {
+    triggerValues.push({
+      id: ++triggerId,
+      connectedToWhichNode: node.nodeId,
+      connectedToWhichParam: node.input,
+    });
+  });
+
+  const triggers = _.keyBy(triggerValues, R.prop('id'));
+
+  return R.evolve({
+    nodeManagement: {
+      highestTriggerIdYet: () => triggerId,
+      triggers: R.merge(R.__, triggers),
+    },
+  }, state);
+};
+
+export const deleteTriggerReducer = (state, { payload: { ids } }) => R.evolve(
+  {
+    nodeManagement: {
+      triggers: R.reject(propInArray('id', ids)),
+      triggeredTriggers: R.reject(R.contains(R.__, ids)),
+    },
+  },
+  state
+);

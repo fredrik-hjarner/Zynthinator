@@ -7,7 +7,9 @@ import { svgManager } from './svg';
 import { NodeComponent } from './node-component';
 import { getAllNodes } from 'redux/StateQueries/new-state-queries/node-queries';
 import { ConnectionManager } from './connection-manager';
-import { getConnectionsByChildNodeIdAndChildNodeInput } from 'redux/StateQueries/new-state-queries/connection-queries';
+import {
+  getConnectionsByChildNodeIdAndChildNodeInput
+} from 'redux/StateQueries/new-state-queries/connection-queries';
 import { createConnectionAction, deleteConnectionAction } from 'redux/modules/connection';
 import { store } from 'redux/Store';
 import './styles/node-graph.sass';

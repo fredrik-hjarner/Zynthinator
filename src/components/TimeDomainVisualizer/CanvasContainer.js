@@ -21,7 +21,12 @@ export class CanvasContainer extends React.PureComponent {
     <div
       ref={ref => this.div = ref} // eslint-disable-line
       style={{
-        display: 'block', resize: 'both', overflowX: 'scroll', overflowY: 'hidden', width: this.props.width, height: this.props.height
+        display: 'block',
+        resize: 'both',
+        overflowX: 'scroll',
+        overflowY: 'hidden',
+        width: this.props.width,
+        height: this.props.height
       }}
     >
       <canvas

@@ -1,11 +1,4 @@
-export * from './createGroupReducer';
-
 export * from './addToHistoryReducer';
-
-export * from './createTriggerReducer';
-export * from './clickTriggerReducer';
-export * from './triggerHandledReducer';
-export * from './deleteTriggerReducer';
 
 export * from './addPreviousStateReducer';
 
@@ -15,3 +8,10 @@ export * from './ui/ui';
 export { openMessageModalReducer } from 'redux/modules/ui';
 export { createKnobReducer, deleteKnobReducer, moveKnobReducer } from 'redux/modules/knob';
 export { moveGraphNodeReducer } from 'redux/modules/node-graph';
+export {
+  createTriggerReducer,
+  clickTriggerReducer,
+  triggerHandledReducer,
+  deleteTriggerReducer
+} from 'redux/modules/trigger';
+export { createGroupReducer } from 'redux/modules/group';

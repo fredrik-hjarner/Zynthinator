@@ -1,1 +1,3 @@
-export { FrequencyDomainVisualizerRedux as FrequencyDomainVisualizer } from './FrequencyDomainVisualizerRedux';
+export {
+  FrequencyDomainVisualizerRedux as FrequencyDomainVisualizer
+} from './FrequencyDomainVisualizerRedux';

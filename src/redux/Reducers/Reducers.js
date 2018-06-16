@@ -26,7 +26,8 @@ const isFuckedUp = x =>
 /**
  * Does some checks to see if the state is consistent.
  */
-const checkStateConstistency = (state) => { // todo, should receive latest action so that I can see what action caused it.
+// todo, should receive latest action so that I can see what action caused it.
+const checkStateConstistency = (state) => {
   // -------------------------------
   // Connections
   // -------------------------------

@@ -331,3 +331,8 @@
 * Fix resizing for CustomAnalyser and FrequencyDomainVisualizer.
 
 * Sometimes I have reducers calling/using other reducers. This could be handled with redux-observables instead.
+
+* Position context menu corretcly at mouse position.
+
+* Close context menu after a time or something. hovering over it resets the "remove-timer".
+

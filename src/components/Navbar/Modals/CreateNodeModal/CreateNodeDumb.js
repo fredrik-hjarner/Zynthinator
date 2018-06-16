@@ -44,7 +44,8 @@ export const CreateNodeDumb =
         );
       }
       const message =
-        `Error in CreateNodeDumb.js: ${JSON.stringify(type, null, 2)} is not a valid 'type'. 'name' was ${name}`;
+        `Error in CreateNodeDumb.js: ${JSON.stringify(type, null, 2)}
+        is not a valid 'type'. 'name' was ${name}`;
       alert(message);
       console.log(message);
       debugger;
