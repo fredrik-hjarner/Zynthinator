@@ -1,1 +1,0 @@
-export { DeleteAllNodesModal } from './DeleteAllNodesControlled';

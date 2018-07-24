@@ -1,1 +1,0 @@
-export { DeleteTriggerModal } from './DeleteTriggerControlled';

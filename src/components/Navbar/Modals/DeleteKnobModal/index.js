@@ -1,1 +1,0 @@
-export { DeleteKnobModal } from './DeleteKnobControlled';
