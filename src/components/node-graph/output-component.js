@@ -25,7 +25,7 @@ export class OutputComponent extends Component {
           >
             {`${' '}`}
           </i>
-          <span>output</span>
+          <span>out</span>
         </li>
       </div>
     );

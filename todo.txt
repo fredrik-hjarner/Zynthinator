@@ -318,8 +318,6 @@
     because I had a bug in 'bypass' because it had no
     destruct method.
 
-* Add context menu when right-clicking a NodeGraphNode.
-
 * Be explicit about arguments in redux-ACTIONS and component-PROPS.
     It is a mess as it is now.
 
@@ -331,8 +329,4 @@
 * Fix resizing for CustomAnalyser and FrequencyDomainVisualizer.
 
 * Sometimes I have reducers calling/using other reducers. This could be handled with redux-observables instead.
-
-* Position context menu corretcly at mouse position.
-
-* Close context menu after a time or something. hovering over it resets the "remove-timer".
 

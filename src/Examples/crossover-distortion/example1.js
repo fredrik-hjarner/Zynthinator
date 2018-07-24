@@ -9,139 +9,195 @@ export const example1 = () => {
 history =
 [
   {
-    type: '@@INIT'
+    "type": "CREATE_NODE",
+    "name": "",
+    "frequency": 440,
+    "detune": 0,
+    "oscillatorType": "sine",
+    "minValue": -1,
+    "maxValue": 1,
+    "nodeType": "Oscillator"
   },
   {
-    type: '@@router/LOCATION_CHANGE',
-    payload: {
-      pathname: '/synth',
-      search: '',
-      hash: ''
-    }
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateNodeModal',
-    props: {
-      nodeType: 'Oscillator'
-    }
-  },
-  {
-    type: 'CLOSE_MODAL'
-  },
-  {
-    type: 'CREATE_NODE',
-    name: '',
-    frequency: 440,
-    detune: 0,
-    oscillatorType: 'sine',
-    minValue: -1,
-    maxValue: 1,
-    nodeType: 'Oscillator'
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateConnectionModal'
-  },
-  {
-    type: 'CLOSE_MODAL'
-  },
-  {
-    type: 'CREATE_CONNECTION',
-    name: '',
-    parentNodeIds: [
+    "type": "CREATE_CONNECTION",
+    "name": "",
+    "parentNodeIds": [
       4
     ],
-    childNodes: [
+    "childNodes": [
       {
-        nodeId: 2,
-        input: 'input'
+        "nodeId": 2,
+        "input": "input"
       }
     ]
   },
   {
-    type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
-    id: 1,
-    param: 'bitsToRecord',
-    value: '8'
+    "type": "UI_TD_ANALYSER_CHANGE_PARAMS",
+    "id": 1,
+    "param": "bitsToRecord",
+    "value": "8"
   },
   {
-    type: 'MOVE_KNOB',
-    id: 1,
-    value: 0.14571314513188285
+    "type": "MOVE_KNOB",
+    "id": 1,
+    "value": 0.14571314513188285
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateConnectionModal'
-  },
-  {
-    type: 'CLOSE_MODAL'
-  },
-  {
-    type: 'CREATE_CONNECTION',
-    name: '',
-    parentNodeIds: [
+    "type": "CREATE_CONNECTION",
+    "name": "",
+    "parentNodeIds": [
       2
     ],
-    childNodes: [
+    "childNodes": [
       {
-        nodeId: 1,
-        input: 'input'
+        "nodeId": 1,
+        "input": "input"
       }
     ]
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateNodeModal',
-    props: {
-      nodeType: 'CrossoverDistortion'
+    "type": "CREATE_NODE",
+    "name": "",
+    "threshold": 0,
+    "nodeType": "CrossoverDistortion"
+  },
+  {
+    "type": "INJECT_NODE",
+    "payload": {
+      "nodeId": 5,
+      "connectionId": 2
     }
   },
   {
-    type: 'CLOSE_MODAL'
-  },
-  {
-    type: 'CREATE_NODE',
-    name: '',
-    threshold: 0,
-    nodeType: 'CrossoverDistortion'
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'CreateConnectionModal'
-  },
-  {
-    type: 'CLOSE_MODAL'
-  },
-  {
-    type: 'OPEN_MODAL',
-    modal: 'InjectNodeModal'
-  },
-  {
-    type: 'CLOSE_MODAL'
-  },
-  {
-    type: 'INJECT_NODE',
-    payload: {
-      nodeId: 5,
-      connectionId: 2
+    "type": "MOVE_GRAPH_NODE",
+    "payload": {
+      "nodeId": 1,
+      "x": 871,
+      "y": 132
     }
   },
   {
-    type: 'OPEN_MODAL',
-    modal: 'CreateKnobModal'
+    "type": "MOVE_GRAPH_NODE",
+    "payload": {
+      "nodeId": 3,
+      "x": 730,
+      "y": 283
+    }
   },
   {
-    type: 'CLOSE_MODAL'
+    "type": "MOVE_GRAPH_NODE",
+    "payload": {
+      "nodeId": 1,
+      "x": 900,
+      "y": 213
+    }
   },
   {
-    type: 'CREATE_KNOB',
-    name: 'threshold',
-    connectedToWhichNode: 5,
-    connectedToWhichParam: 'threshold',
-    minValue: 0,
-    maxValue: 1,
-    step: 0.01,
-    func: 'linear'
+    "type": "MOVE_GRAPH_NODE",
+    "payload": {
+      "nodeId": 2,
+      "x": 367,
+      "y": 99
+    }
+  },
+  {
+    "type": "MOVE_GRAPH_NODE",
+    "payload": {
+      "nodeId": 5,
+      "x": 175,
+      "y": 93
+    }
+  },
+  {
+    "type": "MOVE_GRAPH_NODE",
+    "payload": {
+      "nodeId": 1,
+      "x": 946,
+      "y": 135
+    }
+  },
+  {
+    "type": "MOVE_GRAPH_NODE",
+    "payload": {
+      "nodeId": 3,
+      "x": 793,
+      "y": 261
+    }
+  },
+  {
+    "type": "MOVE_GRAPH_NODE",
+    "payload": {
+      "nodeId": 2,
+      "x": 450,
+      "y": 103
+    }
+  },
+  {
+    "type": "MOVE_GRAPH_NODE",
+    "payload": {
+      "nodeId": 5,
+      "x": 285,
+      "y": 102
+    }
+  },
+  {
+    "type": "MOVE_GRAPH_NODE",
+    "payload": {
+      "nodeId": 4,
+      "x": 48,
+      "y": 100
+    }
+  },
+  {
+    "type": "MOVE_GRAPH_NODE",
+    "payload": {
+      "nodeId": 3,
+      "x": 871,
+      "y": 294
+    }
+  },
+  {
+    "type": "MOVE_GRAPH_NODE",
+    "payload": {
+      "nodeId": 1,
+      "x": 923,
+      "y": 123
+    }
+  },
+  {
+    "type": "CREATE_KNOB",
+    "payload": {
+      "maxValue": 1,
+      "minValue": 0,
+      "name": "",
+      "step": 0.01,
+      "func": "linear"
+    }
+  },
+  {
+    "type": "MOVE_GRAPH_NODE",
+    "payload": {
+      "nodeId": 6,
+      "x": 117,
+      "y": 361
+    }
+  },
+  {
+    "type": "CREATE_CONNECTION",
+    "name": "",
+    "parentNodeIds": [
+      6
+    ],
+    "childNodes": [
+      {
+        "nodeId": 5,
+        "input": "threshold"
+      }
+    ]
+  },
+  {
+    "type": "MOVE_KNOB",
+    "id": 2,
+    "value": 0.4
   }
 ];
