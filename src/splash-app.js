@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { store } from 'redux/Store';
 import { stateQueries } from 'redux/StateQueries';
 import './pages/styles.sass'; // todo fix path n shit.
+import 'semantic-ui-css/semantic.min.css';
 
 const App = () => (
   <div className="splash">

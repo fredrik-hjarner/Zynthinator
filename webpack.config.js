@@ -15,13 +15,15 @@ const outputPath = path.join(__dirname, 'build');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const CopyWebpackPluginConfig = new CopyWebpackPlugin([
-  // { from: './src/assets', to: 'assets' },
-  // { from: './semantic/dist', to: './semantic' }, // relativa till output path !!!!
-  { from: './node_modules/semantic-ui-css', to: './semantic' }, // relativa till output path !!!!
   { from: './audio-worklet-processors', to: './audio-worklet-processors' }, // relativa till output path !!!!
   { from: './src/index.html', to: './' }, // relativa till output path !!!!
   { from: './src/splash.html', to: './' }, // relativa till output path !!!!
 ]);
+
+const fileLoaderRule = {
+  include: /\.(jpg|png|ttf|woff|woff2|eot|svg)$/,
+  use: ['file-loader']
+};
 
 module.exports = {
   mode: 'development',
@@ -40,6 +42,7 @@ module.exports = {
   },
   module: {
     rules: [
+      fileLoaderRule,
       {
         include: x => x.endsWith('.js'),
         exclude: nodeModules,
@@ -52,7 +55,6 @@ module.exports = {
       },
       {
         include: x => x.endsWith('.css'),
-        exclude: nodeModules,
         use: ['style-loader', 'css-loader']
       }
     ]

@@ -15,6 +15,7 @@ import {
   triggeredTriggersListener,
 } from './AudioSystem';
 import { history } from './history';
+import 'semantic-ui-css/semantic.min.css';
 
 window.onerror = (message, source, lineno, colno, error) => { // eslint-disable-line
   const ret = window.confirm('Zynthinator crashed. Go back to splash screen?');
