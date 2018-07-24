@@ -2,7 +2,7 @@
 
 ![Alt Text](https://github.com/fredrik-hjarner/Zynthinator/blob/master/2018-01-21-02-27-34.gif)
 
-[Test out Zynthinator (not guaranteed to be lastest version)](http://fredrikhjarner.se "Test out Zynthinator")
+[Test out Zynthinator (not guaranteed to be lastest version)](https://fredrik-hjarner.github.io/Zynthinator/ "Test out Zynthinator")
 
 ### What
 
