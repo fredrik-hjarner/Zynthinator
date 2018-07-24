@@ -25,6 +25,19 @@ const fileLoaderRule = {
   use: ['file-loader']
 };
 
+const isTypeScriptFile = x => x.endsWith('.ts') || x.endsWith('.tsx');
+
+const typescriptRule = {
+  include: isTypeScriptFile,
+  use: 'ts-loader'
+};
+
+const tslintRule = {
+  include: isTypeScriptFile,
+  enforce: 'pre',
+  use: 'tslint-loader'
+};
+
 module.exports = {
   mode: 'development',
   // context: contextPath,
@@ -33,7 +46,7 @@ module.exports = {
     historyApiFallback: true,
   },
   resolve: {
-    extensions: ['.js', '.sass'], // todo what effect does this have ???
+    extensions: ['.js', '.sass', '.ts', '.tsx'], // todo what effect does this have ???
     modules: ['node_modules', 'src']
   },
   entry: {
@@ -43,6 +56,8 @@ module.exports = {
   module: {
     rules: [
       fileLoaderRule,
+      typescriptRule,
+      tslintRule,
       {
         include: x => x.endsWith('.js'),
         exclude: nodeModules,
