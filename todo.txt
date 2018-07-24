@@ -1,3 +1,5 @@
+* semantinc-ui-css is not included in a good way ffs!
+
 * deleteAllNodesReducer blev
   revertToInitialStateReducer.
 
