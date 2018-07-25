@@ -2,7 +2,7 @@ import { History } from 'types';
 
 // tslint:disable object-literal-sort-keys
 
-export const example2: History =
+export const example1: History =
 [
 	{
 		type: '@@INIT',
@@ -13,14 +13,14 @@ export const example2: History =
 			pathname: '/synth',
 			search: '',
 			hash: '',
-			key: 'a64cgt',
+			key: 'fxsqhn',
 		},
 	},
 	{
 		type: 'OPEN_MODAL',
 		modal: 'CreateNodeModal',
 		props: {
-			nodeType: 'DigitalSequence',
+			nodeType: 'TimeQuantizer',
 		},
 	},
 	{
@@ -29,11 +29,8 @@ export const example2: History =
 	{
 		type: 'CREATE_NODE',
 		name: '',
-		sequenceOfBits: '10001000101010000000000000000000',
-		millisecondsPerBit: 60,
-		minValue: 0,
-		maxValue: 1,
-		nodeType: 'DigitalSequence',
+		milliseconds: 100,
+		nodeType: 'TimeQuantizer',
 	},
 	{
 		type: 'OPEN_MODAL',
@@ -65,10 +62,85 @@ export const example2: History =
 		],
 		childNodes: [
 			{
+				nodeId: 4,
+				input: 'input',
+			},
+		],
+	},
+	{
+		type: 'OPEN_MODAL',
+		modal: 'CreateConnectionModal',
+	},
+	{
+		type: 'CLOSE_MODAL',
+	},
+	{
+		type: 'CREATE_CONNECTION',
+		name: '',
+		parentNodeIds: [
+			4,
+		],
+		childNodes: [
+			{
 				nodeId: 2,
 				input: 'input',
 			},
 		],
+	},
+	{
+		type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
+		id: 1,
+		param: 'bitsToRecord',
+		value: '15',
+	},
+	{
+		type: 'MOVE_KNOB',
+		id: 1,
+		value: 0.008731850892070863,
+	},
+	{
+		type: 'OPEN_MODAL',
+		modal: 'CreateKnobModal',
+	},
+	{
+		type: 'CLOSE_MODAL',
+	},
+	{
+		type: 'CREATE_KNOB',
+		name: 'timeQuantizer.milliseconds',
+		connectedToWhichNode: 4,
+		connectedToWhichParam: 'milliseconds',
+		minValue: 0,
+		maxValue: 30,
+		step: 0.01,
+		func: 'exponential',
+	},
+	{
+		type: 'MOVE_KNOB',
+		id: 2,
+		value: 38.40818581215401,
+	},
+	{
+		type: 'MOVE_KNOB',
+		id: 1,
+		value: 1,
+	},
+	{
+		type: 'MOVE_KNOB',
+		id: 2,
+		value: 0,
+	},
+	{
+		type: 'MOVE_KNOB',
+		id: 1,
+		value: 0.35153483632010735,
+	},
+	{
+		type: 'OPEN_MODAL',
+		modal: 'CreateConnectionModal',
+	},
+	{
+		type: 'CLOSE_MODAL',
 	},
 	{
 		type: 'OPEN_MODAL',
@@ -92,33 +164,23 @@ export const example2: History =
 	},
 	{
 		type: 'MOVE_KNOB',
+		id: 2,
+		value: 0.002448781047255219,
+	},
+	{
+		type: 'MOVE_KNOB',
 		id: 1,
-		value: 0.5047783266467444,
+		value: 1,
 	},
 	{
-		type: 'OPEN_MODAL',
-		modal: 'CreateConnectionModal',
-	},
-	{
-		type: 'CLOSE_MODAL',
-	},
-	{
-		type: 'CREATE_CONNECTION',
-		name: '',
-		parentNodeIds: [
-			4,
-		],
-		childNodes: [
-			{
-				nodeId: 5,
-				input: 'gain',
-			},
-		],
+		type: 'MOVE_KNOB',
+		id: 2,
+		value: 0.007084404886481564,
 	},
 	{
 		type: 'UI_TD_ANALYSER_CHANGE_PARAMS',
 		id: 1,
 		param: 'bitsToRecord',
-		value: '15',
+		value: '12',
 	},
 ];

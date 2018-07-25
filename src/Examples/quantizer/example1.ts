@@ -1,12 +1,8 @@
-import { importHistory } from 'redux/ReduxHistory';
+import { History } from 'types';
 
-let history;
+// tslint:disable object-literal-sort-keys
 
-export const example1 = () => {
-	importHistory(history, 0);
-};
-
-history =
+export const example1: History =
 [
 	{
 		type: 'OPEN_MODAL',

@@ -1,12 +1,8 @@
-import { importHistory } from 'redux/ReduxHistory';
+import { History } from 'types';
 
-let history;
+// tslint:disable object-literal-sort-keys
 
-export const example3 = () => {
-	importHistory(history, 0);
-};
-
-history =
+export const example3: History =
 [
 	{
 		type: '@@INIT',
