@@ -1,10 +1,6 @@
 {
   "files.exclude": {
     "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    "src/TypeScript": true
-  }
+  },
+  "editor.insertSpaces": false
 }

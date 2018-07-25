@@ -50,7 +50,7 @@ module.exports = {
     modules: ['node_modules', 'src']
   },
   entry: {
-    app: path.join(__dirname, 'src/app.js'),
+    app: path.join(__dirname, 'src/app.tsx'),
     'splash-app': path.join(__dirname, 'src/splash-app.js')
   },
   module: {

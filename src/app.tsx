@@ -1,27 +1,27 @@
-import { ConnectedRouter } from 'react-router-redux';
+import { Layout } from 'components/Layout';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import React from 'react';
-import ReactDOM from 'react-dom';
 import {
-  Route,
-  Switch,
+	Route,
+	Switch,
 } from 'react-router-dom';
-import { Layout } from './components/Layout';
+import { ConnectedRouter } from 'react-router-redux';
 import { store } from 'redux/Store';
-import { saveState } from './webStorage';
+import 'semantic-ui-css/semantic.min.css';
 import {
-  nodesListener,
-  connectionsListener,
-  triggeredTriggersListener,
+	connectionsListener,
+	nodesListener,
+	triggeredTriggersListener,
 } from './AudioSystem';
 import { history } from './history';
-import 'semantic-ui-css/semantic.min.css';
+import { saveState } from './webStorage';
 
-window.onerror = (message, source, lineno, colno, error) => { // eslint-disable-line
-  const ret = window.confirm('Zynthinator crashed. Go back to splash screen?');
-  if (ret) {
-    location.pathname = "splash.html"; // eslint-disable-line
-  }
+window.onerror = () => {
+	const ret = window.confirm('Zynthinator crashed. Go back to splash screen?');
+	if (ret) {
+		location.pathname = 'splash.html'; // eslint-disable-line
+	}
 };
 
 store.subscribe(() => saveState(store.getState())); // todo this code does not belong here. Looks like shit.
@@ -36,13 +36,13 @@ nodesListener.onActionWasDispatched(store.getState());
 connectionsListener.onActionWasDispatched(store.getState());
 
 const App = () => (
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <Switch>
-        <Route path="*" component={Layout} />
-      </Switch>
-    </ConnectedRouter>
-  </Provider>
+	<Provider store={store}>
+		<ConnectedRouter history={history}>
+			<Switch>
+				<Route path="*" component={Layout} />
+			</Switch>
+		</ConnectedRouter>
+	</Provider>
 );
 
 const domElement = document.getElementById('app');
