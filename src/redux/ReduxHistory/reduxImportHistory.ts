@@ -1,7 +1,8 @@
 import { deleteAllNodesAction } from 'redux/modules/node';
 import { store } from 'redux/Store';
+import { History } from 'types';
 
-export const importHistory = (history, delay = 0) => { // todo make this settable via UI !!!
+export const importHistory = (history: History, delay = 0) => { // todo make this settable via UI !!!
 		/**
 		 * Clear localStorage
 		 */
