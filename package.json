@@ -31,7 +31,8 @@
     "tslint": "^5.11.0",
     "tslint-loader": "^3.6.0",
     "typescript": "^2.9.2",
-    "uuid": "^3.2.1"
+    "uuid": "^3.2.1",
+    "webpack-bundle-analyzer": "^2.13.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -61,12 +62,13 @@
     "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
-    "dev": "webpack-dev-server --content-base src --inline --hot --port 8080 --host 192.168.1.218",
     "start": "webpack-dev-server --inline --hot",
     "build": "webpack",
     "test": "mocha --require babel-register || exit 0",
     "lint": "eslint src",
-    "fix": "tslint --fix 'src/**/*.{ts,tsx}'"
+    "fix": "tslint --fix 'src/**/*.{ts,tsx}'",
+    "stats": "webpack --profile --json > stats.json",
+    "analyze": "webpack-bundle-analyzer stats.json --mode static"
   },
   "author": "Fredrik Hjärner",
   "license": "ISC"
