@@ -1,5 +1,10 @@
-export type Action = object;
+export type Action = {
+	[key in string]: any
+};
 export type History = Action[];
+export type ConnectionsState = {
+
+};
 
 // TODO: stricted Action type. doesn't work now because my format is inconsistent.
 // export type Action = {
