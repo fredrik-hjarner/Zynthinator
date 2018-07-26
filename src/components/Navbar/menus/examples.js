@@ -3,7 +3,7 @@ import {
   TopMenuItem,
   MenuItem
 } from 'components/semantic++';
-import * as E from 'Examples';
+import * as E from 'zynthinator-examples';
 import { importHistory } from 'redux/ReduxHistory';
 
 /**
