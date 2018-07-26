@@ -6,3 +6,21 @@ export type History = Action[];
 // 	type: string,
 // 	payload: any,
 // };
+
+export type Parameter = {
+	type: string | any[],
+	defaultValue: any,
+};
+
+export type Node = {
+	params: {
+		[paramname in string]: Parameter
+	},
+	connectableInputs: string[],
+	knobableInputs: string[],
+	output: boolean,
+};
+
+export type NodeTypeDefinitions = {
+	[nodeType in string]: Node
+};
