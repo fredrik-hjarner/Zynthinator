@@ -1,1 +1,0 @@
-export { InjectNodeModal } from './InjectNodeControlled';

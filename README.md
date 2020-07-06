@@ -1,32 +1,44 @@
-# Zynthinator 0.0.3
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![Alt Text](https://github.com/fredrik-hjarner/Zynthinator/blob/development/2018-01-21-02-27-34.gif)
+## Available Scripts
 
-[Test out Zynthinator (not guaranteed to be lastest version)](https://fredrik-hjarner.github.io/Zynthinator/ "Test out Zynthinator")
+In the project directory, you can run:
 
-### What
+### `yarn start`
 
-- Essentially provides a graphical user interface to Web Audio API.
-- Wraps the Web Audio API nodes types in classes that provides some additional features. For example when you create a sine oscillator you can choose between what values it oscillates, that is not just the Web Audio API-standard of -1 to +1 but you can choose to make it oscillate between any two values.
-- Adds new node types. For example Low-Resolution Sine, ADSR, PWM, DigitalSignal, Noise and more.
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Current development state
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-Not finished at all. I've made a stable ground. I can use it but I have not concentrated upon making it user-friendly for others yet.
+### `yarn test`
 
-If you want it to be more user-friendly, one certain way of achieving that it to add an **issue** in which you explain the problem. That will give me motivation.
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### Goals
+### `yarn build`
 
-- Allow to create interesting sounds by combining and mixing basic waveforms with Web Audio API.
-- Ability to set as many dynamic parameters as possible, all stored with Redux.
-- Nice and maintainable code.
-- Intuitive and user-friendly.
-- As much as possible should happen in real-time. No loading times. If you want to change frequencies, scales, octaves, inject some stupid node wherever then just do it and notice the results immediately.
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Build/install/run
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-1. Clone the repository.
-2. Run `npm install`.
-3. Run `npm start`.
-4. Open http://localhost:8080 in browser.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).

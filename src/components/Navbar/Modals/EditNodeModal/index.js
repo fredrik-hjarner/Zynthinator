@@ -1,1 +1,0 @@
-export { EditNodeModal } from './EditNodeControlled';

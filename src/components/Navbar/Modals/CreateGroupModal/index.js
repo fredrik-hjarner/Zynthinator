@@ -1,1 +1,0 @@
-export { CreateGroupModal } from './CreateGroupControlled';
