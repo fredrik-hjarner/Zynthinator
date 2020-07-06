@@ -1,5 +1,5 @@
 // import PropTypes from 'prop-types';
-import * as React from "react";
+import React, { useEffect } from "react";
 
 import { DropDownMenu } from "ui/components/semantic++";
 import {
@@ -12,9 +12,23 @@ import {
   Tests,
 } from "./menus";
 
-export class Navbar extends React.Component {
-  // eslint-disable-line
-  public componentDidMount() {
+type Props = {
+  openModalAction: (modal: string, modalProps?: any) => void;
+  importHistory: (example: any, dunno: /* TODO: */ number) => void;
+};
+
+type NavbarContextType = {
+  openModalAction: (modal: string, modalProps?: any) => void;
+  importHistory: (example: any, dunno: /* TODO: */ number) => void;
+};
+
+export const NavbarContext = React.createContext<NavbarContextType>({
+  openModalAction: () => {},
+  importHistory: () => {},
+});
+
+export function Navbar({ openModalAction, importHistory }: Props) {
+  useEffect(() => {
     ($(".ui.dropdown") as any)?.dropdown?.({
       /* todo this shit should be in the menu!! */ // eslint-disable-line
       action: "hide",
@@ -25,10 +39,10 @@ export class Navbar extends React.Component {
       duration: 0,
       on: "hover",
     });
-  }
+  }, []);
 
-  public render() {
-    return (
+  return (
+    <NavbarContext.Provider value={{ openModalAction, importHistory }}>
       <DropDownMenu>
         <File />
         <Create />
@@ -38,10 +52,6 @@ export class Navbar extends React.Component {
         <History />
         <Tests />
       </DropDownMenu>
-    );
-  }
+    </NavbarContext.Provider>
+  );
 }
-
-/* Navbar.propTypes = {
-  path: PropTypes.string.isRequired,
-}; */

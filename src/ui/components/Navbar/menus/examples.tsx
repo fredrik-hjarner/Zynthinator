@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { TopMenuItem, MenuItem } from "ui/components/semantic++";
+import { NavbarContext } from "../Navbar";
 // import * as E from "zynthinator-examples";
 // import { importHistory } from "redux/ReduxHistory";
 
@@ -9,34 +10,38 @@ import { TopMenuItem, MenuItem } from "ui/components/semantic++";
  * importHistory statement.
  */
 
-const DigitalLogic = () => (
-  <MenuItem caption="Digital logic">
-    <MenuItem caption="SchmittTrigger">
-      <MenuItem
-        caption="1. Knob input & thresholhold"
-        onClick={() => {
-          // importHistory(E.schmittTrigger.example1, 0);
-        }}
-      />
-      <MenuItem
-        caption="2. Knob sine gain"
-        onClick={() => {
-          // importHistory(E.schmittTrigger.example2, 0);
-        }}
-      />
-    </MenuItem>
-    <MenuItem caption="TwoWaySwitch">
-      <MenuItem
-        caption="1. Switching between triangle and sine"
-        onClick={() => {
-          // importHistory(E.twoWaySwitch.example1, 0);
-        }}
-      />
-    </MenuItem>
-  </MenuItem>
-);
+const DigitalLogic = (): JSX.Element => {
+  const { importHistory } = useContext(NavbarContext);
 
-const Distortions = () => (
+  return (
+    <MenuItem caption="Digital logic">
+      <MenuItem caption="SchmittTrigger">
+        <MenuItem
+          caption="1. Knob input & thresholhold"
+          onClick={() => {
+            // importHistory(E.schmittTrigger.example1, 0);
+          }}
+        />
+        <MenuItem
+          caption="2. Knob sine gain"
+          onClick={() => {
+            // importHistory(E.schmittTrigger.example2, 0);
+          }}
+        />
+      </MenuItem>
+      <MenuItem caption="TwoWaySwitch">
+        <MenuItem
+          caption="1. Switching between triangle and sine"
+          onClick={() => {
+            // importHistory(E.twoWaySwitch.example1, 0);
+          }}
+        />
+      </MenuItem>
+    </MenuItem>
+  );
+};
+
+const Distortions = (): JSX.Element => (
   <MenuItem caption="Distortions">
     <MenuItem caption="CrossoverDistortion">
       <MenuItem
@@ -55,7 +60,7 @@ const Distortions = () => (
   </MenuItem>
 );
 
-const Oscillators = () => (
+const Oscillators = (): JSX.Element => (
   <MenuItem caption="Oscillators">
     <MenuItem caption="DigitalSequence">
       <MenuItem
@@ -96,7 +101,7 @@ const Oscillators = () => (
   </MenuItem>
 );
 
-const Quantizers = () => (
+const Quantizers = (): JSX.Element => (
   <MenuItem caption="Quantizers">
     <MenuItem caption="Quantizer">
       <MenuItem
@@ -135,7 +140,7 @@ const Quantizers = () => (
   </MenuItem>
 );
 
-export const Examples = () => (
+export const Examples = (): JSX.Element => (
   <TopMenuItem caption="Examples">
     <MenuItem caption="ADSR">
       <MenuItem
