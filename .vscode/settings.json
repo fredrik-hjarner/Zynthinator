@@ -1,7 +1,7 @@
 {
   "files.exclude": {
-    "**/.git": true,
+    "**/.git": true
   },
-	"editor.insertSpaces": false,
-	"editor.rulers": [110]
+  "editor.insertSpaces": false,
+  "editor.rulers": [100]
 }
