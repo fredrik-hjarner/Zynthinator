@@ -15,7 +15,11 @@ export const MenuItem = ({
 }: Props): JSX.Element => {
   if (!children) {
     return (
-      <div role="link" className={`item ${disabled}`} onClick={onClick}>
+      <div
+        role="link"
+        className={`item ${disabled && "disabled"}`}
+        onClick={onClick}
+      >
         <span className="text">{caption}</span>
       </div>
     );

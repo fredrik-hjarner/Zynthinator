@@ -13,21 +13,38 @@ import {
 } from "./menus";
 
 type Props = {
+  openMessageModalAction: (props: {
+    header: string;
+    content: string;
+    icon: string;
+    color: string;
+  }) => void;
   openModalAction: (modal: string, modalProps?: any) => void;
   importHistory: (example: any, dunno: /* TODO: */ number) => void;
 };
 
 type NavbarContextType = {
+  openMessageModalAction: (props: {
+    header: string;
+    content: string;
+    icon: string;
+    color: string;
+  }) => void;
   openModalAction: (modal: string, modalProps?: any) => void;
   importHistory: (example: any, dunno: /* TODO: */ number) => void;
 };
 
 export const NavbarContext = React.createContext<NavbarContextType>({
+  openMessageModalAction: () => {},
   openModalAction: () => {},
   importHistory: () => {},
 });
 
-export function Navbar({ openModalAction, importHistory }: Props) {
+export function Navbar({
+  openMessageModalAction,
+  openModalAction,
+  importHistory,
+}: Props) {
   useEffect(() => {
     ($(".ui.dropdown") as any)?.dropdown?.({
       /* todo this shit should be in the menu!! */ // eslint-disable-line
@@ -42,7 +59,9 @@ export function Navbar({ openModalAction, importHistory }: Props) {
   }, []);
 
   return (
-    <NavbarContext.Provider value={{ openModalAction, importHistory }}>
+    <NavbarContext.Provider
+      value={{ openMessageModalAction, openModalAction, importHistory }}
+    >
       <DropDownMenu>
         <File />
         <Create />

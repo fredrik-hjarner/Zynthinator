@@ -7,11 +7,11 @@ import { TopMenuItem, MenuItem } from "ui/components/semantic++";
 
 export const History = () => (
   <TopMenuItem caption="History">
-    <MenuItem disabled="disabled" caption="Undo action" />
-    <MenuItem disabled="disabled" caption="Redo action" />
+    <MenuItem disabled caption="Undo action" />
+    <MenuItem disabled caption="Redo action" />
     <Dropdown.Divider />
-    <MenuItem disabled="disabled" caption="Download state file" />
-    <MenuItem disabled="disabled" caption="Upload state file" />
+    <MenuItem disabled caption="Download state file" />
+    <MenuItem disabled caption="Upload state file" />
     <Dropdown.Divider />
     {/* <DownloadHistoryFile />
     <ReplayAHistoryFile /> */}
